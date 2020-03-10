@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".receptes_activity">
+        </activity>
+        <activity android:name=".perfil_activity">
+        </activity>
     </application>
 
 </manifest>

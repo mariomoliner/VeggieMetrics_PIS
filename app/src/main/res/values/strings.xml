@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VeggieMetrics</string>
+    <string name="main_activity">Main Activity</string>
+    <string name="Home_Button">Home</string>
+    <string name="Receptes_Button">Receptes</string>
+    <string name="Perfil_Button">Perfil</string>
 </resources>

@@ -5,7 +5,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".MainActivity">
+                tools:context=".receptes_activity">
 
     <LinearLayout
             xmlns:tools="http://schemas.android.com/tools"
@@ -46,7 +46,7 @@
     </LinearLayout>
 
     <TextView
-            android:text="HOME LAYOUT"
+            android:text="RECEPTES LAYOUT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_alignParentStart="true"
             android:layout_marginStart="151dp" android:layout_alignParentLeft="true"
