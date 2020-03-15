@@ -54,12 +54,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/newAccount"
+                android:clickable="true"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"/>
 
         <TextView
                 android:text="Has oblidat la contrasenya?"
                 android:layout_width="wrap_content"
+                android:clickable="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/forgotPassword"/>
 

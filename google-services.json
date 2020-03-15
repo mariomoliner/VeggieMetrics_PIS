@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1047233378272",
+    "firebase_url": "https://veggiemetrics-45fdd.firebaseio.com",
+    "project_id": "veggiemetrics-45fdd",
+    "storage_bucket": "veggiemetrics-45fdd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047233378272:android:6aa41991186fc74b5f5d85",
+        "android_client_info": {
+          "package_name": "com.example.mmolinca20alumnes.veggiemetrics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047233378272-ef2qnno1pfjdakoluaera6ei0q842omr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHH4VYqnKFPQQGo46wTn4x0ugF2vAmS-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047233378272-ef2qnno1pfjdakoluaera6ei0q842omr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
