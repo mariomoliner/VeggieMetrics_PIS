@@ -14,6 +14,14 @@ class Rec_password_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rec_password_activity)
+
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "Recupera la contraseña"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
+
         auth = FirebaseAuth.getInstance()
 
         but_listener()
