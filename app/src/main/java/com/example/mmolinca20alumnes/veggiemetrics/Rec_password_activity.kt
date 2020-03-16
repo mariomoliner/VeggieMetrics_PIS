@@ -20,8 +20,6 @@ class Rec_password_activity : AppCompatActivity() {
         actionbar!!.title = "Recupera la contraseña"
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
-
-
         auth = FirebaseAuth.getInstance()
 
         but_listener()
