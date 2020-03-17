@@ -3,4 +3,15 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="background_yellow">#EEFF41</color>
+    <color name="background_green">#64DD17</color>
+    <color name="button_green">#33691E</color>
+    <color name="button_grey">#212121</color>
+    <color name="button_turquoise">#E0F2F1</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="edit_text_green">#CCFF90</color>
+    <color name="text_view_grey">#424242</color>
+    <color name="edit_text_black">#400000</color>
 </resources>
+
