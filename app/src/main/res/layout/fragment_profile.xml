@@ -3,7 +3,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".profileFragment">
+        tools:context=".profileFragment"
+        android:background="@drawable/background">
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -26,7 +27,8 @@
                 android:layout_toRightOf="@id/profilePic"
                 android:layout_alignTop="@id/profilePic"
                 android:layout_marginTop="20dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                style="@style/TextViewStyle"/>
 
         <TextView
                 android:id="@+id/profileMail"
@@ -37,7 +39,8 @@
                 android:layout_below="@+id/profileName"
                 android:layout_toRightOf="@id/profilePic"
                 android:textSize="15dp"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TextViewStyle"/>
 
         <TextView
                 android:id="@+id/signOut"
@@ -48,7 +51,8 @@
                 android:layout_toRightOf="@id/profilePic"
                 android:layout_below="@+id/profileMail"
                 android:textSize="20dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                style="@style/TextViewStyle"/>
 
         <TextView
                 android:id="@+id/sexText"
@@ -59,7 +63,8 @@
                 android:layout_below="@+id/profilePic"
                 android:layout_alignStart="@+id/sexLayout"
                 android:layout_alignLeft="@+id/sexLayout"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                style="@style/TextViewStyle"/>
 
         <LinearLayout
                 android:id="@+id/sexLayout"
@@ -83,7 +88,8 @@
                 android:layout_below="@+id/profilePic"
                 android:layout_alignStart="@+id/dietLayout"
                 android:layout_alignLeft="@+id/dietLayout"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                style="@style/TextViewStyle"/>
 
         <LinearLayout
                 android:id="@+id/dietLayout"
@@ -107,7 +113,8 @@
                 android:layout_below="@+id/dietLayout"
                 android:layout_alignStart="@+id/dietLayout"
                 android:layout_alignLeft="@+id/dietLayout"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                style="@style/TextViewStyle"/>
 
         <EditText
                 android:id="@+id/height"
@@ -117,7 +124,8 @@
                 android:inputType="numberDecimal"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/heightText"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginLeft="40dp"
+                style="@style/edit_text_style"/>
 
         <TextView
                 android:id="@+id/weightText"
@@ -128,7 +136,8 @@
                 android:layout_below="@+id/dietLayout"
                 android:layout_toRightOf="@+id/heightText"
                 android:layout_marginLeft="50dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                style="@style/TextViewStyle"/>
 
         <EditText
                 android:id="@+id/weight"
@@ -139,7 +148,8 @@
                 android:layout_below="@+id/weightText"
                 android:layout_toRightOf="@id/height"
                 android:layout_alignStart="@+id/weightText"
-                android:layout_alignLeft="@+id/weightText"/>
+                android:layout_alignLeft="@+id/weightText"
+                style="@style/edit_text_style"/>
 
         <TextView
                 android:id="@+id/allergyText"
@@ -150,7 +160,8 @@
                 android:layout_below="@+id/sexLayout"
                 android:layout_alignStart="@+id/sexLayout"
                 android:layout_alignLeft="@+id/sexLayout"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                style="@style/TextViewStyle"/>
 
         <LinearLayout
                 android:id="@+id/allergyLayout"
@@ -172,7 +183,8 @@
                 android:text="Desa canvis"
                 android:layout_below="@+id/height"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="20dp"/>
+                android:layout_margin="20dp"
+                style="@style/button_style"/>
 
         <Button
                 android:id="@+id/test"
@@ -182,7 +194,8 @@
                 android:layout_below="@+id/update"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
-                android:padding="30dp"/>
+                android:padding="30dp"
+                style="@style/button_style"/>
 
     </RelativeLayout>
 
