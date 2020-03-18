@@ -72,11 +72,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/sexText"
-                android:layout_marginRight="40dp">
+                android:layout_marginRight="40dp"
+                android:background="@drawable/spinner_background">
             <Spinner
                     android:id="@+id/sex"
                     android:layout_width="100dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    />
         </LinearLayout>
 
         <TextView
@@ -97,7 +99,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/dietText"
-                android:layout_marginLeft="40dp">
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/spinner_background">
             <Spinner
                     android:id="@+id/diet"
                     android:layout_width="100dp"
@@ -125,7 +128,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/heightText"
                 android:layout_marginLeft="40dp"
-                style="@style/edit_text_style"/>
+                style="@style/edit_text_style_2"/>
 
         <TextView
                 android:id="@+id/weightText"
@@ -149,7 +152,7 @@
                 android:layout_toRightOf="@id/height"
                 android:layout_alignStart="@+id/weightText"
                 android:layout_alignLeft="@+id/weightText"
-                style="@style/edit_text_style"/>
+                style="@style/edit_text_style_2"/>
 
         <TextView
                 android:id="@+id/allergyText"
@@ -169,7 +172,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/allergyText"
-                android:layout_marginRight="40dp">
+                android:layout_marginRight="40dp"
+                android:background="@drawable/spinner_background">
             <Spinner
                     android:id="@+id/allergy"
                     android:layout_width="100dp"
