@@ -4,24 +4,42 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
 
-    fun home_action(view: View){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        //Primer fragment:
+        loadFragment(homeFragment())
+
+        navegador_inferior.setOnNavigationItemSelectedListener {menuItem ->
+            when{
+                menuItem.itemId == R.id.home_nav -> {
+                    loadFragment(homeFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                menuItem.itemId == R.id.receptes_nav -> {
+                    loadFragment(recipesFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                menuItem.itemId == R.id.perfil_nav -> {
+                    loadFragment(profileFragment())
+                    return@setOnNavigationItemSelectedListener true
+                }
+                else -> {
+                    return@setOnNavigationItemSelectedListener false
+                }
+            }
+        }
     }
-    fun receptes_action(view: View){
-        val intent = Intent(this, receptes_activity::class.java)
-        startActivity(intent)
-    }
-    fun perfil_action(view: View){
-        val intent = Intent(this, perfil_activity::class.java)
-        startActivity(intent)
+    private fun loadFragment(fragment : Fragment){
+        supportFragmentManager.beginTransaction().also { fragmentTransaction ->
+            fragmentTransaction.replace(R.id.fragment_principal, fragment)
+            fragmentTransaction.commit()
+        }
     }
 }

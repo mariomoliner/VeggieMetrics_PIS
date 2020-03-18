@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".profileFragment">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".perfil_activity"
+            android:layout_margin="30dp">
+
+        <ImageView
+                android:id="@+id/profilePic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+                android:id="@+id/profileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sample User"
+                android:textSize="25dp"
+                android:layout_toRightOf="@id/profilePic"
+                android:layout_alignTop="@id/profilePic"
+                android:layout_marginTop="20dp"
+                android:gravity="center"/>
+
+        <TextView
+                android:id="@+id/profileMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="sampleuser@gmail.com"
+                android:layout_below="@+id/profileName"
+                android:layout_toRightOf="@id/profilePic"
+                android:textSize="15dp"
+                android:gravity="center" />
+
+        <TextView
+                android:id="@+id/signOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Tanca sessió"
+                android:layout_toRightOf="@id/profilePic"
+                android:layout_below="@+id/profileMail"
+                android:textSize="20dp"
+                android:gravity="center"/>
+
+        <TextView
+                android:id="@+id/sexText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Sexe"
+                android:layout_below="@+id/profilePic"
+                android:layout_alignStart="@+id/sexLayout"
+                android:layout_alignLeft="@+id/sexLayout"
+                android:textSize="15dp" />
+
+        <LinearLayout
+                android:id="@+id/sexLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/sexText"
+                android:layout_marginRight="40dp">
+            <Spinner
+                    android:id="@+id/sex"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/dietText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Dieta"
+                android:layout_below="@+id/profilePic"
+                android:layout_alignStart="@+id/dietLayout"
+                android:layout_alignLeft="@+id/dietLayout"
+                android:textSize="15dp" />
+
+        <LinearLayout
+                android:id="@+id/dietLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/dietText"
+                android:layout_marginLeft="40dp">
+            <Spinner
+                    android:id="@+id/diet"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/heightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Alçada"
+                android:layout_below="@+id/dietLayout"
+                android:layout_alignStart="@+id/dietLayout"
+                android:layout_alignLeft="@+id/dietLayout"
+                android:textSize="15dp" />
+
+        <EditText
+                android:id="@+id/height"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/heightText"
+                android:layout_marginLeft="40dp"/>
+
+        <TextView
+                android:id="@+id/weightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Pes"
+                android:layout_below="@+id/dietLayout"
+                android:layout_toRightOf="@+id/heightText"
+                android:layout_marginLeft="50dp"
+                android:textSize="15dp" />
+
+        <EditText
+                android:id="@+id/weight"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:layout_below="@+id/weightText"
+                android:layout_toRightOf="@id/height"
+                android:layout_alignStart="@+id/weightText"
+                android:layout_alignLeft="@+id/weightText"/>
+
+        <TextView
+                android:id="@+id/allergyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Al·lèrgies"
+                android:layout_below="@+id/sexLayout"
+                android:layout_alignStart="@+id/sexLayout"
+                android:layout_alignLeft="@+id/sexLayout"
+                android:textSize="15dp" />
+
+        <LinearLayout
+                android:id="@+id/allergyLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/allergyText"
+                android:layout_marginRight="40dp">
+            <Spinner
+                    android:id="@+id/allergy"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desa canvis"
+                android:layout_below="@+id/height"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20dp"/>
+
+        <Button
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test Setmanal"
+                android:layout_below="@+id/update"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:padding="30dp"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

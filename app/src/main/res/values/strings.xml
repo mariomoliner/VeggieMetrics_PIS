@@ -9,4 +9,8 @@
     <string name="inicia_sessio">Inicia sessió</string>
     <string name="new_user">Crea un nou usuari</string>
     <string name="miss_pass">Has oblidat la contrasenya?</string>
+    <string name="home">Home</string>
+    <string name="receptes">Receptes</string>
+    <string name="perfil">Perfil</string>
+
 </resources>
