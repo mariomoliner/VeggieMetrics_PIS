@@ -5,7 +5,8 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".receptes_activity">
+                tools:context=".receptes_activity"
+                android:background="@drawable/background">
 
     <LinearLayout
             xmlns:tools="http://schemas.android.com/tools"
@@ -25,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:onClick="home_action"
+                style="@style/little_button_style"
         />
         <Button
                 android:id="@+id/button2"
@@ -33,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:onClick="receptes_action"
+                style="@style/little_button_style"
         />
         <Button
                 android:id="@+id/button3"
@@ -41,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
                 android:onClick="perfil_action"
+                style="@style/little_button_style"
         />
 
     </LinearLayout>
@@ -51,5 +55,6 @@
             android:layout_height="wrap_content" android:layout_alignParentStart="true"
             android:layout_marginStart="151dp" android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true" android:id="@+id/textView2" android:layout_marginTop="146dp"
-            android:layout_marginLeft="151dp"/>
+            android:layout_marginLeft="151dp"
+            style="@style/TextViewStyle"/>
 </RelativeLayout>

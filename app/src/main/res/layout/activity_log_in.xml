@@ -10,7 +10,8 @@
         android:padding="20dp"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
-        android:gravity="top|center">
+        android:gravity="top|center"
+        android:background="@drawable/background">
 
         <ImageView
                 android:id="@+id/logoVM"
@@ -24,7 +25,8 @@
                 android:id="@+id/userText"
                 android:hint="@string/usuari"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                style="@style/edit_text_style"/>
 
         <EditText
                 android:layout_width="match_parent"
@@ -33,14 +35,16 @@
                 android:inputType="textPassword"
                 android:ems="10"
                 android:layout_margin="10dp"
-                android:id="@+id/passwordText"/>
+                android:id="@+id/passwordText"
+                style="@style/edit_text_style"/>
 
         <Button
                 android:text="@string/inicia_sessio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/logInButton"
-                android:layout_margin="20dp"/>
+                android:layout_margin="20dp"
+                style="@style/button_style"/>
 
         <TextView
                 android:text="@string/new_user"
@@ -50,7 +54,8 @@
                 android:clickable="true"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
-                android:focusable="true" />
+                android:focusable="true"
+                style="@style/TextViewStyle"/>
 
         <TextView
                 android:text="@string/miss_pass"
@@ -58,7 +63,8 @@
                 android:clickable="true"
                 android:layout_height="wrap_content"
                 android:id="@+id/forgotPassword"
-                android:focusable="true" />
+                android:focusable="true"
+                style="@style/TextViewStyle"/>
 
 
     </LinearLayout>
