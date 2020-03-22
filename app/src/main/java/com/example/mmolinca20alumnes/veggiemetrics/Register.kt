@@ -15,12 +15,22 @@ class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register)
-        supportActionBar!!.title = "Registra't"
+        
+        //actionbar
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "Registra't"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
         auth = FirebaseAuth.getInstance()
 
         listener_boton()
     }
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
     fun listener_boton(){
         boton_conf.setOnClickListener(){
             if(pass.text.toString().isEmpty() or passrepetida.text.toString().isEmpty() or correo.text.toString().isEmpty()){

@@ -12,13 +12,11 @@ class NewRecipe : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_recipe)
 
-
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
         actionbar!!.title = "Registra una nova recepta"
         //set back button
-        actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
     }
 
