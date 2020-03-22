@@ -15,7 +15,7 @@ class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register)
-
+        supportActionBar!!.title = "Registra't"
         auth = FirebaseAuth.getInstance()
 
         listener_boton()

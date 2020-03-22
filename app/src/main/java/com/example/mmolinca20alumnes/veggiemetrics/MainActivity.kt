@@ -17,19 +17,22 @@ class MainActivity : AppCompatActivity() {
 
         //Primer fragment:
         loadFragment(homeFragment())
-
+        supportActionBar!!.title = "Home"
         navegador_inferior.setOnNavigationItemSelectedListener {menuItem ->
             when{
                 menuItem.itemId == R.id.home_nav -> {
                     loadFragment(homeFragment())
+                    supportActionBar!!.title = "Home"
                     return@setOnNavigationItemSelectedListener true
                 }
                 menuItem.itemId == R.id.receptes_nav -> {
                     loadFragment(recipesFragment())
+                    supportActionBar!!.title = "Receptes"
                     return@setOnNavigationItemSelectedListener true
                 }
                 menuItem.itemId == R.id.perfil_nav -> {
                     loadFragment(profileFragment())
+                    supportActionBar!!.title = "Perfil"
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> {
@@ -57,6 +60,18 @@ class MainActivity : AppCompatActivity() {
 
         if (id == R.id.plus_butt) {
             startActivity(Intent(this, NewRecipe::class.java))
+            return true
+        }
+        if (id == R.id.op1) {
+            //cal detallar les funcionalitats
+            return true
+        }
+        if (id == R.id.op2) {
+            //cal detallar les funcionalitats
+            return true
+        }
+        if (id == R.id.op3) {
+            //cal detallar les funcionalitats
             return true
         }
 

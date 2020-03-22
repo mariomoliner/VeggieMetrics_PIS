@@ -7,5 +7,20 @@
             android:icon="@drawable/floating_add"
             app:showAsAction="always"
         />
+    <item
+            android:id="@+id/op1"
+            android:title="@string/option_1"
+            app:showAsAction="never"
+            />
+    <item
+            android:id="@+id/op2"
+            android:title="@string/option_2"
+            app:showAsAction="never"
+            />
+    <item
+            android:id="@+id/op3"
+            android:title="@string/option_3"
+            app:showAsAction="never"
+            />
 
 </menu>
