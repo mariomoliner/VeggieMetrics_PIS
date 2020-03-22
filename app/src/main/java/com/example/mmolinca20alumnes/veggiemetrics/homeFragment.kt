@@ -31,7 +31,7 @@ class homeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Benvingut"
-        
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
