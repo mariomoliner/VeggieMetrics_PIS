@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
+    <item
+        android:id="@+id/plus_butt"
+            android:title="@string/add"
+            android:icon="@drawable/floating_add"
+            app:showAsAction="always"
+        />
+    <item
+            android:id="@+id/op1"
+            android:title="@string/option_1"
+            app:showAsAction="never"
+            />
+    <item
+            android:id="@+id/op2"
+            android:title="@string/option_2"
+            app:showAsAction="never"
+            />
+    <item
+            android:id="@+id/op3"
+            android:title="@string/option_3"
+            app:showAsAction="never"
+            />
+
+</menu>

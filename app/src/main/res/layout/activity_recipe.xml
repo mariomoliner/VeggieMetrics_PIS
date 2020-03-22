@@ -20,7 +20,7 @@
                 android:layout_margin="30dp">
 
             <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/recipe_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Recipe Title"
@@ -33,7 +33,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     tools:srcCompat="@drawable/recipe_pic"
-                    android:layout_below="@+id/title"/>
+                    android:layout_below="@+id/recipe_title"/>
 
             <TextView
                     android:id="@+id/autor"
@@ -42,7 +42,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Autor: Sample User"
                     android:layout_toRightOf="@id/recipePic"
-                    android:layout_below="@+id/title"
+                    android:layout_below="@+id/recipe_title"
                     android:textSize="15dp"
                     android:gravity="center"
                     style="@style/TextViewStyle" />
