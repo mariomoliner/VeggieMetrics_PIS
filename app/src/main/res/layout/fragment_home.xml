@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,11 +43,82 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/spinner_background"
                 >
-
-            <LinearLayout
-                    android:layout_width="match_parent"
+            <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="vertical" />
+                    tools:context=".WeeklyTop">
+
+                    <LinearLayout
+                        android:id="@+id/layoutrecepta1"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/spinner_background">
+                        <TextView
+                            android:id="@+id/recepta1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Recepta top 1"
+                            android:gravity="center"
+                            />
+
+                        <ImageView
+                            android:id="@+id/imgrecepta1"
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            tools:src="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/autor1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="autor" />
+                        <TextView
+                            android:id="@+id/característica1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="característica"
+                        />
+                    </LinearLayout>
+                <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@+id/layoutrecepta1"
+                        android:background="@drawable/spinner_background">
+                    <TextView
+                            android:id="@+id/recepta2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Recepta top 2"
+                            android:gravity="center"
+                            />
+
+                    <ImageView
+                            android:id="@+id/imgrecepta2"
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                            android:id="@+id/autor2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="autor" />
+                    <TextView
+                            android:id="@+id/característica2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="característica"
+                            />
+
+                </LinearLayout>
+            </RelativeLayout>
         </ScrollView>
 
         <TextView
@@ -67,12 +139,136 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/spinner_background"
                 >
-
-            <LinearLayout
-                    android:layout_width="match_parent"
+            <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="vertical" />
+                    tools:context=".WeeklyTop">
+
+                <LinearLayout
+                        android:id="@+id/layoutrecepta1recomenades"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/spinner_background">
+                    <TextView
+                            android:id="@+id/recepta1recomenades"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Recepta recomenada 1"
+                            android:gravity="center"
+                            />
+
+                    <ImageView
+                            android:id="@+id/imgrecepta1recomenades"
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                            android:id="@+id/autor1recomenades"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="autor" />
+                    <TextView
+                            android:id="@+id/característica1recomenades"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="característica"
+                            />
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_toRightOf="@+id/layoutrecepta1recomenades"
+                        android:background="@drawable/spinner_background">
+                    <TextView
+                            android:id="@+id/recepta2recomenades"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Recepta recomenada 2"
+                            android:gravity="center"
+                            />
+
+                    <ImageView
+                            android:id="@+id/imgrecepta2recomenades"
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                            android:id="@+id/autor2recomenades"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="autor" />
+                    <TextView
+                            android:id="@+id/característica2recomenades"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="característica"
+                            />
+                </LinearLayout>
+            </RelativeLayout>
+
         </ScrollView>
+
+        <TextView
+                android:id="@+id/RecomendationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recomenacions"
+                android:layout_below="@+id/Recomended"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="15dp"/>
+
+        <Button
+                android:id="@+id/nutritionaldeficienies"
+                android:layout_width="160dp"
+                android:layout_height="32dp"
+                android:layout_below="@id/RecomendationTitle"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Deficiencies Nutricionals"
+                android:textSize="10dp"
+                style="@style/little_button_style"/>
+
+        <Button
+                android:id="@+id/variety"
+                android:layout_width="160dp"
+                android:layout_height="32dp"
+                android:layout_below="@+id/nutritionaldeficienies"
+                android:layout_marginLeft="20dp"
+                android:text="Varietat"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                style="@style/little_button_style"/>
+
+        <Button
+                android:id="@+id/seasonalfood"
+                android:layout_width="160dp"
+                android:layout_height="32dp"
+                android:layout_below="@+id/variety"
+                android:layout_marginLeft="20dp"
+                android:text="Menjar de temporada"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                style="@style/little_button_style" />
+
+        <TextView
+                android:id="@+id/info"
+                android:layout_width="129dp"
+                android:layout_height="154dp"
+                android:layout_below="@+id/RecomendationTitle"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/nutritionaldeficienies"
+                android:background="@color/white" />
 
     </RelativeLayout>
 

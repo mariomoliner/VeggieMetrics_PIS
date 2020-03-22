@@ -6,201 +6,213 @@
         tools:context=".profileFragment"
         android:background="@drawable/background">
 
-    <RelativeLayout
+    <ScrollView
+            android:id="@+id/scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".perfil_activity"
-            android:layout_margin="30dp">
-
-        <ImageView
-                android:id="@+id/profilePic"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                tools:srcCompat="@drawable/avatar" />
-
-        <TextView
-                android:id="@+id/profileName"
+            android:layout_below="@+id/WeeklyTopTitle"
+            android:background="@drawable/spinner_background">
+        <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sample User"
-                android:textSize="25dp"
-                android:layout_toRightOf="@id/profilePic"
-                android:layout_alignTop="@id/profilePic"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                style="@style/TextViewStyle"/>
+                android:layout_height="match_parent"
+                android:layout_margin="30dp"
+                tools:context=".perfil_activity">
 
-        <TextView
-                android:id="@+id/profileMail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="sampleuser@gmail.com"
-                android:layout_below="@+id/profileName"
-                android:layout_toRightOf="@id/profilePic"
-                android:textSize="15dp"
-                android:gravity="center"
-                style="@style/TextViewStyle"/>
+            <ImageView
+                    android:id="@+id/profilePic"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    tools:srcCompat="@drawable/profile_pic" />
 
-        <TextView
-                android:id="@+id/signOut"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Tanca sessió"
-                android:layout_toRightOf="@id/profilePic"
-                android:layout_below="@+id/profileMail"
-                android:textSize="20dp"
-                android:gravity="center"
-                style="@style/TextViewStyle"/>
+            <TextView
+                    android:id="@+id/profileName"
+                    style="@style/TextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/profilePic"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/profilePic"
+                    android:gravity="center"
+                    android:text="Sample User"
+                    android:textSize="25dp" />
 
-        <TextView
-                android:id="@+id/sexText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Sexe"
-                android:layout_below="@+id/profilePic"
-                android:layout_alignStart="@+id/sexLayout"
-                android:layout_alignLeft="@+id/sexLayout"
-                android:textSize="15dp"
-                style="@style/TextViewStyle"/>
+            <TextView
+                    android:id="@+id/profileMail"
+                    style="@style/TextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profileName"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/profilePic"
+                    android:gravity="center"
+                    android:text="sampleuser@gmail.com"
+                    android:textSize="15dp" />
 
-        <LinearLayout
-                android:id="@+id/sexLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/sexText"
-                android:layout_marginRight="40dp"
-                android:background="@drawable/spinner_background">
-            <Spinner
-                    android:id="@+id/sex"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    />
-        </LinearLayout>
+            <TextView
+                    android:id="@+id/signOut"
+                    style="@style/TextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profileMail"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/profilePic"
+                    android:gravity="center"
+                    android:text="Tanca sessió"
+                    android:textSize="20dp" />
 
-        <TextView
-                android:id="@+id/dietText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Dieta"
-                android:layout_below="@+id/profilePic"
-                android:layout_alignStart="@+id/dietLayout"
-                android:layout_alignLeft="@+id/dietLayout"
-                android:textSize="15dp"
-                style="@style/TextViewStyle"/>
+            <TextView
+                    android:id="@+id/sexText"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profilePic"
+                    android:layout_alignStart="@+id/sexLayout"
+                    android:layout_alignLeft="@+id/sexLayout"
+                    android:layout_marginTop="50dp"
+                    android:text="Sexe"
+                    android:textSize="15dp" />
 
-        <LinearLayout
-                android:id="@+id/dietLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/dietText"
-                android:layout_marginLeft="40dp"
-                android:background="@drawable/spinner_background">
-            <Spinner
-                    android:id="@+id/diet"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"/>
-        </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/sexLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sexText"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/spinner_background">
 
-        <TextView
-                android:id="@+id/heightText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Alçada"
-                android:layout_below="@+id/dietLayout"
-                android:layout_alignStart="@+id/dietLayout"
-                android:layout_alignLeft="@+id/dietLayout"
-                android:textSize="15dp"
-                style="@style/TextViewStyle"/>
+                <Spinner
+                        android:id="@+id/sex"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent" />
+            </LinearLayout>
 
-        <EditText
-                android:id="@+id/height"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/heightText"
-                android:layout_marginLeft="40dp"
-                style="@style/edit_text_style_2"/>
+            <TextView
+                    android:id="@+id/dietText"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profilePic"
+                    android:layout_alignStart="@+id/dietLayout"
+                    android:layout_alignLeft="@+id/dietLayout"
+                    android:layout_marginTop="50dp"
+                    android:text="Dieta"
+                    android:textSize="15dp" />
 
-        <TextView
-                android:id="@+id/weightText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Pes"
-                android:layout_below="@+id/dietLayout"
-                android:layout_toRightOf="@+id/heightText"
-                android:layout_marginLeft="50dp"
-                android:textSize="15dp"
-                style="@style/TextViewStyle"/>
+            <LinearLayout
+                    android:id="@+id/dietLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dietText"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/spinner_background">
 
-        <EditText
-                android:id="@+id/weight"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:layout_below="@+id/weightText"
-                android:layout_toRightOf="@id/height"
-                android:layout_alignStart="@+id/weightText"
-                android:layout_alignLeft="@+id/weightText"
-                style="@style/edit_text_style_2"/>
+                <Spinner
+                        android:id="@+id/diet"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent" />
+            </LinearLayout>
 
-        <TextView
-                android:id="@+id/allergyText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Al·lèrgies"
-                android:layout_below="@+id/sexLayout"
-                android:layout_alignStart="@+id/sexLayout"
-                android:layout_alignLeft="@+id/sexLayout"
-                android:textSize="15dp"
-                style="@style/TextViewStyle"/>
+            <TextView
+                    android:id="@+id/heightText"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dietLayout"
+                    android:layout_alignStart="@+id/dietLayout"
+                    android:layout_alignLeft="@+id/dietLayout"
+                    android:layout_marginTop="30dp"
+                    android:text="Alçada"
+                    android:textSize="15dp" />
 
-        <LinearLayout
-                android:id="@+id/allergyLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/allergyText"
-                android:layout_marginRight="40dp"
-                android:background="@drawable/spinner_background">
-            <Spinner
-                    android:id="@+id/allergy"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"/>
-        </LinearLayout>
+            <EditText
+                    android:id="@+id/height"
+                    style="@style/edit_text_style_2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/heightText"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:textSize="10dp"/>
 
-        <Button
-                android:id="@+id/update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Desa canvis"
-                android:layout_below="@+id/height"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="20dp"
-                style="@style/button_style"/>
+            <TextView
+                    android:id="@+id/weightText"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dietLayout"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@+id/heightText"
+                    android:text="Pes"
+                    android:textSize="15dp" />
 
-        <Button
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Test Setmanal"
-                android:layout_below="@+id/update"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:padding="30dp"
-                style="@style/button_style"/>
+            <EditText
+                    android:id="@+id/weight"
+                    style="@style/edit_text_style_2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/weightText"
+                    android:layout_alignStart="@+id/weightText"
+                    android:layout_alignLeft="@+id/weightText"
+                    android:layout_toRightOf="@id/height"
+                    android:ems="10"
+                    android:inputType="numberDecimal"
+                    android:textSize="10dp"/>
 
-    </RelativeLayout>
+            <TextView
+                    android:id="@+id/allergyText"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sexLayout"
+                    android:layout_alignStart="@+id/sexLayout"
+                    android:layout_alignLeft="@+id/sexLayout"
+                    android:layout_marginTop="30dp"
+                    android:text="Al·lèrgies"
+                    android:textSize="15dp" />
+
+            <LinearLayout
+                    android:id="@+id/allergyLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/allergyText"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/spinner_background">
+
+                <Spinner
+                        android:id="@+id/allergy"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/update"
+                    style="@style/button_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/height"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"
+                    android:text="Desa canvis" />
+
+            <Button
+                    android:id="@+id/test"
+                    style="@style/button_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/update"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:padding="30dp"
+                    android:text="Test Setmanal" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </FrameLayout>

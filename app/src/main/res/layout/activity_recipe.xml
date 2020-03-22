@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".profileFragment"
+        android:background="@drawable/background">
+
+    <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/WeeklyTopTitle"
+            android:background="@drawable/spinner_background">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".perfil_activity"
+                android:layout_margin="30dp">
+
+            <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recipe Title"
+                    android:textSize="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"/>
+
+            <ImageView
+                    android:id="@+id/recipePic"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    tools:srcCompat="@drawable/recipe_pic"
+                    android:layout_below="@+id/title"/>
+
+            <TextView
+                    android:id="@+id/autor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Autor: Sample User"
+                    android:layout_toRightOf="@id/recipePic"
+                    android:layout_below="@+id/title"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle" />
+
+            <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Data: 01/01/2020"
+                    android:layout_toRightOf="@id/recipePic"
+                    android:layout_below="@+id/autor"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle"/>
+
+            <TextView
+                    android:id="@+id/diet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Dieta: Vegana"
+                    android:layout_toRightOf="@id/recipePic"
+                    android:layout_below="@+id/date"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle"/>
+
+            <TextView
+                    android:id="@+id/rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Valoració: *****"
+                    android:layout_toRightOf="@id/recipePic"
+                    android:layout_below="@+id/diet"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle"/>
+
+            <TextView
+                    android:id="@+id/ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Ingredients"
+                    android:layout_below="@+id/recipePic"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle"/>
+
+            <TextView
+                    android:id="@+id/ingredientsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="- Ingredient 1\n- Ingredient 2\n- Ingredient 3\n"
+                    android:layout_below="@+id/ingredients"
+                    android:textSize="15dp"
+                    android:gravity="top"
+                    style="@style/TextViewStyle" />
+
+            <TextView
+                    android:id="@+id/steps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Preparació"
+                    android:layout_below="@+id/ingredientsList"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle"/>
+
+            <TextView
+                    android:id="@+id/stepsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Preparació"
+                    android:layout_below="@+id/steps"
+                    android:textSize="15dp"
+                    android:gravity="top"
+                    style="@style/TextViewStyle" />
+
+            <Button
+                    android:id="@+id/rate"
+                    style="@style/button_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/stepsText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:text="Valora" />
+
+        </RelativeLayout>
+    </ScrollView>
+</FrameLayout>
