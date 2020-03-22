@@ -132,7 +132,7 @@
                 android:id="@+id/RecomendedTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recomenades per a tu"
+                android:text="Recomanades per a tu"
                 android:layout_below="@+id/WeeklyTop"
                 android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
@@ -162,7 +162,7 @@
                             android:id="@+id/recepta1recomenades"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Recepta recomenada 1"
+                            android:text="Recepta recomanada 1"
                             android:gravity="center"
                             />
 
@@ -196,7 +196,7 @@
                             android:id="@+id/recepta2recomenades"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Recepta recomenada 2"
+                            android:text="Recepta recomanada 2"
                             android:gravity="center"
                             />
 
@@ -228,7 +228,7 @@
                 android:id="@+id/RecomendationTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recomenacions"
+                android:text="Recomanacions"
                 android:layout_below="@+id/Recomended"
                 android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
@@ -241,7 +241,7 @@
                 android:layout_below="@id/RecomendationTitle"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Deficiencies Nutricionals"
+                android:text="Deficiències Nutricionals"
                 android:textSize="10dp"
                 style="@style/little_button_style"/>
 
