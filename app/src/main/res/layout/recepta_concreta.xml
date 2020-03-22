@@ -6,6 +6,7 @@
         android:background="@drawable/border"
         android:paddingLeft="2dp"
         android:paddingBottom="20dp"
+        android:clickable="true"
         android:paddingTop="20dp"
         android:paddingRight="5dp">
 
@@ -23,7 +24,7 @@
         <ImageView
                 android:id="@+id/extra"
                 android:textSize="20dp"
-                android:src="@drawable/avatar"
+                android:src="@drawable/recipe_pic"
                 android:text="holaaaa"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"

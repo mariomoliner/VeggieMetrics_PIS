@@ -3,6 +3,8 @@ package com.example.mmolinca20alumnes.veggiemetrics.adapters
 
 import com.example.mmolinca20alumnes.veggiemetrics.R
 import android.R.layout
+import android.app.PendingIntent.getActivity
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +12,10 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mmolinca20alumnes.veggiemetrics.MainActivity
+import com.example.mmolinca20alumnes.veggiemetrics.recipe
 import kotlinx.android.synthetic.main.recepta_concreta.view.*
 import models.recepta_model
 import java.util.*
@@ -49,15 +54,22 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(llista_receptes_filtrada[position])
+
         /*if(selectedPosition==position)
             holder.itemView.setBackgroundColor(Color.parseColor("#000000"));
         else
             holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
+        */
 
         holder.itemView.setOnClickListener {
             selectedPosition=position
             notifyDataSetChanged()
-        }*/
+            val intent = Intent(holder.itemView.getContext(), recipe::class.java)
+            System.out.println(llista_receptes_filtrada[position].get_recepta())
+            intent.putExtra("nom_recepta",llista_receptes_filtrada[position].get_recepta())
+            holder.itemView.context.startActivity(intent)
+
+        }
     }
 
     override fun getFilter(): Filter {
@@ -67,12 +79,12 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
                 if (constraint?.isEmpty()!!) {
                     llista_receptes_filtrada = userList
                 } else {
-                    System.out.println("valores filtrados")
+                    //System.out.println("valores filtrados")
                     val resultList = ArrayList<recepta_model>()
                     for (row in userList) {
                         if (constraint in row.get_recepta().toLowerCase(Locale.ROOT))  {
                             resultList.add(row)
-                            System.out.println(row.get_autor())
+                            //System.out.println(row.get_autor())
                         }
                     }
                     llista_receptes_filtrada = resultList
