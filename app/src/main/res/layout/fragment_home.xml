@@ -229,19 +229,19 @@
 
         <Button
                 android:id="@+id/nutritionaldeficienies"
-                android:layout_width="160dp"
-                android:layout_height="32dp"
+                style="@style/little_button_style"
+                android:layout_width="142dp"
+                android:layout_height="31dp"
                 android:layout_below="@id/RecomendationTitle"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Deficiencies Nutricionals"
-                android:textSize="10dp"
-                style="@style/little_button_style"/>
+                android:textSize="10dp" />
 
         <Button
                 android:id="@+id/variety"
-                android:layout_width="160dp"
-                android:layout_height="32dp"
+                android:layout_width="142dp"
+                android:layout_height="31dp"
                 android:layout_below="@+id/nutritionaldeficienies"
                 android:layout_marginLeft="20dp"
                 android:text="Varietat"
@@ -251,8 +251,8 @@
 
         <Button
                 android:id="@+id/seasonalfood"
-                android:layout_width="160dp"
-                android:layout_height="32dp"
+                android:layout_width="142dp"
+                android:layout_height="31dp"
                 android:layout_below="@+id/variety"
                 android:layout_marginLeft="20dp"
                 android:text="Menjar de temporada"
@@ -262,13 +262,25 @@
 
         <TextView
                 android:id="@+id/info"
-                android:layout_width="129dp"
-                android:layout_height="154dp"
+                android:layout_width="108dp"
+                android:layout_height="155dp"
                 android:layout_below="@+id/RecomendationTitle"
                 android:layout_marginLeft="23dp"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/nutritionaldeficienies"
                 android:background="@color/white" />
+
+        <ImageButton
+                android:id="@+id/plus"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/Recomended"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="180dp"
+                android:layout_toRightOf="@+id/info"
+                android:background="@drawable/round_button"
+                android:src="@android:drawable/ic_menu_add"
+                android:tint="@color/white" />
 
     </RelativeLayout>
 
