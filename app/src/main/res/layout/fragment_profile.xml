@@ -205,13 +205,14 @@
                     android:text="Desa canvis" />
 
             <Button
-                    android:id="@+id/test"
+                    android:id="@+id/test_button"
                     style="@style/button_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/update"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
+                    android:clickable="true"
                     android:padding="30dp"
                     android:text="Test Setmanal" />
 

@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         //Primer fragment:
         loadFragment(homeFragment())
         supportActionBar!!.title = "Home"
-        navegador_inferior.setOnNavigationItemSelectedListener {menuItem ->
-            when{
+        navegador_inferior.setOnNavigationItemSelectedListener { menuItem ->
+            when {
                 menuItem.itemId == R.id.home_nav -> {
                     loadFragment(homeFragment())
                     supportActionBar!!.title = "Home"
