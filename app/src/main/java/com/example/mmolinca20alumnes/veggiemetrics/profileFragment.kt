@@ -103,8 +103,15 @@ class profileFragment : Fragment() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                height.setText(p0.child("height").getValue().toString())
-                weight.setText(p0.child("weight").getValue().toString())
+
+                when(p0.child("height").getValue()){
+                    null -> height.setText("0")
+                    else -> height.setText(p0.child("height").getValue().toString())
+                }
+                when(p0.child("weight").getValue()){
+                    null -> weight.setText("0")
+                    else -> weight.setText(p0.child("weight").getValue().toString())
+                }
                 when(p0.child("Diet").getValue()){
                     null -> diet.setSelection(0);
                     else -> diet.setSelection(get_Selector_int(p0.child("Diet").getValue().toString(),
@@ -138,17 +145,14 @@ class profileFragment : Fragment() {
                             profileUpdates.setPhotoUri(imagepicked);
                         }
 
-                        if(!height.text.toString().equals("")){
-                            val childUpdates = HashMap<String, Any>()
-                            childUpdates["height"] = height.text.toString()
-                            database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
-                        }
-
-
-
                     val childUpdates = HashMap<String, Any>()
+
+                    when( height.text.toString().isEmpty() ){
+                        true -> childUpdates["height"] = "0"
+                        false -> childUpdates["height"] = height.text.toString()
+                    }
                     when( weight.text.toString().isEmpty() ){
-                        true -> childUpdates["weight"] = "-1"
+                        true -> childUpdates["weight"] = "0"
                         false -> childUpdates["weight"] = weight.text.toString()
                     }
                     childUpdates["weight"] = weight.text.toString()
