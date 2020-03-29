@@ -91,7 +91,7 @@ class profileFragment : Fragment() {
 
         if(auth.currentUser!!.photoUrl != null){
             //profilePic.setImageURI(auth.currentUser!!.photoUrl)
-            Glide.with(this).load(auth.currentUser!!.photoUrl).into(profilePic)
+            Glide.with(this).load(auth.currentUser!!.photoUrl).centerCrop().into(profilePic)
         }
 
 
@@ -172,7 +172,6 @@ class profileFragment : Fragment() {
 
     private fun photo_listener(){
         profilePic.setOnClickListener {
-            Toast.makeText(activity, "photo", Toast.LENGTH_LONG).show();
 
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
@@ -185,7 +184,8 @@ class profileFragment : Fragment() {
 
         if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
             imagepicked = data.data
-            profilePic.setImageURI(imagepicked)
+            //profilePic.setImageURI(imagepicked)
+            Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
         }
     }
 
