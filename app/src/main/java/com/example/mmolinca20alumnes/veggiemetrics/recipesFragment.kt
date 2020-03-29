@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_receptes_Adapter
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import models.recepta_model
 
@@ -16,6 +17,8 @@ import models.recepta_model
  * A simple [Fragment] subclass.
  */
 class recipesFragment : Fragment() {
+
+    private lateinit var auth: FirebaseAuth
 
     private val mNicolasCageMovies = listOf(
         recepta_model("Risoto", "Mario Moliner"),
@@ -57,6 +60,10 @@ class recipesFragment : Fragment() {
             }
 
         })
+    }
+
+    fun setUser(userloged : FirebaseAuth){
+        auth = userloged
     }
 
 }

@@ -16,6 +16,7 @@
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -24,20 +25,22 @@
 
             <ImageView
                     android:id="@+id/profilePic"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    tools:srcCompat="@drawable/profile_pic" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:clickable="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/profile_pic" />
 
-            <TextView
+            <EditText
                     android:id="@+id/profileName"
-                    style="@style/TextViewStyle"
+                    style="@style/edit_text_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@id/profilePic"
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@id/profilePic"
                     android:gravity="center"
-                    android:text="Sample User"
+                    android:text="Sense nom"
                     android:textSize="25dp" />
 
             <TextView
@@ -87,7 +90,7 @@
 
                 <Spinner
                         android:id="@+id/sex"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
             </LinearLayout>
 
@@ -114,7 +117,7 @@
 
                 <Spinner
                         android:id="@+id/diet"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
             </LinearLayout>
 
@@ -132,7 +135,7 @@
 
             <EditText
                     android:id="@+id/height"
-                    style="@style/edit_text_style_2"
+                    style="@style/edit_text_style"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/heightText"
@@ -141,6 +144,13 @@
                     android:ems="10"
                     android:inputType="numberDecimal"
                     android:textSize="10dp"/>
+
+            <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="invisible"/>
 
             <TextView
                     android:id="@+id/weightText"
@@ -154,9 +164,11 @@
                     android:text="Pes"
                     android:textSize="15dp" />
 
+
+
             <EditText
                     android:id="@+id/weight"
-                    style="@style/edit_text_style_2"
+                    style="@style/edit_text_style"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/weightText"
@@ -190,7 +202,7 @@
 
                 <Spinner
                         android:id="@+id/allergy"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
             </LinearLayout>
 
