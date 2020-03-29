@@ -26,8 +26,6 @@ class LogIn : AppCompatActivity() {
     }
 
     fun loginListener(){
-
-
         logInButton.setOnClickListener(){
             var userText = userText.text.toString()
             var passwordText = passwordText.text.toString()
