@@ -67,15 +67,16 @@
     <string name="more_than_daily">Diverses racions diàriament</string>
 
     <string-array name="Dietes">
-        <item>Vegan</item>
+        <item>Vegana</item>
         <item>Vegetariana</item>
-        <item>Flexi</item>
+        <item>Flexitariana</item>
+        <item>Piscivegetariana</item>
         <item>-</item>
     </string-array>
 
     <string-array name="Sex">
-        <item>Masculí</item>
-        <item>Femeni</item>
+        <item>Home</item>
+        <item>Dona</item>
         <item>-</item>
     </string-array>
 

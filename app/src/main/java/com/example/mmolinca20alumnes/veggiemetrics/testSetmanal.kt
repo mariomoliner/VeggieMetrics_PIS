@@ -45,7 +45,7 @@ class testSetmanal : AppCompatActivity() {
         var conclusio: String
         if (resultat < 0.5 * requisit)
             conclusio = "Deficiència greu"
-        else if (resultat < 0.8 * requisit)
+        else if (resultat < 0.9 * requisit)
             conclusio = "Deficiència lleu"
         else conclusio = "Correcte"
         return conclusio
@@ -88,6 +88,14 @@ class testSetmanal : AppCompatActivity() {
         sexe = intent.getStringExtra("sex")
         dieta = intent.getStringExtra("diet")
 
+        //Comprovació que les dades del perfil estan bé
+        if (pes <= 0 || edat < 4 || embaras.equals("-") || sexe.equals("-") || dieta.equals("-")) {
+            val intent = Intent()
+            setResult(Activity.RESULT_CANCELED, intent)
+            Toast.makeText(this, "Hi ha dades incorrectes al perfil", Toast.LENGTH_LONG).show()
+            finish()
+        }
+
         //Càlcul dels requisits nutricionals
         //Ferro
         if (embaras.equals("No")) {
@@ -110,6 +118,7 @@ class testSetmanal : AppCompatActivity() {
             } else if (embaras.equals("Sí"))
                 ferro = 27.0
         }
+        ferro *= 7
 
         //Omega 3
         if (embaras.equals("No")) {
@@ -128,6 +137,7 @@ class testSetmanal : AppCompatActivity() {
             }
         } else if (embaras.equals("Sí"))
             omega = 1.4
+        omega *= 7
 
         //Calci
         if (edat in 4..8)
@@ -146,6 +156,8 @@ class testSetmanal : AppCompatActivity() {
                 calci = 1200.0
         }
 
+        calci *= 7
+
         //Proteïnes
         if (dieta.equals("Vegetariana") || dieta.equals("Vegana")) {
             if (embaras.equals("No"))
@@ -157,13 +169,7 @@ class testSetmanal : AppCompatActivity() {
         else if (embaras.equals("Sí"))
             proteines = 1.4 * pes
 
-        //Comprovació que els requisits tenen sentit
-        if (ferro * omega * calci * proteines <= 0) {
-            val intent = Intent()
-            setResult(Activity.RESULT_CANCELED, intent)
-            Toast.makeText(this, "Hi ha dades incorrectes al perfil", Toast.LENGTH_LONG).show()
-            finish()
-        }
+        proteines *= 7
 
         sendTest.setOnClickListener() {
 
@@ -333,31 +339,40 @@ class testSetmanal : AppCompatActivity() {
                 if (dieta.equals("Vegetariana") || dieta.equals("Vegana")) {
                     if (radio12_c.isChecked) {
                         avisos.add(avis4)
-                    } else if (radio12_d.isChecked) {
-                        avisos.add(avis4)
                     }
 
                     if (radio13_c.isChecked) {
-                        avisos.add(avis5)
-                    } else if (radio13_d.isChecked) {
                         avisos.add(avis5)
                     }
 
                     if (radio14_c.isChecked) {
                         avisos.add(avis6)
-                    } else if (radio14_d.isChecked) {
-                        avisos.add(avis6)
                     }
 
                     if (radio15_c.isChecked) {
                         avisos.add(avis7)
-                    } else if (radio15_d.isChecked) {
-                        avisos.add(avis7)
                     }
+
                     if (dieta.equals("Vegetariana"))
                         avisos.add(avis8)
                     else if (dieta.equals("Vegana"))
                         avisos.add(avis9)
+                }
+
+                if (radio12_d.isChecked) {
+                    avisos.add(avis4)
+                }
+
+                if (radio13_d.isChecked) {
+                    avisos.add(avis5)
+                }
+
+                if (radio14_d.isChecked) {
+                    avisos.add(avis6)
+                }
+
+                if (radio15_d.isChecked) {
+                    avisos.add(avis7)
                 }
 
                 var dades = ArrayList<String>(5)

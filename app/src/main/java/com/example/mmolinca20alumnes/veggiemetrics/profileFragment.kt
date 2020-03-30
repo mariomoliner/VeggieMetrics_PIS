@@ -35,7 +35,7 @@ class profileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     val PICK_PHOTO = 1111
     lateinit var imagepicked: Uri
-     lateinit var list_sex: List<String>
+    lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
 
     private lateinit var database: DatabaseReference// ...
@@ -49,15 +49,15 @@ class profileFragment : Fragment() {
         //Botó que porta al test setmanal:
         view.test_button.setOnClickListener {
             val intent = Intent(activity, testSetmanal::class.java)
-            /*intent.putExtra("weight", weight.text.toString().toDouble())
+            intent.putExtra("weight", weight.text.toString().toDouble())
             intent.putExtra("sex", sex.selectedItem.toString())
             intent.putExtra("diet", diet.selectedItem.toString())
-            intent.putExtra("age", height.text.toString().toInt())   //Canviar més endavant
-            intent.putExtra("pregnant", diet.selectedItem.toString())   //Canviar més endavant
-*/
-            intent.putExtra("weight", 65.0)
+           /* intent.putExtra("age", height.text.toString().toInt())   //Canviar més endavant
+            intent.putExtra("pregnant", diet.selectedItem.toString())   //Canviar més endavant  */
+
+            /*intent.putExtra("weight", 65.0)
             intent.putExtra("sex", "Home")
-            intent.putExtra("diet", "Flexitarià")
+            intent.putExtra("diet", "Flexitarià")*/
             intent.putExtra("age", 22)
             intent.putExtra("pregnant","No")
             startActivityForResult(intent, TEST_REQUEST)
@@ -74,6 +74,11 @@ class profileFragment : Fragment() {
         if (requestCode==TEST_REQUEST) {
             if (resultCode== Activity.RESULT_OK) {
                 val results = data!!.getStringArrayListExtra("Resultats")
+                proteines.text = results[0]
+                ferro.text = results[1]
+                omega.text = results[2]
+                calci.text = results[3]
+                comentaris.text = results[4]
             }
         }
 
@@ -203,7 +208,7 @@ class profileFragment : Fragment() {
                         }
                 }
                 else{
-                    Toast.makeText(activity, "No hi han noves dades a actualitzar", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, "No hi ha noves dades a actualitzar", Toast.LENGTH_LONG).show()
                 }
             }
 
