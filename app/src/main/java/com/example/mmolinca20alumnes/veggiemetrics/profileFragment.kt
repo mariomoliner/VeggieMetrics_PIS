@@ -76,6 +76,12 @@ class profileFragment : Fragment() {
                 val results = data!!.getStringArrayListExtra("Resultats")
             }
         }
+
+        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
+            imagepicked = data.data
+            //profilePic.setImageURI(imagepicked)
+            Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -209,16 +215,6 @@ class profileFragment : Fragment() {
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
             startActivityForResult(photoPickerIntent, PICK_PHOTO);
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
-            imagepicked = data.data
-            //profilePic.setImageURI(imagepicked)
-            Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
         }
     }
 
