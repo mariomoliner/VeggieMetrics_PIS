@@ -16,7 +16,8 @@
             android:theme="@style/AppTheme">
         <activity android:name=".testSetmanal"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"></activity>
+                android:screenOrientation="portrait"
+                android:parentActivityName=".profileFragment"></activity>
         <activity android:name=".NewRecipe" />
         <activity android:name=".recipe" />
         <activity android:name=".Register" />
@@ -29,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
