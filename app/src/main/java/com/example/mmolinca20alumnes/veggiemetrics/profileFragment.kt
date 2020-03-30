@@ -119,8 +119,8 @@ class profileFragment : Fragment() {
                     ))
                 }
                 when(p0.child("Gender").getValue()){
-                    null -> diet.setSelection(0);
-                    else -> diet.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
+                    null -> sex.setSelection(0);
+                    else -> sex.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
                         list_sex as ArrayList<String>
                     ))
                 }
