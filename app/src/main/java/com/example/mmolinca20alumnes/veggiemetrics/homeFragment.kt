@@ -44,9 +44,7 @@ class homeFragment : Fragment() {
 
     fun setUser(userloged : FirebaseAuth){
         auth = userloged
-        Log.e("sd","hola")
-        Log.e("sd",auth.currentUser.toString())
-        Log.e("sd", auth.currentUser!!.email)
+
     }
 
     /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
