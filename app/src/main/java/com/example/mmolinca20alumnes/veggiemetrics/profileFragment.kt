@@ -15,11 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import java.util.*
 import kotlin.collections.HashMap
@@ -29,8 +24,6 @@ import kotlin.collections.HashMap
  * A simple [Fragment] subclass.
  */
 class profileFragment : Fragment() {
-
-    val TEST_REQUEST = 1
 
     private lateinit var auth: FirebaseAuth
     val PICK_PHOTO = 1111
@@ -50,39 +43,11 @@ class profileFragment : Fragment() {
         //Botó que porta al test setmanal:
         view.test_button.setOnClickListener {
             val intent = Intent(activity, testSetmanal::class.java)
-            /*intent.putExtra("weight", weight.text.toString().toDouble())
-            intent.putExtra("sex", sex.selectedItem.toString())
-            intent.putExtra("diet", diet.selectedItem.toString())
-            intent.putExtra("age", height.text.toString().toInt())   //Canviar més endavant
-            intent.putExtra("pregnant", diet.selectedItem.toString())   //Canviar més endavant
-*/
-            intent.putExtra("weight", 65.0)
-            intent.putExtra("sex", "Home")
-            intent.putExtra("diet", "Flexitarià")
-            intent.putExtra("age", 22)
-            intent.putExtra("pregnant","No")
-            startActivityForResult(intent, TEST_REQUEST)
+            startActivity(intent)
         }
 
         // Inflate the layout for this fragment
         return view
-    }
-
-    //Funció que obté els resultats del test
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode==TEST_REQUEST) {
-            if (resultCode== Activity.RESULT_OK) {
-                val results = data!!.getStringArrayListExtra("Resultats")
-            }
-        }
-
-        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
-            imagepicked = data.data
-            //profilePic.setImageURI(imagepicked)
-            Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,10 +57,10 @@ class profileFragment : Fragment() {
 
         list_dietas = resources.getStringArray(R.array.Diet).toList()
         list_sex = resources.getStringArray(R.array.Sex).toList()
-        list_allergy=resources.getStringArray(R.array.Allergy).toList()
+        list_allergy = resources.getStringArray(R.array.Allergy).toList()
         sex.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_sex)
         diet.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_dietas)
-        allergy.adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item,list_allergy)
+        allergy.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_allergy)
 
 
         /*val adapter = ArrayAdapter(activity,
@@ -129,7 +94,7 @@ class profileFragment : Fragment() {
 
         if(auth.currentUser!!.photoUrl != null){
             //profilePic.setImageURI(auth.currentUser!!.photoUrl)
-            Glide.with(this).load(auth.currentUser!!.photoUrl).centerCrop().into(profilePic)
+            Glide.with(this).load(auth.currentUser!!.photoUrl).into(profilePic)
         }
 
 
@@ -141,15 +106,8 @@ class profileFragment : Fragment() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-
-                when(p0.child("height").getValue()){
-                    null -> height.setText("0")
-                    else -> height.setText(p0.child("height").getValue().toString())
-                }
-                when(p0.child("weight").getValue()){
-                    null -> weight.setText("0")
-                    else -> weight.setText(p0.child("weight").getValue().toString())
-                }
+                height.setText(p0.child("height").getValue().toString())
+                weight.setText(p0.child("weight").getValue().toString())
                 when(p0.child("Diet").getValue()){
                     null -> diet.setSelection(0);
                     else -> diet.setSelection(get_Selector_int(p0.child("Diet").getValue().toString(),
@@ -157,8 +115,8 @@ class profileFragment : Fragment() {
                     ))
                 }
                 when(p0.child("Gender").getValue()){
-                    null -> sex.setSelection(0);
-                    else -> sex.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
+                    null -> diet.setSelection(0);
+                    else -> diet.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
                         list_sex as ArrayList<String>
                     ))
                 }
@@ -183,14 +141,17 @@ class profileFragment : Fragment() {
                     profileUpdates.setPhotoUri(imagepicked);
                 }
 
-                val childUpdates = HashMap<String, Any>()
-
-                when( height.text.toString().isEmpty() ){
-                    true -> childUpdates["height"] = "0"
-                    false -> childUpdates["height"] = height.text.toString()
+                if(!height.text.toString().equals("")){
+                    val childUpdates = HashMap<String, Any>()
+                    childUpdates["height"] = height.text.toString()
+                    database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
                 }
+
+
+
+                val childUpdates = HashMap<String, Any>()
                 when( weight.text.toString().isEmpty() ){
-                    true -> childUpdates["weight"] = "0"
+                    true -> childUpdates["weight"] = "-1"
                     false -> childUpdates["weight"] = weight.text.toString()
                 }
                 childUpdates["weight"] = weight.text.toString()
@@ -214,10 +175,20 @@ class profileFragment : Fragment() {
 
     private fun photo_listener(){
         profilePic.setOnClickListener {
+            Toast.makeText(activity, "photo", Toast.LENGTH_LONG).show();
 
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
             startActivityForResult(photoPickerIntent, PICK_PHOTO);
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
+            imagepicked = data.data
+            profilePic.setImageURI(imagepicked)
         }
     }
 
