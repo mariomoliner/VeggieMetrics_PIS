@@ -66,4 +66,17 @@
     <string name="daily">Una ració diària aproximadament</string>
     <string name="more_than_daily">Diverses racions diàriament</string>
 
+    <string-array name="Dietes">
+        <item>Vegan</item>
+        <item>Vegetariana</item>
+        <item>Flexi</item>
+        <item>-</item>
+    </string-array>
+
+    <string-array name="Sex">
+        <item>Masculí</item>
+        <item>Femeni</item>
+        <item>-</item>
+    </string-array>
+
 </resources>
