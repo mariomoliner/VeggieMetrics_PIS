@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.profileName
 
 class MainActivity : AppCompatActivity() {
+    
 
     private lateinit var auth: FirebaseAuth
 

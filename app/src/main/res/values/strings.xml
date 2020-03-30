@@ -55,17 +55,4 @@
     <string name="between_4_8">entre 4 i 8</string>
     <string name="more_than_9">9 o més</string>
 
-    <string-array name="Dietes">
-        <item>Vegan</item>
-        <item>Vegetariana</item>
-        <item>Flexi</item>
-        <item>-</item>
-    </string-array>
-
-    <string-array name="Sex">
-        <item>Masculí</item>
-        <item>Femeni</item>
-        <item>-</item>
-    </string-array>
-
 </resources>
