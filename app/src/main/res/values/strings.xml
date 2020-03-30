@@ -18,23 +18,23 @@
     <string name="add">add</string>
 
     <!--Strings del test setmanal-->
-    <string name="send_test">Send Test</string>
-    <string name="no_one">cap</string>
-    <string name="pregunta1">1. Quantes racions de carn o ou has consumit?</string>
+    <string name="send_test">Resultats</string>
+    <string name="pregunta1">1. Quantes racions de carn has consumit?</string>
     <string name="pregunta2">2. Quantes racions de peix blau (seitó, sardina, salmó, tonyina…) has consumit?</string>
     <string name="pregunta3">3. Quantes racions de marisc has consumit?</string>
-    <string name="pregunta4">4. Quantes racions de llegums has pres aquesta setmana?</string>
-    <string name="pregunta5">5. Quantes racions de lactis (un got de llet, dos iogurts, un tros de formatge…) has pres al dia?</string>
-    <string name="pregunta6">6. Has acompanyat el dinar o sopar amb lactis o els has pres de postres?</string>
+    <string name="pregunta4">4. Quantes racions de cereals (arròs, quinoa, cuscús...) i derivats (pasta, pa...) has pres, excloent rebosteria i dolços?</string>
+    <string name="pregunta5">5. Quantes racions de llegums has pres?</string>
+    <string name="pregunta6">6. Quantes racions de lactis (un got de llet, dos iogurts, un tros de formatge…) has pres?</string>
     <string name="pregunta7">7. Amb quina freqüència has consumit fruits secs?</string>
-    <string name="pregunta8">8. En particular, amb quina freqüència has menjat nous?</string>
-    <string name="pregunta9">9. Quantes racions de verdures i hortalisses has pres diàriament?</string>
+    <string name="pregunta8">8. En particular, amb quina freqüència has menjat nous i/o llavors de lli?</string>
+    <string name="pregunta9">9. Quantes racions de verdures i hortalisses has pres?</string>
     <string name="pregunta10">10. Amb quina freqüència has inclòs verdures de fulla verda (enciam, espinacs, col…) en els teus àpats?</string>
-    <string name="pregunta11">11. Quantes peces de fruita has menjat diàriament?</string>
-    <string name="pregunta12">12. En particular, amb quina freqüència has menjat alguna de les següents fruites: maduixa, advocat, coco, cireres, taronja o raïm?</string>
-    <string name="pregunta13">13. Quina de les següents opcions descriu millor els teus hàbits respecte al consum de dolços, rebosteria i xocolata?</string>
-    <string name="pregunta14">14. Quantes racions d’aliments processats (snacks, plats precuinats…) has pres aquesta setmana?</string>
+    <string name="pregunta11">11. Quantes peces de fruita has menjat?</string>
+    <string name="pregunta12">12. Acostumes a prendre cafè o te després dels àpats principals?</string>
+    <string name="pregunta13">13. Quina de les següents opcions descriu millor els teus hàbits respecte el consum de dolços, rebosteria i xocolata?</string>
+    <string name="pregunta14">14. Quantes racions d’aliments processats (snacks, plats precuinats…) has pres?</string>
     <string name="pregunta15">15. Amb quina freqüència has pres begudes carbonatades? </string>
+    <string name="no_one">cap</string>
     <string name="between_1_3">entre 1 i 3</string>
     <string name="between_4_6">entre 4 i 6</string>
     <string name="more_than_7">7 o més</string>
@@ -42,9 +42,9 @@
     <string name="between_1_2">entre 1 i 2</string>
     <string name="more_than_3">3 o més</string>
     <string name="never">No, en cap moment</string>
-    <string name="sometimes">Si, en algun cas puntual</string>
-    <string name="usually">Si, en bastants apats</string>
-    <string name="always">Si, gairebé sempre</string>
+    <string name="sometimes">Sí, en algun cas puntual</string>
+    <string name="usually">Sí, en bastants àpats</string>
+    <string name="always">Sí, gairebé sempre</string>
     <string name="between_3_5">entre 3 i 5</string>
     <string name="more_than_6">6 o més</string>
     <string name="never2">Mai</string>
@@ -54,5 +54,16 @@
     <string name="between_1_4">entre 1 i 4</string>
     <string name="between_4_8">entre 4 i 8</string>
     <string name="more_than_9">9 o més</string>
+    <string name="one_or_less_daily">1 o menys al dia</string>
+    <string name="between_1_2_daily">entre 1 i 2 al dia</string>
+    <string name="between_2_3_daily">entre 2 i 3 al dia</string>
+    <string name="between_3_5_daily">entre 3 i 5 al dia</string>
+    <string name="between_4_5_daily">entre 4 i 5 al dia</string>
+    <string name="more_than_3_daily">3 o més al dia</string>
+    <string name="more_than_6_daily">6 o més al dia</string>
+    <string name="hardly_ever">Gens o molt puntualment</string>
+    <string name="almost_daily">La majoria de dies de la setmana</string>
+    <string name="daily">Una ració diària aproximadament</string>
+    <string name="more_than_daily">Diverses racions diàriament</string>
 
 </resources>

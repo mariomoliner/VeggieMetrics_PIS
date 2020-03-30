@@ -21,6 +21,15 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Respon les següents preguntes sobre la teva alimentació durant els últims 7 dies. Al acabar, es mostraran els resultats en el perfil."
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_marginBottom="20dp"
+                    ></TextView>
+
             <!--PREGUNTA 1-->
             <TextView
                     android:id="@+id/pregunta1"
@@ -31,6 +40,7 @@
                     android:textStyle="bold" />
 
             <RadioGroup
+                    android:id="@+id/radio1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <RadioButton
@@ -62,9 +72,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta2"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -96,9 +108,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta3"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -130,31 +144,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta4"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
                         android:id="@+id/radio4_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/no_one"/>
+                        android:text="@string/one_or_less_daily"/>
                 <RadioButton
                         android:id="@+id/radio4_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/between_1_3"/>
+                        android:text="@string/between_2_3_daily"/>
                 <RadioButton
                         android:id="@+id/radio4_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/between_4_6"/>
+                        android:text="@string/between_4_5_daily"/>
                 <RadioButton
                         android:id="@+id/radio4_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/more_than_7"/>
+                        android:text="@string/more_than_6_daily"/>
             </RadioGroup>
 
             <!--PREGUNTA 5-->
@@ -164,9 +180,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta5"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -178,17 +196,17 @@
                         android:id="@+id/radio5_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/less_than_1"/>
+                        android:text="@string/between_1_3"/>
                 <RadioButton
                         android:id="@+id/radio5_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/between_1_2"/>
+                        android:text="@string/between_4_6"/>
                 <RadioButton
                         android:id="@+id/radio5_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/more_than_3"/>
+                        android:text="@string/more_than_7"/>
             </RadioGroup>
 
             <!--PREGUNTA 6-->
@@ -198,31 +216,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta6"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
                         android:id="@+id/radio6_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/never"/>
+                        android:text="@string/no_one"/>
                 <RadioButton
                         android:id="@+id/radio6_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sometimes"/>
+                        android:text="@string/less_than_1"/>
                 <RadioButton
                         android:id="@+id/radio6_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/usually"/>
+                        android:text="@string/between_1_2_daily"/>
                 <RadioButton
                         android:id="@+id/radio6_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/always"/>
+                        android:text="@string/more_than_3_daily"/>
             </RadioGroup>
 
             <!--PREGUNTA 7-->
@@ -232,31 +252,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta7"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
                         android:id="@+id/radio7_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gens o molt puntualment"/>
+                        android:text="@string/hardly_ever"/>
                 <RadioButton
                         android:id="@+id/radio7_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="La majoria de dies de la setmana"/>
+                        android:text="@string/almost_daily"/>
                 <RadioButton
                         android:id="@+id/radio7_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Una ració diària aproximadament"/>
+                        android:text="@string/daily"/>
                 <RadioButton
                         android:id="@+id/radio7_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diverses racions diàriament"/>
+                        android:text="@string/more_than_daily"/>
             </RadioGroup>
 
             <!--PREGUNTA 8-->
@@ -266,9 +288,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta8"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -300,9 +324,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta9"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -314,17 +340,17 @@
                         android:id="@+id/radio9_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/between_1_2"/>
+                        android:text="@string/between_1_2_daily"/>
                 <RadioButton
                         android:id="@+id/radio9_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/between_3_5"/>
+                        android:text="@string/between_3_5_daily"/>
                 <RadioButton
                         android:id="@+id/radio9_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/more_than_6"/>
+                        android:text="@string/more_than_6_daily"/>
             </RadioGroup>
 
             <!--PREGUNTA 10-->
@@ -334,31 +360,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta10"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
                         android:id="@+id/radio10_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/never2"/>
+                        android:text="@string/hardly_ever"/>
                 <RadioButton
                         android:id="@+id/radio10_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/sometimes2"/>
+                        android:text="@string/almost_daily"/>
                 <RadioButton
                         android:id="@+id/radio10_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="usually2"/>
+                        android:text="@string/daily"/>
                 <RadioButton
                         android:id="@+id/radio10_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/always2"/>
+                        android:text="@string/more_than_daily"/>
             </RadioGroup>
 
             <!--PREGUNTA 11-->
@@ -368,9 +396,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta11"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -382,17 +412,17 @@
                         android:id="@+id/radio11_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/between_1_2"/>
+                        android:text="@string/between_1_2_daily"/>
                 <RadioButton
                         android:id="@+id/radio11_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/between_3_5"/>
+                        android:text="@string/between_3_5_daily"/>
                 <RadioButton
                         android:id="@+id/radio11_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/more_than_6"/>
+                        android:text="@string/more_than_6_daily"/>
             </RadioGroup>
 
             <!--PREGUNTA 12-->
@@ -402,31 +432,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta12"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
                         android:id="@+id/radio12_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No he menjat cap d’aquestes"/>
+                        android:text="@string/never"/>
                 <RadioButton
                         android:id="@+id/radio12_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Alguna vegada"/>
+                        android:text="@string/sometimes"/>
                 <RadioButton
                         android:id="@+id/radio12_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sovint"/>
+                        android:text="@string/usually"/>
                 <RadioButton
                         android:id="@+id/radio12_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Principalment he menjat aquestes"/>
+                        android:text="@string/always"/>
             </RadioGroup>
 
             <!--PREGUNTA 13-->
@@ -436,9 +468,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta13"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -470,9 +504,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta14"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
@@ -504,9 +540,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/pregunta15"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"/>
 
             <RadioGroup
+                    android:id="@+id/radio15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <RadioButton
