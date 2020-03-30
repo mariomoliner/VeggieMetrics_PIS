@@ -101,7 +101,7 @@ class profileFragment : Fragment() {
 
         database = FirebaseDatabase.getInstance().reference
 
-        list_dietas = resources.getStringArray(R.array.Diet).toList()
+        list_dietas = resources.getStringArray(R.array.Dietes).toList()
         list_sex = resources.getStringArray(R.array.Sex).toList()
         list_allergy = resources.getStringArray(R.array.Allergy).toList()
         sex.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_sex)
