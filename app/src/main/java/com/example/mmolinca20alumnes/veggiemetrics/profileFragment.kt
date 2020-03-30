@@ -37,6 +37,7 @@ class profileFragment : Fragment() {
     lateinit var imagepicked: Uri
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
+    lateinit var list_allergy: List<String>
 
     private lateinit var database: DatabaseReference// ...
 
@@ -82,10 +83,16 @@ class profileFragment : Fragment() {
             }
         }
 
+        //Conflicte
         if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
             imagepicked = data.data
             //profilePic.setImageURI(imagepicked)
             Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
+        }
+
+        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
+            imagepicked = data.data
+            profilePic.setImageURI(imagepicked)
         }
     }
 
@@ -94,10 +101,12 @@ class profileFragment : Fragment() {
 
         database = FirebaseDatabase.getInstance().reference
 
-        list_dietas = resources.getStringArray(R.array.Dietes).toList()
+        list_dietas = resources.getStringArray(R.array.Diet).toList()
         list_sex = resources.getStringArray(R.array.Sex).toList()
+        list_allergy = resources.getStringArray(R.array.Allergy).toList()
         sex.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_sex)
         diet.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_dietas)
+        allergy.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_allergy)
 
 
         /*val adapter = ArrayAdapter(activity,
@@ -131,7 +140,7 @@ class profileFragment : Fragment() {
 
         if(auth.currentUser!!.photoUrl != null){
             //profilePic.setImageURI(auth.currentUser!!.photoUrl)
-            Glide.with(this).load(auth.currentUser!!.photoUrl).centerCrop().into(profilePic)
+            Glide.with(this).load(auth.currentUser!!.photoUrl).into(profilePic)
         }
 
 
@@ -143,15 +152,8 @@ class profileFragment : Fragment() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-
-                when(p0.child("height").getValue()){
-                    null -> height.setText("0")
-                    else -> height.setText(p0.child("height").getValue().toString())
-                }
-                when(p0.child("weight").getValue()){
-                    null -> weight.setText("0")
-                    else -> weight.setText(p0.child("weight").getValue().toString())
-                }
+                height.setText(p0.child("height").getValue().toString())
+                weight.setText(p0.child("weight").getValue().toString())
                 when(p0.child("Diet").getValue()){
                     null -> diet.setSelection(0);
                     else -> diet.setSelection(get_Selector_int(p0.child("Diet").getValue().toString(),
@@ -159,8 +161,8 @@ class profileFragment : Fragment() {
                     ))
                 }
                 when(p0.child("Gender").getValue()){
-                    null -> sex.setSelection(0);
-                    else -> sex.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
+                    null -> diet.setSelection(0);
+                    else -> diet.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
                         list_sex as ArrayList<String>
                     ))
                 }
@@ -181,41 +183,45 @@ class profileFragment : Fragment() {
                     val profileUpdates = UserProfileChangeRequest.Builder()
                         .setDisplayName(profileName.text.toString())
 
-                        if(::imagepicked.isInitialized) {
-                            profileUpdates.setPhotoUri(imagepicked);
-                        }
+                if(::imagepicked.isInitialized) {
+                    profileUpdates.setPhotoUri(imagepicked);
+                }
 
+                if(!height.text.toString().equals("")){
                     val childUpdates = HashMap<String, Any>()
-
-                    when( height.text.toString().isEmpty() ){
-                        true -> childUpdates["height"] = "0"
-                        false -> childUpdates["height"] = height.text.toString()
-                    }
-                    when( weight.text.toString().isEmpty() ){
-                        true -> childUpdates["weight"] = "0"
-                        false -> childUpdates["weight"] = weight.text.toString()
-                    }
-                    childUpdates["weight"] = weight.text.toString()
-                    childUpdates["Gender"] = sex.selectedItem.toString()
-                    childUpdates["Diet"] = diet.selectedItem.toString()
+                    childUpdates["height"] = height.text.toString()
                     database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
+                }
 
-                    auth.currentUser?.updateProfile(profileUpdates.build())
-                        ?.addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Toast.makeText(activity, "Actualització de dades correcta", Toast.LENGTH_LONG).show()
-                            }
+
+
+                val childUpdates = HashMap<String, Any>()
+                when( weight.text.toString().isEmpty() ){
+                    true -> childUpdates["weight"] = "-1"
+                    false -> childUpdates["weight"] = weight.text.toString()
+                }
+                childUpdates["weight"] = weight.text.toString()
+                childUpdates["Gender"] = sex.selectedItem.toString()
+                childUpdates["Diet"] = diet.selectedItem.toString()
+                database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
+
+                auth.currentUser?.updateProfile(profileUpdates.build())
+                    ?.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(activity, "Actualització de dades correcta", Toast.LENGTH_LONG).show()
                         }
-                }
-                else{
-                    Toast.makeText(activity, "No hi ha noves dades a actualitzar", Toast.LENGTH_LONG).show()
-                }
+                    }
             }
+            else{
+                Toast.makeText(activity, "No hi han noves dades a actualitzar", Toast.LENGTH_LONG).show()
+            }
+        }
 
     }
 
     private fun photo_listener(){
         profilePic.setOnClickListener {
+            Toast.makeText(activity, "photo", Toast.LENGTH_LONG).show();
 
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");

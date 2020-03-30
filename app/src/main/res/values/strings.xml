@@ -80,4 +80,17 @@
         <item>-</item>
     </string-array>
 
+    <string-array name="Allergy">
+        <item>Gluten</item>
+        <item>Crustacis</item>
+        <item>Ous</item>
+        <item>Cachauets</item>
+        <item>Soja</item>
+        <item>Lactis</item>
+        <item>Fruits amb closca</item>
+        <item>Api</item>
+        <item>Grans de sèsam</item>
+        <item>Mol·luscos</item>
+    </string-array>
+
 </resources>

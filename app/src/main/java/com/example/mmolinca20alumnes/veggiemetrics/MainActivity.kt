@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_profile.profileName
 
 class MainActivity : AppCompatActivity() {
 
+
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         ask_permissions()
 
         //Primer fragment:
+        loadFragment(homeFragment())
         var fragment : Fragment
         fragment = homeFragment()
         fragment.setUser(auth)
