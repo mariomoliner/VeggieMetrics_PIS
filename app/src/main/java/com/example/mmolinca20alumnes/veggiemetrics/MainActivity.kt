@@ -31,15 +31,15 @@ class MainActivity : AppCompatActivity() {
         ask_permissions()
 
         //Primer fragment:
-        loadFragment(homeFragment())
         var fragment : Fragment
         fragment = homeFragment()
-        fragment.setUser(auth)
+        fragment.setusuari(auth)
         loadFragment(fragment)
         supportActionBar!!.title = "Home"
         navegador_inferior.setOnNavigationItemSelectedListener { menuItem ->
             when {
                 menuItem.itemId == R.id.home_nav -> {
+                    fragment.setusuari(auth)
                     loadFragment(fragment)
                     supportActionBar!!.title = "Home"
                     return@setOnNavigationItemSelectedListener true
@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        isLogged()
     }
     private fun loadFragment(fragment : Fragment){
         supportFragmentManager.beginTransaction().also { fragmentTransaction ->
@@ -120,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted
             ActivityCompat.requestPermissions(this,
-                arrayOf(Manifest.permission.READ_CONTACTS),
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                 111)
         }
     }

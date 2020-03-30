@@ -90,10 +90,6 @@ class profileFragment : Fragment() {
             Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
         }
 
-        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
-            imagepicked = data.data
-            profilePic.setImageURI(imagepicked)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -140,7 +136,7 @@ class profileFragment : Fragment() {
 
         if(auth.currentUser!!.photoUrl != null){
             //profilePic.setImageURI(auth.currentUser!!.photoUrl)
-            Glide.with(this).load(auth.currentUser!!.photoUrl).into(profilePic)
+            Glide.with(this).load(auth.currentUser!!.photoUrl).centerCrop().into(profilePic)
         }
 
 
@@ -179,7 +175,7 @@ class profileFragment : Fragment() {
     private fun listener_canvis(){
             update.setOnClickListener {
 
-                if(!profileName.text.toString().equals("Sense nom") || imagepicked != null){
+                if(!profileName.text.toString().equals("Sense nom") || ::imagepicked.isInitialized){
                     val profileUpdates = UserProfileChangeRequest.Builder()
                         .setDisplayName(profileName.text.toString())
 
@@ -221,7 +217,6 @@ class profileFragment : Fragment() {
 
     private fun photo_listener(){
         profilePic.setOnClickListener {
-            Toast.makeText(activity, "photo", Toast.LENGTH_LONG).show();
 
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
