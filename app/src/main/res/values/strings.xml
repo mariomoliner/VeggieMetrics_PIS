@@ -66,16 +66,18 @@
     <string name="daily">Una ració diària aproximadament</string>
     <string name="more_than_daily">Diverses racions diàriament</string>
 
+    <string-array name="Dietes">
+        <item>Vegana</item>
+        <item>Vegetariana</item>
+        <item>Flexitariana</item>
+        <item>Piscivegetariana</item>
+        <item>-</item>
+    </string-array>
+
     <string-array name="Sex">
         <item>Home</item>
         <item>Dona</item>
-    </string-array>
-
-    <string-array name="Diet">
-        <item>flexiterià</item>
-        <item>piscivegetarià</item>
-        <item>vegetarià</item>
-        <item>vegà</item>
+        <item>-</item>
     </string-array>
 
     <string-array name="Allergy">
@@ -88,8 +90,7 @@
         <item>Fruits amb closca</item>
         <item>Api</item>
         <item>Grans de sèsam</item>
-        <item>Moluscos</item>
+        <item>Mol·luscos</item>
     </string-array>
-
 
 </resources>

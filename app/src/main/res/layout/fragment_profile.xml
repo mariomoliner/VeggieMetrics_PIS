@@ -228,6 +228,105 @@
                     android:padding="30dp"
                     android:text="Test Setmanal" />
 
+            <TextView
+                    android:id="@+id/proteines_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Proteïnes:"
+                    style="@style/AppTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/test_button"></TextView>
+
+            <TextView
+                    android:id="@+id/proteines"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sense dades"
+                    style="@style/AppTheme"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/test_button"
+                    android:layout_toRightOf="@+id/proteines_text"></TextView>
+
+            <TextView
+                    android:id="@+id/ferro_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ferro:"
+                    style="@style/AppTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/proteines_text"></TextView>
+
+            <TextView
+                    android:id="@+id/ferro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sense dades"
+                    style="@style/AppTheme"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/proteines"
+                    android:layout_alignLeft="@+id/proteines"></TextView>
+
+            <TextView
+                    android:id="@+id/omega_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Omega 3:"
+                    style="@style/AppTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/ferro_text"></TextView>
+
+            <TextView
+                    android:id="@+id/omega"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sense dades"
+                    style="@style/AppTheme"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/ferro"
+                    android:layout_alignLeft="@+id/proteines"></TextView>
+
+            <TextView
+                    android:id="@+id/calci_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calci:"
+                    style="@style/AppTheme"
+                    android:textSize="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/omega_text"></TextView>
+
+            <TextView
+                    android:id="@+id/calci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sense dades"
+                    style="@style/AppTheme"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:layout_below="@+id/omega"
+                    android:layout_alignLeft="@+id/proteines"></TextView>
+
+            <TextView
+                    android:id="@+id/comentaris"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    style="@style/AppTheme"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15dp"
+                    android:layout_below="@+id/calci_text"></TextView>
+
+
+
+
+
         </RelativeLayout>
 
         </LinearLayout>

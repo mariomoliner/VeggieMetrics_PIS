@@ -15,6 +15,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import java.util.*
 import kotlin.collections.HashMap
@@ -24,6 +29,8 @@ import kotlin.collections.HashMap
  * A simple [Fragment] subclass.
  */
 class profileFragment : Fragment() {
+
+    val TEST_REQUEST = 1
 
     private lateinit var auth: FirebaseAuth
     val PICK_PHOTO = 1111
@@ -36,18 +43,53 @@ class profileFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?): View? {
 
         val view: View = inflater!!.inflate(R.layout.fragment_profile, container, false)
 
         //Botó que porta al test setmanal:
         view.test_button.setOnClickListener {
             val intent = Intent(activity, testSetmanal::class.java)
-            startActivity(intent)
+            intent.putExtra("weight", weight.text.toString().toDouble())
+            intent.putExtra("sex", sex.selectedItem.toString())
+            intent.putExtra("diet", diet.selectedItem.toString())
+           /* intent.putExtra("age", height.text.toString().toInt())   //Canviar més endavant
+            intent.putExtra("pregnant", diet.selectedItem.toString())   //Canviar més endavant  */
+
+            /*intent.putExtra("weight", 65.0)
+            intent.putExtra("sex", "Home")
+            intent.putExtra("diet", "Flexitarià")*/
+            intent.putExtra("age", 22)
+            intent.putExtra("pregnant","No")
+            startActivityForResult(intent, TEST_REQUEST)
         }
 
         // Inflate the layout for this fragment
         return view
+    }
+
+    //Funció que obté els resultats del test
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode==TEST_REQUEST) {
+            if (resultCode== Activity.RESULT_OK) {
+                val results = data!!.getStringArrayListExtra("Resultats")
+                proteines.text = results[0]
+                ferro.text = results[1]
+                omega.text = results[2]
+                calci.text = results[3]
+                comentaris.text = results[4]
+            }
+        }
+
+        //Conflicte
+        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
+            imagepicked = data.data
+            //profilePic.setImageURI(imagepicked)
+            Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +97,7 @@ class profileFragment : Fragment() {
 
         database = FirebaseDatabase.getInstance().reference
 
-        list_dietas = resources.getStringArray(R.array.Diet).toList()
+        list_dietas = resources.getStringArray(R.array.Dietes).toList()
         list_sex = resources.getStringArray(R.array.Sex).toList()
         list_allergy = resources.getStringArray(R.array.Allergy).toList()
         sex.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_sex)
@@ -94,7 +136,7 @@ class profileFragment : Fragment() {
 
         if(auth.currentUser!!.photoUrl != null){
             //profilePic.setImageURI(auth.currentUser!!.photoUrl)
-            Glide.with(this).load(auth.currentUser!!.photoUrl).into(profilePic)
+            Glide.with(this).load(auth.currentUser!!.photoUrl).centerCrop().into(profilePic)
         }
 
 
@@ -130,11 +172,11 @@ class profileFragment : Fragment() {
 
 
     private fun listener_canvis(){
-        update.setOnClickListener {
+            update.setOnClickListener {
 
-            if(!profileName.text.toString().equals("Sense nom") || imagepicked != null){
-                val profileUpdates = UserProfileChangeRequest.Builder()
-                    .setDisplayName(profileName.text.toString())
+                if(!profileName.text.toString().equals("Sense nom") || ::imagepicked.isInitialized){
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(profileName.text.toString())
 
                 if(::imagepicked.isInitialized) {
                     profileUpdates.setPhotoUri(imagepicked);
@@ -174,20 +216,10 @@ class profileFragment : Fragment() {
 
     private fun photo_listener(){
         profilePic.setOnClickListener {
-            Toast.makeText(activity, "photo", Toast.LENGTH_LONG).show();
 
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
             startActivityForResult(photoPickerIntent, PICK_PHOTO);
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
-            imagepicked = data.data
-            profilePic.setImageURI(imagepicked)
         }
     }
 
