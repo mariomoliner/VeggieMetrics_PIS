@@ -120,7 +120,6 @@ class profileFragment : Fragment() {
                         list_sex as ArrayList<String>
                     ))
                 }
-
                 progress_bar.visibility = View.INVISIBLE
                 activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layoutrecepta"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@drawable/spinner_background"
+        android:clickable="true"
+        >
+    <TextView
+            android:id="@+id/recepta1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recepta top 1"
+            android:gravity="center"
+            />
+
+    <ImageView
+            android:id="@+id/imgrecepta1"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:src="@drawable/recipe_pic"/>
+
+    <TextView
+            android:id="@+id/autor1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="autor" />
+    <TextView
+            android:id="@+id/característica1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="característica"
+            />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

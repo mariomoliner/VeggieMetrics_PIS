@@ -3,285 +3,125 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".profileFragment"
         android:background="@drawable/background">
     <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="30dp"
-            tools:context=".perfil_activity">
-
-
-        <TextView
-                android:id="@+id/profileName"
-                style="@style/TextViewStyle"
-                android:layout_width="wrap_content"
+        <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:text="UserName"
-                android:textSize="25dp" />
+                android:paddingBottom="40dp"
+                android:layout_margin="30dp"
+                tools:context=".perfil_activity">
 
 
-        <TextView
-                android:id="@+id/WeeklyTopTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profileName"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:text="Top receptes de la setmana"
-                android:textSize="15dp"/>
-
-        <ScrollView
-                android:id="@+id/WeeklyTop"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_below="@+id/WeeklyTopTitle"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/spinner_background"
-                >
-            <RelativeLayout
+            <TextView
+                    android:id="@+id/profileName"
+                    style="@style/TextViewStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    tools:context=".WeeklyTop">
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:text="UserName"
+                    android:textSize="25dp" />
 
-                    <LinearLayout
-                        android:id="@+id/layoutrecepta1"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/spinner_background">
-                        <TextView
-                            android:id="@+id/recepta1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Recepta top 1"
-                            android:gravity="center"
-                            />
 
-                        <ImageView
-                            android:id="@+id/imgrecepta1"
-                            android:layout_width="150dp"
-                            android:layout_height="90dp"
-                            tools:src="@tools:sample/avatars" />
-
-                        <TextView
-                            android:id="@+id/autor1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="autor" />
-                        <TextView
-                            android:id="@+id/característica1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="característica"
-                        />
-                    </LinearLayout>
-                <LinearLayout
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_toRightOf="@+id/layoutrecepta1"
-                        android:background="@drawable/spinner_background">
-                    <TextView
-                            android:id="@+id/recepta2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Recepta top 2"
-                            android:gravity="center"
-                            />
-
-                    <ImageView
-                            android:id="@+id/imgrecepta2"
-                            android:layout_width="150dp"
-                            android:layout_height="90dp"
-                            tools:src="@tools:sample/avatars" />
-
-                    <TextView
-                            android:id="@+id/autor2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="autor" />
-                    <TextView
-                            android:id="@+id/característica2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="característica"
-                            />
-
-                </LinearLayout>
-            </RelativeLayout>
-        </ScrollView>
-
-        <TextView
-                android:id="@+id/RecomendedTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recomanades per a tu"
-                android:layout_below="@+id/WeeklyTop"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:textSize="15dp"/>
-        <ScrollView
-                android:id="@+id/Recomended"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_below="@+id/RecomendedTitle"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/spinner_background"
-                >
-            <RelativeLayout
+            <TextView
+                    android:id="@+id/WeeklyTopTitle"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    tools:context=".WeeklyTop">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profileName"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="Top receptes de la setmana"
+                    android:textSize="15dp"/>
 
-                <LinearLayout
-                        android:id="@+id/layoutrecepta1recomenades"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_alignParentTop="true"
-                        android:background="@drawable/spinner_background">
-                    <TextView
-                            android:id="@+id/recepta1recomenades"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Recepta recomanada 1"
-                            android:gravity="center"
-                            />
+            <ScrollView
+                    android:id="@+id/WeeklyTop"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/WeeklyTopTitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/spinner_background"
+                    >
+                <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                    <ImageView
-                            android:id="@+id/imgrecepta1recomenades"
-                            android:layout_width="150dp"
-                            android:layout_height="90dp"
-                            tools:src="@tools:sample/avatars" />
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ListTopReceptes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
-                    <TextView
-                            android:id="@+id/autor1recomenades"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="autor" />
-                    <TextView
-                            android:id="@+id/característica1recomenades"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="característica"
-                            />
-                </LinearLayout>
-                <LinearLayout
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_toRightOf="@+id/layoutrecepta1recomenades"
-                        android:background="@drawable/spinner_background">
-                    <TextView
-                            android:id="@+id/recepta2recomenades"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Recepta recomanada 2"
-                            android:gravity="center"
-                            />
+                    </androidx.recyclerview.widget.RecyclerView>
+                </HorizontalScrollView>
+            </ScrollView>
 
-                    <ImageView
-                            android:id="@+id/imgrecepta2recomenades"
-                            android:layout_width="150dp"
-                            android:layout_height="90dp"
-                            tools:src="@tools:sample/avatars" />
+            <TextView
+                    android:id="@+id/RecomendedTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recomanades per a tu"
+                    android:layout_below="@+id/WeeklyTop"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15dp"/>
+            <ScrollView
+                    android:id="@+id/Recomended"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/RecomendedTitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/spinner_background"
+                    >
+                <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                            android:id="@+id/autor2recomenades"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="autor" />
-                    <TextView
-                            android:id="@+id/característica2recomenades"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="característica"
-                            />
-                </LinearLayout>
-            </RelativeLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ListRecomended"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"/>
+                </HorizontalScrollView>
+            </ScrollView>
 
-        </ScrollView>
+            <TextView
+                    android:id="@+id/FavoriteTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferits"
+                    android:layout_below="@+id/Recomended"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15dp"/>
+            <ScrollView
+                    android:id="@+id/Favorite"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@id/FavoriteTitle"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/spinner_background"
+                    >
+                <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-        <TextView
-                android:id="@+id/RecomendationTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recomanacions"
-                android:layout_below="@+id/Recomended"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:textSize="15dp"/>
-
-        <Button
-                android:id="@+id/nutritionaldeficienies"
-                android:layout_width="160dp"
-                android:layout_height="32dp"
-                android:layout_below="@id/RecomendationTitle"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Deficiències Nutricionals"
-                android:textSize="10dp"
-                style="@style/little_button_style"/>
-
-        <Button
-                android:id="@+id/variety"
-                android:layout_width="160dp"
-                android:layout_height="32dp"
-                android:layout_below="@+id/nutritionaldeficienies"
-                android:layout_marginLeft="20dp"
-                android:text="Varietat"
-                android:textSize="10dp"
-                android:layout_marginTop="5dp"
-                style="@style/little_button_style"/>
-
-        <Button
-                android:id="@+id/seasonalfood"
-                android:layout_width="160dp"
-                android:layout_height="32dp"
-                android:layout_below="@+id/variety"
-                android:layout_marginLeft="20dp"
-                android:text="Menjar de temporada"
-                android:textSize="10dp"
-                android:layout_marginTop="5dp"
-                style="@style/little_button_style" />
-
-        <TextView
-                android:id="@+id/info"
-                android:layout_width="129dp"
-                android:layout_height="154dp"
-                android:layout_below="@+id/RecomendationTitle"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/nutritionaldeficienies"
-                android:background="@color/white" />
-
-
-    </RelativeLayout>
-
-        </LinearLayout>
-
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ListFavorites"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"/>
+                </HorizontalScrollView>
+            </ScrollView>
+        </RelativeLayout>
     </ScrollView>
-
 </FrameLayout>

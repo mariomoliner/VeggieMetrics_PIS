@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         ask_permissions()
 
         //Primer fragment:
-        loadFragment(homeFragment())
         var fragment : Fragment
         fragment = homeFragment()
         fragment.setUser(auth)
