@@ -28,11 +28,11 @@ class recipesFragment : Fragment() {
         recepta_model("fideua", "unknown"),
         recepta_model("schnitzel", "Aurelio")
     )
-
+    //NO CAL:
+    /*
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,10 +45,12 @@ class recipesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        llista.layoutManager = LinearLayoutManager(activity);
+        //Visualitzar la llista de receptes:
+        llista.layoutManager = LinearLayoutManager(activity)
         //llista.hasFixedSize()
         llista.adapter = llista_receptes_Adapter((ArrayList(mNicolasCageMovies)))
 
+        //SearchView per les receptes:
         search.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false

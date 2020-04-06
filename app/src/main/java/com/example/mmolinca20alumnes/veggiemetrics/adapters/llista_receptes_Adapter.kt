@@ -35,6 +35,7 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(item: recepta_model) {
+
             itemView.name.text=item.get_recepta()
             itemView.autor.text="Autor: " + item.get_autor()
 
@@ -49,8 +50,6 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
     override fun getItemCount(): Int {
         return llista_receptes_filtrada.size
     }
-
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(llista_receptes_filtrada[position])

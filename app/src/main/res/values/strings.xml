@@ -65,6 +65,8 @@
     <string name="almost_daily">La majoria de dies de la setmana</string>
     <string name="daily">Una ració diària aproximadament</string>
     <string name="more_than_daily">Diverses racions diàriament</string>
+    <string name="recepta_fav1">Recepta fav1</string>
+    <string name="autor">autor</string>
 
     <string-array name="Dietes">
         <item>Vegana</item>
