@@ -60,6 +60,7 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
             holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
         */
 
+        //Botó per anar a la recepta escollida:
         holder.itemView.setOnClickListener {
             selectedPosition=position
             notifyDataSetChanged()
@@ -67,7 +68,10 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
             System.out.println(llista_receptes_filtrada[position].get_recepta())
             intent.putExtra("nom_recepta",llista_receptes_filtrada[position].get_recepta())
             holder.itemView.context.startActivity(intent)
-
+        }
+        //Botó per afegir recepta a "preferits":
+        holder.itemView.fav.setOnClickListener {
+            holder.itemView.fav.setImageResource(R.drawable.ic_fav_picked)
         }
     }
 

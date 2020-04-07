@@ -124,29 +124,32 @@ class profileFragment : Fragment() {
         auth = userloged
     }
 
+
     fun setGUIuser(){
         progress_bar.visibility = View.VISIBLE
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
+        //mostrem el mail de l'usuari al seu perfil:
         profileMail.text = auth.currentUser!!.email
         if(!auth.currentUser!!.displayName.equals(null)){
+            //mostrem el nom de l'usuari al seu perfil:
             profileName.setText(auth.currentUser!!.displayName)
         }
 
+        //mostrem foto de perfil de l'usuari:
         if(auth.currentUser!!.photoUrl != null){
             //profilePic.setImageURI(auth.currentUser!!.photoUrl)
             Glide.with(this).load(auth.currentUser!!.photoUrl).centerCrop().into(profilePic)
         }
 
-
-
+        //uid: user identification
         var dataref = database.child("users-data").child(auth.currentUser!!.uid)
 
         dataref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
             }
-
+            //Canviem les dades: alçada, pes, dieta i sexe_
             override fun onDataChange(p0: DataSnapshot) {
                 height.setText(p0.child("height").getValue().toString())
                 weight.setText(p0.child("weight").getValue().toString())
@@ -170,50 +173,46 @@ class profileFragment : Fragment() {
 
     }
 
-
+    //Listener del botó per desar canvis:
     private fun listener_canvis(){
-            update.setOnClickListener {
+        update.setOnClickListener {
 
-                if(!profileName.text.toString().equals("Sense nom") || ::imagepicked.isInitialized){
+            if(!profileName.text.toString().equals("Sense nom") || ::imagepicked.isInitialized){
                     val profileUpdates = UserProfileChangeRequest.Builder()
                         .setDisplayName(profileName.text.toString())
 
+                //Podem fer update de la foto:
                 if(::imagepicked.isInitialized) {
                     profileUpdates.setPhotoUri(imagepicked);
                 }
 
-                if(!height.text.toString().equals("")){
-                    val childUpdates = HashMap<String, Any>()
-                    childUpdates["height"] = height.text.toString()
-                    database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
-                }
-
-
-
                 val childUpdates = HashMap<String, Any>()
-                when( weight.text.toString().isEmpty() ){
-                    true -> childUpdates["weight"] = "-1"
-                    false -> childUpdates["weight"] = weight.text.toString()
-                }
-                childUpdates["weight"] = weight.text.toString()
-                childUpdates["Gender"] = sex.selectedItem.toString()
-                childUpdates["Diet"] = diet.selectedItem.toString()
-                database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
+                if(height.text.toString().isEmpty() or weight.text.toString().isEmpty()){
+                    //Missatge d'error, hi ha camps buits:
+                    Toast.makeText(activity, "Cal omplir totes les dades", Toast.LENGTH_LONG).show()
+                }else{
+                    //Podem fer l'update a la database correctament:
+                    childUpdates["height"] = height.text.toString()
+                    childUpdates["weight"] = weight.text.toString()
+                    childUpdates["Gender"] = sex.selectedItem.toString()
+                    childUpdates["Diet"] = diet.selectedItem.toString()
+                    database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
 
-                auth.currentUser?.updateProfile(profileUpdates.build())
-                    ?.addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(activity, "Actualització de dades correcta", Toast.LENGTH_LONG).show()
-                        }
+                    auth.currentUser?.updateProfile(profileUpdates.build())
+                        ?.addOnCompleteListener { task ->
+
+                         if (task.isSuccessful) {
+                             Toast.makeText(activity, "Actualització de dades correcta", Toast.LENGTH_LONG).show()
+                         }
                     }
-            }
-            else{
+                }
+            }else{
                 Toast.makeText(activity, "No hi han noves dades a actualitzar", Toast.LENGTH_LONG).show()
             }
         }
-
     }
 
+    //Listener per quan presionem la foto per canviar-la:
     private fun photo_listener(){
         profilePic.setOnClickListener {
 

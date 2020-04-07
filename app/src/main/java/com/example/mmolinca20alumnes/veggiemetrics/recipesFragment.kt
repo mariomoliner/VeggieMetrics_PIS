@@ -28,11 +28,10 @@ class recipesFragment : Fragment() {
         recepta_model("fideua", "unknown"),
         recepta_model("schnitzel", "Aurelio")
     )
-    //NO CAL:
-    /*
+    //No s'utilitza:
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }*/
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
