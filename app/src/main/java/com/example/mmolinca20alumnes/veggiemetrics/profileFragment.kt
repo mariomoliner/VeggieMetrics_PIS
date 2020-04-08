@@ -38,6 +38,7 @@ class profileFragment : Fragment() {
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
     lateinit var list_allergy: List<String>
+    lateinit var list_pregnant: List<String>
 
     private lateinit var database: DatabaseReference// ...
 
@@ -53,14 +54,9 @@ class profileFragment : Fragment() {
             intent.putExtra("weight", weight.text.toString().toDouble())
             intent.putExtra("sex", sex.selectedItem.toString())
             intent.putExtra("diet", diet.selectedItem.toString())
-           /* intent.putExtra("age", height.text.toString().toInt())   //Canviar més endavant
-            intent.putExtra("pregnant", diet.selectedItem.toString())   //Canviar més endavant  */
+            intent.putExtra("age", age.text.toString().toInt())
+            intent.putExtra("pregnant", diet.selectedItem.toString())
 
-            /*intent.putExtra("weight", 65.0)
-            intent.putExtra("sex", "Home")
-            intent.putExtra("diet", "Flexitarià")*/
-            intent.putExtra("age", 22)
-            intent.putExtra("pregnant","No")
             startActivityForResult(intent, TEST_REQUEST)
         }
 
@@ -83,7 +79,6 @@ class profileFragment : Fragment() {
             }
         }
 
-        //Conflicte
         if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
             imagepicked = data.data
             //profilePic.setImageURI(imagepicked)
@@ -100,9 +95,11 @@ class profileFragment : Fragment() {
         list_dietas = resources.getStringArray(R.array.Dietes).toList()
         list_sex = resources.getStringArray(R.array.Sex).toList()
         list_allergy = resources.getStringArray(R.array.Allergy).toList()
+        list_pregnant = resources.getStringArray(R.array.Pregnant).toList()
         sex.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_sex)
         diet.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_dietas)
         allergy.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_allergy)
+        pregnant.adapter = ArrayAdapter(activity,android.R.layout.simple_spinner_item,list_pregnant)
 
 
         /*val adapter = ArrayAdapter(activity,
@@ -151,8 +148,24 @@ class profileFragment : Fragment() {
             }
             //Canviem les dades: alçada, pes, dieta i sexe_
             override fun onDataChange(p0: DataSnapshot) {
-                height.setText(p0.child("height").getValue().toString())
-                weight.setText(p0.child("weight").getValue().toString())
+                /* height.setText(p0.child("height").getValue().toString())
+                weight.setText(p0.child("weight").getValue().toString()) */
+
+                if (p0.child("height").getValue().toString().equals("null"))
+                    height.setText("0.0")
+                else
+                    height.setText(p0.child("height").getValue().toString())
+
+                if (p0.child("weight").getValue().toString().equals("null"))
+                    weight.setText("0.0")
+                else
+                    weight.setText(p0.child("weight").getValue().toString())
+
+                if (p0.child("age").getValue().toString().equals("null"))
+                    age.setText("0")
+                else
+                    age.setText(p0.child("age").getValue().toString())
+
                 when(p0.child("Diet").getValue()){
                     null -> diet.setSelection(0);
                     else -> diet.setSelection(get_Selector_int(p0.child("Diet").getValue().toString(),
@@ -160,9 +173,15 @@ class profileFragment : Fragment() {
                     ))
                 }
                 when(p0.child("Gender").getValue()){
-                    null -> diet.setSelection(0);
-                    else -> diet.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
+                    null -> sex.setSelection(0);
+                    else -> sex.setSelection(get_Selector_int(p0.child("Gender").getValue().toString(),
                         list_sex as ArrayList<String>
+                    ))
+                }
+                when(p0.child("Pregnant").getValue()){
+                    null -> pregnant.setSelection(1);
+                    else -> pregnant.setSelection(get_Selector_int(p0.child("Pregnant").getValue().toString(),
+                        list_pregnant as ArrayList<String>
                     ))
                 }
                 progress_bar.visibility = View.INVISIBLE
@@ -192,10 +211,12 @@ class profileFragment : Fragment() {
                     Toast.makeText(activity, "Cal omplir totes les dades", Toast.LENGTH_LONG).show()
                 }else{
                     //Podem fer l'update a la database correctament:
+                    childUpdates["age"] = age.text.toString()
                     childUpdates["height"] = height.text.toString()
                     childUpdates["weight"] = weight.text.toString()
                     childUpdates["Gender"] = sex.selectedItem.toString()
                     childUpdates["Diet"] = diet.selectedItem.toString()
+                    childUpdates["Pregnant"] = pregnant.selectedItem.toString()
                     database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
 
                     auth.currentUser?.updateProfile(profileUpdates.build())
@@ -207,7 +228,7 @@ class profileFragment : Fragment() {
                     }
                 }
             }else{
-                Toast.makeText(activity, "No hi han noves dades a actualitzar", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "No hi ha noves dades a actualitzar", Toast.LENGTH_LONG).show()
             }
         }
     }
