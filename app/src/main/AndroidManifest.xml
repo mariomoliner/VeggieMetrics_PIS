@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        package="com.example.mmolinca20alumnes.veggiemetrics"
-        >
+        package="com.example.mmolinca20alumnes.veggiemetrics">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
             android:allowBackup="true"
@@ -12,31 +11,40 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            tools:ignore="LockedOrientationActivity"
-            android:theme="@style/AppTheme">
-        <activity android:name=".profileFragment"
+            android:theme="@style/AppTheme"
+            tools:ignore="LockedOrientationActivity">
+        <activity android:name=".Exemple"></activity>
+        <activity
+                android:name=".profileFragment"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".testSetmanal"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".testSetmanal"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"
-                android:parentActivityName=".profileFragment"></activity>
-        <activity android:name=".NewRecipe"
+                android:parentActivityName=".profileFragment"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".NewRecipe"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".recipe"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".recipe"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".Register"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".Register"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".Rec_password_activity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".Rec_password_activity"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".MainActivity"
                 android:configChanges="orientation"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".LogIn"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".LogIn"
                 android:configChanges="orientation"
                 android:screenOrientation="portrait">
             <intent-filter>
