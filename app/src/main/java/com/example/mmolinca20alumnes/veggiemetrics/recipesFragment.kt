@@ -44,7 +44,7 @@ class recipesFragment : Fragment() {
         updates.put("recepta_05", recepta_model("Fideua", "Unknown"));
         updates.put("recepta_06", recepta_model("Schnitzel", "Aurelio"));
         databaseReference.updateChildren(updates)*/
-
+        progress_barRV.visibility = View.VISIBLE
         llistaReceptes = arrayListOf()
         databaseReference = FirebaseDatabase.getInstance().getReference("receptes")
         //carregar la llista de receptes del db firebase:
@@ -59,6 +59,7 @@ class recipesFragment : Fragment() {
                         llistaReceptes.add(recepta_model(nom, autor))
                     }
                 }
+                progress_barRV.visibility = View.INVISIBLE
                 llista.layoutManager = LinearLayoutManager(activity)
                 llista.adapter = llista_receptes_Adapter(llistaReceptes)
             }
