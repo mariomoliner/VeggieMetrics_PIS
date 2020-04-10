@@ -1,31 +1,19 @@
 package models
 
 class recepta_model{
-    private val nom: String
-    private val autor: String
-    private val favorite: Boolean
+    private var recepta: String
+    private var autor: String
 
-    constructor(nom: String, autor: String, favorite: Boolean){
-        this.nom = nom
+    constructor(recepta: String, autor: String){
+        this.recepta = recepta
         this.autor = autor
-        this.favorite = favorite
     }
-    constructor(nom: String, autor: String){
-        this.nom = nom
-        this.autor = autor
-        this.favorite = false;
+    //Getters:
+    //OBS: El nom d'aquestes funcions determina els noms de les subcareptes del db firebase
+    fun getRecepta(): String{
+        return this.recepta
     }
-
-    fun get_recepta(): String{
-        return this.nom
-    }
-
-    fun get_autor(): String{
+    fun getAutor(): String{
         return this.autor
     }
-
-    fun is_fav(): Boolean{
-        return this.favorite
-    }
-
 }

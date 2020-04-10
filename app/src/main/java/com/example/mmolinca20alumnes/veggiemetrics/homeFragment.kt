@@ -25,16 +25,14 @@ class homeFragment : Fragment() {
 
     private val llistaReceptes = ArrayList<recepta_fav_model>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
+
         llistaReceptes.add(recepta_fav_model("Risoto","Mario", R.drawable.recipe_pic))
         llistaReceptes.add(recepta_fav_model("tofu", "Aurelio", R.drawable.recipe_pic))
         llistaReceptes.add(recepta_fav_model("paella", "Aurelio", R.drawable.recipe_pic))
         llistaReceptes.add(recepta_fav_model("fideua", "unknown", R.drawable.recipe_pic))
         llistaReceptes.add(recepta_fav_model("schnitzel", "Aurelio", R.drawable.recipe_pic))
-
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)

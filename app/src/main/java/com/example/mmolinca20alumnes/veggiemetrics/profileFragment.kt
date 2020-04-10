@@ -33,39 +33,20 @@ class profileFragment : Fragment() {
     val TEST_REQUEST = 1
 
     private lateinit var auth: FirebaseAuth
+
+    //Components del layout modificables:
     val PICK_PHOTO = 1111
     lateinit var imagepicked: Uri
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
     lateinit var list_allergy: List<String>
-
+    //base de dades a firebase:
     private lateinit var database: DatabaseReference// ...
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-
-        val view: View = inflater!!.inflate(R.layout.fragment_profile, container, false)
-
-        //Botó que porta al test setmanal:
-        view.test_button.setOnClickListener {
-            val intent = Intent(activity, testSetmanal::class.java)
-            intent.putExtra("weight", weight.text.toString().toDouble())
-            intent.putExtra("sex", sex.selectedItem.toString())
-            intent.putExtra("diet", diet.selectedItem.toString())
-           /* intent.putExtra("age", height.text.toString().toInt())   //Canviar més endavant
-            intent.putExtra("pregnant", diet.selectedItem.toString())   //Canviar més endavant  */
-
-            /*intent.putExtra("weight", 65.0)
-            intent.putExtra("sex", "Home")
-            intent.putExtra("diet", "Flexitarià")*/
-            intent.putExtra("age", 22)
-            intent.putExtra("pregnant","No")
-            startActivityForResult(intent, TEST_REQUEST)
-        }
-
         // Inflate the layout for this fragment
-        return view
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     //Funció que obté els resultats del test
@@ -117,7 +98,7 @@ class profileFragment : Fragment() {
 
         listener_canvis()
         photo_listener()
-
+        listener_botoTest()
     }
 
     fun setUser(userloged : FirebaseAuth){
@@ -149,7 +130,7 @@ class profileFragment : Fragment() {
         dataref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
             }
-            //Canviem les dades: alçada, pes, dieta i sexe_
+            //carreguem les dades del db: alçada, pes, dieta i sexe_
             override fun onDataChange(p0: DataSnapshot) {
                 height.setText(p0.child("height").getValue().toString())
                 weight.setText(p0.child("weight").getValue().toString())
@@ -172,6 +153,24 @@ class profileFragment : Fragment() {
         })
 
     }
+    //Listener del botó pel test setmanal:
+    private fun listener_botoTest(){
+        test_button.setOnClickListener{
+            val intent = Intent(activity, testSetmanal::class.java)
+            intent.putExtra("weight", weight.text.toString().toDouble())
+            intent.putExtra("sex", sex.selectedItem.toString())
+            intent.putExtra("diet", diet.selectedItem.toString())
+            /* intent.putExtra("age", height.text.toString().toInt())   //Canviar més endavant
+            intent.putExtra("pregnant", diet.selectedItem.toString())   //Canviar més endavant  */
+
+            /*intent.putExtra("weight", 65.0)
+            intent.putExtra("sex", "Home")
+            intent.putExtra("diet", "Flexitarià")*/
+            intent.putExtra("age", 22)
+            intent.putExtra("pregnant","No")
+            startActivityForResult(intent, TEST_REQUEST)
+        }
+    }
 
     //Listener del botó per desar canvis:
     private fun listener_canvis(){
@@ -185,17 +184,18 @@ class profileFragment : Fragment() {
                 if(::imagepicked.isInitialized) {
                     profileUpdates.setPhotoUri(imagepicked);
                 }
-
-                val childUpdates = HashMap<String, Any>()
                 if(height.text.toString().isEmpty() or weight.text.toString().isEmpty()){
                     //Missatge d'error, hi ha camps buits:
                     Toast.makeText(activity, "Cal omplir totes les dades", Toast.LENGTH_LONG).show()
                 }else{
                     //Podem fer l'update a la database correctament:
+                    val childUpdates = HashMap<String, Any>()
+                    //Creem hashmap que omplim amb les dades de l'usuari
                     childUpdates["height"] = height.text.toString()
                     childUpdates["weight"] = weight.text.toString()
                     childUpdates["Gender"] = sex.selectedItem.toString()
                     childUpdates["Diet"] = diet.selectedItem.toString()
+                    //actualitzem la info de l'usuari actual:
                     database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
 
                     auth.currentUser?.updateProfile(profileUpdates.build())
