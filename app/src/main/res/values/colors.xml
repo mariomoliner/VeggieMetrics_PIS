@@ -13,7 +13,9 @@
     <color name="edit_text_green">#CCFF90</color>
     <color name="text_view_grey">#424242</color>
     <color name="edit_text_black">#400000</color>
-
+    <!--Colors principals-->
     <color name="customGreen01">#D5ECD9</color>
+    <color name="MarroPrincipal">#655D14</color>
+    <color name="MarroSecundari">#554210</color>
 </resources>
 

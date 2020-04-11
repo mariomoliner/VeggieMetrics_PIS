@@ -11,9 +11,8 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme"
+            android:theme="@style/tema_principal"
             tools:ignore="LockedOrientationActivity">
-        <activity android:name=".Exemple"></activity>
         <activity
                 android:name=".profileFragment"
                 android:configChanges="orientation"
