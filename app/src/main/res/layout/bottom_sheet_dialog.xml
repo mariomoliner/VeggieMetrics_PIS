@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+                android:id="@+id/texte"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            android:text="Aliment"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingTop="30dp"
+                android:orientation="horizontal">
+                <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:id="@+id/picker_qty"
+                        android:layout_marginRight="30dp"
+                        android:layout_height="140dp"/>
+                <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="140dp"
+                        android:id="@+id/picker_unitats"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="right"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+                <Button
+                        android:layout_width="wrap_content"
+                        android:text="guarda"
+                        android:id="@+id/boton_guarda"
+                        style="@style/button_style"
+                        android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+
+
+</LinearLayout>

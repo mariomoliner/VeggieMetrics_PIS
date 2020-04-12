@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/userText"
                 android:hint="@string/usuari"
+                android:text="mario.moliner@gmail.com"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 style="@style/edit_text_style"/>
@@ -33,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/contrasenya"
                 android:inputType="textPassword"
+                android:text="123456"
                 android:ems="10"
                 android:layout_margin="10dp"
                 android:id="@+id/passwordText"
