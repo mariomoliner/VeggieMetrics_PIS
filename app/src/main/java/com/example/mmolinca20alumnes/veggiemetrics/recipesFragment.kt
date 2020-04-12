@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_receptes_Adapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_recipes.*
+import kotlinx.android.synthetic.main.recepta_concreta.*
 import models.recepta_model
 
 /**
@@ -21,19 +24,18 @@ class recipesFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     //base de dades a firebase:
     private lateinit var databaseReference: DatabaseReference
-
     private var llistaReceptes = ArrayList<recepta_model>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
+
         return inflater.inflate(R.layout.fragment_recipes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         //Codi per pujar a firebase receptes de proba:
         /*databaseReference = FirebaseDatabase.getInstance().getReference("receptes")
         val updates = HashMap<String,Any>()
@@ -76,15 +78,9 @@ class recipesFragment : Fragment() {
             }
 
         })
-
     }//onViewCreated
 
     fun setUser(userloged : FirebaseAuth){
         auth = userloged
     }
-
-    private fun addToFavs(){
-
-    }
-
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -12,8 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_fav_receptes_Adapter
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_recipes.*
 import models.recepta_fav_model
+import models.recepta_model
 
 
 /**
@@ -22,18 +26,13 @@ import models.recepta_fav_model
 class homeFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
-
-    private val llistaReceptes = ArrayList<recepta_fav_model>()
+    //base de dades a firebase:
+    private lateinit var databaseReference: DatabaseReference
+    private var llistaReceptes = ArrayList<recepta_model>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-
-        llistaReceptes.add(recepta_fav_model("Risoto","Mario", R.drawable.recipe_pic))
-        llistaReceptes.add(recepta_fav_model("tofu", "Aurelio", R.drawable.recipe_pic))
-        llistaReceptes.add(recepta_fav_model("paella", "Aurelio", R.drawable.recipe_pic))
-        llistaReceptes.add(recepta_fav_model("fideua", "unknown", R.drawable.recipe_pic))
-        llistaReceptes.add(recepta_fav_model("schnitzel", "Aurelio", R.drawable.recipe_pic))
-
+        llistaReceptes.clear()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -48,10 +47,7 @@ class homeFragment : Fragment() {
                 111)
         }
         setGUIuser()
-
-        //Visualitzar les receptes preferides:
-        ListFavorites.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        ListFavorites.adapter = llista_fav_receptes_Adapter(llistaReceptes)
+        setFavs()
     }
 
     fun setGUIuser(){
@@ -68,6 +64,31 @@ class homeFragment : Fragment() {
 
     }
 
+    private fun setFavs(){
+        progress_barFav.visibility = View.VISIBLE
+        auth = FirebaseAuth.getInstance()
+        databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
+            .child(auth.currentUser!!.uid).child("preferides")
+        llistaReceptes = arrayListOf()
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()) {
+                    for (recipe in p0.children) {
+                        val nomRecepta = recipe.child("recepta").getValue().toString()
+                        val nomAutor = recipe.child("autor").getValue().toString()
+                        llistaReceptes.add(recepta_model(nomRecepta, nomAutor))
+                        //Toast.makeText(activity,nomRecepta, Toast.LENGTH_LONG).show()
+                    }
+                    //Visualitzar les receptes preferides:
+                    progress_barFav.visibility = View.INVISIBLE
+                    ListFavorites.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+                    ListFavorites.adapter = llista_fav_receptes_Adapter(llistaReceptes)
+                }
+            }
+        })
+    }
     /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.actionbar_home, menu)

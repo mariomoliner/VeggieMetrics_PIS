@@ -4,6 +4,7 @@ package com.example.mmolinca20alumnes.veggiemetrics.adapters
 import com.example.mmolinca20alumnes.veggiemetrics.R
 import android.R.layout
 import android.app.PendingIntent.getActivity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -12,17 +13,26 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mmolinca20alumnes.veggiemetrics.MainActivity
 import com.example.mmolinca20alumnes.veggiemetrics.recipe
+import com.example.mmolinca20alumnes.veggiemetrics.recipesFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.recepta_concreta.view.*
 import models.recepta_model
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class llista_receptes_Adapter  (val recipesList: ArrayList<recepta_model>) : RecyclerView.Adapter<llista_receptes_Adapter.ViewHolder>(), Filterable {
+class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : RecyclerView.Adapter<llista_receptes_Adapter.ViewHolder>(), Filterable {
+
+
+    private lateinit var auth: FirebaseAuth
+    //base de dades a firebase:
+    private lateinit var databaseReference: DatabaseReference
 
     var llista_receptes_filtrada = ArrayList<recepta_model>()
 
@@ -33,15 +43,31 @@ class llista_receptes_Adapter  (val recipesList: ArrayList<recepta_model>) : Rec
     var selectedPosition = -1
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private lateinit var auth: FirebaseAuth
+        //base de dades a firebase:
+        private lateinit var databaseReference: DatabaseReference
 
         fun bindItems(item: recepta_model) {
+            //Omplim cada fila del recyclerview:
+            auth = FirebaseAuth.getInstance()
+            databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
+                .child(auth.currentUser!!.uid).child("preferides")
+            //omplim nom i autor:
             itemView.name.text=item.getRecepta()
-            itemView.autor.text="Autor: " + item.getAutor()
-            //if(item.is_fav())
-                //itemView.fav.setImageResource(R.drawable.ic_fav_picked)
-            //else
-                itemView.fav.setImageResource(R.drawable.ic_fav_to_pick)
-
+            itemView.autor.text=item.getAutor()
+            //marquem les receptes preferides:
+            val nomRecepta = itemView.name.text.toString()
+            databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+                //carreguem les dades del db: alçada, pes, dieta i sexe_
+                override fun onDataChange(p0: DataSnapshot) {
+                    if (p0.child(nomRecepta).exists())
+                        itemView.fav.setImageResource(R.drawable.ic_fav_picked)
+                    else
+                        itemView.fav.setImageResource(R.drawable.ic_fav_to_pick)
+                }
+            })
         }
     }
 
@@ -74,9 +100,37 @@ class llista_receptes_Adapter  (val recipesList: ArrayList<recepta_model>) : Rec
         }
         //Botó per afegir recepta a "preferits":
         holder.itemView.fav.setOnClickListener {
-            holder.itemView.fav.setImageResource(R.drawable.ic_fav_picked)
+            auth = FirebaseAuth.getInstance()
+            databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
+                .child(auth.currentUser!!.uid).child("preferides")
+
+            val nomRecepta = holder.itemView.name.text.toString()
+            val autorRecepta = holder.itemView.autor.text.toString()
+            val recepta = recepta_model(nomRecepta, autorRecepta)
+            databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+                //carreguem les dades del db: alçada, pes, dieta i sexe_
+                override fun onDataChange(p0: DataSnapshot) {
+                    //Si ja estava a preferits, la borrem
+                    if (p0.child(nomRecepta).exists()) {
+                        //borrem de la db "preferits" la recepta
+                        databaseReference.child(nomRecepta).removeValue()
+                        //canviem l'icona
+                        holder.itemView.fav.setImageResource(R.drawable.ic_fav_to_pick)
+                        //Toast.makeText(holder.itemView.context,nomRecepta, Toast.LENGTH_LONG).show()
+                    }else{
+                        //afegim recepta a la db "preferits"
+                        val childUpdates = HashMap<String, Any>()
+                        childUpdates.put(nomRecepta, recepta)
+                        databaseReference.updateChildren(childUpdates)
+                        //canviem l'icona
+                        holder.itemView.fav.setImageResource(R.drawable.ic_fav_picked)
+                    }
+                }
+            })
         }
-    }
+    }//onBindViewHolder
 
     override fun getFilter(): Filter {
         return object : Filter() {
@@ -108,6 +162,5 @@ class llista_receptes_Adapter  (val recipesList: ArrayList<recepta_model>) : Rec
 
         }
     }
-
 
 }

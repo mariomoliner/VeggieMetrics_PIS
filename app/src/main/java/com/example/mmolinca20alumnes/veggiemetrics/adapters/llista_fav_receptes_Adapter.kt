@@ -9,17 +9,18 @@ import com.example.mmolinca20alumnes.veggiemetrics.R
 import com.example.mmolinca20alumnes.veggiemetrics.recipe
 import kotlinx.android.synthetic.main.recepta_fav_concreta.view.*
 import models.recepta_fav_model
+import models.recepta_model
 import java.util.*
 import kotlin.collections.ArrayList
 
-class llista_fav_receptes_Adapter (val itemsFav: ArrayList<recepta_fav_model>) : RecyclerView.Adapter<llista_fav_receptes_Adapter.ViewHolder>() {
+class llista_fav_receptes_Adapter (val itemsFav: ArrayList<recepta_model>) : RecyclerView.Adapter<llista_fav_receptes_Adapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //enllacem les receptes:
-        fun bindItems(model: recepta_fav_model) {
-            itemView.receptaFav.text = model.get_recepta()
-            itemView.autorFav.text = "Autor: " + model.get_autor()
-            itemView.imatgeFav.setImageResource(model.get_image())
+        fun bindItems(model: recepta_model) {
+            itemView.receptaFav.text = model.getRecepta()
+            itemView.autorFav.text ="Autor: "+model.getAutor()
+            //TODO:cal afegir imatge
         }
     }
 
