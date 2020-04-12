@@ -17,317 +17,470 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                tools:context=".perfil_activity">
-
-            <ImageView
-                    android:id="@+id/profilePic"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:clickable="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/profile_pic" />
-
-            <EditText
-                    android:id="@+id/profileName"
-                    style="@style/edit_text_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/profilePic"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@id/profilePic"
-                    android:gravity="center"
-                    android:text="Sense nom"
-                    android:textSize="25dp" />
-
-            <TextView
-                    android:id="@+id/profileMail"
-                    style="@style/TextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profileName"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/profilePic"
-                    android:gravity="center"
-                    android:text="sampleuser@gmail.com"
-                    android:textSize="15dp" />
-
-            <TextView
-                    android:id="@+id/signOut"
-                    style="@style/TextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profileMail"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@id/profilePic"
-                    android:gravity="center"
-                    android:text="Tanca sessió"
-                    android:textSize="20dp" />
-
-            <TextView
-                    android:id="@+id/sexText"
-                    style="@style/TextViewStyle"
+            <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/profilePic"
-                    android:layout_alignStart="@+id/sexLayout"
-                    android:layout_alignLeft="@+id/sexLayout"
-                    android:layout_marginTop="50dp"
-                    android:text="Sexe"
-                    android:textSize="15dp" />
+                    android:layout_margin="30dp"
+                    tools:context=".perfil_activity">
 
-            <LinearLayout
-                    android:id="@+id/sexLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/sexText"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/spinner_background">
-
-                <Spinner
-                        android:id="@+id/sex"
+                <ProgressBar
+                        android:id="@+id/progress_bar"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-            </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="350dp"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="invisible"/>
 
-            <TextView
-                    android:id="@+id/dietText"
-                    style="@style/TextViewStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/profilePic"
-                    android:layout_alignStart="@+id/dietLayout"
-                    android:layout_alignLeft="@+id/dietLayout"
-                    android:layout_marginTop="50dp"
-                    android:text="Dieta"
-                    android:textSize="15dp" />
+                <ImageView
+                        android:id="@+id/profilePic"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:clickable="true"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/profile_pic" />
 
-            <LinearLayout
-                    android:id="@+id/dietLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dietText"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/spinner_background">
+                <EditText
+                        android:id="@+id/profileName"
+                        style="@style/edit_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/profilePic"
+                        android:layout_toRightOf="@id/profilePic"
+                        android:gravity="center"
+                        android:inputType="textMultiLine"
+                        android:maxLines="2"
+                        android:text="Sense nom"
+                        android:textSize="25dp" />
 
-                <Spinner
-                        android:id="@+id/diet"
+                <TextView
+                        android:id="@+id/profileMail"
+                        style="@style/TextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profileName"
+                        android:layout_toRightOf="@id/profilePic"
+                        android:gravity="center"
+                        android:layout_above="@+id/dataText"
+                        android:text="sampleuser@gmail.com"
+                        android:textSize="12dp" />
+
+                <TextView
+                        android:id="@+id/dataText"
+                        style="@style/TextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/profilePic"
+                        android:text="Dades personals"
+                        android:textSize="25dp" />
+
+                <TextView
+                        android:id="@+id/ageText"
+                        style="@style/TextViewStyle"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-            </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dataText"
+                        android:layout_marginTop="20dp"
+                        android:text="Edat (Anys)"
+                        android:textSize="15dp" />
 
-            <TextView
-                    android:id="@+id/heightText"
-                    style="@style/TextViewStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dietLayout"
-                    android:layout_alignStart="@+id/dietLayout"
-                    android:layout_alignLeft="@+id/dietLayout"
-                    android:layout_marginTop="30dp"
-                    android:text="Alçada"
-                    android:textSize="15dp" />
+                <EditText
+                        android:id="@+id/age"
+                        style="@style/edit_text_style"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/weightText"
+                        android:inputType="number"
+                        android:textSize="10dp" />
 
-            <EditText
-                    android:id="@+id/height"
-                    style="@style/edit_text_style"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/heightText"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textSize="10dp"/>
-
-            <ProgressBar
-                    android:id="@+id/progress_bar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:visibility="invisible"/>
-
-            <TextView
-                    android:id="@+id/weightText"
-                    style="@style/TextViewStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dietLayout"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_toRightOf="@+id/heightText"
-                    android:text="Pes"
-                    android:textSize="15dp" />
-
-
-
-            <EditText
-                    android:id="@+id/weight"
-                    style="@style/edit_text_style"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/weightText"
-                    android:layout_alignStart="@+id/weightText"
-                    android:layout_alignLeft="@+id/weightText"
-                    android:layout_toRightOf="@id/height"
-                    android:ems="10"
-                    android:inputType="numberDecimal"
-                    android:textSize="10dp"/>
-
-            <TextView
-                    android:id="@+id/allergyText"
-                    style="@style/TextViewStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/sexLayout"
-                    android:layout_alignStart="@+id/sexLayout"
-                    android:layout_alignLeft="@+id/sexLayout"
-                    android:layout_marginTop="30dp"
-                    android:text="Al·lèrgies"
-                    android:textSize="15dp" />
-
-            <LinearLayout
-                    android:id="@+id/allergyLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/allergyText"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/spinner_background">
-
-                <Spinner
-                        android:id="@+id/allergy"
+                <TextView
+                        android:id="@+id/heightText"
+                        style="@style/TextViewStyle"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-            </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dataText"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/age"
+                        android:text="Alçada (m)"
+                        android:textSize="15dp" />
 
-            <Button
-                    android:id="@+id/update"
-                    style="@style/button_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/height"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="20dp"
-                    android:text="Desa canvis" />
+                <EditText
+                        android:id="@+id/height"
+                        style="@style/edit_text_style"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/heightText"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/age"
+                        android:inputType="numberDecimal"
+                        android:textSize="10dp" />
 
-            <Button
-                    android:id="@+id/test_button"
-                    style="@style/button_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/update"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:clickable="true"
-                    android:padding="30dp"
-                    android:text="Test Setmanal" />
+                <TextView
+                        android:id="@+id/weightText"
+                        style="@style/TextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dataText"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/height"
+                        android:text="Pes (Kg)"
+                        android:textSize="15dp" />
 
-            <TextView
-                    android:id="@+id/proteines_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Proteïnes:"
-                    style="@style/AppTheme"
-                    android:textSize="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_below="@+id/test_button"></TextView>
+                <EditText
+                        android:id="@+id/weight"
+                        style="@style/edit_text_style"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/weightText"
+                        android:layout_toRightOf="@id/height"
+                        android:layout_marginLeft="15dp"
+                        android:inputType="numberDecimal"
+                        android:textSize="10dp" />
 
-            <TextView
-                    android:id="@+id/proteines"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sense dades"
-                    style="@style/AppTheme"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
-                    android:layout_below="@+id/test_button"
-                    android:layout_toRightOf="@+id/proteines_text"></TextView>
+                <TextView
+                        android:id="@+id/sexText"
+                        style="@style/TextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/age"
+                        android:layout_marginTop="20dp"
+                        android:text="Sexe"
+                        android:textSize="15dp" />
 
-            <TextView
-                    android:id="@+id/ferro_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ferro:"
-                    style="@style/AppTheme"
-                    android:textSize="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_below="@+id/proteines_text"></TextView>
+                <LinearLayout
+                        android:id="@+id/sexLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sexText"
+                        android:background="@drawable/spinner_background">
 
-            <TextView
-                    android:id="@+id/ferro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sense dades"
-                    style="@style/AppTheme"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20dp"
-                    android:layout_below="@+id/proteines"
-                    android:layout_alignLeft="@+id/proteines"></TextView>
+                    <Spinner
+                            android:id="@+id/sex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
 
-            <TextView
-                    android:id="@+id/omega_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Omega 3:"
-                    style="@style/AppTheme"
-                    android:textSize="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_below="@+id/ferro_text"></TextView>
+                <TextView
+                        android:id="@+id/pregnantText"
+                        style="@style/TextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/age"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/sexLayout"
+                        android:text="Estàs embarassada?"
+                        android:textSize="15dp" />
 
-            <TextView
-                    android:id="@+id/omega"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sense dades"
-                    style="@style/AppTheme"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20dp"
-                    android:layout_below="@+id/ferro"
-                    android:layout_alignLeft="@+id/proteines"></TextView>
+                <LinearLayout
+                        android:id="@+id/pregnantLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sexText"
+                        android:layout_toRightOf="@+id/sexLayout"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/spinner_background">
 
-            <TextView
-                    android:id="@+id/calci_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Calci:"
-                    style="@style/AppTheme"
-                    android:textSize="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_below="@+id/omega_text"></TextView>
+                    <Spinner
+                            android:id="@+id/pregnant"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
 
-            <TextView
-                    android:id="@+id/calci"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sense dades"
-                    style="@style/AppTheme"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20dp"
-                    android:layout_below="@+id/omega"
-                    android:layout_alignLeft="@+id/proteines"></TextView>
+                <TextView
+                        android:id="@+id/dietText"
+                        style="@style/TextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sexLayout"
+                        android:layout_marginTop="20dp"
+                        android:text="Dieta"
+                        android:textSize="15dp" />
 
-            <TextView
-                    android:id="@+id/comentaris"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    style="@style/AppTheme"
-                    android:layout_marginTop="20dp"
-                    android:textSize="15dp"
-                    android:layout_below="@+id/calci_text"></TextView>
+                <LinearLayout
+                        android:id="@+id/dietLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dietText"
+                        android:background="@drawable/spinner_background">
+
+                    <Spinner
+                            android:id="@+id/diet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <TextView
+                        android:id="@+id/allergyText"
+                        style="@style/TextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dietLayout"
+                        android:layout_alignStart="@+id/sexLayout"
+                        android:layout_alignLeft="@+id/sexLayout"
+                        android:layout_marginTop="20dp"
+                        android:text="Al·lèrgies"
+                        android:textSize="15dp" />
+
+                <GridLayout
+                        android:id="@+id/allergyLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/allergyText"
+                        android:layout_marginRight="20dp"
+                        android:columnCount="2"
+                        android:background="@drawable/spinner_background">
 
 
+                    <CheckBox
+                            android:id="@+id/allergy1"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Gluten" />
 
+                    <CheckBox
+                            android:id="@+id/allergy2"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Crustacis" />
 
+                    <CheckBox
+                            android:id="@+id/allergy3"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Ous" />
 
-        </RelativeLayout>
+                    <CheckBox
+                            android:id="@+id/allergy4"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Cacahuets" />
+
+                    <CheckBox
+                            android:id="@+id/allergy5"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Soja" />
+
+                    <CheckBox
+                            android:id="@+id/allergy6"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Lactis" />
+
+                    <CheckBox
+                            android:id="@+id/allergy7"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fruits amb closca" />
+
+                    <CheckBox
+                            android:id="@+id/allergy8"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Api" />
+
+                    <CheckBox
+                            android:id="@+id/allergy9"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Grans de sèsam" />
+
+                    <CheckBox
+                            android:id="@+id/allergy10"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mol·luscos" />
+                </GridLayout>
+
+                <Button
+                        android:id="@+id/update"
+                        style="@style/button_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/allergyLayout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:text="Desa canvis" />
+
+                <TextView
+                        android:id="@+id/analysisText"
+                        style="@style/TextViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/update"
+                        android:text="Anàlisi nutricional"
+                        android:textSize="25dp" />
+
+                <TextView
+                        android:id="@+id/imc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IMC:"
+                        style="@style/TextViewStyle"
+                        android:textSize="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/analysisText"></TextView>
+
+                <TextView
+                        android:id="@+id/imc_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        style="@style/TextViewStyle"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/analysisText"
+                        android:layout_toRightOf="@+id/imc"></TextView>
+
+                <TextView
+                        android:id="@+id/imc_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sense dades"
+                        style="@style/TextViewStyle"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/analysisText"
+                        android:layout_toRightOf="@+id/imc_number"></TextView>
+
+                <TextView
+                        android:id="@+id/proteines_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proteïnes:"
+                        style="@style/TextViewStyle"
+                        android:textSize="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/imc"></TextView>
+
+                <ProgressBar
+                        android:id="@+id/proteines"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignBottom="@+id/proteines_text"
+                        android:layout_toRightOf="@+id/proteines_text"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
+
+                <TextView
+                        android:id="@+id/ferro_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ferro:"
+                        style="@style/TextViewStyle"
+                        android:textSize="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/proteines_text"></TextView>
+
+                <ProgressBar
+                        android:id="@+id/ferro"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignBottom="@+id/ferro_text"
+                        android:layout_alignLeft="@+id/proteines"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
+
+                <TextView
+                        android:id="@+id/omega_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Omega 3:"
+                        style="@style/TextViewStyle"
+                        android:textSize="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/ferro_text"></TextView>
+
+                <ProgressBar
+                        android:id="@+id/omega"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignBottom="@+id/omega_text"
+                        android:layout_alignLeft="@+id/proteines"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
+
+                <TextView
+                        android:id="@+id/calci_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Calci:"
+                        style="@style/TextViewStyle"
+                        android:textSize="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/omega_text"></TextView>
+
+                <ProgressBar
+                        android:id="@+id/calci"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignBottom="@+id/calci_text"
+                        android:layout_alignLeft="@+id/proteines"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
+
+                <TextView
+                        android:id="@+id/comentaris"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        style="@style/TextViewStyle"
+                        android:layout_marginTop="20dp"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/calci_text"></TextView>
+
+                <Button
+                        android:id="@+id/test_button"
+                        style="@style/button_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/comentaris"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:padding="30dp"
+                        android:text="Test Setmanal" />
+
+            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>

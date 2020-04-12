@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".profileFragment"
+        tools:context=".homeFragment"
         android:background="@drawable/background">
     <ScrollView
             android:layout_width="wrap_content"
@@ -34,6 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/profileName"
+                    android:textStyle="bold"
                     android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"
                     android:text="Top receptes de la setmana"
@@ -67,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Recomanades per a tu"
+                    android:textStyle="bold"
                     android:layout_below="@+id/WeeklyTop"
                     android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"
@@ -97,31 +98,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Preferits"
+                    android:textStyle="bold"
                     android:layout_below="@+id/Recomended"
                     android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"
                     android:textSize="15dp"/>
-            <ScrollView
-                    android:id="@+id/Favorite"
-                    android:layout_width="300dp"
-                    android:layout_height="150dp"
-                    android:layout_below="@id/FavoriteTitle"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/spinner_background"
-                    >
-                <HorizontalScrollView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
+                <LinearLayout
+                        android:layout_width="350dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/FavoriteTitle"
+                        android:orientation="horizontal"
+                        tools:context=".homeFragment"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="0dp">
                     <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/ListFavorites"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"/>
-                </HorizontalScrollView>
-            </ScrollView>
+                            android:layout_height="match_parent" />
+                </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </FrameLayout>

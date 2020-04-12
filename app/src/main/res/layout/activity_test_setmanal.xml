@@ -24,7 +24,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Respon les següents preguntes sobre la teva alimentació durant els últims 7 dies. Al acabar, es mostraran els resultats en el perfil."
+                    android:text="Respon les següents preguntes amb l'opció que més s'assembli a la teva alimentació durant els últims 7 dies. Al acabar, es mostraran els resultats en el perfil."
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:layout_marginBottom="20dp"

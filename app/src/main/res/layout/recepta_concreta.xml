@@ -23,13 +23,25 @@
 
         <ImageView
                 android:id="@+id/extra"
-                android:textSize="20dp"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
                 android:src="@drawable/recipe_pic"
+                android:layout_toLeftOf="@+id/fav"
                 android:text="holaaaa"
+                android:textSize="20dp" />
+
+        <ImageView
+                android:id="@+id/fav"
+                android:src="@drawable/ic_fav_to_pick"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
-                android:layout_width="100dp"
-                android:layout_height="30dp" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                />
     </RelativeLayout>
 
     <TextView

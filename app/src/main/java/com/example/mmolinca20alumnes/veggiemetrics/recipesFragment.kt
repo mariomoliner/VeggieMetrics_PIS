@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_receptes_Adapter
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import models.recepta_model
 
@@ -19,36 +19,52 @@ import models.recepta_model
 class recipesFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
+    //base de dades a firebase:
+    private lateinit var databaseReference: DatabaseReference
 
-    private val mNicolasCageMovies = listOf(
-        recepta_model("Risoto", "Mario Moliner"),
-        recepta_model("Macarrons", "Pere"),
-        recepta_model("tofu", "Aurelio"),
-        recepta_model("paella", "Aurelio"),
-        recepta_model("fideua", "unknown"),
-        recepta_model("schnitzel", "Aurelio")
-    )
+    private var llistaReceptes = ArrayList<recepta_model>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_recipes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        llista.layoutManager = LinearLayoutManager(activity);
-        //llista.hasFixedSize()
-        llista.adapter = llista_receptes_Adapter((ArrayList(mNicolasCageMovies)))
-
+        //Codi per pujar a firebase receptes de proba:
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("receptes")
+        val updates = HashMap<String,Any>()
+        updates.put("recepta_01", recepta_model("Risoto", "Mario"));
+        updates.put("recepta_02", recepta_model("Macarrons", "Pere"));
+        updates.put("recepta_03", recepta_model("Tofu", "Aurelio"));
+        updates.put("recepta_04", recepta_model("Paella", "Aurelio"));
+        updates.put("recepta_05", recepta_model("Fideua", "Unknown"));
+        updates.put("recepta_06", recepta_model("Schnitzel", "Aurelio"));
+        databaseReference.updateChildren(updates)*/
+        progress_barRV.visibility = View.VISIBLE
+        llistaReceptes = arrayListOf()
+        databaseReference = FirebaseDatabase.getInstance().getReference("receptes")
+        //carregar la llista de receptes del db firebase:
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()) {
+                    for (recipe in p0.children) {
+                        val nom = recipe.child("recepta").getValue().toString()
+                        val autor = recipe.child("autor").getValue().toString()
+                        llistaReceptes.add(recepta_model(nom, autor))
+                    }
+                }
+                progress_barRV.visibility = View.INVISIBLE
+                llista.layoutManager = LinearLayoutManager(activity)
+                llista.adapter = llista_receptes_Adapter(llistaReceptes)
+            }
+        })
+        //SearchView per les receptes:
         search.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -60,10 +76,15 @@ class recipesFragment : Fragment() {
             }
 
         })
-    }
+
+    }//onViewCreated
 
     fun setUser(userloged : FirebaseAuth){
         auth = userloged
+    }
+
+    private fun addToFavs(){
+
     }
 
 }

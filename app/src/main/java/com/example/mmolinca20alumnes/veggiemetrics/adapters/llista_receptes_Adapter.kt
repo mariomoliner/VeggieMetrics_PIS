@@ -22,12 +22,12 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : RecyclerView.Adapter<llista_receptes_Adapter.ViewHolder>(), Filterable {
+class llista_receptes_Adapter  (val recipesList: ArrayList<recepta_model>) : RecyclerView.Adapter<llista_receptes_Adapter.ViewHolder>(), Filterable {
 
     var llista_receptes_filtrada = ArrayList<recepta_model>()
 
     init {
-        llista_receptes_filtrada = userList
+        llista_receptes_filtrada = recipesList
     }
 
     var selectedPosition = -1
@@ -35,13 +35,17 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(item: recepta_model) {
-            itemView.name.text=item.get_recepta()
-            itemView.autor.text="Autor: " + item.get_autor()
+            itemView.name.text=item.getRecepta()
+            itemView.autor.text="Autor: " + item.getAutor()
+            //if(item.is_fav())
+                //itemView.fav.setImageResource(R.drawable.ic_fav_picked)
+            //else
+                itemView.fav.setImageResource(R.drawable.ic_fav_to_pick)
 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): llista_receptes_Adapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.recepta_concreta, parent, false)
         return ViewHolder(v)
     }
@@ -49,8 +53,6 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
     override fun getItemCount(): Int {
         return llista_receptes_filtrada.size
     }
-
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(llista_receptes_filtrada[position])
@@ -61,14 +63,18 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
             holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
         */
 
+        //Botó per anar a la recepta escollida:
         holder.itemView.setOnClickListener {
             selectedPosition=position
             notifyDataSetChanged()
             val intent = Intent(holder.itemView.getContext(), recipe::class.java)
-            System.out.println(llista_receptes_filtrada[position].get_recepta())
-            intent.putExtra("nom_recepta",llista_receptes_filtrada[position].get_recepta())
+            System.out.println(llista_receptes_filtrada[position].getRecepta())
+            intent.putExtra("nom_recepta",llista_receptes_filtrada[position].getRecepta())
             holder.itemView.context.startActivity(intent)
-
+        }
+        //Botó per afegir recepta a "preferits":
+        holder.itemView.fav.setOnClickListener {
+            holder.itemView.fav.setImageResource(R.drawable.ic_fav_picked)
         }
     }
 
@@ -77,12 +83,12 @@ class llista_receptes_Adapter  (val userList: ArrayList<recepta_model>) : Recycl
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val filterPattern = constraint.toString().toLowerCase()
                 if (constraint?.isEmpty()!!) {
-                    llista_receptes_filtrada = userList
+                    llista_receptes_filtrada = recipesList
                 } else {
                     //System.out.println("valores filtrados")
                     val resultList = ArrayList<recepta_model>()
-                    for (row in userList) {
-                        if (constraint in row.get_recepta().toLowerCase(Locale.ROOT))  {
+                    for (row in recipesList) {
+                        if (constraint in row.getRecepta().toLowerCase(Locale.ROOT))  {
                             resultList.add(row)
                             //System.out.println(row.get_autor())
                         }

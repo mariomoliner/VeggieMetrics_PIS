@@ -12,17 +12,23 @@
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/MarroPrincipal"
             android:textCursorDrawable="@null"
             app:iconifiedByDefault="false"
             app:queryBackground="@null" />
 
     <androidx.recyclerview.widget.RecyclerView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/llista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical"/>
+
+    <ProgressBar
+            android:id="@+id/progress_barRV"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
 
 
 

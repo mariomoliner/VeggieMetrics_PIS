@@ -1,20 +1,19 @@
 package models
 
 class recepta_model{
-    private val nom: String
-    private val autor: String
+    private var recepta: String
+    private var autor: String
 
-    constructor(nom: String, autor: String){
-        this.nom = nom
+    constructor(recepta: String, autor: String){
+        this.recepta = recepta
         this.autor = autor
     }
-
-    fun get_recepta(): String{
-        return this.nom
+    //Getters:
+    //OBS: El nom d'aquestes funcions determina els noms de les subcareptes del db firebase
+    fun getRecepta(): String{
+        return this.recepta
     }
-
-    fun get_autor(): String{
+    fun getAutor(): String{
         return this.autor
     }
-
 }
