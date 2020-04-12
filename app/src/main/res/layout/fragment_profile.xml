@@ -27,7 +27,8 @@
                         android:id="@+id/progress_bar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_marginTop="350dp"
+                        android:layout_centerHorizontal="true"
                         android:visibility="invisible"/>
 
                 <ImageView
@@ -223,19 +224,96 @@
                         android:text="Al·lèrgies"
                         android:textSize="15dp" />
 
-                <LinearLayout
+                <GridLayout
                         android:id="@+id/allergyLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/allergyText"
                         android:layout_marginRight="20dp"
+                        android:columnCount="2"
                         android:background="@drawable/spinner_background">
 
-                    <Spinner
-                            android:id="@+id/allergy"
+
+                    <CheckBox
+                            android:id="@+id/allergy1"
+                            style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent" />
-                </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Gluten" />
+
+                    <CheckBox
+                            android:id="@+id/allergy2"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Crustacis" />
+
+                    <CheckBox
+                            android:id="@+id/allergy3"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Ous" />
+
+                    <CheckBox
+                            android:id="@+id/allergy4"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Cacahuets" />
+
+                    <CheckBox
+                            android:id="@+id/allergy5"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Soja" />
+
+                    <CheckBox
+                            android:id="@+id/allergy6"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Lactis" />
+
+                    <CheckBox
+                            android:id="@+id/allergy7"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fruits amb closca" />
+
+                    <CheckBox
+                            android:id="@+id/allergy8"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Api" />
+
+                    <CheckBox
+                            android:id="@+id/allergy9"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Grans de sèsam" />
+
+                    <CheckBox
+                            android:id="@+id/allergy10"
+                            style="@style/TextViewStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mol·luscos" />
+                </GridLayout>
 
                 <Button
                         android:id="@+id/update"
@@ -258,118 +336,134 @@
                         android:textSize="25dp" />
 
                 <TextView
-                        android:id="@+id/imc_text"
+                        android:id="@+id/imc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Proteïnes:"
-                        style="@style/AppTheme"
+                        android:text="IMC:"
+                        style="@style/TextViewStyle"
                         android:textSize="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_below="@+id/analysisText"></TextView>
 
                 <TextView
-                        android:id="@+id/imc"
+                        android:id="@+id/imc_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="IMC"
-                        style="@style/AppTheme"
+                        android:text=""
+                        style="@style/TextViewStyle"
                         android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="10dp"
                         android:textSize="20dp"
                         android:layout_below="@+id/analysisText"
-                        android:layout_toRightOf="@+id/proteines_text"></TextView>
+                        android:layout_toRightOf="@+id/imc"></TextView>
+
+                <TextView
+                        android:id="@+id/imc_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sense dades"
+                        style="@style/TextViewStyle"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="20dp"
+                        android:layout_below="@+id/analysisText"
+                        android:layout_toRightOf="@+id/imc_number"></TextView>
 
                 <TextView
                         android:id="@+id/proteines_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Proteïnes:"
-                        style="@style/AppTheme"
+                        style="@style/TextViewStyle"
                         android:textSize="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_below="@+id/imc"></TextView>
 
-                <TextView
+                <ProgressBar
                         android:id="@+id/proteines"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sense dades"
-                        style="@style/AppTheme"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="20dp"
-                        android:textSize="20dp"
-                        android:layout_below="@+id/imc"
-                        android:layout_toRightOf="@+id/proteines_text"></TextView>
+                        android:layout_alignBottom="@+id/proteines_text"
+                        android:layout_toRightOf="@+id/proteines_text"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
 
                 <TextView
                         android:id="@+id/ferro_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ferro:"
-                        style="@style/AppTheme"
+                        style="@style/TextViewStyle"
                         android:textSize="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_below="@+id/proteines_text"></TextView>
 
-                <TextView
+                <ProgressBar
                         android:id="@+id/ferro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sense dades"
-                        style="@style/AppTheme"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_marginTop="20dp"
-                        android:textSize="20dp"
-                        android:layout_below="@+id/proteines"
-                        android:layout_alignLeft="@+id/proteines"></TextView>
+                        android:layout_alignBottom="@+id/ferro_text"
+                        android:layout_alignLeft="@+id/proteines"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
 
                 <TextView
                         android:id="@+id/omega_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Omega 3:"
-                        style="@style/AppTheme"
+                        style="@style/TextViewStyle"
                         android:textSize="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_below="@+id/ferro_text"></TextView>
 
-                <TextView
+                <ProgressBar
                         android:id="@+id/omega"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sense dades"
-                        style="@style/AppTheme"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_marginTop="20dp"
-                        android:textSize="20dp"
-                        android:layout_below="@+id/ferro"
-                        android:layout_alignLeft="@+id/proteines"></TextView>
+                        android:layout_alignBottom="@+id/omega_text"
+                        android:layout_alignLeft="@+id/proteines"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
 
                 <TextView
                         android:id="@+id/calci_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Calci:"
-                        style="@style/AppTheme"
+                        style="@style/TextViewStyle"
                         android:textSize="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_below="@+id/omega_text"></TextView>
 
-                <TextView
+                <ProgressBar
                         android:id="@+id/calci"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sense dades"
-                        style="@style/AppTheme"
+                        android:layout_width="180dp"
+                        android:layout_height="20dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_marginTop="20dp"
-                        android:textSize="20dp"
-                        android:layout_below="@+id/omega"
-                        android:layout_alignLeft="@+id/proteines"></TextView>
+                        android:layout_alignBottom="@+id/calci_text"
+                        android:layout_alignLeft="@+id/proteines"
+                        android:max="100"
+                        android:progress="0"
+                        ></ProgressBar>
 
                 <TextView
                         android:id="@+id/comentaris"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=""
-                        style="@style/AppTheme"
+                        style="@style/TextViewStyle"
                         android:layout_marginTop="20dp"
                         android:textSize="15dp"
                         android:layout_below="@+id/calci_text"></TextView>
@@ -385,7 +479,6 @@
                         android:clickable="true"
                         android:padding="30dp"
                         android:text="Test Setmanal" />
-
 
             </RelativeLayout>
 

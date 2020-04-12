@@ -44,10 +44,10 @@ class testSetmanal : AppCompatActivity() {
     fun test(requisit: Double, resultat: Double): String {
         var conclusio: String
         if (resultat < 0.5 * requisit)
-            conclusio = "Deficiència greu"
+            conclusio = "Bad"
         else if (resultat < 0.9 * requisit)
-            conclusio = "Deficiència lleu"
-        else conclusio = "Correcte"
+            conclusio = "Not good"
+        else conclusio = "Ok"
         return conclusio
     }
 
@@ -118,7 +118,7 @@ class testSetmanal : AppCompatActivity() {
             } else if (embaras.equals("Sí"))
                 ferro = 27.0
         }
-        ferro *= 7
+        ferro *= 7.0
 
         //Omega 3
         if (embaras.equals("No")) {
@@ -137,7 +137,7 @@ class testSetmanal : AppCompatActivity() {
             }
         } else if (embaras.equals("Sí"))
             omega = 1.4
-        omega *= 7
+        omega *= 7.0
 
         //Calci
         if (edat in 4..8)
@@ -156,7 +156,7 @@ class testSetmanal : AppCompatActivity() {
                 calci = 1200.0
         }
 
-        calci *= 7
+        calci *= 7.0
 
         //Proteïnes
         if (dieta.equals("Vegetariana") || dieta.equals("Vegana")) {
@@ -169,7 +169,7 @@ class testSetmanal : AppCompatActivity() {
         else if (embaras.equals("Sí"))
             proteines = 1.4 * pes
 
-        proteines *= 7
+        proteines *= 7.0
 
         sendTest.setOnClickListener() {
 
@@ -300,11 +300,11 @@ class testSetmanal : AppCompatActivity() {
 
                 //Pregunta 8
                 if (radio8_b.isChecked) {
-                    omega += 5
+                    omegaDieta += 5
                 } else if (radio8_c.isChecked) {
-                    omega += 12.5
+                    omegaDieta += 12.5
                 } else if (radio8_d.isChecked) {
-                    omega += 17.5
+                    omegaDieta += 17.5
                 }
 
                 //Preguntes 9 i 11
