@@ -85,6 +85,9 @@ class homeFragment : Fragment() {
                     progress_barFav.visibility = View.INVISIBLE
                     ListFavorites.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
                     ListFavorites.adapter = llista_fav_receptes_Adapter(llistaReceptes)
+                }else{
+                    progress_barFav.visibility = View.INVISIBLE
+                    //TODO: Afegir missatge de "Encara no tens receptes preferides"
                 }
             }
         })
