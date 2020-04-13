@@ -39,28 +39,32 @@
                     android:text="Top receptes de la setmana"
                     android:textSize="15dp"/>
 
-            <ScrollView
+            <LinearLayout
                     android:id="@+id/WeeklyTop"
-                    android:layout_width="300dp"
-                    android:layout_height="150dp"
                     android:layout_below="@+id/WeeklyTopTitle"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/spinner_background"
+                    android:layout_width="350dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="0dp"
+                    android:orientation="horizontal"
+                    tools:context=".homeFragment"
+                    android:layout_marginStart="0dp"
                     >
-                <HorizontalScrollView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
                     <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/ListTopReceptes"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"/>
+                    <ProgressBar
+                            android:id="@+id/progress_barTop"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:visibility="invisible" />
 
-                    </androidx.recyclerview.widget.RecyclerView>
-                </HorizontalScrollView>
-            </ScrollView>
+            </LinearLayout>
 
             <TextView
                     android:id="@+id/RecomendedTitle"
@@ -72,26 +76,31 @@
                     android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"
                     android:textSize="15dp"/>
-            <ScrollView
+            <LinearLayout
                     android:id="@+id/Recomended"
-                    android:layout_width="300dp"
-                    android:layout_height="150dp"
                     android:layout_below="@+id/RecomendedTitle"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/spinner_background"
+                    android:layout_width="350dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="0dp"
+                    android:orientation="horizontal"
+                    tools:context=".homeFragment"
+                    android:layout_marginStart="0dp"
                     >
-                <HorizontalScrollView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
                     <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/ListRecomended"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"/>
-                </HorizontalScrollView>
-            </ScrollView>
+                    <ProgressBar
+                            android:id="@+id/progress_barRec"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="center"
+                            android:visibility="invisible" />
+            </LinearLayout>
 
             <TextView
                     android:id="@+id/FavoriteTitle"
@@ -113,7 +122,8 @@
                         android:orientation="horizontal"
                         tools:context=".homeFragment"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginStart="0dp">
+                        android:layout_marginStart="0dp"
+                        android:background="@drawable/spinner_background">
                     <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/ListFavorites"
                             android:layout_width="wrap_content"
