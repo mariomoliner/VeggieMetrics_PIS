@@ -392,7 +392,7 @@ class profileFragment : Fragment() {
                     }
                 }
             }else{
-                Toast.makeText(activity, "No hi ha noves dades a actualitzar", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Es necessita un nom d'usuari per desar canvis", Toast.LENGTH_LONG).show()
             }
         }
     }
