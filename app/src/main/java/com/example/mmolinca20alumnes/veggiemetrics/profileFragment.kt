@@ -59,14 +59,16 @@ class profileFragment : Fragment() {
     //Funció que modifica les barres del perfil
     fun testResults(barra: ProgressBar, resultat: String) {
         if (resultat.equals("Ok")) {
-            barra.getProgressDrawable().setColorFilter(Color.rgb(255,255,0), android.graphics.PorterDuff.Mode.MULTIPLY)
-            barra.progress = 100
+            barra.getProgressDrawable().setColorFilter(Color.rgb(0,187,45), android.graphics.PorterDuff.Mode.MULTIPLY)
+            barra.progress = 98
         } else if (resultat.equals("Not good")) {
             barra.getProgressDrawable().setColorFilter(Color.rgb(255,255,0), android.graphics.PorterDuff.Mode.MULTIPLY)
-            barra.progress = 75
+            barra.progress = 67
         } else if (resultat.equals("Bad")) {
-            barra.getProgressDrawable().setColorFilter(Color.rgb(255,255,0), android.graphics.PorterDuff.Mode.MULTIPLY)
-            barra.progress = 50
+            barra.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.MULTIPLY)
+            barra.progress = 33
+        } else {
+            barra.progress = 0
         }
     }
 
@@ -82,7 +84,19 @@ class profileFragment : Fragment() {
                 testResults(omega, results[2])
                 testResults(calci, results[3])
                 comentaris.text = results[4]
+
+                val childUpdates = HashMap<String, Any>()
+
+                childUpdates["proteins"] = results[0]
+                childUpdates["iron"] = results[1]
+                childUpdates["omega"] = results[2]
+                childUpdates["calcium"] = results[3]
+                childUpdates["comments"] = results[4]
+
+                //actualitzem la info de l'usuari actual:
+                database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
             }
+
         }
 
         if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
@@ -181,7 +195,7 @@ class profileFragment : Fragment() {
         dataref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
             }
-            //carreguem les dades del db: alçada, pes, edat, dieta, sexe, embaràs, al·lèrgies i l'IMC_
+            //carreguem les dades del db: alçada, pes, edat, dieta, sexe, embaràs, al·lèrgies, l'IMC i la informació nutricional
             override fun onDataChange(p0: DataSnapshot) {
                 /* height.setText(p0.child("height").getValue().toString())
                 weight.setText(p0.child("weight").getValue().toString()) */
@@ -262,6 +276,27 @@ class profileFragment : Fragment() {
                     null -> allergy10.isChecked = false
                     else -> allergy10.isChecked = p0.child("Allergy10").getValue().toString().toBoolean()
                 }
+                when(p0.child("proteins").getValue()){
+                    null -> testResults(proteines, "")
+                    else -> testResults(proteines, p0.child("proteins").getValue().toString())
+                }
+                when(p0.child("iron").getValue()){
+                    null -> testResults(ferro, "")
+                    else -> testResults(ferro, p0.child("iron").getValue().toString())
+                }
+                when(p0.child("omega").getValue()){
+                    null -> testResults(omega, "")
+                    else -> testResults(omega, p0.child("omega").getValue().toString())
+                }
+                when(p0.child("calcium").getValue()){
+                    null -> testResults(calci, "")
+                    else -> testResults(calci, p0.child("calcium").getValue().toString())
+                }
+                when(p0.child("comments").getValue()){
+                    null -> comentaris.setText("")
+                    else -> comentaris.setText(p0.child("comments").getValue().toString())
+                }
+
                 progress_bar.visibility = View.INVISIBLE
                 activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
