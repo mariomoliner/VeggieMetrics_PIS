@@ -5,9 +5,11 @@ import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.renderscript.Sampler
 import android.view.*
@@ -27,6 +29,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -42,6 +47,7 @@ class profileFragment : Fragment() {
 
     //Components del layout modificables:
     val PICK_PHOTO = 1111
+    val REQUEST_IMAGE_CAPTURE = 2222
     lateinit var imagepicked: Uri
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
@@ -103,6 +109,12 @@ class profileFragment : Fragment() {
             imagepicked = data.data
             //profilePic.setImageURI(imagepicked)
             Glide.with(this).load(imagepicked).centerCrop().into(profilePic)
+        }
+
+        // Foto de càmera
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
+            val imageBitmap = data!!.extras.get("data") as Bitmap
+            profilePic.setImageBitmap(imageBitmap)
         }
 
     }
@@ -303,6 +315,17 @@ class profileFragment : Fragment() {
 
         })
 
+    }
+
+
+    // Foto perfil
+
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
     }
 
 
