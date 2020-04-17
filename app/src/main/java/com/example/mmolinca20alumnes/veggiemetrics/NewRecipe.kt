@@ -24,21 +24,31 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter.OnItemClickListener
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_new_recipe.*
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import models.Aliment
 import models.Ingredient
 import models.recepta_detall
+import models.recepta_model
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class NewRecipe : AppCompatActivity() {
 
+    lateinit var receptaUUID: String //Unic User ID per la recepta
     var selectedPhotoUri: Uri? = null //Uri de la foto de la recepta
+    private lateinit var databaseRef: DatabaseReference
+    private lateinit var storageRef: StorageReference
+    private lateinit var auth: FirebaseAuth //Necessitem extreure el nom de l'autor
     private lateinit var ingredientList_adapter: llista_ingredients_adapter
     private lateinit var nova_Recepta: recepta_detall
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -234,12 +244,29 @@ class NewRecipe : AppCompatActivity() {
     }
     private fun uploadImageToFirebaseStorage(){
         if(selectedPhotoUri == null) return
-
-        val filename = UUID.randomUUID().toString()
-        val ref = FirebaseStorage.getInstance().getReference("/receptes/$filename")
-
-        ref.putFile(selectedPhotoUri!!)
+        receptaUUID = UUID.randomUUID().toString()
+        auth = FirebaseAuth.getInstance()
+        val ref = FirebaseStorage.getInstance().getReference("/receptes/$receptaUUID")
+        ref.putFile(selectedPhotoUri!!).addOnSuccessListener {
+            ref.downloadUrl.addOnSuccessListener {
+                saveRecipeToFirebaseDatabase(it.toString())
+            }.addOnFailureListener {
+                    Toast.makeText(this, "Error al penjar la imatge", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
-
+    private fun saveRecipeToFirebaseDatabase(profileImageUrl: String){
+        auth = FirebaseAuth.getInstance()
+        databaseRef = FirebaseDatabase.getInstance().getReference("receptes")
+        val updates = HashMap<String,Any>()
+        var nomAutor = ""
+        if(!auth.currentUser!!.displayName.equals(null)){
+            nomAutor = auth.currentUser!!.displayName.toString()
+        }
+        //TODO: Asegurar que el titol no està buit
+        val nomRecepta = recipeTitle.text.toString()
+        updates.put(receptaUUID, recepta_model(nomRecepta, nomAutor, profileImageUrl));
+        databaseRef.updateChildren(updates)
+    }
 }
