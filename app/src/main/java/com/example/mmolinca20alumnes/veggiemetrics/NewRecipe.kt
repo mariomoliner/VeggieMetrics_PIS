@@ -1,6 +1,12 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
+import android.app.Activity
+import android.app.Instrumentation
+import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -18,15 +24,19 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter.OnItemClickListener
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_new_recipe.*
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import models.Aliment
 import models.Ingredient
 import models.recepta_detall
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class NewRecipe : AppCompatActivity() {
 
+    var selectedPhotoUri: Uri? = null //Uri de la foto de la recepta
     private lateinit var ingredientList_adapter: llista_ingredients_adapter
     private lateinit var nova_Recepta: recepta_detall
 
@@ -46,6 +56,8 @@ class NewRecipe : AppCompatActivity() {
 
         init_recycler()
         search_listener()
+        recipePic_listener() //per canviar la foto de la recepta
+        post_listener() // per publicar la recepta sencera
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -192,7 +204,42 @@ class NewRecipe : AppCompatActivity() {
         builder.show()
     }
 
+    //canviem la foto de la recepta:
+    private fun recipePic_listener(){
+        recipePic.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type =  "image/*"
+            startActivityForResult(intent, 0)
+        }
+    }
+    //Mètode que és crida amb startActivityForResult:
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null){
+            selectedPhotoUri = data.data
+            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
+            recipePic.setImageBitmap(bitmap)
+        }
+    }
+
+    //Penjem la nova recepta a firebase
+    private fun post_listener(){
+        post.setOnClickListener(){
+            //TODO: Penjar altres parts de la recepta a firebase
+            //Penjem la foto de la recepta al nostre Storage de Firebase:
+            uploadImageToFirebaseStorage()
+            Toast.makeText(this, "Cal omplir totes les dades", Toast.LENGTH_LONG).show()
+        }
+    }
+    private fun uploadImageToFirebaseStorage(){
+        if(selectedPhotoUri == null) return
+
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/receptes/$filename")
+
+        ref.putFile(selectedPhotoUri!!)
+    }
 
 
 }

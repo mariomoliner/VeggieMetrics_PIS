@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_receptes_Adapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import kotlinx.android.synthetic.main.recepta_concreta.*
 import models.recepta_model
@@ -24,6 +27,7 @@ class recipesFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     //base de dades a firebase:
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var storageFB: FirebaseStorage
     private var llistaReceptes = ArrayList<recepta_model>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +51,9 @@ class recipesFragment : Fragment() {
         updates.put("recepta_06", recepta_model("Schnitzel", "Aurelio"));
         databaseReference.updateChildren(updates)*/
         progress_barRV.visibility = View.VISIBLE
+        activity!!.window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         llistaReceptes = arrayListOf()
         databaseReference = FirebaseDatabase.getInstance().getReference("receptes")
         //carregar la llista de receptes del db firebase:
@@ -64,6 +71,7 @@ class recipesFragment : Fragment() {
                 progress_barRV.visibility = View.INVISIBLE
                 llista.layoutManager = LinearLayoutManager(activity)
                 llista.adapter = llista_receptes_Adapter(llistaReceptes)
+                activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
         })
         //SearchView per les receptes:

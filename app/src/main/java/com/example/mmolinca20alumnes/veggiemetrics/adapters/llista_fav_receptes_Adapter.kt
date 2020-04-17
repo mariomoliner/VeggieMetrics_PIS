@@ -1,16 +1,12 @@
 package com.example.mmolinca20alumnes.veggiemetrics.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mmolinca20alumnes.veggiemetrics.R
-import com.example.mmolinca20alumnes.veggiemetrics.recipe
 import kotlinx.android.synthetic.main.recepta_fav_concreta.view.*
-import models.recepta_fav_model
 import models.recepta_model
-import java.util.*
 import kotlin.collections.ArrayList
 
 class llista_fav_receptes_Adapter (val itemsFav: ArrayList<recepta_model>) : RecyclerView.Adapter<llista_fav_receptes_Adapter.ViewHolder>() {
