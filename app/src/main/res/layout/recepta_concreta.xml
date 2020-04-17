@@ -29,6 +29,7 @@
                     android:orientation="horizontal">
 
                 <ImageView
+                        android:id="@+id/foto_recepta"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"

@@ -21,7 +21,10 @@ import com.example.mmolinca20alumnes.veggiemetrics.recipe
 import com.example.mmolinca20alumnes.veggiemetrics.recipesFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_recipe.view.*
 import kotlinx.android.synthetic.main.recepta_concreta.view.*
+import kotlinx.android.synthetic.main.recepta_concreta.view.autor
 import models.recepta_model
 import java.util.*
 import kotlin.collections.ArrayList
@@ -55,6 +58,8 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
             //omplim nom i autor:
             itemView.name.text=item.getRecepta()
             itemView.autor.text=item.getAutor()
+            //Afegim foto
+            Picasso.get().load(item.getFoto()).into(itemView.foto_recepta)
             //marquem les receptes preferides:
             val nomRecepta = itemView.name.text.toString()
             databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {

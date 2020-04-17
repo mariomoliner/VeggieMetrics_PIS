@@ -62,7 +62,7 @@ class homeFragment : Fragment() {
         progress_barFav.visibility = View.VISIBLE
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        
+
         auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
             .child(auth.currentUser!!.uid).child("preferides")
@@ -75,7 +75,8 @@ class homeFragment : Fragment() {
                     for (recipe in p0.children) {
                         val nomRecepta = recipe.child("recepta").getValue().toString()
                         val nomAutor = recipe.child("autor").getValue().toString()
-                        llistaReceptes.add(recepta_model(nomRecepta, nomAutor))
+                        val foto = recipe.child("foto").getValue().toString()
+                        llistaReceptes.add(recepta_model(nomRecepta, nomAutor, foto))
                         //Toast.makeText(activity,nomRecepta, Toast.LENGTH_LONG).show()
                     }
                     //Visualitzar les receptes preferides:
