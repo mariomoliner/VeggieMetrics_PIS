@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mmolinca20alumnes.veggiemetrics.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recepta_fav_concreta.view.*
 import models.recepta_model
 import kotlin.collections.ArrayList
@@ -14,9 +15,10 @@ class llista_fav_receptes_Adapter (val itemsFav: ArrayList<recepta_model>) : Rec
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //enllacem les receptes:
         fun bindItems(model: recepta_model) {
+            //Afegim foto
+            Picasso.get().load(model.getFoto()).into(itemView.imatgeFav)
+            //Afegim el títol de la recepta
             itemView.receptaFav.text = model.getRecepta()
-            itemView.autorFav.text ="Autor: "+model.getAutor()
-            //TODO:cal afegir imatge
         }
     }
 

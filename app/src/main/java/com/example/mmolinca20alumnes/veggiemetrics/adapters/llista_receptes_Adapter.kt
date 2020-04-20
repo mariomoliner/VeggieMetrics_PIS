@@ -55,19 +55,21 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
             auth = FirebaseAuth.getInstance()
             databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
                 .child(auth.currentUser!!.uid).child("preferides")
-            //omplim nom i autor:
+            //omplim nom, autor, uuid i url de la foto:
             itemView.name.text=item.getRecepta()
             itemView.autor.text=item.getAutor()
+            itemView.uuid_recepta.text = item.getId()
+            itemView.url_recepta.text = item.getFoto()
             //Afegim foto
             Picasso.get().load(item.getFoto()).into(itemView.foto_recepta)
             //marquem les receptes preferides:
-            val nomRecepta = itemView.name.text.toString()
+            val uuidRecepta = itemView.uuid_recepta.text.toString()
             databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
                 //carreguem les dades del db: alçada, pes, dieta i sexe_
                 override fun onDataChange(p0: DataSnapshot) {
-                    if (p0.child(nomRecepta).exists())
+                    if (p0.child(uuidRecepta).exists())
                         itemView.fav.setImageResource(R.drawable.ic_fav_picked)
                     else
                         itemView.fav.setImageResource(R.drawable.ic_fav_to_pick)
@@ -111,23 +113,26 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
 
             val nomRecepta = holder.itemView.name.text.toString()
             val autorRecepta = holder.itemView.autor.text.toString()
-            val recepta = recepta_model(nomRecepta, autorRecepta)
+            val uuidRecepta = holder.itemView.uuid_recepta.text.toString()
+            val urlRecepta = holder.itemView.url_recepta.text.toString()
+            val recepta = recepta_model(nomRecepta, autorRecepta, urlRecepta, uuidRecepta)
             databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
                 //carreguem les dades del db: alçada, pes, dieta i sexe_
                 override fun onDataChange(p0: DataSnapshot) {
                     //Si ja estava a preferits, la borrem
-                    if (p0.child(nomRecepta).exists()) {
+                    if (p0.child(uuidRecepta).exists()) {
                         //borrem de la db "preferits" la recepta
-                        databaseReference.child(nomRecepta).removeValue()
+                        databaseReference.child(uuidRecepta).removeValue()
                         //canviem l'icona
                         holder.itemView.fav.setImageResource(R.drawable.ic_fav_to_pick)
                         //Toast.makeText(holder.itemView.context,nomRecepta, Toast.LENGTH_LONG).show()
                     }else{
                         //afegim recepta a la db "preferits"
                         val childUpdates = HashMap<String, Any>()
-                        childUpdates.put(nomRecepta, recepta)
+
+                        childUpdates.put(uuidRecepta, recepta)
                         databaseReference.updateChildren(childUpdates)
                         //canviem l'icona
                         holder.itemView.fav.setImageResource(R.drawable.ic_fav_picked)

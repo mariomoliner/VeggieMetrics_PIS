@@ -66,8 +66,9 @@ class recipesFragment : Fragment() {
                         val nom = recipe.child("recepta").getValue().toString()
                         val autor = recipe.child("autor").getValue().toString()
                         val foto = recipe.child("foto").getValue().toString()
+                        val uuid = recipe.key.toString()
 
-                        llistaReceptes.add(recepta_model(nom, autor, foto))
+                        llistaReceptes.add(recepta_model(nom, autor, foto, uuid))
                     }
                 }
                 progress_barRV.visibility = View.INVISIBLE
