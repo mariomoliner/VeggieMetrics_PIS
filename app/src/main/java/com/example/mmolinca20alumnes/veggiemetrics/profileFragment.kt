@@ -319,14 +319,13 @@ class profileFragment : Fragment() {
 
 
     // Foto perfil
-    /*TODO: Solucionar error:
     private fun dispatchTakePictureIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
+            takePictureIntent.resolveActivity(activity!!.packageManager)?.also {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
             }
         }
-    }*/
+    }
 
 
     //Listener del botó pel test setmanal:
