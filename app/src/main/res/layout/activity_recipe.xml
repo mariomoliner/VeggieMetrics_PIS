@@ -72,16 +72,29 @@
                     style="@style/TextViewStyle"/>
 
             <TextView
-                    android:id="@+id/rating"
+                    android:id="@+id/ratingTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Valoració: *****"
+                    android:text="Valoració"
                     android:layout_toRightOf="@id/recipePic"
                     android:layout_below="@+id/diet"
                     android:textSize="15dp"
-                    android:gravity="center"
+                    android:gravity="left"
+                    android:layout_marginLeft="25dp"
                     style="@style/TextViewStyle"/>
+
+            <RatingBar
+                    android:id="@+id/ratingReceptes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ratingTitle"
+                    android:layout_toRightOf="@+id/recipePic"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:layout_marginLeft="-40dp"/>
 
             <TextView
                     android:id="@+id/ingredients"
