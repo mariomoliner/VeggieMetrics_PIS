@@ -73,10 +73,8 @@ class recipesFragment : Fragment() {
                             Log.e("puntsforts",p.child("nom").value.toString())
                         }
 
-
                         val uuid = recipe.key.toString()
-                        var r =recepta_model(nom, autor, foto, uuid)
-                        r.add_carac(carac)
+                        var r =recepta_model(nom, autor, foto, uuid, carac)
 
                         llistaReceptes.add(r)
                     }
