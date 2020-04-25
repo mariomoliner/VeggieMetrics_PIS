@@ -10,16 +10,15 @@
             android:id="@+id/scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/WeeklyTopTitle"
             android:background="@drawable/spinner_background">
 
         <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
             <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_margin="30dp"
                     tools:context=".perfil_activity">
 
@@ -37,7 +36,9 @@
                         android:layout_height="120dp"
                         android:clickable="true"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/profile_pic" />
+                        android:src="@drawable/profile_pic"
+                        android:focusable="true"
+                        android:layout_marginEnd="10dp" />
 
                 <EditText
                         android:id="@+id/profileName"
@@ -49,8 +50,9 @@
                         android:gravity="center"
                         android:inputType="textMultiLine"
                         android:maxLines="2"
-                        android:text="Sense nom"
-                        android:textSize="25dp" />
+                        android:text="@string/sense_nom"
+                        android:textSize="25sp"
+                        android:layout_toEndOf="@id/profilePic" />
 
                 <TextView
                         android:id="@+id/profileMail"
@@ -61,8 +63,9 @@
                         android:layout_toRightOf="@id/profilePic"
                         android:gravity="center"
                         android:layout_above="@+id/dataText"
-                        android:text="sampleuser@gmail.com"
-                        android:textSize="12dp" />
+                        android:text="@string/correu_exemple"
+                        android:textSize="12sp"
+                        android:layout_toEndOf="@id/profilePic" />
 
                 <TextView
                         android:id="@+id/dataText"
@@ -71,8 +74,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_below="@+id/profilePic"
-                        android:text="Dades personals"
-                        android:textSize="25dp" />
+                        android:text="@string/dades_personals"
+                        android:textSize="25sp" />
 
                 <TextView
                         android:id="@+id/ageText"
@@ -81,8 +84,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/dataText"
                         android:layout_marginTop="20dp"
-                        android:text="Edat (Anys)"
-                        android:textSize="15dp" />
+                        android:text="@string/edat"
+                        android:textSize="15sp" />
 
                 <EditText
                         android:id="@+id/age"
@@ -91,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/weightText"
                         android:inputType="number"
-                        android:textSize="10dp" />
+                        android:textSize="15sp" />
 
                 <TextView
                         android:id="@+id/heightText"
@@ -102,8 +105,10 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="15dp"
                         android:layout_toRightOf="@+id/age"
-                        android:text="Alçada (m)"
-                        android:textSize="15dp" />
+                        android:text="@string/alçada"
+                        android:textSize="15sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@+id/age" />
 
                 <EditText
                         android:id="@+id/height"
@@ -114,7 +119,9 @@
                         android:layout_marginLeft="15dp"
                         android:layout_toRightOf="@+id/age"
                         android:inputType="numberDecimal"
-                        android:textSize="10dp" />
+                        android:textSize="15sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@+id/age" />
 
                 <TextView
                         android:id="@+id/weightText"
@@ -125,8 +132,10 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="20dp"
                         android:layout_toRightOf="@+id/height"
-                        android:text="Pes (Kg)"
-                        android:textSize="15dp" />
+                        android:text="@string/pes"
+                        android:textSize="15sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@+id/height" />
 
                 <EditText
                         android:id="@+id/weight"
@@ -137,7 +146,9 @@
                         android:layout_toRightOf="@id/height"
                         android:layout_marginLeft="15dp"
                         android:inputType="numberDecimal"
-                        android:textSize="10dp" />
+                        android:textSize="15sp"
+                        android:layout_toEndOf="@id/height"
+                        android:layout_marginStart="15dp" />
 
                 <TextView
                         android:id="@+id/sexText"
@@ -146,8 +157,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/age"
                         android:layout_marginTop="20dp"
-                        android:text="Sexe"
-                        android:textSize="15dp" />
+                        android:text="@string/sexe"
+                        android:textSize="15sp" />
 
                 <LinearLayout
                         android:id="@+id/sexLayout"
@@ -171,8 +182,10 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@+id/sexLayout"
-                        android:text="Estàs embarassada?"
-                        android:textSize="15dp" />
+                        android:text="@string/embaras"
+                        android:textSize="15sp"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/sexLayout" />
 
                 <LinearLayout
                         android:id="@+id/pregnantLayout"
@@ -181,7 +194,9 @@
                         android:layout_below="@+id/sexText"
                         android:layout_toRightOf="@+id/sexLayout"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/spinner_background">
+                        android:background="@drawable/spinner_background"
+                        android:layout_toEndOf="@+id/sexLayout"
+                        android:layout_marginStart="20dp">
 
                     <Spinner
                             android:id="@+id/pregnant"
@@ -196,8 +211,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/sexLayout"
                         android:layout_marginTop="20dp"
-                        android:text="Dieta"
-                        android:textSize="15dp" />
+                        android:text="@string/dieta"
+                        android:textSize="15sp" />
 
                 <LinearLayout
                         android:id="@+id/dietLayout"
@@ -221,8 +236,8 @@
                         android:layout_alignStart="@+id/sexLayout"
                         android:layout_alignLeft="@+id/sexLayout"
                         android:layout_marginTop="20dp"
-                        android:text="Al·lèrgies"
-                        android:textSize="15dp" />
+                        android:text="@string/alergia"
+                        android:textSize="15sp" />
 
                 <GridLayout
                         android:id="@+id/allergyLayout"
@@ -231,7 +246,8 @@
                         android:layout_below="@+id/allergyText"
                         android:layout_marginRight="20dp"
                         android:columnCount="2"
-                        android:background="@drawable/spinner_background">
+                        android:background="@drawable/spinner_background"
+                        android:layout_marginEnd="20dp">
 
 
                     <CheckBox
@@ -239,80 +255,70 @@
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Gluten" />
+                            android:text="@string/gluten" />
 
                     <CheckBox
                             android:id="@+id/allergy2"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Crustacis" />
+                            android:text="@string/crustacis" />
 
                     <CheckBox
                             android:id="@+id/allergy3"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Ous" />
+                            android:text="@string/ous" />
 
                     <CheckBox
                             android:id="@+id/allergy4"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Cacahuets" />
+                            android:text="@string/cacahuets" />
 
                     <CheckBox
                             android:id="@+id/allergy5"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Soja" />
+                            android:text="@string/soja" />
 
                     <CheckBox
                             android:id="@+id/allergy6"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Lactis" />
+                            android:text="@string/lactis" />
 
                     <CheckBox
                             android:id="@+id/allergy7"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Fruits amb closca" />
+                            android:text="@string/fruits_closca" />
 
                     <CheckBox
                             android:id="@+id/allergy8"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Api" />
+                            android:text="@string/api" />
 
                     <CheckBox
                             android:id="@+id/allergy9"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Grans de sèsam" />
+                            android:text="@string/sesam" />
 
                     <CheckBox
                             android:id="@+id/allergy10"
                             style="@style/TextViewStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Mol·luscos" />
+                            android:text="@string/moluscos" />
                 </GridLayout>
 
                 <Button
@@ -323,7 +329,7 @@
                         android:layout_below="@+id/allergyLayout"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
-                        android:text="Desa canvis" />
+                        android:text="@string/desa" />
 
                 <TextView
                         android:id="@+id/analysisText"
@@ -332,18 +338,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_below="@+id/update"
-                        android:text="Anàlisi nutricional"
-                        android:textSize="25dp" />
+                        android:text="@string/analisi"
+                        android:textSize="25sp" />
 
                 <TextView
                         android:id="@+id/imc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="IMC:"
+                        android:text="@string/imc"
                         style="@style/TextViewStyle"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="20dp"
-                        android:layout_below="@+id/analysisText"></TextView>
+                        android:layout_below="@+id/analysisText"/>
 
                 <TextView
                         android:id="@+id/imc_number"
@@ -353,31 +359,35 @@
                         style="@style/TextViewStyle"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="10dp"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:layout_below="@+id/analysisText"
-                        android:layout_toRightOf="@+id/imc"></TextView>
+                        android:layout_toRightOf="@+id/imc"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/imc" />
 
                 <TextView
                         android:id="@+id/imc_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sense dades"
+                        android:text="@string/sense_dades"
                         style="@style/TextViewStyle"
                         android:layout_marginTop="20dp"
                         android:layout_marginLeft="10dp"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:layout_below="@+id/analysisText"
-                        android:layout_toRightOf="@+id/imc_number"></TextView>
+                        android:layout_toRightOf="@+id/imc_number"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/imc_number" />
 
                 <TextView
                         android:id="@+id/proteines_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Proteïnes:"
+                        android:text="@string/proteines"
                         style="@style/TextViewStyle"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="20dp"
-                        android:layout_below="@+id/imc"></TextView>
+                        android:layout_below="@+id/imc"/>
 
                 <ProgressBar
                         android:id="@+id/proteines"
@@ -390,17 +400,18 @@
                         android:layout_toRightOf="@+id/proteines_text"
                         android:max="100"
                         android:progress="0"
-                        ></ProgressBar>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/proteines_text" />
 
                 <TextView
                         android:id="@+id/ferro_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ferro:"
+                        android:text="@string/ferro"
                         style="@style/TextViewStyle"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="20dp"
-                        android:layout_below="@+id/proteines_text"></TextView>
+                        android:layout_below="@+id/proteines_text"/>
 
                 <ProgressBar
                         android:id="@+id/ferro"
@@ -412,17 +423,17 @@
                         android:layout_alignLeft="@+id/proteines"
                         android:max="100"
                         android:progress="0"
-                        ></ProgressBar>
+                        android:layout_alignStart="@+id/proteines" />
 
                 <TextView
                         android:id="@+id/omega_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Omega 3:"
+                        android:text="@string/omega"
                         style="@style/TextViewStyle"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="20dp"
-                        android:layout_below="@+id/ferro_text"></TextView>
+                        android:layout_below="@+id/ferro_text"/>
 
                 <ProgressBar
                         android:id="@+id/omega"
@@ -434,17 +445,17 @@
                         android:layout_alignLeft="@+id/proteines"
                         android:max="100"
                         android:progress="0"
-                        ></ProgressBar>
+                        android:layout_alignStart="@+id/proteines" />
 
                 <TextView
                         android:id="@+id/calci_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calci:"
+                        android:text="@string/calci"
                         style="@style/TextViewStyle"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="20dp"
-                        android:layout_below="@+id/omega_text"></TextView>
+                        android:layout_below="@+id/omega_text"/>
 
                 <ProgressBar
                         android:id="@+id/calci"
@@ -456,7 +467,7 @@
                         android:layout_alignLeft="@+id/proteines"
                         android:max="100"
                         android:progress="0"
-                        ></ProgressBar>
+                        android:layout_alignStart="@+id/proteines" />
 
                 <TextView
                         android:id="@+id/comentaris"
@@ -465,8 +476,8 @@
                         android:text=""
                         style="@style/TextViewStyle"
                         android:layout_marginTop="20dp"
-                        android:textSize="15dp"
-                        android:layout_below="@+id/calci_text"></TextView>
+                        android:textSize="15sp"
+                        android:layout_below="@+id/calci_text"/>
 
                 <Button
                         android:id="@+id/test_button"
@@ -478,10 +489,10 @@
                         android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:padding="30dp"
-                        android:text="Test Setmanal" />
+                        android:text="@string/test"
+                        android:focusable="true" />
 
             </RelativeLayout>
-
         </LinearLayout>
     </ScrollView>
 

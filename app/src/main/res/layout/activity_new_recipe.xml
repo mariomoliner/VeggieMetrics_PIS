@@ -27,7 +27,7 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nova recepta"
+                    android:text="@string/Nova_recepta"
                     android:textSize="30dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:tooltipText="Nom de la recepta"
+                    android:tooltipText="@string/nom_recepta"
                     android:layout_toRightOf="@id/recipePic"
                     android:layout_below="@+id/title"
                     android:textSize="15dp"
@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Ingredients"
+                    android:text="@string/ingredients"
                     android:layout_below="@+id/recipePic"
                     android:textSize="20dp"
                     android:gravity="center"
@@ -83,7 +83,7 @@
                 <Button
                         android:id="@+id/searchButton"
                         android:layout_width="wrap_content"
-                        android:text="cerca"
+                        android:text="@string/cerca"
                         style="@style/button_style"
                         android:layout_centerHorizontal="true"
                         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Preparació"
+                    android:text="@string/preparacio"
                     android:layout_below="@+id/ingredientsList"
                     android:textSize="20dp"
                     android:gravity="center"
@@ -119,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Preparació"
+                    android:text="@string/preparacio"
                     android:layout_below="@+id/steps"
                     android:textSize="15dp"
                     android:gravity="top"
@@ -135,7 +135,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
                     android:padding="10dp"
-                    android:text="Publica" />
+                    android:text="@string/publica" />
 
         </RelativeLayout>
         </LinearLayout>

@@ -19,7 +19,7 @@
             android:id="@+id/correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="correu electrònic"
+            android:hint="@string/correu"
             android:layout_margin="30dp"
             style="@style/edit_text_style"/>
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:hint="contrasenya mínim 6 caràcters"
+            android:hint="@string/contrasenya_minima"
             android:inputType="textPassword"
             style="@style/edit_text_style"/>
 
@@ -37,7 +37,7 @@
             android:id="@+id/passrepetida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="repeteix la contrasenya"
+            android:hint="@string/repetir_contrasenya"
             android:inputType="textPassword"
             style="@style/edit_text_style"/>
 
