@@ -81,7 +81,7 @@ class recipesFragment : Fragment() {
                 }
                 progress_barRV.visibility = View.INVISIBLE
                 llista.layoutManager = LinearLayoutManager(activity)
-                llista.adapter = llista_receptes_Adapter(llistaReceptes)
+                llista.adapter = llista_receptes_Adapter(llistaReceptes, activity!!)
                 activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
         })

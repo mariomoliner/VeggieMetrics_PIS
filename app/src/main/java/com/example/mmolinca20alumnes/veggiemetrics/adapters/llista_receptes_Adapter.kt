@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mmolinca20alumnes.veggiemetrics.MainActivity
 import com.example.mmolinca20alumnes.veggiemetrics.recipe
 import com.example.mmolinca20alumnes.veggiemetrics.recipesFragment
@@ -23,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_recipe.view.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.recepta_concreta.view.*
 import kotlinx.android.synthetic.main.recepta_concreta.view.autor
 import models.recepta_model
@@ -30,25 +32,32 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : RecyclerView.Adapter<llista_receptes_Adapter.ViewHolder>(), Filterable {
+class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: Context) : RecyclerView.Adapter<llista_receptes_Adapter.ViewHolder>(), Filterable {
 
 
     private lateinit var auth: FirebaseAuth
     //base de dades a firebase:
     private lateinit var databaseReference: DatabaseReference
+    private var c: Context
 
     var llista_receptes_filtrada = ArrayList<recepta_model>()
 
     init {
         llista_receptes_filtrada = recipesList
+        this.c = c
     }
 
     var selectedPosition = -1
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, c: Context) : RecyclerView.ViewHolder(itemView) {
         private lateinit var auth: FirebaseAuth
+        private var c: Context
         //base de dades a firebase:
         private lateinit var databaseReference: DatabaseReference
+
+        init {
+            this.c  = c
+        }
 
         fun bindItems(item: recepta_model) {
             //Omplim cada fila del recyclerview:
@@ -62,7 +71,8 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
             itemView.url_recepta.text = item.getFoto()
             itemView.caracteristiques.text = item.getCaracteristiques()
             //Afegim foto
-            Picasso.get().load(item.getFoto()).into(itemView.foto_recepta)
+            Glide.with(c).load(item.getFoto()).centerCrop().into(itemView.foto_recepta)
+            //Picasso.get().load(item.getFoto()).into(itemView.foto_recepta)
             //marquem les receptes preferides:
             val uuidRecepta = itemView.uuid_recepta.text.toString()
             databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -81,7 +91,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.recepta_concreta, parent, false)
-        return ViewHolder(v)
+        return ViewHolder(v, c)
     }
 
     override fun getItemCount(): Int {
@@ -102,8 +112,10 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
             selectedPosition=position
             notifyDataSetChanged()
             val intent = Intent(holder.itemView.getContext(), recipe::class.java)
+
             System.out.println(llista_receptes_filtrada[position].getRecepta())
             intent.putExtra("nom_recepta",llista_receptes_filtrada[position].getRecepta())
+            intent.putExtra("idrecept",llista_receptes_filtrada[position].getId())
             holder.itemView.context.startActivity(intent)
         }
         //Botó per afegir recepta a "preferits":

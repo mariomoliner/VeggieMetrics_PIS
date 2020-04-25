@@ -1,7 +1,7 @@
 package models
 
-class Rating(valoracio:Int,idUsuari:String,idRecepta:String, id:String) {
-    val valoracio_recepta: Int
+class Rating(valoracio: Float, idUsuari:String, idRecepta:String, id:String) {
+    val valoracio_recepta: Float
     val idUsuari_rating: String
     val idRecepta_rating: String
     val id_rating: String

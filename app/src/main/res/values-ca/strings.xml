@@ -26,7 +26,7 @@
     <string name="correu">Correu electrònic</string>
     <string name="recupera">Recupera</string>
     <string name="titol_recepta">Títol de recepta</string>
-    <string name="autor_recepta">Autor: Sample User</string>
+    <string name="autor_recepta">Autor: </string>
     <string name="data_recepta">Data: 01/01/2020</string>
     <string name="dieta_recepta">Dieta: Vegana</string>
     <string name="valoracio_recepta">Valoració: *****</string>

@@ -65,7 +65,7 @@ class NewRecipe : AppCompatActivity() {
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
-        nova_Recepta = recepta_detall("sense nom","mario")
+        nova_Recepta = recepta_detall("sense nom","mario","")
 
 
         init_recycler()
@@ -306,6 +306,7 @@ class NewRecipe : AppCompatActivity() {
                 Toast.makeText(this,"Falten camps a omplir!", Toast.LENGTH_LONG).show()
             }else{
                 nova_Recepta.nom_recepta = recipeTitle.text.toString()
+                nova_Recepta.description = stepsEditText.text.toString()
                 progress_bar.visibility = View.VISIBLE
 
                 this!!.window.setFlags(
