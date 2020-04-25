@@ -60,6 +60,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
             itemView.autor.text=item.getAutor()
             itemView.uuid_recepta.text = item.getId()
             itemView.url_recepta.text = item.getFoto()
+            itemView.caracteristiques.text = item.caracteristiques
             //Afegim foto
             Picasso.get().load(item.getFoto()).into(itemView.foto_recepta)
             //marquem les receptes preferides:

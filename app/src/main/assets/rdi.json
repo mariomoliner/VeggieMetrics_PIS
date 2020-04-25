@@ -1,0 +1,84 @@
+{
+  "rdi":[
+    {
+      "nom" : "iron",
+      "qty" : "18" ,
+      "unitat" : "mg",
+      "id_db": "1089"
+    },
+    {
+      "nom" : "Calcium",
+      "qty" : "1300" ,
+      "unitat" : "mg",
+      "id_db": "1083"
+    },
+    
+    {
+      "nom" : "Magnesium",
+      "qty" : "400" ,
+      "unitat" : "mg",
+      "id_db" : "1090"
+    },
+
+    {
+      "nom" : "Phosophorus",
+      "qty" : "700" ,
+      "unitat" : "mg",
+      "id_db" : "1091"
+    },
+
+
+    {
+      "nom" : "Potassium",
+      "qty" : "4.7" ,
+      "unitat" : "g",
+      "id_db" : "1092"
+    },
+
+    {
+      "nom" : "Copper",
+      "qty" : "900" ,
+      "unitat" : "μg",
+      "id_db" : "1098"
+    },
+
+    {
+      "nom" : "Vitamin C",
+      "qty" : "150" ,
+      "unitat" : "mg",
+      "id_db" : "1162"
+    },
+
+
+    {
+      "nom" : "B1",
+      "qty" : "1.2" ,
+      "unitat" : "mg",
+      "id_db" : "1165"
+    },
+
+    {
+      "nom" : "B2",
+      "qty" : "1.3" ,
+      "unitat" : "mg",
+      "id_db" : "1166"
+    },
+
+    {
+      "nom" : "B6",
+      "qty" : "1.3" ,
+      "unitat" : "mg",
+      "id_db" : "1175"
+    },
+
+
+    {
+      "nom" : "B12",
+      "qty" : "6" ,
+      "unitat" : "μg",
+      "id_db" : "1178"
+    }
+  ]
+  
+  
+}

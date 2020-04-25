@@ -1,6 +1,7 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -66,9 +67,18 @@ class recipesFragment : Fragment() {
                         val nom = recipe.child("recepta").getValue().toString()
                         val autor = recipe.child("autor").getValue().toString()
                         val foto = recipe.child("foto").getValue().toString()
-                        val uuid = recipe.key.toString()
+                        var carac = ""
+                        for(p in recipe.child("puntsforts").children){
+                            carac += "#"+p.child("nom").value.toString() + " "
+                            Log.e("puntsforts",p.child("nom").value.toString())
+                        }
 
-                        llistaReceptes.add(recepta_model(nom, autor, foto, uuid))
+
+                        val uuid = recipe.key.toString()
+                        var r =recepta_model(nom, autor, foto, uuid)
+                        r.add_carac(carac)
+
+                        llistaReceptes.add(r)
                     }
                 }
                 progress_barRV.visibility = View.INVISIBLE

@@ -4,15 +4,15 @@ import android.net.Uri
 
 class recepta_detall(nom: String, autor: String) {
 
-    val nom_recepta: String
-    val autor_recepta: String
+    var nom_recepta: String
+    var autor_recepta: String
 
-    lateinit var llista_aliments: ArrayList<Ingredient>
+    lateinit var llista_ingredients: ArrayList<Ingredient>
 
     init {
         nom_recepta = nom
         autor_recepta = autor
-        llista_aliments = arrayListOf()
+        llista_ingredients = arrayListOf()
     }
 
     override fun toString(): String {
@@ -20,11 +20,11 @@ class recepta_detall(nom: String, autor: String) {
     }
 
     fun addIngredient(i: Ingredient){
-        llista_aliments.add(i)
+        llista_ingredients.add(i)
     }
 
     fun getIngredient_ID(id: String) : Ingredient?{
-        for (i in llista_aliments){
+        for (i in llista_ingredients){
             if(i.aliment.codi.equals(id)){
                 return i
             }

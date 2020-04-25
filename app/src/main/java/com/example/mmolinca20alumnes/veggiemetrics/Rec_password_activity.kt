@@ -1,11 +1,14 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import com.google.android.gms.tasks.OnCompleteListener
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_rec_password_activity.*
+
+
 
 class Rec_password_activity : AppCompatActivity() {
 
@@ -36,16 +39,15 @@ class Rec_password_activity : AppCompatActivity() {
         var email = Emailtext.text.toString()
         button.setOnClickListener(){
             if(!email.isEmpty()){
-                auth.sendPasswordResetEmail(email)
-                    .addOnCompleteListener(this, OnCompleteListener { task ->
+                FirebaseAuth.getInstance().sendPasswordResetEmail(Emailtext.text.toString())
+                    .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, "Reset link sent to your email", Toast.LENGTH_LONG)
-                                .show()
-                        } else {
-                            Toast.makeText(this, "Unable to send reset mail", Toast.LENGTH_LONG)
-                                .show()
+                            Toast.makeText(this, "Email sent", Toast.LENGTH_LONG).show()
                         }
-                    })
+                        else{
+                            Toast.makeText(this, "Email could not be sent", Toast.LENGTH_LONG).show()
+                        }
+                    }
             }
         }
 
