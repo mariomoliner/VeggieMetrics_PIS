@@ -76,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="@string/valoracio_recepta"
+                    android:text="Valoració:"
                     android:layout_toRightOf="@id/recipePic"
                     android:layout_below="@+id/diet"
                     android:textSize="15dp"
