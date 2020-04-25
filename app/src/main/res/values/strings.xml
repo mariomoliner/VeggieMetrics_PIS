@@ -13,7 +13,6 @@
     <string name="Registre">Registre</string>
     <string name="test_setmanal">Test setmanal</string>
 
-
     <!--Strings de l'inici-->
     <string name="contrasenya">Contrasenya</string>
     <string name="usuari">Usuari</string>
@@ -31,6 +30,7 @@
     <string name="coincidir_contrasenyes">Les contrasenyes han de coincidir</string>
     <string name="registrat">Registrat correctament</string>
     <string name="no_registrat">No s\'ha pogut fer el registre</string>
+    <string name="email">Has de posar el teu email</string>
 
     <!--Strings generals-->
     <string name="add">add</string>
@@ -99,7 +99,7 @@
     <string name="pregunta1">1. Quantes racions de carn has consumit?</string>
     <string name="pregunta2">2. Quantes racions de peix blau (seitó, sardina, salmó, tonyina…) has consumit?</string>
     <string name="pregunta3">3. Quantes racions de marisc has consumit?</string>
-    <string name="pregunta4">4. Quantes racions de cereals (arròs, quinoa, cuscús...) i derivats (pasta, pa...) has pres, excloent rebosteria i dolços?</string>
+    <string name="pregunta4">4. Quantes racions de cereals (arròs, quinoa, cuscús…) i derivats (pasta, pa…) has pres, excloent rebosteria i dolços?</string>
     <string name="pregunta5">5. Quantes racions de llegums has pres?</string>
     <string name="pregunta6">6. Quantes racions de lactis (un got de llet, dos iogurts, un tros de formatge…) has pres?</string>
     <string name="pregunta7">7. Amb quina freqüència has consumit fruits secs?</string>

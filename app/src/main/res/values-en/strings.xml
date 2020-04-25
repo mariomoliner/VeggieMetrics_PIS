@@ -31,6 +31,7 @@
     <string name="coincidir_contrasenyes">Passwords must match</string>
     <string name="registrat">Succesfully signed in</string>
     <string name="no_registrat">Sign in failed</string>
+    <string name="email">Your email is required</string>
 
     <!--Strings generals-->
     <string name="add">add</string>
@@ -60,8 +61,8 @@
     <string name="omplir_dades">You must fill in all the fields</string>
     <string name="error_imatge">Picture post failed</string>
     <string name="actualitzacio">Data update successful</string>
-    <string name="falta_foto">Falta una foto de recepta!</string>
-    <string name="foto_ok">Foto penjada correctament</string>
+    <string name="falta_foto">Recipe picture required</string>
+    <string name="foto_ok">Picture posted successfully</string>
 
     <!--Strings del perfil-->
     <string name="nom_necessari">A profile name is required to save</string>
