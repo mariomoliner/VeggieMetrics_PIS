@@ -5,7 +5,7 @@ class recepta_model{
     private var autor: String
     private var fotoRecepta: String
     private var id: String
-    lateinit var  caracteristiques: String
+    lateinit var caracteristiques: String
 
 
     constructor(recepta: kotlin.String, autor: kotlin.String, fotoRecepta: kotlin.String, id: kotlin.String, receptaDetall: models.recepta_detall, s: String){

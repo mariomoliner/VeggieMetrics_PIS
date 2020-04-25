@@ -116,7 +116,10 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>) : Re
             val autorRecepta = holder.itemView.autor.text.toString()
             val uuidRecepta = holder.itemView.uuid_recepta.text.toString()
             val urlRecepta = holder.itemView.url_recepta.text.toString()
+            val caracteristiques = holder.itemView.caracteristiques.text.toString()
             val recepta = recepta_model(nomRecepta, autorRecepta, urlRecepta, uuidRecepta)
+            recepta.add_carac(caracteristiques)
+
             databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
