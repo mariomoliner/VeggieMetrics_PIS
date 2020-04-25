@@ -61,7 +61,7 @@ class NewRecipe : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "Registra una nova recepta"
+        actionbar!!.title = getString(R.string.nova_recepta)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
@@ -98,25 +98,25 @@ class NewRecipe : AppCompatActivity() {
         ingredientsList.hasFixedSize()
 
         var llista_incial : ArrayList<Ingredient> = arrayListOf()
-        llista_incial.add(Ingredient(Aliment("-1","Encara no hi ha cap ingredient", null),0, "grams"))
+        llista_incial.add(Ingredient(Aliment("-1",getString(R.string.sense_ingredients), null),0, getString(R.string.grams)))
 
         ingredientList_adapter = llista_ingredients_adapter(llista_incial, this, object : OnItemClickListener {
                 override fun onItemCLick(o: Ingredient) {
                     var dialog = BottomSheetDialog(this@NewRecipe)
                     var view_layout = layoutInflater.inflate(R.layout.bottom_sheet_dialog,null)
-                    view_layout.texte.text = "Aliment seleccionat: " + o.aliment.nom
+                    view_layout.texte.text = getString(R.string.aliment_seleccionat) + o.aliment.nom
 
                     val unitats: Array<String>
 
                     if(o.aliment.codi.equals("-1")){
-                        unitats = arrayOf("g", "Kg", "peçes")
+                        unitats = arrayOf("g", "Kg", getString(R.string.peces))
                     }
                     else{
                         val list = o.aliment.units?.map { it.name}
                         unitats = list?.toTypedArray()!!
                     }
 
-                    //val unitats = arrayOf("g", "Kg", "peçes")
+                    //val unitats = arrayOf("g", "Kg", "peces")
                     view_layout.picker_unitats.displayedValues = unitats
                     view_layout.picker_unitats.minValue = 0
                     view_layout.picker_unitats.maxValue = unitats.size -1
@@ -303,7 +303,7 @@ class NewRecipe : AppCompatActivity() {
                 })
 
             if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty()){
-                Toast.makeText(this,"Falten camps a omplir!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
             }else{
                 nova_Recepta.nom_recepta = recipeTitle.text.toString()
                 progress_bar.visibility = View.VISIBLE
@@ -318,7 +318,7 @@ class NewRecipe : AppCompatActivity() {
     }
     private fun uploadImageToFirebaseStorage(){
         if(selectedPhotoUri == null){
-            Toast.makeText(this,"Falta una foto de recepta!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this,getString(R.string.falta_foto), Toast.LENGTH_LONG).show()
             return
         }
         receptaUUID = UUID.randomUUID().toString()
@@ -328,7 +328,7 @@ class NewRecipe : AppCompatActivity() {
             ref.downloadUrl.addOnSuccessListener {
                 saveRecipeToFirebaseDatabase(it.toString(), this)
             }.addOnFailureListener {
-                    Toast.makeText(this, "Error al penjar la imatge", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.error_imatge), Toast.LENGTH_LONG).show()
                 progress_bar.visibility = View.INVISIBLE
                 this!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
@@ -359,7 +359,7 @@ class NewRecipe : AppCompatActivity() {
             override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
                 progress_bar.visibility = View.INVISIBLE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                Toast.makeText(c, "Penjada correctament", Toast.LENGTH_LONG).show()
+                Toast.makeText(c, getString(R.string.foto_ok), Toast.LENGTH_LONG).show()
 
             }
 
@@ -384,7 +384,7 @@ class NewRecipe : AppCompatActivity() {
             start()
         }
 
-        llista.add(Unitat("grams","1"))
+        llista.add(Unitat(getString(R.string.grams),"1"))
 
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,

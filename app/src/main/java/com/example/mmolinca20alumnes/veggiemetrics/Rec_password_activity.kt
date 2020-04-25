@@ -21,7 +21,7 @@ class Rec_password_activity : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "Recupera la contraseña"
+        actionbar!!.title = getString(R.string.recupera_contrasenya)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
@@ -42,10 +42,10 @@ class Rec_password_activity : AppCompatActivity() {
                 FirebaseAuth.getInstance().sendPasswordResetEmail(Emailtext.text.toString())
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, "Email sent", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, getString(R.string.link_ok), Toast.LENGTH_LONG).show()
                         }
                         else{
-                            Toast.makeText(this, "Email could not be sent", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, getString(R.string.link_fail), Toast.LENGTH_LONG).show()
                         }
                     }
             }

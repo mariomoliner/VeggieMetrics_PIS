@@ -61,9 +61,11 @@
     <string name="omplir_dades">Cal omplir totes les dades</string>
     <string name="error_imatge">Error al penjar la imatge</string>
     <string name="actualitzacio">Actualització de dades correcta</string>
-    <string name="nom_necessari">Es necessita un nom d\'usuari per desar canvis</string>
+    <string name="falta_foto">Falta una foto de recepta!</string>
+    <string name="foto_ok">Foto penjada correctament</string>
 
     <!--Strings del perfil-->
+    <string name="nom_necessari">Es necessita un nom d\'usuari per desar canvis</string>
     <string name="sense_nom">Sense Nom</string>
     <string name="correu_exemple">sampleuser@gmail.com</string>
     <string name="dades_personals">Dades personals</string>

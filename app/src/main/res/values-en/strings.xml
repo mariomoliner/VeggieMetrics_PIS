@@ -60,9 +60,11 @@
     <string name="omplir_dades">You must fill in all the fields</string>
     <string name="error_imatge">Picture post failed</string>
     <string name="actualitzacio">Data update successful</string>
-    <string name="nom_necessari">A profile name is required to save</string>
+    <string name="falta_foto">Falta una foto de recepta!</string>
+    <string name="foto_ok">Foto penjada correctament</string>
 
     <!--Strings del perfil-->
+    <string name="nom_necessari">A profile name is required to save</string>
     <string name="sense_nom">No name</string>
     <string name="correu_exemple">sampleuser@gmail.com</string>
     <string name="dades_personals">Personal data</string>
