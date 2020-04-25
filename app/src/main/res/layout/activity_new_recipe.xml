@@ -137,6 +137,14 @@
                     android:padding="10dp"
                     android:text="@string/publica" />
 
+            <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="350dp"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="invisible"/>
+
         </RelativeLayout>
         </LinearLayout>
     </ScrollView>
