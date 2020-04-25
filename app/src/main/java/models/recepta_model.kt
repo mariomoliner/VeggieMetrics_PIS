@@ -5,15 +5,22 @@ class recepta_model{
     private var autor: String
     private var fotoRecepta: String
     private var id: String
-    lateinit var caracteristiques: String
+    private var caracteristiques: String
 
-
+/*
     constructor(recepta: kotlin.String, autor: kotlin.String, fotoRecepta: kotlin.String, id: kotlin.String, receptaDetall: models.recepta_detall, s: String){
         this.recepta = recepta
         this.autor = autor
         this.fotoRecepta = fotoRecepta
         this.id = id
+    }*/
 
+    constructor(recepta: String, autor: String, fotoRecepta: String, id: String, caracteristiques: String){
+        this.recepta = recepta
+        this.autor = autor
+        this.fotoRecepta = fotoRecepta
+        this.id = id
+        this.caracteristiques = caracteristiques
     }
 
     constructor(recepta: String, autor: String, fotoRecepta: String, id: String){
@@ -21,22 +28,21 @@ class recepta_model{
         this.autor = autor
         this.fotoRecepta = fotoRecepta
         this.id = id
+        this.caracteristiques = ""
     }
     constructor(recepta: String, autor: String, fotoRecepta: String){
         this.recepta = recepta
         this.autor = autor
         this.fotoRecepta = fotoRecepta
         this.id = ""
+        this.caracteristiques = ""
     }
     constructor(recepta: String, autor: String){
         this.recepta = recepta
         this.autor = autor
         this.fotoRecepta = ""
         this.id = ""
-    }
-
-    fun add_carac(c: String){
-        this.caracteristiques = c
+        this.caracteristiques = ""
     }
 
     //Getters:
@@ -52,5 +58,8 @@ class recepta_model{
     }
     fun getId(): String{
         return this.id
+    }
+    fun getCaracteristiques(): String{
+        return this.caracteristiques
     }
 }
