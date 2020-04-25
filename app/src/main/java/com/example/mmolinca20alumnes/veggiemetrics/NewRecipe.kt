@@ -57,7 +57,7 @@ class NewRecipe : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "Registra una nova recepta"
+        actionbar!!.title = getString(R.string.nova_recepta)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
@@ -94,7 +94,7 @@ class NewRecipe : AppCompatActivity() {
         ingredientsList.hasFixedSize()
 
         var llista_incial : ArrayList<Ingredient> = arrayListOf()
-        llista_incial.add(Ingredient(Aliment("-1","Encara no hi ha cap ingredient"),0, "gram"))
+        llista_incial.add(Ingredient(Aliment("-1",getString(R.string.sense_ingredients)),0, getString(R.string.grams)))
 
         ingredientList_adapter = llista_ingredients_adapter(llista_incial, this, object : OnItemClickListener {
                 override fun onItemCLick(o: Ingredient) {
@@ -104,7 +104,7 @@ class NewRecipe : AppCompatActivity() {
 
 
 
-                    val unitats = arrayOf("g", "Kg", "peçes")
+                    val unitats = arrayOf("g", "Kg", getString(R.string.peces))
                     view_layout.picker_unitats.displayedValues = unitats
                     view_layout.picker_unitats.minValue = 0
                     view_layout.picker_unitats.maxValue = unitats.size -1
@@ -239,7 +239,7 @@ class NewRecipe : AppCompatActivity() {
             //TODO: Penjar altres parts de la recepta a firebase
             //Penjem la foto de la recepta al nostre Storage de Firebase:
             uploadImageToFirebaseStorage()
-            Toast.makeText(this, "Cal omplir totes les dades", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
         }
     }
     private fun uploadImageToFirebaseStorage(){
@@ -251,7 +251,7 @@ class NewRecipe : AppCompatActivity() {
             ref.downloadUrl.addOnSuccessListener {
                 saveRecipeToFirebaseDatabase(it.toString())
             }.addOnFailureListener {
-                    Toast.makeText(this, "Error al penjar la imatge", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.error_imatge), Toast.LENGTH_LONG).show()
             }
         }
     }

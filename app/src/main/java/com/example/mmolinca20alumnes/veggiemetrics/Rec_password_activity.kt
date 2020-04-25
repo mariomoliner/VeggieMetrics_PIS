@@ -18,7 +18,7 @@ class Rec_password_activity : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "Recupera la contraseña"
+        actionbar!!.title = getString(R.string.recupera_contrasenya)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
@@ -39,10 +39,10 @@ class Rec_password_activity : AppCompatActivity() {
                 auth.sendPasswordResetEmail(email)
                     .addOnCompleteListener(this, OnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this, "Reset link sent to your email", Toast.LENGTH_LONG)
+                            Toast.makeText(this, getString(R.string.link_ok), Toast.LENGTH_LONG)
                                 .show()
                         } else {
-                            Toast.makeText(this, "Unable to send reset mail", Toast.LENGTH_LONG)
+                            Toast.makeText(this, getString(R.string.link_fail), Toast.LENGTH_LONG)
                                 .show()
                         }
                     })
