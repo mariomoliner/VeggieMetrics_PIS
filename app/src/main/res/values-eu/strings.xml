@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Strings de títols-->
     <string name="app_name">VeggieMetrics</string>
     <string name="main_activity">Main Activity</string>
-    <string name="Home_Button">Home</string>
-    <string name="Receptes_Button">Receptes</string>
-    <string name="Perfil_Button">Perfil</string>
-    <string name="contrasenya">Password</string>
-    <string name="usuari">User</string>
-    <string name="inicia_sessio">Inicia sessió</string>
-    <string name="new_user">Crea un nou usuari</string>
-    <string name="miss_pass">Has oblidat la contrasenya?</string>
     <string name="home">Home</string>
     <string name="receptes">Receptes</string>
     <string name="perfil">Perfil</string>
     <string name="option_1">option_1</string>
     <string name="option_2">option_2</string>
     <string name="option_3">option_3</string>
+    <string name="nova_recepta">Registra una nova recepta</string>
+    <string name="recupera_contrasenya">Recupera la contrasenya</string>
+    <string name="Registre">Registre</string>
+    <string name="test_setmanal">Test setmanal</string>
+
+
+    <!--Strings de l'inici-->
+    <string name="contrasenya">Contrasenya</string>
+    <string name="usuari">Usuari</string>
+    <string name="inicia_sessio">Inicia sessió</string>
+    <string name="new_user">Crea un nou usuari</string>
+    <string name="miss_pass">Has oblidat la contrasenya?</string>
+    <string name="contrasenya_minima">Contrasenya (mín. 6 caràcters)</string>
+    <string name="repetir_contrasenya">Repeteix la contrasenya </string>
+    <string name="registre">Registra\'m</string>
+    <string name="camp_buit">Un dels camps està buit</string>
+    <string name="sessio_iniciada">Sessió iniciada</string>
+    <string name="error_inici">No s\'ha pogut iniciar sessió</string>
+    <string name="link_ok">Link de recuperació enviat al correu</string>
+    <string name="link_fail">No s\'ha pogut recuperar la contrasenya</string>
+    <string name="coincidir_contrasenyes">Les contrasenyes han de coincidir</string>
+    <string name="registrat">Registrat correctament</string>
+    <string name="no_registrat">No s\'ha pogut fer el registre</string>
+
+    <!--Strings generals-->
     <string name="add">add</string>
     <string name="Nova_recepta">Nova recepta</string>
     <string name="nom_recepta">Nom de la recepta</string>
@@ -37,14 +55,17 @@
     <string name="preferits">Preferits</string>
     <string name="grams">grams</string>
     <string name="autor_title">Autor: </string>
-    <string name="contrasenya_minima">Contrasenya (mín. 6 caràcters)</string>
-    <string name="repetir_contrasenya">Repeteix la contrasenya </string>
-    <string name="registre">Registra\'m</string>
-
-
-
+    <string name="sense_ingredients">Encara no hi ha cap ingredient</string>
+    <string name="aliment_seleccionat">Aliment seleccionat: </string>
+    <string name="peces">peces</string>
+    <string name="omplir_dades">Cal omplir totes les dades</string>
+    <string name="error_imatge">Error al penjar la imatge</string>
+    <string name="actualitzacio">Actualització de dades correcta</string>
+    <string name="falta_foto">Falta una foto de recepta!</string>
+    <string name="foto_ok">Foto penjada correctament</string>
 
     <!--Strings del perfil-->
+    <string name="nom_necessari">Es necessita un nom d\'usuari per desar canvis</string>
     <string name="sense_nom">Sense Nom</string>
     <string name="correu_exemple">sampleuser@gmail.com</string>
     <string name="dades_personals">Dades personals</string>
@@ -55,16 +76,6 @@
     <string name="embaras">Estàs embarassada?</string>
     <string name="dieta">Dieta</string>
     <string name="alergia">Al·lèrgies</string>
-    <string name="gluten">Gluten</string>
-    <string name="crustacis">Crustacis</string>
-    <string name="ous">Ous</string>
-    <string name="cacahuets">Cacahuets</string>
-    <string name="soja">Soja</string>
-    <string name="lactis">Lactis</string>
-    <string name="fruits_closca">Fruits amb closca</string>
-    <string name="api">Api</string>
-    <string name="sesam">Grans de sèsam</string>
-    <string name="moluscos">Mol·luscos</string>
     <string name="desa">Desa canvis</string>
     <string name="analisi">Anàlisi nutricional</string>
     <string name="imc">IMC:</string>
@@ -74,11 +85,15 @@
     <string name="omega">Omega 3:</string>
     <string name="calci">Calci:</string>
     <string name="test">Test Setmanal</string>
-
-
-
-
-
+    <string name="dades_incorrectes">Dades incorrectes al perfil</string>
+    <string name="imc1">Pes insuficient</string>
+    <string name="imc2">Pes normal</string>
+    <string name="imc3">Sobrepès grau I</string>
+    <string name="imc4">Sobrepès grau II</string>
+    <string name="imc5">Obesitat grau I</string>
+    <string name="imc6">Obesitat grau II</string>
+    <string name="imc7">Obesitat grau III</string>
+    <string name="imc8">Obesitat grau IV</string>
 
     <!--Strings del test setmanal-->
     <string name="send_test">Resultats</string>
@@ -126,30 +141,62 @@
     <string name="more_than_6_daily">6 o més al dia</string>
     <string name="hardly_ever">Gens o molt puntualment</string>
     <string name="almost_daily">La majoria de dies de la setmana</string>
+    <string name="no_eat">"no n’he menjat res"</string>
+    <string name="eat_abit">"n’he menjat 1 o 2 vegades alguna ració"</string>
+    <string name="eat_daily">"n’he menjat alguna ració més o menys cada dia"</string>
+    <string name="eat_more_daily">"cada dia n’he pres més d’una ració"</string>
     <string name="daily">Una ració diària aproximadament</string>
     <string name="more_than_daily">Diverses racions diàriament</string>
     <string name="recepta_fav1">Recepta fav1</string>
     <string name="autor">autor</string>
     <string name="introduccio_test">Respon les següents preguntes amb l\'opció que més s\'assembli a la teva alimentació durant els últims 7 dies. Al acabar, es mostraran els resultats en el perfil.</string>
+    <string name="falten_preguntes">Falten preguntes per contestar</string>
+    <string name="avis1">- Ingesta de fruita i verdura insuficient. Es recomana prendre 5 peces diàriament</string>
+    <string name="avis2">- Ingesta de fruita i verdura massa elevada. Perjudica l\'absorció de calci i ferro</string>
+    <string name="avis3">- Recomanable consumir més verdura de fulla verda per a una absorció de ferro òptima</string>
+    <string name="avis4">- Recomanable reduir el consum de cafè després dels àpats principals. Dificulta l\'absorció de ferro</string>
+    <string name="avis5">- La ingesta de dolços i rebosteria actual podria dificultar l\'absorció de ferro</string>
+    <string name="avis6">- La ingesta d\'aliments processats actual podria dificultar l\'absorció de calci</string>
+    <string name="avis7">- la ingesta de begudes carbonatades actual podria dificultar l\'absorció de calci</string>
+    <string name="avis8">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegetariana</string>
+    <string name="avis9">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegana</string>
 
     <!--Strings de desplegables-->
+    <string name="vegana">Vegana</string>
+    <string name="vegetariana">Vegetariana</string>
+    <string name="flexitariana">Flexitariana</string>
+    <string name="piscivegetariana">Piscivegetariana</string>
     <string-array name="Dietes">
-        <item>Vegana</item>
-        <item>Vegetariana</item>
-        <item>Flexitariana</item>
-        <item>Piscivegetariana</item>
+        <item>@string/vegana</item>
+        <item>@string/vegetariana</item>
+        <item>@string/flexitariana</item>
+        <item>@string/piscivegetariana</item>
     </string-array>
 
+    <string name="man">Home</string>
+    <string name="woman">Dona</string>
     <string-array name="Sex">
-        <item>Home</item>
-        <item>Dona</item>
+        <item>@string/man</item>
+        <item>@string/woman</item>
     </string-array>
 
+    <string name="si">Sí</string>
+    <string name="no">No</string>
     <string-array name="Pregnant">
-        <item>Sí</item>
-        <item>No</item>
+        <item>@string/si</item>
+        <item>@string/no</item>
     </string-array>
 
+    <string name="gluten">Gluten</string>
+    <string name="crustacis">Crustacis</string>
+    <string name="ous">Ous</string>
+    <string name="cacahuets">Cacahuets</string>
+    <string name="soja">Soja</string>
+    <string name="lactis">Lactis</string>
+    <string name="fruits_closca">Fruits amb closca</string>
+    <string name="api">Api</string>
+    <string name="sesam">Grans de sèsam</string>
+    <string name="moluscos">Mol·luscos</string>
     <string-array name="Allergy">
         <item>@string/gluten</item>
         <item>@string/crustacis</item>
@@ -162,4 +209,5 @@
         <item>@string/sesam</item>
         <item>@string/moluscos</item>
     </string-array>
+
 </resources>

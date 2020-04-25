@@ -50,7 +50,8 @@
                         android:gravity="center"
                         android:inputType="textMultiLine"
                         android:maxLines="2"
-                        android:text="@string/sense_nom"
+                        android:text=""
+                        android:hint="@string/sense_nom"
                         android:textSize="25sp"
                         android:layout_toEndOf="@id/profilePic" />
 
@@ -329,6 +330,7 @@
                         android:layout_below="@+id/allergyLayout"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
+                        android:padding="15dp"
                         android:text="@string/desa" />
 
                 <TextView

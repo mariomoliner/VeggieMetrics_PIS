@@ -27,8 +27,7 @@
                     android:text="@string/introduccio_test"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:layout_marginBottom="20dp"
-                    ></TextView>
+                    android:layout_marginBottom="20dp" />
 
             <!--PREGUNTA 1-->
             <TextView
@@ -479,22 +478,22 @@
                         android:id="@+id/radio13_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No n’he menjat res"/>
+                        android:text="@string/no_eat"/>
                 <RadioButton
                         android:id="@+id/radio13_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="N’he menjat 1 o 2 vegades alguna ració"/>
+                        android:text="@string/eat_abit"/>
                 <RadioButton
                         android:id="@+id/radio13_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="N’he menjat alguna ració més o menys cada dia"/>
+                        android:text="@string/eat_daily"/>
                 <RadioButton
                         android:id="@+id/radio13_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cada dia n’he pres més d’una ració"/>
+                        android:text="@string/eat_more_daily"/>
             </RadioGroup>
 
             <!--PREGUNTA 14-->
@@ -551,22 +550,22 @@
                         android:id="@+id/radio15_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="cap dia"/>
+                        android:text="@string/never"/>
                 <RadioButton
                         android:id="@+id/radio15_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="en algun cas puntual"/>
+                        android:text="@string/sometimes2"/>
                 <RadioButton
                         android:id="@+id/radio15_c"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diversos dies a la setmana"/>
+                        android:text="@string/almost_daily"/>
                 <RadioButton
                         android:id="@+id/radio15_d"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cada dia"/>
+                        android:text="@string/always2"/>
             </RadioGroup>
 
             <!--BOTÓ FINAL-->
