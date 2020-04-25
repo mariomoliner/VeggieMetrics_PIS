@@ -76,7 +76,7 @@
 
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="Autor: " />
+                        android:text="@string/autor_title" />
 
                 <TextView
                         android:id="@+id/autor"

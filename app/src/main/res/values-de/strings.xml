@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">VeggieMetrics</string>
     <string name="main_activity">Main Activity</string>
     <string name="Home_Button">Home</string>
     <string name="Receptes_Button">Receptes</string>
     <string name="Perfil_Button">Perfil</string>
-    <string name="contrasenya">Contrasenya</string>
-    <string name="usuari">Usuari</string>
+    <string name="contrasenya">Password</string>
+    <string name="usuari">User</string>
     <string name="inicia_sessio">Inicia sessió</string>
     <string name="new_user">Crea un nou usuari</string>
     <string name="miss_pass">Has oblidat la contrasenya?</string>
@@ -161,5 +162,4 @@
         <item>@string/sesam</item>
         <item>@string/moluscos</item>
     </string-array>
-
 </resources>

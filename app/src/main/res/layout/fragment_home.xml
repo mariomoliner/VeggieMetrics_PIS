@@ -36,7 +36,7 @@
                     android:textStyle="bold"
                     android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"
-                    android:text="Top receptes de la setmana"
+                    android:text="@string/top"
                     android:textSize="15dp"/>
 
             <LinearLayout
@@ -70,7 +70,7 @@
                     android:id="@+id/RecomendedTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recomanades per a tu"
+                    android:text="@string/recomanades"
                     android:textStyle="bold"
                     android:layout_below="@+id/WeeklyTop"
                     android:layout_marginTop="20dp"
@@ -106,7 +106,7 @@
                     android:id="@+id/FavoriteTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Preferits"
+                    android:text="@string/preferits"
                     android:textStyle="bold"
                     android:layout_below="@+id/Recomended"
                     android:layout_marginTop="20dp"
