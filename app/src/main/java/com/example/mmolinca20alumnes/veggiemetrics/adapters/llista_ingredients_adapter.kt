@@ -80,7 +80,7 @@ class llista_ingredients_adapter(llista: ArrayList<Ingredient>, c : Context, lis
     }
 
     fun add_Ingredient(a: Ingredient){
-        if(llista_interna.get(0).aliment.nom.equals("Encara no hi ha cap ingredient")){
+        if(llista_interna.get(0).aliment.nom.equals(context.getString(R.string.sense_ingredients))){
             llista_interna.removeAt(0)
         }
         llista_interna.add(a)

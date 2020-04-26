@@ -2,14 +2,16 @@ package models
 
 import android.net.Uri
 
-class recepta_detall(nom: String, autor: String) {
+class recepta_detall(nom: String, autor: String, d: String) {
 
     var nom_recepta: String
     var autor_recepta: String
+    var description: String
 
     lateinit var llista_ingredients: ArrayList<Ingredient>
 
     init {
+        this.description = d
         nom_recepta = nom
         autor_recepta = autor
         llista_ingredients = arrayListOf()

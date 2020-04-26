@@ -62,6 +62,18 @@ class profileFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
+    //Funció que escriu els comentaris nutricionals
+    fun escriuAvisos(codi: String): String {
+        val avisos = listOf(getString(R.string.avis1), getString(R.string.avis2), getString(R.string.avis3), getString(R.string.avis4), getString(R.string.avis5), getString(R.string.avis6), getString(R.string.avis7), getString(R.string.avis8), getString(R.string.avis9))
+        var missatge = ""
+        Toast.makeText(activity, avisos[0], Toast.LENGTH_LONG).show()
+        for (i in 1..9) {
+            if (codi.contains(i.toString()))
+                missatge += avisos[i-1] + "\n\n"
+        }
+        return missatge
+    }
+
     //Funció que modifica les barres del perfil
     fun testResults(barra: ProgressBar, resultat: String) {
         if (resultat.equals("Ok")) {
@@ -69,7 +81,7 @@ class profileFragment : Fragment() {
             barra.progress = 98
         } else if (resultat.equals("Not good")) {
             barra.getProgressDrawable().setColorFilter(Color.rgb(255,255,0), android.graphics.PorterDuff.Mode.MULTIPLY)
-            barra.progress = 67
+            barra.progress = 66
         } else if (resultat.equals("Bad")) {
             barra.getProgressDrawable().setColorFilter(Color.RED, android.graphics.PorterDuff.Mode.MULTIPLY)
             barra.progress = 33
@@ -89,7 +101,7 @@ class profileFragment : Fragment() {
                 testResults(ferro, results[1])
                 testResults(omega, results[2])
                 testResults(calci, results[3])
-                comentaris.text = results[4]
+                comentaris.text = escriuAvisos(results[4])
 
                 val childUpdates = HashMap<String, Any>()
 
@@ -97,12 +109,10 @@ class profileFragment : Fragment() {
                 childUpdates["iron"] = results[1]
                 childUpdates["omega"] = results[2]
                 childUpdates["calcium"] = results[3]
-                childUpdates["comments"] = results[4]
-
+                childUpdates["comments"] = escriuAvisos(results[4])
                 //actualitzem la info de l'usuari actual:
                 database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
             }
-
         }
 
         if(requestCode == PICK_PHOTO && resultCode ==  Activity.RESULT_OK && data != null){
@@ -158,28 +168,28 @@ class profileFragment : Fragment() {
         val w = weight.text.toString().toDouble()
 
         if (h*w == 0.0) {
-            imc_text.setText("Sense dades")
-            imc_number.setText("")
+            imc_text.setText(getString(R.string.sense_dades))
+            imc_number.setText("    ")
         }
         else {
             val imcResult = w/(h*h)
             imc_number.setText(String.format("%.2f", imcResult).toString())
             if (imcResult < 18.5)
-                imc_text.setText("Pes insuficient")
+                imc_text.setText(getString(R.string.imc1))
             else if (imcResult < 25)
-                imc_text.setText("Pes normal")
+                imc_text.setText(getString(R.string.imc2))
             else if (imcResult < 27)
-                imc_text.setText("Sobrepès grau I")
+                imc_text.setText(getString(R.string.imc3))
             else if (imcResult < 30)
-                imc_text.setText("Sobrepès grau II")
+                imc_text.setText(getString(R.string.imc4))
             else if (imcResult < 35)
-                imc_text.setText("Obesitat grau I")
+                imc_text.setText(getString(R.string.imc5))
             else if (imcResult < 40)
-                imc_text.setText("Obesitat grau II")
+                imc_text.setText(getString(R.string.imc6))
             else if (imcResult < 50)
-                imc_text.setText("Obesitat grau III")
+                imc_text.setText(getString(R.string.imc7))
             else
-                imc_text.setText("Obesitat grau IV")
+                imc_text.setText(getString(R.string.imc8))
         }
     }
 
@@ -368,7 +378,7 @@ class profileFragment : Fragment() {
     private fun listener_canvis(){
         update.setOnClickListener {
 
-            if(!profileName.text.toString().equals("Sense nom") || ::imagepicked.isInitialized){
+            if(!profileName.text.toString().equals("") || ::imagepicked.isInitialized){
                     val profileUpdates = UserProfileChangeRequest.Builder()
                         .setDisplayName(profileName.text.toString())
 
@@ -378,7 +388,7 @@ class profileFragment : Fragment() {
                 }
                 if(height.text.toString().isEmpty() or weight.text.toString().isEmpty()){
                     //Missatge d'error, hi ha camps buits:
-                    Toast.makeText(activity, "Cal omplir totes les dades", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
                 }else{
                     //Podem fer l'update a la database correctament:
                     val childUpdates = HashMap<String, Any>()
@@ -409,12 +419,12 @@ class profileFragment : Fragment() {
                         ?.addOnCompleteListener { task ->
 
                          if (task.isSuccessful) {
-                             Toast.makeText(activity, "Actualització de dades correcta", Toast.LENGTH_LONG).show()
+                             Toast.makeText(activity, getString(R.string.actualitzacio), Toast.LENGTH_LONG).show()
                          }
                     }
                 }
             }else{
-                Toast.makeText(activity, "Es necessita un nom d'usuari per desar canvis", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, getString(R.string.nom_necessari), Toast.LENGTH_LONG).show()
             }
         }
     }

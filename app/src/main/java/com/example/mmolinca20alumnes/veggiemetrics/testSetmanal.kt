@@ -25,15 +25,6 @@ class testSetmanal : AppCompatActivity() {
     var proteines = 0.0
 
     var avisos: MutableList<String> = mutableListOf()
-    val avis1 = "- Ingesta de fruita i verdura insuficient. Es recomana prendre 5 peces diàriament"
-    val avis2 = "- Ingesta de fruita i verdura massa elevada. Perjudica l'absorció de calci i ferro"
-    val avis3 = "- Recomanable consumir més verdura de fulla verda per a una absorció de ferro òptima"
-    val avis4 = "- Recomanable reduir el consum de cafè després dels àpats principals. Dificulta l'absorció de ferro"
-    val avis5 = "- La ingesta de dolços i rebosteria actual podria dificultar l'absorció de ferro"
-    val avis6 = "- La ingesta d'aliments processats actual podria dificultar l'absorció de calci"
-    val avis7 = "- la ingesta de begudes carbonatades actual podria dificultar l'absorció de calci"
-    val avis8 = "- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegetariana"
-    val avis9 = "- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegana"
 
     var ferroDieta = 0.0
     var omegaDieta = 0.0
@@ -54,8 +45,8 @@ class testSetmanal : AppCompatActivity() {
     //Concatena en un String els elements de la llista
     fun concatenaAvisos(llista: MutableList<String>): String {
         var concatenacio = ""
-        for (avis in llista)
-            concatenacio += avis + "\n\n"
+        for (num in llista)
+            concatenacio += num
         return concatenacio
     }
 
@@ -78,7 +69,7 @@ class testSetmanal : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "Test Setmanal"
+        actionbar!!.title = getString(R.string.test_setmanal)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
@@ -89,53 +80,53 @@ class testSetmanal : AppCompatActivity() {
         dieta = intent.getStringExtra("diet")
 
         //Comprovació que les dades del perfil estan bé
-        if (pes <= 0 || edat < 4 || embaras.equals("-") || sexe.equals("-") || dieta.equals("-")) {
+        if (pes <= 0 || edat < 4) {
             val intent = Intent()
             setResult(Activity.RESULT_CANCELED, intent)
-            Toast.makeText(this, "Hi ha dades incorrectes al perfil", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.dades_incorrectes), Toast.LENGTH_LONG).show()
             finish()
         }
 
         //Càlcul dels requisits nutricionals
         //Ferro
-        if (embaras.equals("No")) {
+        if (embaras.equals(getString(R.string.no))) {
             if (edat in 4..8)
                 ferro = 10.0
             else if (edat in 9..13)
                 ferro = 8.0
-            else if (sexe.equals("Home")) {
+            else if (sexe.equals(getString(R.string.man))) {
                 if (edat in 14..18)
                     ferro = 11.0
                 else if (edat > 18)
                     ferro = 8.0
-            } else if (sexe.equals("Dona")) {
+            } else if (sexe.equals(getString(R.string.woman))) {
                 if (edat in 14..18)
                     ferro = 15.0
                 else if (edat in 19..50)
                     ferro = 18.0
                 else if (edat > 50)
                     ferro = 8.0
-            } else if (embaras.equals("Sí"))
+            } else if (embaras.equals(getString(R.string.si)))
                 ferro = 27.0
         }
         ferro *= 7.0
 
         //Omega 3
-        if (embaras.equals("No")) {
+        if (embaras.equals(getString(R.string.no))) {
             if (edat in 4..8)
                 omega = 0.9
-            else if (sexe.equals("Home")) {
+            else if (sexe.equals(getString(R.string.man))) {
                 if (edat in 9..13)
                     omega = 1.2
                 else if (edat > 13)
                     omega = 1.6
-            } else if (sexe.equals("Dona")) {
+            } else if (sexe.equals(getString(R.string.woman))) {
                 if (edat in 9..13)
                     omega = 1.0
                 else if (edat > 13)
                     omega = 1.1
             }
-        } else if (embaras.equals("Sí"))
+        } else if (embaras.equals(getString(R.string.si)))
             omega = 1.4
         omega *= 7.0
 
@@ -148,10 +139,10 @@ class testSetmanal : AppCompatActivity() {
             calci = 1000.0
         else if (edat > 70)
             calci = 1200.0
-        else if (sexe.equals("Home")) {
+        else if (sexe.equals(getString(R.string.man))) {
             if (edat in 51..70)
                 calci = 1000.0
-        } else if (sexe.equals("Dona")) {
+        } else if (sexe.equals(getString(R.string.woman))) {
             if (edat in 51..70)
                 calci = 1200.0
         }
@@ -159,14 +150,14 @@ class testSetmanal : AppCompatActivity() {
         calci *= 7.0
 
         //Proteïnes
-        if (dieta.equals("Vegetariana") || dieta.equals("Vegana")) {
-            if (embaras.equals("No"))
+        if (dieta.equals(getString(R.string.vegetariana)) || dieta.equals(getString(R.string.vegana))) {
+            if (embaras.equals(getString(R.string.no)))
                 proteines = pes
-            else if (embaras.equals("Sí"))
+            else if (embaras.equals(getString(R.string.si)))
                 proteines = 1.5 * pes
-        } else if (embaras.equals("No"))
+        } else if (embaras.equals(getString(R.string.no)))
             proteines = 0.8 * pes
-        else if (embaras.equals("Sí"))
+        else if (embaras.equals(getString(R.string.si)))
             proteines = 1.4 * pes
 
         proteines *= 7.0
@@ -309,21 +300,21 @@ class testSetmanal : AppCompatActivity() {
 
                 //Preguntes 9 i 11
                 if (radio9_a.isChecked || radio11_a.isChecked) {
-                    avisos.add(avis1)
+                    avisos.add("1")
                 } else if (radio9_b.isChecked && (radio11_a.isChecked || radio11_b.isChecked)) {
-                    avisos.add(avis1)
+                    avisos.add("1")
                 } else if (radio11_b.isChecked && (radio9_a.isChecked || radio9_b.isChecked)) {
-                    avisos.add(avis1)
+                    avisos.add("1")
                 } else if (radio9_d.isChecked && radio11_d.isChecked) {
-                    avisos.add(avis2)
+                    avisos.add("2")
                 }
 
                 //Pregunta 10
                 if (radio10_a.isChecked) {
                     ferroDieta += 6
                     calciDieta += 80
-                    if (dieta.equals("Vegetariana") || dieta.equals("Vegana"))
-                        avisos.add(avis3)
+                    if (dieta.equals(getString(R.string.vegetariana)) || dieta.equals(getString(R.string.vegana)))
+                        avisos.add("3")
                 } else if (radio10_b.isChecked) {
                     ferroDieta += 15
                     calciDieta += 200
@@ -336,43 +327,43 @@ class testSetmanal : AppCompatActivity() {
                 }
 
                 //Preguntes 12, 13, 14, 15
-                if (dieta.equals("Vegetariana") || dieta.equals("Vegana")) {
+                if (dieta.equals(getString(R.string.vegetariana)) || dieta.equals(getString(R.string.vegana))) {
                     if (radio12_c.isChecked) {
-                        avisos.add(avis4)
+                        avisos.add("4")
                     }
 
                     if (radio13_c.isChecked) {
-                        avisos.add(avis5)
+                        avisos.add("5")
                     }
 
                     if (radio14_c.isChecked) {
-                        avisos.add(avis6)
+                        avisos.add("6")
                     }
 
                     if (radio15_c.isChecked) {
-                        avisos.add(avis7)
+                        avisos.add("7")
                     }
 
-                    if (dieta.equals("Vegetariana"))
-                        avisos.add(avis8)
-                    else if (dieta.equals("Vegana"))
-                        avisos.add(avis9)
+                    if (dieta.equals(getString(R.string.vegetariana)))
+                        avisos.add("8")
+                    else if (dieta.equals(getString(R.string.vegana)))
+                        avisos.add("9")
                 }
 
                 if (radio12_d.isChecked) {
-                    avisos.add(avis4)
+                    avisos.add("4")
                 }
 
                 if (radio13_d.isChecked) {
-                    avisos.add(avis5)
+                    avisos.add("5")
                 }
 
                 if (radio14_d.isChecked) {
-                    avisos.add(avis6)
+                    avisos.add("6")
                 }
 
                 if (radio15_d.isChecked) {
-                    avisos.add(avis7)
+                    avisos.add("7")
                 }
 
                 var dades = ArrayList<String>(5)
@@ -386,15 +377,8 @@ class testSetmanal : AppCompatActivity() {
                 intent.putExtra("Resultats", dades)
                 setResult(Activity.RESULT_OK, intent)
                 finish()
-
-                /* val dades = ArrayList<String>(3)
-                dades.add(0, "Hola")
-                val intent = Intent()
-                intent.putExtra("Resultats", dades)
-                setResult(Activity.RESULT_OK, intent)
-                finish() */
             } else
-                Toast.makeText(this, "Falten preguntes per contestar!", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.falten_preguntes), Toast.LENGTH_LONG).show()
         }
     }
 }

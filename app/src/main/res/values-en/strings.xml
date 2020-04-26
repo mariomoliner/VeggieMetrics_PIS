@@ -1,155 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Strings de títols-->
     <string name="app_name">VeggieMetrics</string>
     <string name="main_activity">Main Activity</string>
-    <string name="Home_Button">Home</string>
-    <string name="Receptes_Button">Receptes</string>
-    <string name="Perfil_Button">Perfil</string>
-    <string name="contrasenya">Password</string>
-    <string name="usuari">User</string>
-    <string name="inicia_sessio">Inicia sessió</string>
-    <string name="new_user">Crea un nou usuari</string>
-    <string name="miss_pass">Has oblidat la contrasenya?</string>
     <string name="home">Home</string>
-    <string name="receptes">Receptes</string>
-    <string name="perfil">Perfil</string>
+    <string name="receptes">Recipes</string>
+    <string name="perfil">Profile</string>
     <string name="option_1">option_1</string>
     <string name="option_2">option_2</string>
     <string name="option_3">option_3</string>
+    <string name="nova_recepta">Post a new recipe</string>
+    <string name="recupera_contrasenya">Password recovery</string>
+    <string name="Registre">Register</string>
+    <string name="test_setmanal">Weekly test</string>
+
+    <!--Strings de l'inici-->
+    <string name="contrasenya">Password</string>
+    <string name="usuari">User</string>
+    <string name="inicia_sessio">Log in</string>
+    <string name="new_user">Don\'t have an account? Sign up</string>
+    <string name="miss_pass">Forgot your password?</string>
+    <string name="contrasenya_minima">Password (mín. 6 characters)</string>
+    <string name="repetir_contrasenya">Repeat the password</string>
+    <string name="registre">Sign in</string>
+    <string name="camp_buit">Some fields are empty</string>
+    <string name="sessio_iniciada">Succesfully logged in</string>
+    <string name="error_inici">Log in failed</string>
+    <string name="link_ok">Recovery link sent to email</string>
+    <string name="link_fail">Password recovery unsuccessful</string>
+    <string name="coincidir_contrasenyes">Passwords must match</string>
+    <string name="registrat">Succesfully signed in</string>
+    <string name="no_registrat">Sign in failed</string>
+    <string name="email">Your email is required</string>
+
+    <!--Strings generals-->
     <string name="add">add</string>
-    <string name="Nova_recepta">Nova recepta</string>
-    <string name="nom_recepta">Nom de la recepta</string>
+    <string name="Nova_recepta">New Recipe</string>
+    <string name="nom_recepta">Recipe name</string>
     <string name="ingredients">Ingredients</string>
-    <string name="preparacio">Preparació</string>
-    <string name="cerca">Cerca</string>
-    <string name="publica">Publica</string>
-    <string name="correu">Correu electrònic</string>
-    <string name="recupera">Recupera</string>
-    <string name="titol_recepta">Títol de recepta</string>
-    <string name="autor_recepta">Autor: Sample User</string>
-    <string name="data_recepta">Data: 01/01/2020</string>
-    <string name="dieta_recepta">Dieta: Vegana</string>
-    <string name="valoracio_recepta">Valoració: *****</string>
+    <string name="preparacio">Preparation</string>
+    <string name="cerca">Search</string>
+    <string name="publica">Post</string>
+    <string name="correu">E-mail</string>
+    <string name="recupera">Recover</string>
+    <string name="titol_recepta">Recipe title</string>
+    <string name="autor_recepta">Author: Sample User</string>
+    <string name="data_recepta">Date: 01/01/2020</string>
+    <string name="dieta_recepta">Diet: Vegana</string>
+    <string name="valoracio_recepta">Rating: *****</string>
     <string name="llista_ingredients">- Ingredient 1\n- Ingredient 2\n- Ingredient 3\n</string>
-    <string name="valora">Valora</string>
-    <string name="top">Top receptes de la setmana</string>
-    <string name="recomanades">Recomanades per a tu</string>
-    <string name="preferits">Preferits</string>
+    <string name="valora">Rate</string>
+    <string name="top">Top recipes of the week</string>
+    <string name="recomanades">Recommended for you</string>
+    <string name="preferits">Favourites</string>
     <string name="grams">grams</string>
-    <string name="autor_title">Autor: </string>
-    <string name="contrasenya_minima">Contrasenya (mín. 6 caràcters)</string>
-    <string name="repetir_contrasenya">Repeteix la contrasenya </string>
-    <string name="registre">Registra\'m</string>
-
-
-
+    <string name="autor_title">Author: </string>
+    <string name="sense_ingredients">No ingredients yet</string>
+    <string name="aliment_seleccionat">Selected food: </string>
+    <string name="peces">pieces</string>
+    <string name="omplir_dades">You must fill in all the fields</string>
+    <string name="error_imatge">Picture post failed</string>
+    <string name="actualitzacio">Data update successful</string>
+    <string name="falta_foto">Recipe picture required</string>
+    <string name="foto_ok">Picture posted successfully</string>
 
     <!--Strings del perfil-->
-    <string name="sense_nom">Sense Nom</string>
+    <string name="nom_necessari">A profile name is required to save</string>
+    <string name="sense_nom">No name</string>
     <string name="correu_exemple">sampleuser@gmail.com</string>
-    <string name="dades_personals">Dades personals</string>
-    <string name="edat">Edat (anys)</string>
-    <string name="alçada">Alçada (m)</string>
-    <string name="pes">Pes (Kg)</string>
-    <string name="sexe">Sexe</string>
-    <string name="embaras">Estàs embarassada?</string>
-    <string name="dieta">Dieta</string>
-    <string name="alergia">Al·lèrgies</string>
-    <string name="gluten">Gluten</string>
-    <string name="crustacis">Crustacis</string>
-    <string name="ous">Ous</string>
-    <string name="cacahuets">Cacahuets</string>
-    <string name="soja">Soja</string>
-    <string name="lactis">Lactis</string>
-    <string name="fruits_closca">Fruits amb closca</string>
-    <string name="api">Api</string>
-    <string name="sesam">Grans de sèsam</string>
-    <string name="moluscos">Mol·luscos</string>
-    <string name="desa">Desa canvis</string>
-    <string name="analisi">Anàlisi nutricional</string>
+    <string name="dades_personals">Personal data</string>
+    <string name="edat">Age (years)</string>
+    <string name="alçada">Height (m)</string>
+    <string name="pes">Weight (Kg)</string>
+    <string name="sexe">Sex</string>
+    <string name="embaras">Are you pregnant?</string>
+    <string name="dieta">Diet</string>
+    <string name="alergia">Alergies</string>
+    <string name="desa">Save changes</string>
+    <string name="analisi">Nutritional analysis</string>
     <string name="imc">IMC:</string>
-    <string name="sense_dades">Sense dades</string>
-    <string name="proteines">Proteïnes:</string>
-    <string name="ferro">Ferro:</string>
+    <string name="sense_dades">No data</string>
+    <string name="proteines">Proteins:</string>
+    <string name="ferro">Iron:</string>
     <string name="omega">Omega 3:</string>
-    <string name="calci">Calci:</string>
-    <string name="test">Test Setmanal</string>
-
-
-
-
-
+    <string name="calci">Calcium:</string>
+    <string name="test">Weekly test</string>
+    <string name="dades_incorrectes">Wrong data at profile</string>
+    <string name="imc1">Underweight</string>
+    <string name="imc2">Normal weight</string>
+    <string name="imc3">Overweight class I</string>
+    <string name="imc4">Overweight class II</string>
+    <string name="imc5">Obesity class I</string>
+    <string name="imc6">Obesity class II</string>
+    <string name="imc7">Obesity class III</string>
+    <string name="imc8">Obesity class IV</string>
 
     <!--Strings del test setmanal-->
-    <string name="send_test">Resultats</string>
-    <string name="pregunta1">1. Quantes racions de carn has consumit?</string>
-    <string name="pregunta2">2. Quantes racions de peix blau (seitó, sardina, salmó, tonyina…) has consumit?</string>
-    <string name="pregunta3">3. Quantes racions de marisc has consumit?</string>
-    <string name="pregunta4">4. Quantes racions de cereals (arròs, quinoa, cuscús...) i derivats (pasta, pa...) has pres, excloent rebosteria i dolços?</string>
-    <string name="pregunta5">5. Quantes racions de llegums has pres?</string>
-    <string name="pregunta6">6. Quantes racions de lactis (un got de llet, dos iogurts, un tros de formatge…) has pres?</string>
-    <string name="pregunta7">7. Amb quina freqüència has consumit fruits secs?</string>
-    <string name="pregunta8">8. En particular, amb quina freqüència has menjat nous i/o llavors de lli?</string>
-    <string name="pregunta9">9. Quantes racions de verdures i hortalisses has pres?</string>
-    <string name="pregunta10">10. Amb quina freqüència has inclòs verdures de fulla verda (enciam, espinacs, col…) en els teus àpats?</string>
-    <string name="pregunta11">11. Quantes peces de fruita has menjat?</string>
-    <string name="pregunta12">12. Acostumes a prendre cafè o te després dels àpats principals?</string>
-    <string name="pregunta13">13. Quina de les següents opcions descriu millor els teus hàbits respecte el consum de dolços, rebosteria i xocolata?</string>
-    <string name="pregunta14">14. Quantes racions d’aliments processats (snacks, plats precuinats…) has pres?</string>
-    <string name="pregunta15">15. Amb quina freqüència has pres begudes carbonatades? </string>
-    <string name="no_one">cap</string>
-    <string name="between_1_3">entre 1 i 3</string>
-    <string name="between_4_6">entre 4 i 6</string>
-    <string name="more_than_7">7 o més</string>
-    <string name="less_than_1">menys d\'una al dia</string>
-    <string name="between_1_2">entre 1 i 2</string>
-    <string name="more_than_3">3 o més</string>
-    <string name="never">No, en cap moment</string>
-    <string name="sometimes">Sí, en algun cas puntual</string>
-    <string name="usually">Sí, en bastants àpats</string>
-    <string name="always">Sí, gairebé sempre</string>
-    <string name="between_3_5">entre 3 i 5</string>
+    <string name="send_test">Results</string>
+    <string name="pregunta1">1. How many servings of meat have you consumed?</string>
+    <string name="pregunta2">2. How many servings of blue fish (anchovy, sardine, salmon, tuna…) have you consumed?</string>
+    <string name="pregunta3">3. How many servings of shellfish have you consumed?</string>
+    <string name="pregunta4">4. How many servings of cereals (rice, quinoa, couscous…) and derivatives (pasta, bread…) have you consumed, excluding pastries and sweets?</string>
+    <string name="pregunta5">5. How many servings of legumes have you consumed?</string>
+    <string name="pregunta6">6. How many servings of dairy products (a glass of milk, two yogurts, a piece of cheese…) have you consumed?</string>
+    <string name="pregunta7">7. How often have you eaten nuts?</string>
+    <string name="pregunta8">8. In particular, how often have you eaten walnuts and/or flax seeds?</string>
+    <string name="pregunta9">9. How many servings of vegetables and greens have you consumed?</string>
+    <string name="pregunta10">10. How often have you included leafy green vegetables (lettuce, spinach, cabbage) in your meals?</string>
+    <string name="pregunta11">11. How many pieces of fruit have you eaten?</string>
+    <string name="pregunta12">12. Do you usually have coffee or tea after main dishes?</string>
+    <string name="pregunta13">13. Which of the following describes better your habits regarding the consumption of sweets, pastries and chocolate?</string>
+    <string name="pregunta14">14. How many servings of processed foods (snacks, pre-cooked dishes…) have you consumed?</string>
+    <string name="pregunta15">15. How often have you had carbonated beverages? </string>
+    <string name="no_one">none</string>
+    <string name="between_1_3">between 1 and 3</string>
+    <string name="between_4_6">between 4 and 6</string>
+    <string name="more_than_7">7 or more</string>
+    <string name="less_than_1">less than 1 daily</string>
+    <string name="between_1_2">between 1 and 2</string>
+    <string name="more_than_3">3 or more</string>
+    <string name="never">never</string>
+    <string name="sometimes">occasionally</string>
+    <string name="usually">usually</string>
+    <string name="always">always</string>
+    <string name="between_3_5">between 3 and 5</string>
     <string name="more_than_6">6 o més</string>
-    <string name="never2">Mai</string>
-    <string name="sometimes2">En algun cas puntual</string>
-    <string name="usually2">Bastants dies</string>
-    <string name="always2">Cada dia</string>
-    <string name="between_1_4">entre 1 i 4</string>
-    <string name="between_4_8">entre 4 i 8</string>
-    <string name="more_than_9">9 o més</string>
-    <string name="one_or_less_daily">1 o menys al dia</string>
-    <string name="between_1_2_daily">entre 1 i 2 al dia</string>
-    <string name="between_2_3_daily">entre 2 i 3 al dia</string>
-    <string name="between_3_5_daily">entre 3 i 5 al dia</string>
-    <string name="between_4_5_daily">entre 4 i 5 al dia</string>
-    <string name="more_than_3_daily">3 o més al dia</string>
-    <string name="more_than_6_daily">6 o més al dia</string>
-    <string name="hardly_ever">Gens o molt puntualment</string>
-    <string name="almost_daily">La majoria de dies de la setmana</string>
-    <string name="daily">Una ració diària aproximadament</string>
-    <string name="more_than_daily">Diverses racions diàriament</string>
-    <string name="recepta_fav1">Recepta fav1</string>
-    <string name="autor">autor</string>
-    <string name="introduccio_test">Respon les següents preguntes amb l\'opció que més s\'assembli a la teva alimentació durant els últims 7 dies. Al acabar, es mostraran els resultats en el perfil.</string>
+    <string name="never2">never</string>
+    <string name="sometimes2">sometimes</string>
+    <string name="usually2">quite a few days</string>
+    <string name="always2">everyday</string>
+    <string name="between_1_4">between 1 and 4</string>
+    <string name="between_4_8">between 4 and 8</string>
+    <string name="more_than_9">9 or more</string>
+    <string name="one_or_less_daily">1 or less daily</string>
+    <string name="between_1_2_daily">between 1 and 2 daily</string>
+    <string name="between_2_3_daily">between 2 and 3 daily</string>
+    <string name="between_3_5_daily">between 3 and 5 daily</string>
+    <string name="between_4_5_daily">between 4 and 5 daily</string>
+    <string name="more_than_3_daily">3 or more daily</string>
+    <string name="more_than_6_daily">6 or more daily</string>
+    <string name="hardly_ever">hardly ever</string>
+    <string name="almost_daily">almost daily</string>
+    <string name="daily">a serving daily, approximately</string>
+    <string name="more_than_daily">several servings daily</string>
+    <string name="no_eat">"I haven't eaten any"</string>
+    <string name="eat_abit">"I've eaten a serving once or twice"</string>
+    <string name="eat_daily">"I've eaten a serving more or less everyday"</string>
+    <string name="eat_more_daily">"Everyday I've eaten more than one serving"</string>
+    <string name="recepta_fav1">Recipe fav1</string>
+    <string name="autor">author</string>
+    <string name="introduccio_test">Answer the following questions with the option that most closely resembles your diet for the past 7 days. When finished, the results will be displayed in the profile.</string>
+    <string name="falten_preguntes">There are questions without answer</string>
+    <string name="avis1">- Insufficient fruit and vegetable intake. It is recommended to consume 5 pieces daily</string>
+    <string name="avis2">- Intake of fruit and vegetables too high. It impairs the absorption of calcium and iron</string>
+    <string name="avis3">- It is recommended to consume more leafy green vegetables for an optimal iron absorption</string>
+    <string name="avis4">- It is recommended to reduce coffee consumption after main meals. It makes it difficult to absorb iron</string>
+    <string name="avis5">- The current intake of sweets and pastries may impair a proper iron absorption</string>
+    <string name="avis6">- The current intake of processed foods may impair a proper calcium absorption</string>
+    <string name="avis7">- The current carbonated beverage intake may impair a proper calcium absorption</string>
+    <string name="avis8">- It is advisable to go to a nutritionist to meet the need for vitamin B12, not present in the vegetarian diet</string>
+    <string name="avis9">- It is advisable to go to a nutritionist to meet the need for vitamin B12, not present in the vegan diet</string>
 
     <!--Strings de desplegables-->
+    <string name="vegana">Vegan</string>
+    <string name="vegetariana">Vegetarian</string>
+    <string name="flexitariana">Flexitarian</string>
+    <string name="piscivegetariana">Pescetarian</string>
     <string-array name="Dietes">
-        <item>Vegana</item>
-        <item>Vegetariana</item>
-        <item>Flexitariana</item>
-        <item>Piscivegetariana</item>
+        <item>@string/vegana</item>
+        <item>@string/vegetariana</item>
+        <item>@string/flexitariana</item>
+        <item>@string/piscivegetariana</item>
     </string-array>
 
+    <string name="man">Male</string>
+    <string name="woman">Female</string>
     <string-array name="Sex">
-        <item>Home</item>
-        <item>Dona</item>
+        <item>@string/man</item>
+        <item>@string/woman</item>
     </string-array>
 
+    <string name="si">Yes</string>
+    <string name="no">No</string>
     <string-array name="Pregnant">
-        <item>Sí</item>
-        <item>No</item>
+        <item>@string/si</item>
+        <item>@string/no</item>
     </string-array>
 
+    <string name="gluten">Gluten</string>
+    <string name="crustacis">Crustaceans</string>
+    <string name="ous">Eggs</string>
+    <string name="cacahuets">Peanuts</string>
+    <string name="soja">Soy</string>
+    <string name="lactis">Dairy products</string>
+    <string name="fruits_closca">Shell fruits</string>
+    <string name="api">Celery</string>
+    <string name="sesam">Sesame seeds</string>
+    <string name="moluscos">Mollusks</string>
     <string-array name="Allergy">
         <item>@string/gluten</item>
         <item>@string/crustacis</item>

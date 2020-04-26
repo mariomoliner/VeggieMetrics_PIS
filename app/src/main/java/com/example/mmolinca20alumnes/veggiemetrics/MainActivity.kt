@@ -41,21 +41,21 @@ class MainActivity : AppCompatActivity() {
                 menuItem.itemId == R.id.home_nav -> {
                     fragment.setUser(auth)
                     loadFragment(fragment)
-                    supportActionBar!!.title = "Home"
+                    supportActionBar!!.title = getString(R.string.home)
                     return@setOnNavigationItemSelectedListener true
                 }
                 menuItem.itemId == R.id.receptes_nav -> {
                     var fragmentR = recipesFragment()
                     fragmentR.setUser(auth)
                     loadFragment(fragmentR)
-                    supportActionBar!!.title = "Receptes"
+                    supportActionBar!!.title = getString(R.string.receptes)
                     return@setOnNavigationItemSelectedListener true
                 }
                 menuItem.itemId == R.id.perfil_nav -> {
                     var fragmentP = profileFragment()
                     fragmentP.setUser(auth)
                     loadFragment(fragmentP)
-                    supportActionBar!!.title = "Perfil"
+                    supportActionBar!!.title = getString(R.string.perfil)
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> {
