@@ -69,7 +69,6 @@ class profileFragment : Fragment() {
     fun escriuAvisos(codi: String): String {
         val avisos = listOf(getString(R.string.avis1), getString(R.string.avis2), getString(R.string.avis3), getString(R.string.avis4), getString(R.string.avis5), getString(R.string.avis6), getString(R.string.avis7), getString(R.string.avis8), getString(R.string.avis9))
         var missatge = ""
-        Toast.makeText(activity, avisos[0], Toast.LENGTH_LONG).show()
         for (i in 1..9) {
             if (codi.contains(i.toString()))
                 missatge += avisos[i-1] + "\n\n"
