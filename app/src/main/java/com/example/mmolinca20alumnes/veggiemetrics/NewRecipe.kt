@@ -302,7 +302,7 @@ class NewRecipe : AppCompatActivity() {
 
                 })
 
-            if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty()){
+            if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty() || nova_Recepta.llista_ingredients.size == 0){
                 Toast.makeText(this,getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
             }else{
                 nova_Recepta.nom_recepta = recipeTitle.text.toString()
