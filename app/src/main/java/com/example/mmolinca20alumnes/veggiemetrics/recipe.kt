@@ -24,8 +24,6 @@ class recipe : AppCompatActivity() {
     val user = FirebaseAuth.getInstance().currentUser
     lateinit var ref:DatabaseReference
     lateinit var reference:DatabaseReference
-    lateinit var rid: String
-    lateinit var ratingUUID: String
 
     lateinit var id_recept: String
 
