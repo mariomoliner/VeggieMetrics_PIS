@@ -1,5 +1,6 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
+import android.Manifest
 import android.Manifest.permission.CAMERA
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
@@ -29,6 +30,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -48,10 +50,11 @@ class profileFragment : Fragment() {
     //Components del layout modificables:
     val PICK_PHOTO = 1111
     val REQUEST_IMAGE_CAPTURE = 2222
+    val CAMERA_REQUEST = 3333
+    val WRITE_PERMISSION = 4444
     lateinit var imagepicked: Uri
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
-    lateinit var list_allergy: List<String>
     lateinit var list_pregnant: List<String>
     //base de dades a firebase:
     private lateinit var database: DatabaseReference// ...
@@ -78,7 +81,7 @@ class profileFragment : Fragment() {
     fun testResults(barra: ProgressBar, resultat: String) {
         if (resultat.equals("Ok")) {
             barra.getProgressDrawable().setColorFilter(Color.rgb(0,187,45), android.graphics.PorterDuff.Mode.MULTIPLY)
-            barra.progress = 98
+            barra.progress = 99
         } else if (resultat.equals("Not good")) {
             barra.getProgressDrawable().setColorFilter(Color.rgb(255,255,0), android.graphics.PorterDuff.Mode.MULTIPLY)
             barra.progress = 66
@@ -122,9 +125,14 @@ class profileFragment : Fragment() {
         }
 
         // Foto de càmera
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data!!.extras.get("data") as Bitmap
-            profilePic.setImageBitmap(imageBitmap)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK && data != null) {
+            val imageBitmap = data.extras.get("data") as Bitmap
+            Glide.with(this).load(imageBitmap).centerCrop().into(profilePic)
+
+            val bytes = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+            val path = MediaStore.Images.Media.insertImage(context?.contentResolver, imageBitmap, "Title", null)
+            imagepicked = Uri.parse(path.toString())
         }
 
     }
@@ -156,6 +164,8 @@ class profileFragment : Fragment() {
         photo_listener()
         listener_botoTest()
         listener_sex()
+        gallery_listener()
+        camera_listener()
     }
 
     fun setUser(userloged : FirebaseAuth){
@@ -327,17 +337,6 @@ class profileFragment : Fragment() {
 
     }
 
-
-    // Foto perfil
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(activity!!.packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
-        }
-    }
-
-
     //Listener del botó pel test setmanal:
     private fun listener_botoTest(){
         test_button.setOnClickListener{
@@ -429,13 +428,86 @@ class profileFragment : Fragment() {
         }
     }
 
-    //Listener per quan presionem la foto per canviar-la:
-    private fun photo_listener(){
-        profilePic.setOnClickListener {
+    // Foto perfil
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(activity!!.packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
+    }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            CAMERA_REQUEST -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED))
+                    dispatchTakePictureIntent()
+                else
+                    Toast.makeText(activity, getString(R.string.camera_necessaria), Toast.LENGTH_LONG).show()
+                return
+            }
+
+            WRITE_PERMISSION -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST)
+                    } else
+                        dispatchTakePictureIntent()
+                } else
+                    Toast.makeText(activity, getString(R.string.camera_necessaria), Toast.LENGTH_LONG).show()
+                return
+            }
+        }
+    }
+
+    //Listener del botó de la galeria:
+    private fun gallery_listener(){
+        galleryButton.setOnClickListener {
+            canviVisio(false)
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
             startActivityForResult(photoPickerIntent, PICK_PHOTO);
+        }
+    }
+
+    //Listener del botó de la càmera:
+    private fun camera_listener(){
+        cameraButton.setOnClickListener {
+            canviVisio(false)
+            if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED ) {
+                if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST)
+                } else
+                    dispatchTakePictureIntent()
+            } else
+                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), WRITE_PERMISSION)
+        }
+    }
+
+    //Canvia la visió dels botons de la foto de perfil
+    private fun canviVisio(b: Boolean) {
+        if (b) {
+            galleryButton.visibility = View.VISIBLE
+            galleryButton.isClickable = true
+            cameraButton.visibility = View.VISIBLE
+            cameraButton.isClickable = true
+            profilePic.isClickable = false
+        } else {
+            galleryButton.visibility = View.INVISIBLE
+            galleryButton.isClickable = false
+            cameraButton.visibility = View.INVISIBLE
+            cameraButton.isClickable = false
+            profilePic.isClickable = true
+        }
+    }
+
+    //Listener per quan presionem la foto per canviar-la:
+    private fun photo_listener(){
+        profilePic.setOnClickListener {
+            canviVisio(true)
+        }
+        background.setOnClickListener {
+            canviVisio(false)
         }
     }
 
@@ -447,7 +519,4 @@ class profileFragment : Fragment() {
         }
         return -1
     }
-
-
-
 }

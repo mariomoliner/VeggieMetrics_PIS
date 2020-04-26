@@ -53,9 +53,8 @@ class homeFragment : Fragment() {
         }
     }
 
-    fun setusuari(userloged : FirebaseAuth){
+    fun setUser(userloged : FirebaseAuth){
         auth = userloged
-
     }
 
     private fun setFavs(){
@@ -63,7 +62,6 @@ class homeFragment : Fragment() {
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-        auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
             .child(auth.currentUser!!.uid).child("preferides")
         llistaReceptes = arrayListOf()

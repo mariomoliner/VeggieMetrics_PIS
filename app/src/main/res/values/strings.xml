@@ -13,7 +13,6 @@
     <string name="Registre">Registre</string>
     <string name="test_setmanal">Test setmanal</string>
 
-
     <!--Strings de l'inici-->
     <string name="contrasenya">Contrasenya</string>
     <string name="usuari">Usuari</string>
@@ -31,6 +30,7 @@
     <string name="coincidir_contrasenyes">Les contrasenyes han de coincidir</string>
     <string name="registrat">Registrat correctament</string>
     <string name="no_registrat">No s\'ha pogut fer el registre</string>
+    <string name="email">Has de posar el teu email</string>
 
     <!--Strings generals-->
     <string name="add">add</string>
@@ -62,6 +62,8 @@
     <string name="actualitzacio">Actualització de dades correcta</string>
     <string name="falta_foto">Falta una foto de recepta!</string>
     <string name="foto_ok">Foto penjada correctament</string>
+    <string name="rating_actualitzat">Actualitzat el rating</string>
+    <string name="rating_guardat">Rating guardat correctament</string>
 
     <!--Strings del perfil-->
     <string name="nom_necessari">Es necessita un nom d\'usuari per desar canvis</string>
@@ -93,13 +95,16 @@
     <string name="imc6">Obesitat grau II</string>
     <string name="imc7">Obesitat grau III</string>
     <string name="imc8">Obesitat grau IV</string>
+    <string name="galeria">Galeria</string>
+    <string name="camera">Càmera</string>
+    <string name="camera_necessaria">Són necessaris permissos de càmera</string>
 
     <!--Strings del test setmanal-->
     <string name="send_test">Resultats</string>
     <string name="pregunta1">1. Quantes racions de carn has consumit?</string>
     <string name="pregunta2">2. Quantes racions de peix blau (seitó, sardina, salmó, tonyina…) has consumit?</string>
     <string name="pregunta3">3. Quantes racions de marisc has consumit?</string>
-    <string name="pregunta4">4. Quantes racions de cereals (arròs, quinoa, cuscús...) i derivats (pasta, pa...) has pres, excloent rebosteria i dolços?</string>
+    <string name="pregunta4">4. Quantes racions de cereals (arròs, quinoa, cuscús…) i derivats (pasta, pa…) has pres, excloent rebosteria i dolços?</string>
     <string name="pregunta5">5. Quantes racions de llegums has pres?</string>
     <string name="pregunta6">6. Quantes racions de lactis (un got de llet, dos iogurts, un tros de formatge…) has pres?</string>
     <string name="pregunta7">7. Amb quina freqüència has consumit fruits secs?</string>
@@ -209,4 +214,8 @@
         <item>@string/moluscos</item>
     </string-array>
 
+    <!--Strings d'opcions-->
+    <string name="logOut">Vols tancar sessió?</string>
+    <string name="sortir">Sortir</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
