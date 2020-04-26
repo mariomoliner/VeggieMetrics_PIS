@@ -94,6 +94,8 @@
     <string name="imc6">Obesitat grau II</string>
     <string name="imc7">Obesitat grau III</string>
     <string name="imc8">Obesitat grau IV</string>
+    <string name="galeria">Galeria</string>
+    <string name="camera">Càmera</string>
 
     <!--Strings del test setmanal-->
     <string name="send_test">Resultats</string>

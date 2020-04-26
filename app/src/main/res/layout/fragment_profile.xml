@@ -30,6 +30,23 @@
                         android:layout_centerHorizontal="true"
                         android:visibility="invisible"/>
 
+                <Button
+                        android:id="@+id/cameraButton"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:visibility="invisible"
+                        android:clickable="false"
+                        android:text="@string/camera"/>
+
+                <Button
+                        android:id="@+id/galleryButton"
+                        android:layout_width="120dp"
+                        android:layout_height="60dp"
+                        android:visibility="invisible"
+                        android:clickable="false"
+                        android:text="@string/galeria"
+                        android:layout_below="@+id/cameraButton"/>
+
                 <ImageView
                         android:id="@+id/profilePic"
                         android:layout_width="120dp"

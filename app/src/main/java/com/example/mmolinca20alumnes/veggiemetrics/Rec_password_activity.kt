@@ -50,7 +50,7 @@ class Rec_password_activity : AppCompatActivity() {
                         }
                     }
             }else{
-                Toast.makeText(this, "Has de posar el teu email", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.email), Toast.LENGTH_LONG).show()
             }
 
 
