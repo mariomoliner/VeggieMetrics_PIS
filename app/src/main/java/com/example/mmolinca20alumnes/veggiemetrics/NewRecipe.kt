@@ -47,7 +47,6 @@ class NewRecipe : AppCompatActivity() {
     lateinit var receptaUUID: String //Unic User ID per la recepta
     var selectedPhotoUri: Uri? = null //Uri de la foto de la recepta
     private lateinit var databaseRef: DatabaseReference
-    private lateinit var storageRef: StorageReference
     private lateinit var auth: FirebaseAuth //Necessitem extreure el nom de l'autor
     private lateinit var ingredientList_adapter: llista_ingredients_adapter
     private lateinit var nova_Recepta: recepta_detall

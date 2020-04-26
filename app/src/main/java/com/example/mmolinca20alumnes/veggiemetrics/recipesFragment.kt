@@ -28,7 +28,6 @@ class recipesFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     //base de dades a firebase:
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var storageFB: FirebaseStorage
     private var llistaReceptes = ArrayList<recepta_model>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

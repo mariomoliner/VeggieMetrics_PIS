@@ -55,7 +55,6 @@ class profileFragment : Fragment() {
     lateinit var imagepicked: Uri
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
-    lateinit var list_allergy: List<String>
     lateinit var list_pregnant: List<String>
     //base de dades a firebase:
     private lateinit var database: DatabaseReference// ...
