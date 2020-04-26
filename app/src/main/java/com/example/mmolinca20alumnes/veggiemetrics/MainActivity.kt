@@ -33,13 +33,13 @@ class MainActivity : AppCompatActivity() {
         //Primer fragment:
         var fragment : Fragment
         fragment = homeFragment()
-        fragment.setusuari(auth)
+        fragment.setUser(auth)
         loadFragment(fragment)
         supportActionBar!!.title = "Home"
         navegador_inferior.setOnNavigationItemSelectedListener { menuItem ->
             when {
                 menuItem.itemId == R.id.home_nav -> {
-                    fragment.setusuari(auth)
+                    fragment.setUser(auth)
                     loadFragment(fragment)
                     supportActionBar!!.title = "Home"
                     return@setOnNavigationItemSelectedListener true
