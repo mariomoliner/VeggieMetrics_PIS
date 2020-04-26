@@ -44,7 +44,7 @@ class homeFragment : Fragment() {
         setFavs()
     }
 
-    fun setGUIuser(){
+        fun setGUIuser(){
         if(auth.currentUser?.displayName.equals(null)){
             profileName.text = auth.currentUser!!.email
         }
@@ -53,10 +53,10 @@ class homeFragment : Fragment() {
         }
     }
 
-    fun setusuari(userloged : FirebaseAuth){
+    /*fun setusuari(userloged : FirebaseAuth){
         auth = userloged
 
-    }
+    }*/
 
     private fun setFavs(){
         progress_barFav.visibility = View.VISIBLE
