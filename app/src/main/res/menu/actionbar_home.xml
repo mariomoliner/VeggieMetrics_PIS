@@ -9,6 +9,12 @@
             app:showAsAction="always"
         />
     <item
+            android:id="@+id/exit"
+            android:title="exit"
+            android:icon="@drawable/logout"
+            app:showAsAction="always"
+        />
+    <!--<item
             android:id="@+id/op1"
             android:title="@string/option_1"
             app:showAsAction="never"
@@ -22,6 +28,6 @@
             android:id="@+id/op3"
             android:title="@string/option_3"
             app:showAsAction="never"
-            />
+            />-->
 
 </menu>

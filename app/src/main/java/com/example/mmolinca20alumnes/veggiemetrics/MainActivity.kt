@@ -88,6 +88,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, NewRecipe::class.java))
             return true
         }
+
+        if (id == R.id.exit) {
+            val newFragment = LogOutFragment()
+            newFragment.show(supportFragmentManager, "logOut")
+            return true
+        }
+/*
         if (id == R.id.op1) {
             //cal detallar les funcionalitats
             return true
@@ -99,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         if (id == R.id.op3) {
             val newFragment = LogOutFragment()
             newFragment.show(supportFragmentManager, "logOut")
-        }
+        }*/
 
         return super.onOptionsItemSelected(item)
 

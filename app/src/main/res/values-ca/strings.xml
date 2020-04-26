@@ -63,6 +63,8 @@
     <string name="actualitzacio">Actualització de dades correcta</string>
     <string name="falta_foto">Falta una foto de recepta!</string>
     <string name="foto_ok">Foto penjada correctament</string>
+    <string name="rating_actualitzat">Actualitzat el rating</string>
+    <string name="rating_guardat">Rating guardat correctament</string>
 
     <!--Strings del perfil-->
     <string name="nom_necessari">Es necessita un nom d\'usuari per desar canvis</string>
@@ -96,6 +98,7 @@
     <string name="imc8">Obesitat grau IV</string>
     <string name="galeria">Galeria</string>
     <string name="camera">Càmera</string>
+    <string name="camera_necessaria">Són necessaris permissos de càmera</string>
 
     <!--Strings del test setmanal-->
     <string name="send_test">Resultats</string>
@@ -211,5 +214,10 @@
         <item>@string/sesam</item>
         <item>@string/moluscos</item>
     </string-array>
+
+    <!--Strings d'opcions-->
+    <string name="logOut">Vols tancar sessió?</string>
+    <string name="sortir">Sortir</string>
+    <string name="cancelar">Cancelar</string>
 
 </resources>
