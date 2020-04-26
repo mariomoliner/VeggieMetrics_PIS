@@ -30,6 +30,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -50,6 +51,7 @@ class profileFragment : Fragment() {
     val PICK_PHOTO = 1111
     val REQUEST_IMAGE_CAPTURE = 2222
     val CAMERA_REQUEST = 3333
+    val WRITE_PERMISSION = 4444
     lateinit var imagepicked: Uri
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
@@ -127,6 +129,11 @@ class profileFragment : Fragment() {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK && data != null) {
             val imageBitmap = data.extras.get("data") as Bitmap
             Glide.with(this).load(imageBitmap).centerCrop().into(profilePic)
+
+            val bytes = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+            val path = MediaStore.Images.Media.insertImage(context?.contentResolver, imageBitmap, "Title", null)
+            imagepicked = Uri.parse(path.toString())
         }
 
     }
@@ -440,17 +447,24 @@ class profileFragment : Fragment() {
                     Toast.makeText(activity, getString(R.string.camera_necessaria), Toast.LENGTH_LONG).show()
                 return
             }
+
+            WRITE_PERMISSION -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST)
+                    } else
+                        dispatchTakePictureIntent()
+                } else
+                    Toast.makeText(activity, getString(R.string.camera_necessaria), Toast.LENGTH_LONG).show()
+                return
+            }
         }
     }
 
     //Listener del botó de la galeria:
     private fun gallery_listener(){
-        galleryButton.visibility = View.INVISIBLE
-        galleryButton.isClickable = false
-        cameraButton.visibility = View.INVISIBLE
-        cameraButton.isClickable = false
-        profilePic.isClickable = true
         galleryButton.setOnClickListener {
+            canviVisio(false)
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
             startActivityForResult(photoPickerIntent, PICK_PHOTO);
@@ -460,10 +474,26 @@ class profileFragment : Fragment() {
     //Listener del botó de la càmera:
     private fun camera_listener(){
         cameraButton.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST)
+            canviVisio(false)
+            if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED ) {
+                if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST)
+                } else
+                    dispatchTakePictureIntent()
             } else
-                dispatchTakePictureIntent()
+                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), WRITE_PERMISSION)
+        }
+    }
+
+    //Canvia la visió dels botons de la foto de perfil
+    private fun canviVisio(b: Boolean) {
+        if (b) {
+            galleryButton.visibility = View.VISIBLE
+            galleryButton.isClickable = true
+            cameraButton.visibility = View.VISIBLE
+            cameraButton.isClickable = true
+            profilePic.isClickable = false
+        } else {
             galleryButton.visibility = View.INVISIBLE
             galleryButton.isClickable = false
             cameraButton.visibility = View.INVISIBLE
@@ -475,11 +505,10 @@ class profileFragment : Fragment() {
     //Listener per quan presionem la foto per canviar-la:
     private fun photo_listener(){
         profilePic.setOnClickListener {
-            galleryButton.visibility = View.VISIBLE
-            galleryButton.isClickable = true
-            cameraButton.visibility = View.VISIBLE
-            cameraButton.isClickable = true
-            profilePic.isClickable = false
+            canviVisio(true)
+        }
+        background.setOnClickListener {
+            canviVisio(false)
         }
     }
 
