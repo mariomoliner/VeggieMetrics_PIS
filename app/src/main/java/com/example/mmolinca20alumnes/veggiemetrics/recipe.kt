@@ -112,7 +112,7 @@ class recipe : AppCompatActivity() {
 
                             d.updateChildren(updates, object: DatabaseReference.CompletionListener{
                                 override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
-                                    Toast.makeText(applicationContext, "Actualitzat el rating", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(applicationContext, getString(R.string.rating_actualitzat), Toast.LENGTH_LONG).show()
 
                                 }
                             })
@@ -127,7 +127,7 @@ class recipe : AppCompatActivity() {
                         var key = ref.push().key
                         val rat = Rating(ratingBar.rating, uid, id_recept, key.toString())
                         ref.child(key.toString()).setValue(rat).addOnCompleteListener{
-                            Toast.makeText(applicationContext,"Rating guardat correctament", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext,getString(R.string.rating_guardat), Toast.LENGTH_LONG).show()
                         }
                     }
 

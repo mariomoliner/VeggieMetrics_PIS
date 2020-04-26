@@ -63,6 +63,8 @@
     <string name="actualitzacio">Data update successful</string>
     <string name="falta_foto">Recipe picture required</string>
     <string name="foto_ok">Picture posted successfully</string>
+    <string name="rating_actualitzat">Rating updated</string>
+    <string name="rating_guardat">Rating saved successfully</string>
 
     <!--Strings del perfil-->
     <string name="nom_necessari">A profile name is required to save</string>
@@ -96,6 +98,7 @@
     <string name="imc8">Obesity class IV</string>
     <string name="galeria">Gallery</string>
     <string name="camera">Camera</string>
+    <string name="camera_necessaria">Camera permissions required</string>
 
     <!--Strings del test setmanal-->
     <string name="send_test">Results</string>
@@ -156,12 +159,12 @@
     <string name="avis1">- Insufficient fruit and vegetable intake. It is recommended to consume 5 pieces daily</string>
     <string name="avis2">- Intake of fruit and vegetables too high. It impairs the absorption of calcium and iron</string>
     <string name="avis3">- It is recommended to consume more leafy green vegetables for an optimal iron absorption</string>
-    <string name="avis4">- It is recommended to reduce coffee consumption after main meals. It makes it difficult to absorb iron</string>
+    <string name="avis4">- It is recommended to reduce coffee consumption after main dishes. It makes it difficult to absorb iron</string>
     <string name="avis5">- The current intake of sweets and pastries may impair a proper iron absorption</string>
     <string name="avis6">- The current intake of processed foods may impair a proper calcium absorption</string>
     <string name="avis7">- The current carbonated beverage intake may impair a proper calcium absorption</string>
-    <string name="avis8">- It is advisable to go to a nutritionist to meet the need for vitamin B12, not present in the vegetarian diet</string>
-    <string name="avis9">- It is advisable to go to a nutritionist to meet the need for vitamin B12, not present in the vegan diet</string>
+    <string name="avis8">- It is advisable to go to a nutritionist to meet the need for vitamin B12, which is not found in vegetarian diets</string>
+    <string name="avis9">- It is advisable to go to a nutritionist to meet the need for vitamin B12, which is not found in vegan diets</string>
 
     <!--Strings de desplegables-->
     <string name="vegana">Vegan</string>
@@ -211,5 +214,10 @@
         <item>@string/sesam</item>
         <item>@string/moluscos</item>
     </string-array>
+
+    <!--Strings d'opcions-->
+    <string name="logOut">Are you sure you want to log out?</string>
+    <string name="sortir">Log out</string>
+    <string name="cancelar">Cancel</string>
 
 </resources>
