@@ -1,5 +1,6 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
+import android.Manifest
 import android.Manifest.permission.CAMERA
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.app.Activity
@@ -48,6 +49,7 @@ class profileFragment : Fragment() {
     //Components del layout modificables:
     val PICK_PHOTO = 1111
     val REQUEST_IMAGE_CAPTURE = 2222
+    val CAMERA_REQUEST = 3333
     lateinit var imagepicked: Uri
     lateinit var list_sex: List<String>
     lateinit var list_dietas: List<String>
@@ -78,7 +80,7 @@ class profileFragment : Fragment() {
     fun testResults(barra: ProgressBar, resultat: String) {
         if (resultat.equals("Ok")) {
             barra.getProgressDrawable().setColorFilter(Color.rgb(0,187,45), android.graphics.PorterDuff.Mode.MULTIPLY)
-            barra.progress = 98
+            barra.progress = 99
         } else if (resultat.equals("Not good")) {
             barra.getProgressDrawable().setColorFilter(Color.rgb(255,255,0), android.graphics.PorterDuff.Mode.MULTIPLY)
             barra.progress = 66
@@ -122,9 +124,9 @@ class profileFragment : Fragment() {
         }
 
         // Foto de càmera
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data!!.extras.get("data") as Bitmap
-            profilePic.setImageBitmap(imageBitmap)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK && data != null) {
+            val imageBitmap = data.extras.get("data") as Bitmap
+            Glide.with(this).load(imageBitmap).centerCrop().into(profilePic)
         }
 
     }
@@ -156,6 +158,8 @@ class profileFragment : Fragment() {
         photo_listener()
         listener_botoTest()
         listener_sex()
+        gallery_listener()
+        camera_listener()
     }
 
     fun setUser(userloged : FirebaseAuth){
@@ -327,17 +331,6 @@ class profileFragment : Fragment() {
 
     }
 
-
-    // Foto perfil
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(activity!!.packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
-        }
-    }
-
-
     //Listener del botó pel test setmanal:
     private fun listener_botoTest(){
         test_button.setOnClickListener{
@@ -429,13 +422,64 @@ class profileFragment : Fragment() {
         }
     }
 
-    //Listener per quan presionem la foto per canviar-la:
-    private fun photo_listener(){
-        profilePic.setOnClickListener {
+    // Foto perfil
+    private fun dispatchTakePictureIntent() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(activity!!.packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
+        }
+    }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            CAMERA_REQUEST -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED))
+                    dispatchTakePictureIntent()
+                else
+                    Toast.makeText(activity, getString(R.string.camera_necessaria), Toast.LENGTH_LONG).show()
+                return
+            }
+        }
+    }
+
+    //Listener del botó de la galeria:
+    private fun gallery_listener(){
+        galleryButton.visibility = View.INVISIBLE
+        galleryButton.isClickable = false
+        cameraButton.visibility = View.INVISIBLE
+        cameraButton.isClickable = false
+        profilePic.isClickable = true
+        galleryButton.setOnClickListener {
             var photoPickerIntent = Intent(Intent.ACTION_PICK)
             photoPickerIntent.setType("image/*");
             startActivityForResult(photoPickerIntent, PICK_PHOTO);
+        }
+    }
+
+    //Listener del botó de la càmera:
+    private fun camera_listener(){
+        cameraButton.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(context!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.CAMERA), CAMERA_REQUEST)
+            } else
+                dispatchTakePictureIntent()
+            galleryButton.visibility = View.INVISIBLE
+            galleryButton.isClickable = false
+            cameraButton.visibility = View.INVISIBLE
+            cameraButton.isClickable = false
+            profilePic.isClickable = true
+        }
+    }
+
+    //Listener per quan presionem la foto per canviar-la:
+    private fun photo_listener(){
+        profilePic.setOnClickListener {
+            galleryButton.visibility = View.VISIBLE
+            galleryButton.isClickable = true
+            cameraButton.visibility = View.VISIBLE
+            cameraButton.isClickable = true
+            profilePic.isClickable = false
         }
     }
 
@@ -447,7 +491,4 @@ class profileFragment : Fragment() {
         }
         return -1
     }
-
-
-
 }

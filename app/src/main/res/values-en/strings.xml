@@ -94,6 +94,8 @@
     <string name="imc6">Obesity class II</string>
     <string name="imc7">Obesity class III</string>
     <string name="imc8">Obesity class IV</string>
+    <string name="galeria">Gallery</string>
+    <string name="camera">Camera</string>
 
     <!--Strings del test setmanal-->
     <string name="send_test">Results</string>

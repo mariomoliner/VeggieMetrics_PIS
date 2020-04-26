@@ -44,7 +44,7 @@ class homeFragment : Fragment() {
         setFavs()
     }
 
-        fun setGUIuser(){
+    fun setGUIuser(){
         if(auth.currentUser?.displayName.equals(null)){
             profileName.text = auth.currentUser!!.email
         }
@@ -53,17 +53,15 @@ class homeFragment : Fragment() {
         }
     }
 
-    /*fun setusuari(userloged : FirebaseAuth){
+    fun setUser(userloged : FirebaseAuth){
         auth = userloged
-
-    }*/
+    }
 
     private fun setFavs(){
         progress_barFav.visibility = View.VISIBLE
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-        auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
             .child(auth.currentUser!!.uid).child("preferides")
         llistaReceptes = arrayListOf()

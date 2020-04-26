@@ -8,10 +8,12 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.mmolinca20alumnes.veggiemetrics.APIcall.LogOutFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -33,13 +35,13 @@ class MainActivity : AppCompatActivity() {
         //Primer fragment:
         var fragment : Fragment
         fragment = homeFragment()
-        fragment.setusuari(auth)
+        fragment.setUser(auth)
         loadFragment(fragment)
-        supportActionBar!!.title = "Home"
+        supportActionBar!!.title = getString(R.string.home)
         navegador_inferior.setOnNavigationItemSelectedListener { menuItem ->
             when {
                 menuItem.itemId == R.id.home_nav -> {
-                    fragment.setusuari(auth)
+                    fragment.setUser(auth)
                     loadFragment(fragment)
                     supportActionBar!!.title = getString(R.string.home)
                     return@setOnNavigationItemSelectedListener true
@@ -95,8 +97,8 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         if (id == R.id.op3) {
-            //cal detallar les funcionalitats
-            return true
+            val newFragment = LogOutFragment()
+            newFragment.show(supportFragmentManager, "logOut")
         }
 
         return super.onOptionsItemSelected(item)
