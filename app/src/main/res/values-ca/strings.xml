@@ -162,7 +162,7 @@
     <string name="avis4">- Recomanable reduir el consum de cafè després dels àpats principals. Dificulta l\'absorció de ferro.</string>
     <string name="avis5">- La ingesta de dolços i rebosteria actual podria dificultar l\'absorció de ferro.</string>
     <string name="avis6">- La ingesta d\'aliments processats actual podria dificultar l\'absorció de calci.</string>
-    <string name="avis7">- la ingesta de begudes carbonatades actual podria dificultar l\'absorció de calci.</string>
+    <string name="avis7">- La ingesta de begudes carbonatades actual podria dificultar l\'absorció de calci.</string>
     <string name="avis8">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegetariana.</string>
     <string name="avis9">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegana.</string>
 
@@ -218,6 +218,6 @@
     <!--Strings d'opcions-->
     <string name="logOut">Vols tancar sessió?</string>
     <string name="sortir">Sortir</string>
-    <string name="cancelar">Cancelar</string>
+    <string name="cancelar">Cancel·lar</string>
 
 </resources>

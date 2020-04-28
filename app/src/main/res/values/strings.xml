@@ -217,5 +217,5 @@
     <!--Strings d'opcions-->
     <string name="logOut">Vols tancar sessió?</string>
     <string name="sortir">Sortir</string>
-    <string name="cancelar">Cancelar</string>
+    <string name="cancelar">Cancel·lar</string>
 </resources>

@@ -111,7 +111,7 @@ class profileFragment : Fragment() {
                 childUpdates["iron"] = results[1]
                 childUpdates["omega"] = results[2]
                 childUpdates["calcium"] = results[3]
-                childUpdates["comments"] = escriuAvisos(results[4])
+                childUpdates["comments"] = results[4]
                 //actualitzem la info de l'usuari actual:
                 database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
             }
@@ -325,7 +325,7 @@ class profileFragment : Fragment() {
                 }
                 when(p0.child("comments").getValue()){
                     null -> comentaris.setText("")
-                    else -> comentaris.setText(p0.child("comments").getValue().toString())
+                    else -> comentaris.setText(escriuAvisos(p0.child("comments").getValue().toString()))
                 }
 
                 progress_bar.visibility = View.INVISIBLE
