@@ -22,6 +22,7 @@ class llista_ingredients_adapter(llista: ArrayList<Ingredient>, c : Context, lis
 
     interface OnItemClickListener {
         fun onItemCLick(o: Ingredient)
+        fun onclearClick(p: Int)
     }
 
     init {
@@ -77,12 +78,23 @@ class llista_ingredients_adapter(llista: ArrayList<Ingredient>, c : Context, lis
             list_intern.onItemCLick(llista_interna[position])
 
         }
+
+        holder.view.delete_ingr_but.setOnClickListener {
+            list_intern.onclearClick(position)
+            llista_interna.removeAt(position)
+            notifyDataSetChanged()
+        }
+
+
     }
 
     fun add_Ingredient(a: Ingredient){
-        if(llista_interna.get(0).aliment.nom.equals(context.getString(R.string.sense_ingredients))){
-            llista_interna.removeAt(0)
+        if(llista_interna.size > 0){
+            if(llista_interna.get(0).aliment.nom.equals(context.getString(R.string.sense_ingredients))){
+                llista_interna.removeAt(0)
+            }
         }
+
         llista_interna.add(a)
         notifyDataSetChanged()
     }

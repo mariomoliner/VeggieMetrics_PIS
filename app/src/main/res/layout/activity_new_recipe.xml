@@ -55,6 +55,39 @@
                     android:gravity="center"
                     style="@style/TextViewStyle" />
 
+            <RadioGroup
+                    android:id="@+id/gruptipus"
+                    android:layout_below="@+id/recipeTitle"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/recipePic"
+                    android:layout_width="match_parent">
+
+                <RadioButton
+                        android:id="@+id/rb1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Vegetarian"/>
+
+                <RadioButton
+                        android:id="@+id/rb2"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Vegan"/>
+
+                <RadioButton
+                        android:id="@+id/rb3"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Flexi"/>
+
+
+            </RadioGroup>
+
+
+
+
+
             <TextView
                     android:id="@+id/ingredients"
                     android:layout_width="match_parent"

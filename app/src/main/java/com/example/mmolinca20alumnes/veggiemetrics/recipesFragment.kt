@@ -1,5 +1,6 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +31,9 @@ class recipesFragment : Fragment() {
     //base de dades a firebase:
     private lateinit var databaseReference: DatabaseReference
     private var llistaReceptes = ArrayList<recepta_model>()
+
+    private var filter_per = "nom"
+    private var show_per = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -66,6 +71,7 @@ class recipesFragment : Fragment() {
                         val nom = recipe.child("recepta").getValue().toString()
                         val autor = recipe.child("autor").getValue().toString()
                         val foto = recipe.child("foto").getValue().toString()
+                        var tipus = recipe.child("tipus").getValue().toString()
                         var carac = ""
                         for(p in recipe.child("puntsforts").children){
                             carac += "#"+p.child("nom").value.toString() + " "
@@ -73,15 +79,17 @@ class recipesFragment : Fragment() {
                         }
 
                         val uuid = recipe.key.toString()
-                        var r =recepta_model(nom, autor, foto, uuid, carac)
+                        var r =recepta_model(nom, autor, foto, uuid, carac, tipus)
 
                         llistaReceptes.add(r)
                     }
                 }
+
                 progress_barRV.visibility = View.INVISIBLE
                 llista.layoutManager = LinearLayoutManager(activity)
                 llista.adapter = llista_receptes_Adapter(llistaReceptes, activity!!)
                 activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
             }
         })
         //SearchView per les receptes:
@@ -91,14 +99,49 @@ class recipesFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                (llista.adapter as llista_receptes_Adapter).filter.filter(newText)
+                (llista.adapter as llista_receptes_Adapter).filter.filter(newText?.toLowerCase())
                 return false
             }
 
         })
+
+        listener_layout_filtra()
     }//onViewCreated
 
     fun setUser(userloged : FirebaseAuth){
         auth = userloged
+    }
+
+    private fun listener_layout_filtra(){
+        filtra.setOnClickListener {
+            hidden.visibility =  View.VISIBLE
+            overlay.visibility = View.VISIBLE
+            llista.alpha = 0.3F
+
+
+            conf_filtr.setOnClickListener {
+                filter_per = view?.findViewById<RadioButton>(radiogroup.checkedRadioButtonId)?.text.toString()
+                show_per = view?.findViewById<RadioButton>(radiogroup2.checkedRadioButtonId)?.text.toString()
+                hidden.visibility =  View.GONE
+                overlay.visibility = View.GONE
+                llista.alpha = 1F
+                set_param_filtre(filter_per)
+                set_show_options(show_per)
+            }
+        }
+    }
+
+
+    private fun set_param_filtre(s: String){
+        if(s.equals("Nom")){
+            (llista.adapter as llista_receptes_Adapter).set_param_filtre(0)
+        }
+        else if(s.equals("Micronutrient")){
+            (llista.adapter as llista_receptes_Adapter).set_param_filtre(1)
+        }
+    }
+
+    private fun set_show_options(s: String){
+        (llista.adapter as llista_receptes_Adapter).set_quines_mostro(s)
     }
 }

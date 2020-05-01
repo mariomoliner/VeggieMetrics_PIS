@@ -49,6 +49,18 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:src="@drawable/ic_fav_to_pick" />
+
+                <TextView
+                        android:id="@+id/tipus_recepta_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="Vegan"
+                        android:textColor="@color/background_green"
+                        android:textStyle="bold"/>
+
             </RelativeLayout>
 
             <RelativeLayout

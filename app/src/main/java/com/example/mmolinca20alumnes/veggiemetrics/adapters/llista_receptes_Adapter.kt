@@ -7,6 +7,7 @@ import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,8 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
     //base de dades a firebase:
     private lateinit var databaseReference: DatabaseReference
     private var c: Context
+    private var param_filtre = 0
+    private var quines_mostro = ""
 
     var llista_receptes_filtrada = ArrayList<recepta_model>()
 
@@ -70,6 +73,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
             itemView.uuid_recepta.text = item.getId()
             itemView.url_recepta.text = item.getFoto()
             itemView.caracteristiques.text = item.getCaracteristiques()
+            itemView.tipus_recepta_view.text = item.getTipus()
             //Afegim foto
             Glide.with(c).load(item.getFoto()).centerCrop().into(itemView.foto_recepta)
             //Picasso.get().load(item.getFoto()).into(itemView.foto_recepta)
@@ -129,6 +133,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
             val uuidRecepta = holder.itemView.uuid_recepta.text.toString()
             val urlRecepta = holder.itemView.url_recepta.text.toString()
             val caracteristiques = holder.itemView.caracteristiques.text.toString()
+            val tipus = holder.itemView.tipus_recepta_view.text.toString()
             val recepta = recepta_model(nomRecepta, autorRecepta, urlRecepta, uuidRecepta, caracteristiques)
 
             databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -167,9 +172,41 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
                     //System.out.println("valores filtrados")
                     val resultList = ArrayList<recepta_model>()
                     for (row in recipesList) {
-                        if (constraint in row.getRecepta().toLowerCase(Locale.ROOT))  {
-                            resultList.add(row)
-                            //System.out.println(row.get_autor())
+                        if(param_filtre == 0){
+                            if (constraint in row.getRecepta().toLowerCase(Locale.ROOT))  {
+                                Log.e("sf",quines_mostro)
+                                Log.e("sf",row.getTipus())
+                                if(quines_mostro.equals("")){
+                                    resultList.add(row)
+                                    Log.e("fdf","entro 1")
+                                }
+                                else{
+                                    if(quines_mostro.equals(row.getTipus())){
+                                        resultList.add(row)
+                                        Log.e("fdf","entro 12")
+                                    }
+                                }
+
+                                //System.out.println(row.get_autor())
+                                //resultList.add(row)
+                            }
+                        }
+                        if(param_filtre == 1){
+                            if (constraint in row.getCaracteristiques().toLowerCase(Locale.ROOT))  {
+                                Log.e("sf",quines_mostro)
+                                Log.e("sf",row.getTipus())
+                                if(quines_mostro.equals("")){
+                                    resultList.add(row)
+                                    Log.e("fdf","entro 2")
+                                }
+                                else{
+                                    if(quines_mostro.equals(row.getTipus())){
+                                        resultList.add(row)
+                                    }
+                                }
+                                //System.out.println(row.get_autor())
+                                //resultList.add(row)
+                            }
                         }
                     }
                     llista_receptes_filtrada = resultList
@@ -186,6 +223,14 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
             }
 
         }
+    }
+
+    fun set_param_filtre (d:Int) {
+        param_filtre = d
+    }
+
+    fun set_quines_mostro (d:String) {
+        quines_mostro = d
     }
 
 }

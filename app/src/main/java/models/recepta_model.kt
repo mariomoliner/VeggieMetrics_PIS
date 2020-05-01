@@ -6,7 +6,7 @@ class recepta_model{
     private var fotoRecepta: String
     private var id: String
     private var caracteristiques: String
-
+    private var tipus: String
 /*
     constructor(recepta: kotlin.String, autor: kotlin.String, fotoRecepta: kotlin.String, id: kotlin.String, receptaDetall: models.recepta_detall, s: String){
         this.recepta = recepta
@@ -15,12 +15,22 @@ class recepta_model{
         this.id = id
     }*/
 
+    constructor(recepta: String, autor: String, fotoRecepta: String, id: String, caracteristiques: String, tipus: String){
+        this.recepta = recepta
+        this.autor = autor
+        this.fotoRecepta = fotoRecepta
+        this.id = id
+        this.caracteristiques = caracteristiques
+        this.tipus = tipus
+    }
+
     constructor(recepta: String, autor: String, fotoRecepta: String, id: String, caracteristiques: String){
         this.recepta = recepta
         this.autor = autor
         this.fotoRecepta = fotoRecepta
         this.id = id
         this.caracteristiques = caracteristiques
+        this.tipus = ""
     }
 
     constructor(recepta: String, autor: String, fotoRecepta: String, id: String){
@@ -29,6 +39,7 @@ class recepta_model{
         this.fotoRecepta = fotoRecepta
         this.id = id
         this.caracteristiques = ""
+        this.tipus = ""
     }
     constructor(recepta: String, autor: String, fotoRecepta: String){
         this.recepta = recepta
@@ -36,6 +47,7 @@ class recepta_model{
         this.fotoRecepta = fotoRecepta
         this.id = ""
         this.caracteristiques = ""
+        this.tipus = ""
     }
     constructor(recepta: String, autor: String){
         this.recepta = recepta
@@ -43,6 +55,7 @@ class recepta_model{
         this.fotoRecepta = ""
         this.id = ""
         this.caracteristiques = ""
+        this.tipus = ""
     }
 
     //Getters:
@@ -61,5 +74,9 @@ class recepta_model{
     }
     fun getCaracteristiques(): String{
         return this.caracteristiques
+    }
+
+    fun getTipus(): String{
+        return tipus
     }
 }

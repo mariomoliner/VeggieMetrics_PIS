@@ -133,7 +133,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_favorite_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_iso_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -143,9 +143,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="418f56" />
-                            <entry key="outputName" value="ic_favorite_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\Sergi" />
+                            <entry key="opacityPercent" value="84" />
+                            <entry key="outputName" value="ic_iso_black_24dp" />
+                            <entry key="sourceFile" value="$USER_HOME$/Desktop/iconoutt.svg" />
                           </map>
                         </option>
                       </PersistentState>

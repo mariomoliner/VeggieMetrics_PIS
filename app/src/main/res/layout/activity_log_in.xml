@@ -25,6 +25,7 @@
                 android:id="@+id/userText"
                 android:hint="@string/usuari"
                 android:layout_gravity="center"
+                android:translationZ="15dp"
                 android:layout_margin="10dp"
                 style="@style/edit_text_style"/>
 
@@ -34,6 +35,7 @@
                 android:hint="@string/contrasenya"
                 android:inputType="textPassword"
                 android:ems="10"
+                android:translationZ="15dp"
                 android:layout_margin="10dp"
                 android:id="@+id/passwordText"
                 style="@style/edit_text_style"/>

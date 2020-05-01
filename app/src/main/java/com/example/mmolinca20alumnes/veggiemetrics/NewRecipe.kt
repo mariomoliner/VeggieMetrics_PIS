@@ -9,6 +9,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -53,6 +55,7 @@ class NewRecipe : AppCompatActivity() {
     private lateinit var report: ArrayList<Engine.report>
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_recipe)
@@ -76,10 +79,6 @@ class NewRecipe : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     fun search_listener(){
@@ -136,7 +135,16 @@ class NewRecipe : AppCompatActivity() {
                         dialog.dismiss()
                     }
                 }
-            })
+
+            override fun onclearClick(p: Int) {
+                Toast.makeText(applicationContext, "ingredient eliminat", Toast.LENGTH_LONG).show()
+
+                if(nova_Recepta.llista_ingredients.size > p){
+                    nova_Recepta.llista_ingredients.removeAt(p)
+                }
+
+            }
+        })
         ingredientsList.adapter = ingredientList_adapter
 
 
@@ -301,19 +309,22 @@ class NewRecipe : AppCompatActivity() {
 
                 })
 
-            if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty() || nova_Recepta.llista_ingredients.size == 0){
+            if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty() || nova_Recepta.llista_ingredients.size == 0 || !isCheckedRadiobutton()){
                 Toast.makeText(this,getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
             }else{
                 nova_Recepta.nom_recepta = recipeTitle.text.toString()
                 nova_Recepta.description = stepsEditText.text.toString()
                 progress_bar.visibility = View.VISIBLE
 
-                this!!.window.setFlags(
+                this.window.setFlags(
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 crida_engine.print_rdis()
+                //Log.e("fdf", findViewById<RadioButton>(gruptipus.checkedRadioButtonId).text.toString())
             }
         }
+
+
 
     }
     private fun uploadImageToFirebaseStorage(){
@@ -330,7 +341,7 @@ class NewRecipe : AppCompatActivity() {
             }.addOnFailureListener {
                     Toast.makeText(this, getString(R.string.error_imatge), Toast.LENGTH_LONG).show()
                 progress_bar.visibility = View.INVISIBLE
-                this!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                this.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             }
         }
     }
@@ -348,17 +359,20 @@ class NewRecipe : AppCompatActivity() {
         //updates.put(receptaUUID, nova_Recepta)
         var u = recepta_model(nomRecepta, nomAutor, uri_image)
 
+        var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).text.toString()
 
-        updates.put("/$receptaUUID/recepta_detall", nova_Recepta);
+        updates.put("/$receptaUUID/recepta_detall", nova_Recepta)
         updates.put("/$receptaUUID/recepta", u.getRecepta())
         updates.put("/$receptaUUID/autor", u.getAutor())
         updates.put("/$receptaUUID/foto", u.getFoto())
         updates.put("/$receptaUUID/puntsforts", report)
+        updates.put("/$receptaUUID/tipus", tipus_recept)
+
 
         databaseRef.updateChildren(updates, object: DatabaseReference.CompletionListener{
             override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
                 progress_bar.visibility = View.INVISIBLE
-                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Toast.makeText(c, getString(R.string.foto_ok), Toast.LENGTH_LONG).show()
 
             }
@@ -403,4 +417,10 @@ class NewRecipe : AppCompatActivity() {
         requestQueue.add(jsonObjectRequest)
         return llista
     }
+
+    private fun isCheckedRadiobutton(): Boolean{
+        return gruptipus.checkedRadioButtonId != -1
+    }
+
+
 }
