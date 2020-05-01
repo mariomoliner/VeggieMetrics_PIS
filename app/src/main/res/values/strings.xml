@@ -46,7 +46,7 @@
     <string name="autor_recepta">Autor: Sample User</string>
     <string name="data_recepta">Data: 01/01/2020</string>
     <string name="dieta_recepta">Dieta: Vegana</string>
-    <string name="valoracio_recepta">Valoració: *****</string>
+    <string name="valoracio_recepta">Valoració:</string>
     <string name="llista_ingredients">- Ingredient 1\n- Ingredient 2\n- Ingredient 3\n</string>
     <string name="valora">Valora</string>
     <string name="top">Top receptes de la setmana</string>
@@ -56,7 +56,7 @@
     <string name="autor_title">Autor: </string>
     <string name="sense_ingredients">Encara no hi ha cap ingredient</string>
     <string name="aliment_seleccionat">Aliment seleccionat: </string>
-    <string name="peces">peces</string>
+    <string name="peces">unitats</string>
     <string name="omplir_dades">Cal omplir totes les dades</string>
     <string name="error_imatge">Error al penjar la imatge</string>
     <string name="actualitzacio">Actualització de dades correcta</string>
@@ -83,7 +83,7 @@
     <string name="sense_dades">Sense dades</string>
     <string name="proteines">Proteïnes:</string>
     <string name="ferro">Ferro:</string>
-    <string name="omega">Omega 3:</string>
+    <string name="omega">Omega-3:</string>
     <string name="calci">Calci:</string>
     <string name="test">Test Setmanal</string>
     <string name="dades_incorrectes">Dades incorrectes al perfil</string>
@@ -147,23 +147,23 @@
     <string name="almost_daily">la majoria de dies de la setmana</string>
     <string name="daily">una ració diària aproximadament</string>
     <string name="more_than_daily">diverses racions diàriament</string>
-    <string name="no_eat">"no n’he menjat res"</string>
-    <string name="eat_abit">"n’he menjat 1 o 2 vegades alguna ració"</string>
-    <string name="eat_daily">"n’he menjat alguna ració més o menys cada dia"</string>
-    <string name="eat_more_daily">"cada dia n’he pres més d’una ració"</string>
+    <string name="no_eat">no n’he menjat res</string>
+    <string name="eat_abit">n’he menjat 1 o 2 vegades alguna ració</string>
+    <string name="eat_daily">n’he menjat alguna ració més o menys cada dia</string>
+    <string name="eat_more_daily">cada dia n’he pres més d’una ració</string>
     <string name="recepta_fav1">Recepta fav1</string>
     <string name="autor">autor</string>
     <string name="introduccio_test">Respon les següents preguntes amb l\'opció que més s\'assembli a la teva alimentació durant els últims 7 dies. Al acabar, es mostraran els resultats en el perfil.</string>
     <string name="falten_preguntes">Falten preguntes per contestar</string>
-    <string name="avis1">- Ingesta de fruita i verdura insuficient. Es recomana prendre 5 peces diàriament</string>
-    <string name="avis2">- Ingesta de fruita i verdura massa elevada. Perjudica l\'absorció de calci i ferro</string>
-    <string name="avis3">- Recomanable consumir més verdura de fulla verda per a una absorció de ferro òptima</string>
-    <string name="avis4">- Recomanable reduir el consum de cafè després dels àpats principals. Dificulta l\'absorció de ferro</string>
-    <string name="avis5">- La ingesta de dolços i rebosteria actual podria dificultar l\'absorció de ferro</string>
-    <string name="avis6">- La ingesta d\'aliments processats actual podria dificultar l\'absorció de calci</string>
-    <string name="avis7">- la ingesta de begudes carbonatades actual podria dificultar l\'absorció de calci</string>
-    <string name="avis8">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegetariana</string>
-    <string name="avis9">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegana</string>
+    <string name="avis1">- Ingesta de fruita i verdura insuficient. Es recomana prendre 5 peces diàriament.</string>
+    <string name="avis2">- Ingesta de fruita i verdura massa elevada. Perjudica l\'absorció de calci i ferro.</string>
+    <string name="avis3">- Recomanable consumir més verdura de fulla verda per a una absorció de ferro òptima.</string>
+    <string name="avis4">- Recomanable reduir el consum de cafè després dels àpats principals. Dificulta l\'absorció de ferro.</string>
+    <string name="avis5">- La ingesta de dolços i rebosteria actual podria dificultar l\'absorció de ferro.</string>
+    <string name="avis6">- La ingesta d\'aliments processats actual podria dificultar l\'absorció de calci.</string>
+    <string name="avis7">- la ingesta de begudes carbonatades actual podria dificultar l\'absorció de calci.</string>
+    <string name="avis8">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegetariana.</string>
+    <string name="avis9">- Recomanable acudir a un nutricionista per tal de satisfer la necessitat de vitamina B12, no present en la dieta vegana.</string>
 
     <!--Strings de desplegables-->
     <string name="vegana">Vegana</string>
@@ -217,5 +217,5 @@
     <!--Strings d'opcions-->
     <string name="logOut">Vols tancar sessió?</string>
     <string name="sortir">Sortir</string>
-    <string name="cancelar">Cancelar</string>
+    <string name="cancelar">Cancel·lar</string>
 </resources>
