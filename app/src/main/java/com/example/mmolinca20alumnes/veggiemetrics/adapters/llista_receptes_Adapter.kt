@@ -41,7 +41,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
     private lateinit var databaseReference: DatabaseReference
     private var c: Context
     private var param_filtre = 0
-    private var quines_mostro = ""
+    private var quines_mostro = "totes"
 
     var llista_receptes_filtrada = ArrayList<recepta_model>()
 
@@ -176,7 +176,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
                             if (constraint in row.getRecepta().toLowerCase(Locale.ROOT))  {
                                 Log.e("sf",quines_mostro)
                                 Log.e("sf",row.getTipus())
-                                if(quines_mostro.equals("")){
+                                if(quines_mostro.equals("totes")){
                                     resultList.add(row)
                                     Log.e("fdf","entro 1")
                                 }
@@ -195,7 +195,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
                             if (constraint in row.getCaracteristiques().toLowerCase(Locale.ROOT))  {
                                 Log.e("sf",quines_mostro)
                                 Log.e("sf",row.getTipus())
-                                if(quines_mostro.equals("")){
+                                if(quines_mostro.equals("") ){
                                     resultList.add(row)
                                     Log.e("fdf","entro 2")
                                 }
