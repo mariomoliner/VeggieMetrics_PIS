@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_recipe.*
 import kotlinx.android.synthetic.main.activity_recipe.ingredientsList
 import kotlinx.android.synthetic.main.activity_recipe.recipePic
 import models.Rating
-import java.util.HashMap
+import java.util.*
 
 class recipe : AppCompatActivity() {
     lateinit var ratingBar: RatingBar
@@ -120,10 +120,11 @@ class recipe : AppCompatActivity() {
                     }
                     if(b == 0){
                         val uid=user!!.uid
-
                         val ref=FirebaseDatabase.getInstance().getReference("rating")
                         var key = ref.push().key
-                        val rat = Rating(ratingBar.rating, uid, id_recept, key.toString())
+                        val data=Calendar.getInstance()
+                        val datarating=data.get(Calendar.YEAR)*10000+data.get(Calendar.MONTH)*100+data.get(Calendar.DAY_OF_MONTH)
+                        val rat = Rating(ratingBar.rating, uid, id_recept, key.toString(),datarating)
                         ref.child(key.toString()).setValue(rat).addOnCompleteListener{
                             Toast.makeText(applicationContext,getString(R.string.rating_guardat), Toast.LENGTH_LONG).show()
                         }
