@@ -3,11 +3,16 @@ package com.example.mmolinca20alumnes.veggiemetrics
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.getkeepsafe.taptargetview.TapTarget
+import com.getkeepsafe.taptargetview.TapTargetView
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_log_in.*
+import kotlinx.android.synthetic.main.activity_new_recipe.*
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView
 
 class LogIn : AppCompatActivity() {
 
@@ -23,6 +28,19 @@ class LogIn : AppCompatActivity() {
         loginListener()
         forgot_password_list()
         register_user_listener()
+
+
+        TapTargetView.showFor(this, TapTarget.forView(logInButton, "holaa", "dfd").outerCircleColor(R.color.colorPrimary)      // Specify a color for the outer circle
+            .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+            .targetCircleColor(R.color.white)
+            .transparentTarget(true)// Specify a color for the target circle
+            .titleTextSize(20)                  // Specify the size (in sp) of the title text
+            .titleTextColor(R.color.white))
+
+    }
+
+    fun fuct(v: View){
+        //Toast.makeText(this, "fdfd", Toast.LENGTH_LONG).show()
     }
 
     fun loginListener(){

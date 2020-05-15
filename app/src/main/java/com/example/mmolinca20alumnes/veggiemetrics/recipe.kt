@@ -1,22 +1,21 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
 import android.widget.Button
 import android.widget.RatingBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.github.amlcurran.showcaseview.ShowcaseView
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_new_recipe.*
 import kotlinx.android.synthetic.main.activity_recipe.*
-import kotlinx.android.synthetic.main.activity_recipe.ingredientsList
-import kotlinx.android.synthetic.main.activity_recipe.recipePic
 import models.Rating
-import java.util.HashMap
+
+import java.util.*
+
 
 class recipe : AppCompatActivity() {
     lateinit var ratingBar: RatingBar
@@ -37,6 +36,8 @@ class recipe : AppCompatActivity() {
 
         recipe_title.text = intent.getStringExtra("nom_recepta")
         id_recept = intent.getStringExtra("idrecept")
+
+
 
 
         carrega_GUI()
