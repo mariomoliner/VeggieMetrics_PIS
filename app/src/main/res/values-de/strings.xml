@@ -25,7 +25,7 @@
     <string name="registre">Registrierung</string>
     <string name="camp_buit">Ein Feld is leer</string>
     <string name="sessio_iniciada">Eingeloggt</string>
-    <string name="error_inici">Einloggung war nich möglich</string>
+    <string name="error_inici">Einloggung war nicht möglich</string>
     <string name="link_ok">Wiedereroberung link per E-mail geschickt </string>
     <string name="link_fail">Passwort eroberung war nicht möglich</string>
     <string name="coincidir_contrasenyes">Beide Passworts mussen gleich sein</string>
@@ -132,7 +132,7 @@
     <string name="more_than_6">6 oder mehr</string>
     <string name="never2">nie</string>
     <string name="sometimes2">gelegentlisch</string>
-    <string name="usually2">mehre Tage</string>
+    <string name="usually2">mehrere Tage</string>
     <string name="always2">jeden Tag</string>
     <string name="between_1_4">zwischen 1 und 4</string>
     <string name="between_4_8">zwischen 4 und 8</string>
@@ -219,5 +219,8 @@
     <string name="logOut">Möchten Sie sich abmelden?</string>
     <string name="sortir">Geh raus</string>
     <string name="cancelar">Abbrechen</string>
+
+    <!--Strings d'errors-->
+    <string name="errorLoading">Error loading data</string>
 
 </resources>

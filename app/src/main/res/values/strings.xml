@@ -219,6 +219,9 @@
     <string name="sortir">Sortir</string>
     <string name="cancelar">Cancel·lar</string>
 
+    <!--Strings d'errors-->
+    <string name="errorLoading">Error al carregar dades</string>
+
     <!--Nous Strings-->
     <string name="aliment_eliminat">Aliment eliminat</string>
 </resources>

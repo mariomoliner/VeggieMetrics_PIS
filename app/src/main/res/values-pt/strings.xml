@@ -220,4 +220,7 @@
     <string name="sortir">Sair</string>
     <string name="cancelar">Cancelar</string>
 
+    <!--Strings d'errors-->
+    <string name="errorLoading">Error loading data</string>
+
 </resources>

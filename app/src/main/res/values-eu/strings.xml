@@ -220,4 +220,6 @@
     <string name="sortir">Irten</string>
     <string name="cancelar">Ezeztatu</string>
 
+    <string name="errorLoading">Error loading data</string>
+
 </resources>

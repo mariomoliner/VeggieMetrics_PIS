@@ -3,15 +3,18 @@ package com.example.mmolinca20alumnes.veggiemetrics
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -26,6 +29,14 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.bumptech.glide.Glide
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter.OnItemClickListener
+import com.example.mmolinca20alumnes.veggiemetrics.adapters.sharedprefs
+import com.getkeepsafe.taptargetview.TapTarget
+import com.getkeepsafe.taptargetview.TapTargetSequence
+import com.getkeepsafe.taptargetview.TapTargetView
+import com.github.amlcurran.showcaseview.ShowcaseView
+import com.github.amlcurran.showcaseview.ShowcaseView.*
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget
+import com.github.amlcurran.showcaseview.targets.ViewTarget
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseError
@@ -40,6 +51,9 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import logic_deficiencies.Engine
 import models.*
 import org.json.JSONObject
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -56,6 +70,9 @@ class NewRecipe : AppCompatActivity() {
 
 
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_recipe)
@@ -67,13 +84,56 @@ class NewRecipe : AppCompatActivity() {
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
-        nova_Recepta = recepta_detall("sense nom","mario","")
+        nova_Recepta = recepta_detall("sense nom", "mario", "")
 
 
         init_recycler()
         search_listener()
         recipePic_listener() //per canviar la foto de la recepta
         post_listener() // per publicar la recepta sencera
+
+
+
+        /*MaterialShowcaseView.resetAll(this)
+
+        	MaterialShowcaseView.Builder(this)
+		.setTarget(searchButton).setDismissOnTargetTouch(true)
+		.setContentText("This is some amazing feature you should know about")
+		.setDelay(2) // optional but starting animations immediately in onCreate can make them choppy
+		//.singleUse(SHOWCASE_ID) // provide a unique ID used to ensure it is only shown once
+		.show();*/
+
+        /*TapTargetView.showFor(this, TapTarget.forView(v, "holaa", "dfd").outerCircleColor(R.color.colorPrimary)      // Specify a color for the outer circle
+            .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+            .targetCircleColor(R.color.white)
+            .transparentTarget(true)// Specify a color for the target circle
+            .titleTextSize(20)                  // Specify the size (in sp) of the title text
+            .titleTextColor(R.color.white))*/
+
+        if(sharedprefs().getTutorialStatus2(this) != true){
+
+            TapTargetSequence(this).targets(TapTarget.forView(searchButton,"Cerca aqui aliments en anglès!").outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+                .targetCircleColor(R.color.white)
+                .transparentTarget(true)// Specify a color for the target circle
+                .titleTextSize(20) // Specify the size (in sp) of the title text
+                .titleTextColor(R.color.white)).listener(object: TapTargetSequence.Listener{
+                override fun onSequenceCanceled(lastTarget: TapTarget?) {
+                    nova()
+                }
+
+                override fun onSequenceFinish() {
+                    nova()
+                }
+
+                override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+            }).start()
+
+        }
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -224,7 +284,7 @@ class NewRecipe : AppCompatActivity() {
         val l = list.toTypedArray()
 
         builder.setTitle("Results").setItems(l){dialog, which ->
-            Toast.makeText(this, list[which],Toast.LENGTH_LONG).show()
+            Toast.makeText(this, list[which], LENGTH_LONG).show()
 
 
             val nou_ingredient = Ingredient(Aliment(llista.get(which).codi,list[which],pedir_data_unitats(llista.get(which).codi)),0, "grams")
@@ -329,7 +389,7 @@ class NewRecipe : AppCompatActivity() {
     }
     private fun uploadImageToFirebaseStorage(){
         if(selectedPhotoUri == null){
-            Toast.makeText(this,getString(R.string.falta_foto), Toast.LENGTH_LONG).show()
+            Toast.makeText(this,getString(R.string.falta_foto), LENGTH_LONG).show()
             return
         }
         receptaUUID = UUID.randomUUID().toString()
@@ -339,7 +399,7 @@ class NewRecipe : AppCompatActivity() {
             ref.downloadUrl.addOnSuccessListener {
                 saveRecipeToFirebaseDatabase(it.toString(), this)
             }.addOnFailureListener {
-                    Toast.makeText(this, getString(R.string.error_imatge), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.error_imatge), LENGTH_LONG).show()
                 progress_bar.visibility = View.INVISIBLE
                 this.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             }
@@ -373,7 +433,7 @@ class NewRecipe : AppCompatActivity() {
             override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
                 progress_bar.visibility = View.INVISIBLE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                Toast.makeText(c, getString(R.string.foto_ok), Toast.LENGTH_LONG).show()
+                Toast.makeText(c, getString(R.string.foto_ok), LENGTH_LONG).show()
 
             }
 
@@ -421,6 +481,17 @@ class NewRecipe : AppCompatActivity() {
     private fun isCheckedRadiobutton(): Boolean{
         return gruptipus.checkedRadioButtonId != -1
     }
+
+
+    private fun nova(){
+        TapTargetSequence(this).targets(TapTarget.forView(ingredientsList,"clica sobre cada ingredient per afegir quantitats").outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+            .targetCircleColor(R.color.white)
+            .transparentTarget(true)// Specify a color for the target circle
+            .titleTextSize(20) // Specify the size (in sp) of the title text
+            .titleTextColor(R.color.white)).start()
+        sharedprefs().storeTutorialStatus2(this, true)
+    }
+
 
 
 }
