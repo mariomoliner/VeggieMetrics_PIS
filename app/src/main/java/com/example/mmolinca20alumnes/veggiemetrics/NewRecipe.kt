@@ -418,7 +418,7 @@ class NewRecipe : AppCompatActivity() {
         val nomRecepta = recipeTitle.text.toString()
         //updates.put(receptaUUID, nova_Recepta)
         var u = recepta_model(nomRecepta, nomAutor, uri_image)
-
+        //tipus: vegan, vegetarian, flexi
         var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).text.toString()
 
         updates.put("/$receptaUUID/recepta_detall", nova_Recepta)
