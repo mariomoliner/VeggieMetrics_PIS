@@ -3,7 +3,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".profileFragment"
+        android:id="@+id/layoutframe"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@drawable/background">
 
     <ScrollView
@@ -123,7 +125,6 @@
                         android:layout_below="@+id/searchEdit"/>
 
             </LinearLayout>
-
 
 
             <androidx.recyclerview.widget.RecyclerView
