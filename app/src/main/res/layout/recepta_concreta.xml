@@ -50,16 +50,31 @@
                         android:focusable="true"
                         android:src="@drawable/ic_fav_to_pick" />
 
-                <TextView
-                        android:id="@+id/tipus_recepta_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                <ImageView
+                        android:id="@+id/DietBackground"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_marginTop="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:text="Vegan"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/type_button" />
+
+                <TextView
+                        android:id="@+id/tipus_recepta_view"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="1dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/authem"
+                        android:gravity="center"
+                        android:text="Vegetarian"
+                        android:textSize = "15dp"
+
                         android:textColor="@color/background_green"
-                        android:textStyle="bold"/>
+                        android:textStyle="normal" />
 
             </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -58,7 +59,7 @@ class recipe : AppCompatActivity() {
                 if(p0.exists()){
                     for(i in p0.children){
                         if(i.key.equals(id_recept)){
-                            autor.text = autor.text.toString() + i.child("autor").getValue().toString()
+                            autor.text = autor.text.toString() + " " + i.child("autor").getValue().toString()
                             stepsText.text = i.child("recepta_detall").child("description").value.toString()
                             Glide.with(applicationContext).load(i.child("foto").value.toString()).centerCrop().into(recipePic)
 
@@ -73,10 +74,8 @@ class recipe : AppCompatActivity() {
                             break
                         }
                     }
-
-                }
-                else{
-
+                }else{
+                    Toast.makeText(applicationContext,"Error loading data", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -106,7 +105,7 @@ class recipe : AppCompatActivity() {
                             Log.e("df","si")
                             //fa falta fer que s'actualitzi el child
                             val updates = HashMap<String,Any>()
-                            updates.put("/valoracio_recepta", ratingBar.rating);
+                            updates.put("/valoracio_recepta", ratingBar.rating)
 
                             d.updateChildren(updates, object: DatabaseReference.CompletionListener{
                                 override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
@@ -121,7 +120,7 @@ class recipe : AppCompatActivity() {
                     if(b == 0){
                         val uid=user!!.uid
                         val ref=FirebaseDatabase.getInstance().getReference("rating")
-                        var key = ref.push().key
+                        val key = ref.push().key
                         val data=Calendar.getInstance()
                         val datarating=data.get(Calendar.YEAR)*10000+data.get(Calendar.MONTH)*100+data.get(Calendar.DAY_OF_MONTH)
                         val rat = Rating(ratingBar.rating, uid, id_recept, key.toString(),datarating)

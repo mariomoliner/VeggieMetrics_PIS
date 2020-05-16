@@ -58,7 +58,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class NewRecipe : AppCompatActivity(){
+class NewRecipe : AppCompatActivity() {
 
     lateinit var receptaUUID: String //Unic User ID per la recepta
     var selectedPhotoUri: Uri? = null //Uri de la foto de la recepta
@@ -197,7 +197,7 @@ class NewRecipe : AppCompatActivity(){
                 }
 
             override fun onclearClick(p: Int) {
-                Toast.makeText(applicationContext, "ingredient eliminat", LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.aliment_eliminat), Toast.LENGTH_LONG).show()
 
                 if(nova_Recepta.llista_ingredients.size > p){
                     nova_Recepta.llista_ingredients.removeAt(p)
@@ -370,7 +370,7 @@ class NewRecipe : AppCompatActivity(){
                 })
 
             if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty() || nova_Recepta.llista_ingredients.size == 0 || !isCheckedRadiobutton()){
-                Toast.makeText(this,getString(R.string.omplir_dades), LENGTH_LONG).show()
+                Toast.makeText(this,getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
             }else{
                 nova_Recepta.nom_recepta = recipeTitle.text.toString()
                 nova_Recepta.description = stepsEditText.text.toString()
@@ -418,7 +418,7 @@ class NewRecipe : AppCompatActivity(){
         val nomRecepta = recipeTitle.text.toString()
         //updates.put(receptaUUID, nova_Recepta)
         var u = recepta_model(nomRecepta, nomAutor, uri_image)
-
+        //tipus: vegan, vegetarian, flexi
         var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).text.toString()
 
         updates.put("/$receptaUUID/recepta_detall", nova_Recepta)
