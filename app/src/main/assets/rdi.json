@@ -41,7 +41,18 @@
       "unitat" : "μg",
       "id_db" : "1098"
     },
-
+    {
+      "nom" : "EPA",
+      "qty" : "200" ,
+      "unitat" : "mg",
+      "id_db" : "1278"
+    },
+    {
+      "nom" : "DHA",
+      "qty" : "200" ,
+      "unitat" : "mg",
+      "id_db" : "1272"
+    },
     {
       "nom" : "Vitamin C",
       "qty" : "150" ,
