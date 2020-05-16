@@ -218,4 +218,7 @@
     <string name="logOut">Vols tancar sessió?</string>
     <string name="sortir">Sortir</string>
     <string name="cancelar">Cancel·lar</string>
+
+    <!--Nous Strings-->
+    <string name="aliment_eliminat">Aliment eliminat</string>
 </resources>

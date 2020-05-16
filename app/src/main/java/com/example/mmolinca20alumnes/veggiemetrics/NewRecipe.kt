@@ -137,7 +137,7 @@ class NewRecipe : AppCompatActivity() {
                 }
 
             override fun onclearClick(p: Int) {
-                Toast.makeText(applicationContext, "ingredient eliminat", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.aliment_eliminat), Toast.LENGTH_LONG).show()
 
                 if(nova_Recepta.llista_ingredients.size > p){
                     nova_Recepta.llista_ingredients.removeAt(p)

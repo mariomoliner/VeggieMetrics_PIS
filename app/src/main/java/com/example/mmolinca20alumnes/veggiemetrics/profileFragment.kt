@@ -112,6 +112,7 @@ class profileFragment : Fragment() {
                 childUpdates["omega"] = results[2]
                 childUpdates["calcium"] = results[3]
                 childUpdates["comments"] = results[4]
+
                 //actualitzem la info de l'usuari actual:
                 database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
             }

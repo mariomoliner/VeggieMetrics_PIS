@@ -1,7 +1,7 @@
 {
   "rdi":[
     {
-      "nom" : "iron",
+      "nom" : "Iron",
       "qty" : "18" ,
       "unitat" : "mg",
       "id_db": "1089"
@@ -21,7 +21,7 @@
     },
 
     {
-      "nom" : "Phosophorus",
+      "nom" : "Phosphorus",
       "qty" : "700" ,
       "unitat" : "mg",
       "id_db" : "1091"
