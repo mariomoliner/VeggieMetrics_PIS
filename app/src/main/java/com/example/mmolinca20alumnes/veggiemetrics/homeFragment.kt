@@ -2,6 +2,7 @@ package com.example.mmolinca20alumnes.veggiemetrics
 
 import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -60,7 +61,7 @@ class homeFragment : Fragment() {
     private fun setFavs(){
         progress_barFav.visibility = View.VISIBLE
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users-data")
             .child(auth.currentUser!!.uid).child("preferides")
@@ -74,17 +75,25 @@ class homeFragment : Fragment() {
                         val nomRecepta = recipe.child("recepta").getValue().toString()
                         val nomAutor = recipe.child("autor").getValue().toString()
                         val foto = recipe.child("foto").getValue().toString()
-                        llistaReceptes.add(recepta_model(nomRecepta, nomAutor, foto))
+                        val tipus = recipe.child("tipus").getValue().toString()
+                        var carac = ""
+                        for(p in recipe.child("puntsforts").children){
+                            carac += "#"+p.child("nom").value.toString() + " "
+                            Log.e("puntsforts",p.child("nom").value.toString())
+                        }
+                        val uuid = recipe.key.toString()
+
+                        llistaReceptes.add(recepta_model(nomRecepta, nomAutor, foto, uuid, carac, tipus ))
                         //Toast.makeText(activity,nomRecepta, Toast.LENGTH_LONG).show()
                     }
                     //Visualitzar les receptes preferides:
                     progress_barFav.visibility = View.INVISIBLE
                     ListFavorites.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
                     ListFavorites.adapter = llista_fav_receptes_Adapter(llistaReceptes)
-                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 }else{
                     progress_barFav.visibility = View.INVISIBLE
-                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                     //TODO: Afegir missatge de "Encara no tens receptes preferides"
                 }
             }
