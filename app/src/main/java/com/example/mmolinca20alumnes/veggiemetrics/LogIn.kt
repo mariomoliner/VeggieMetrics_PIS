@@ -28,15 +28,6 @@ class LogIn : AppCompatActivity() {
         loginListener()
         forgot_password_list()
         register_user_listener()
-
-
-        TapTargetView.showFor(this, TapTarget.forView(logInButton, "holaa", "dfd").outerCircleColor(R.color.colorPrimary)      // Specify a color for the outer circle
-            .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
-            .targetCircleColor(R.color.white)
-            .transparentTarget(true)// Specify a color for the target circle
-            .titleTextSize(20)                  // Specify the size (in sp) of the title text
-            .titleTextColor(R.color.white))
-
     }
 
     fun fuct(v: View){
