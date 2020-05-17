@@ -147,14 +147,17 @@ class recipesFragment : Fragment() {
 
     private fun set_param_filtre(s: String){
         if(s.equals("Nom")){
+            Log.e("f","filtrem per nom")
             (llista.adapter as llista_receptes_Adapter).set_param_filtre(0)
         }
         else if(s.equals("Micronutrient")){
+            Log.e("f","filtrem per micro")
             (llista.adapter as llista_receptes_Adapter).set_param_filtre(1)
         }
     }
 
     private fun set_show_options(s: String){
+        Log.e("f","filtrem per " + s)
         (llista.adapter as llista_receptes_Adapter).set_quines_mostro(s)
     }
 }

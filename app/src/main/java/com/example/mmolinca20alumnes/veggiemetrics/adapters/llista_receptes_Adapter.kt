@@ -41,7 +41,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
     private lateinit var databaseReference: DatabaseReference
     private var c: Context
     private var param_filtre = 0
-    private var quines_mostro = "totes"
+    private var quines_mostro = "Totes"
 
     var llista_receptes_filtrada = ArrayList<recepta_model>()
 
@@ -173,10 +173,10 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
                     val resultList = ArrayList<recepta_model>()
                     for (row in recipesList) {
                         if(param_filtre == 0){
+                            Log.e("df","cosntraint " + constraint.toString().toLowerCase() + "nomrecept " + row.getRecepta().toLowerCase())
                             if (constraint in row.getRecepta().toLowerCase(Locale.ROOT))  {
-                                Log.e("sf",quines_mostro)
-                                Log.e("sf",row.getTipus())
-                                if(quines_mostro.equals("totes")){
+                                Log.e("TIPUS DE RECEPTA",row.getRecepta() + "  " +row.getTipus())
+                                if(quines_mostro.equals("Totes")){
                                     resultList.add(row)
                                     Log.e("fdf","entro 1")
                                 }
@@ -186,18 +186,12 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
                                         Log.e("fdf","entro 12")
                                     }
                                 }
-
-                                //System.out.println(row.get_autor())
-                                //resultList.add(row)
                             }
                         }
                         if(param_filtre == 1){
                             if (constraint in row.getCaracteristiques().toLowerCase(Locale.ROOT))  {
-                                Log.e("sf",quines_mostro)
-                                Log.e("sf",row.getTipus())
-                                if(quines_mostro.equals("") ){
+                                if(quines_mostro.equals("Totes") ){
                                     resultList.add(row)
-                                    Log.e("fdf","entro 2")
                                 }
                                 else{
                                     if(quines_mostro.equals(row.getTipus())){
