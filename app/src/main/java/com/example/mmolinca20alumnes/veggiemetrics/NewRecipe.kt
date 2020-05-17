@@ -367,6 +367,9 @@ class NewRecipe : AppCompatActivity() {
         updates.put("/$receptaUUID/foto", u.getFoto())
         updates.put("/$receptaUUID/puntsforts", report)
         updates.put("/$receptaUUID/tipus", tipus_recept)
+        /*Afageixo valoració mitjana i num_vots*/
+        updates.put("/$receptaUUID/valoracio_mitjana",0)
+        updates.put("/$receptaUUID/num_vots",0)
 
 
         databaseRef.updateChildren(updates, object: DatabaseReference.CompletionListener{

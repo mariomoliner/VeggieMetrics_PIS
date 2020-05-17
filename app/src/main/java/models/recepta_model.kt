@@ -7,6 +7,7 @@ class recepta_model{
     private var id: String
     private var caracteristiques: String
     private var tipus: String
+    private var valoracio_mitjana: String
 /*
     constructor(recepta: kotlin.String, autor: kotlin.String, fotoRecepta: kotlin.String, id: kotlin.String, receptaDetall: models.recepta_detall, s: String){
         this.recepta = recepta
@@ -22,6 +23,7 @@ class recepta_model{
         this.id = id
         this.caracteristiques = caracteristiques
         this.tipus = tipus
+        this.valoracio_mitjana = ""
     }
 
     constructor(recepta: String, autor: String, fotoRecepta: String, id: String, caracteristiques: String){
@@ -31,6 +33,7 @@ class recepta_model{
         this.id = id
         this.caracteristiques = caracteristiques
         this.tipus = ""
+        this.valoracio_mitjana = ""
     }
 
     constructor(recepta: String, autor: String, fotoRecepta: String, id: String){
@@ -40,6 +43,7 @@ class recepta_model{
         this.id = id
         this.caracteristiques = ""
         this.tipus = ""
+        this.valoracio_mitjana =""
     }
     constructor(recepta: String, autor: String, fotoRecepta: String){
         this.recepta = recepta
@@ -48,7 +52,17 @@ class recepta_model{
         this.id = ""
         this.caracteristiques = ""
         this.tipus = ""
+        this.valoracio_mitjana =""
     }
+    /*constructor(recepta: String, autor: String, fotoRecepta: String, valoracio_mitjana:String){
+        this.recepta = recepta
+        this.autor = autor
+        this.fotoRecepta = fotoRecepta
+        this.id = ""
+        this.caracteristiques = ""
+        this.tipus = ""
+        this.valoracio_mitjana =valoracio_mitjana
+    }*/
     constructor(recepta: String, autor: String){
         this.recepta = recepta
         this.autor = autor
@@ -56,6 +70,7 @@ class recepta_model{
         this.id = ""
         this.caracteristiques = ""
         this.tipus = ""
+        this.valoracio_mitjana=""
     }
 
     //Getters:
@@ -78,5 +93,8 @@ class recepta_model{
 
     fun getTipus(): String{
         return tipus
+    }
+    fun getValoracio():String{
+        return valoracio_mitjana
     }
 }

@@ -3,6 +3,7 @@ package com.example.mmolinca20alumnes.veggiemetrics
 import android.Manifest
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +23,9 @@ class homeFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     //base de dades a firebase:
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var topDatabaseReference: DatabaseReference
     private var llistaReceptes = ArrayList<recepta_model>()
+    private var llistaTop = ArrayList<recepta_model>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -33,7 +36,6 @@ class homeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         this!!.activity?.let {
             ActivityCompat.requestPermissions(
                 it,
@@ -41,6 +43,7 @@ class homeFragment : Fragment() {
                 111)
         }
         setGUIuser()
+        setTop()
         setFavs()
     }
 
@@ -55,6 +58,37 @@ class homeFragment : Fragment() {
 
     fun setUser(userloged : FirebaseAuth){
         auth = userloged
+    }
+
+    private fun setTop(){
+        progress_barFav.visibility = View.VISIBLE
+        activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        topDatabaseReference = FirebaseDatabase.getInstance().getReference("receptes")
+
+        llistaTop = arrayListOf()
+        topDatabaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()) {
+                    for (recipe in p0.children) {
+                        val nomRecepta = recipe.child("recepta").getValue().toString()
+                        val nomAutor = recipe.child("autor").getValue().toString()
+                        val foto = recipe.child("foto").getValue().toString()
+                        llistaTop.add(recepta_model(nomRecepta, nomAutor, foto))
+                    }
+                    //Visualitzar les receptes top//
+                    progress_barTop.visibility = View.INVISIBLE
+                    ListTopReceptes.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+                    ListTopReceptes.adapter = llista_fav_receptes_Adapter(llistaTop)
+                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                }else{
+                    progress_barFav.visibility = View.INVISIBLE
+                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    //TODO: Afegir missatge de "Encara no tens receptes preferides"
+                }
+            }
+        })
     }
 
     private fun setFavs(){
