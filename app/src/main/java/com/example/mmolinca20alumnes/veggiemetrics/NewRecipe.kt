@@ -414,7 +414,22 @@ class NewRecipe : AppCompatActivity() {
         var u = recepta_model(nomRecepta, nomAutor, uri_image)
 
         //var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).id
-        var tipus_recept = gruptipus.checkedRadioButtonId%10
+        var tipus_recept = -1
+        if(gruptipus.checkedRadioButtonId.toString().equals(findViewById<RadioButton>(R.id.rb2).id.toString())){
+            tipus_recept = 0
+
+        }
+        if(gruptipus.checkedRadioButtonId.toString().equals(findViewById<RadioButton>(R.id.rb1).id.toString())){
+            tipus_recept = 1
+
+        }
+        if(gruptipus.checkedRadioButtonId.toString().equals(findViewById<RadioButton>(R.id.rb3).id.toString())){
+            tipus_recept = 2
+        }
+        if(gruptipus.checkedRadioButtonId.toString().equals(findViewById<RadioButton>(R.id.rb4).id.toString())){
+            tipus_recept = 3
+        }
+
 
         updates.put("/$receptaUUID/recepta_detall", nova_Recepta)
         updates.put("/$receptaUUID/recepta", u.getRecepta())
