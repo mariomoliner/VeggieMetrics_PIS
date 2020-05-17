@@ -71,6 +71,7 @@ class recepta_model{
         this.caracteristiques = ""
         this.tipus = ""
         this.valoracio_mitjana=""
+
     }
 
     //Getters:
