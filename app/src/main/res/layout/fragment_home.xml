@@ -153,7 +153,7 @@
                     style="@style/edit_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recomanades_no_text"
+                    android:text="@string/preferits_no_text"
                     android:textStyle="bold"
                     android:layout_marginTop="45dp"
                     android:layout_below="@+id/FavoriteTitle"
