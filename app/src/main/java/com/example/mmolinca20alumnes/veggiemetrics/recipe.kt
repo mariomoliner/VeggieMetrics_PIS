@@ -44,7 +44,6 @@ class recipe : AppCompatActivity() {
 
         buttonSave.setOnClickListener {
             saveRecipeRating()
-            valoraciomitjana()
         }
     }
 
@@ -85,7 +84,7 @@ class recipe : AppCompatActivity() {
                                 ingredients = ingredients + j.child("aliment").child("nom").value.toString() + "  " + j.child("qty").value.toString() + " "+ j.child("unitat").value.toString() + "\n"
                             }
                             ingredientsList.text = ingredients
-
+                            valoraciomitjana()
                             break
                         }
                     }
@@ -103,7 +102,7 @@ class recipe : AppCompatActivity() {
 
         var b = 0
         ref = FirebaseDatabase.getInstance().getReference("rating")
-        ref.addValueEventListener(object: ValueEventListener{
+        ref.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
@@ -162,6 +161,8 @@ class recipe : AppCompatActivity() {
 
                                     }
                                 })
+
+                            valoraciomitjana()
 
                         }
 
@@ -239,19 +240,20 @@ class recipe : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
                     for (i in p0.children) {
+                        Log.e("user_id_df", i.child("idRecepta_rating").value.toString())
+                        Log.e("user_id",id_recept)
                         if (i.child("idRecepta_rating").getValue().toString().equals(id_recept)) {
-                            numval = numval + 1
+                            numval = numval + 1.0
                             mitjana += i.child("valoracio_recepta").getValue().toString().toFloat()
                         }
                     }
                     mitjana = mitjana / numval
+                    refval=FirebaseDatabase.getInstance().getReference("receptes")
+                    val updatesRatingMig = HashMap<String, Any>()
+                    updatesRatingMig.put("valoracio_mitjana", -mitjana)
+                    refval.child(id_recept).updateChildren(updatesRatingMig)
                 }
             }
         })
-        refval=FirebaseDatabase.getInstance().getReference("receptes")
-        val updatesRatingMig = HashMap<String, Any>()
-        updatesRatingMig.put("valoracio_mitjana", -mitjana)
-        refval.child(id_recept).updateChildren(updatesRatingMig)
-
     }
 }
