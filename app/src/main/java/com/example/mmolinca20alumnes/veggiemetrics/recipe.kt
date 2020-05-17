@@ -76,8 +76,8 @@ class recipe : AppCompatActivity() {
                             autor.text = autor.text.toString() + " " + i.child("autor").getValue().toString()
                             diet.text = diet.text.toString() + " " + tradueixDieta(i.child("tipus").getValue().toString())
                             val valoracio=-i.child("valoracio_mitjana").getValue().toString().toFloat()
-                            ValMitjana.text = ValMitjana.text.toString() + valoracio.toString()
-                            vots.text = vots.text.toString() + i.child("num_vots").getValue().toString()
+                            ValMitjana.text = ValMitjana.text.toString() + " " + valoracio.toString()
+                            vots.text = vots.text.toString() + " " + i.child("num_vots").getValue().toString()
                             stepsText.text = i.child("recepta_detall").child("description").value.toString()
                             Glide.with(applicationContext).load(i.child("foto").value.toString()).centerCrop().into(recipePic)
 
