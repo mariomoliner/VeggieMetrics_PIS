@@ -74,6 +74,33 @@
                     android:gravity="center"
                     style="@style/TextViewStyle"/>
 
+            <TextView
+                    android:id="@+id/ValMitjana"
+                    android:layout_width="169dp"
+                    android:layout_height="23dp"
+                    android:layout_below="@+id/diet"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/recipePic"
+                    android:text="@string/valoracioMitjana"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle"/>
+            <TextView
+                    android:id="@+id/vots"
+                    android:text="@string/numVots"
+                    android:layout_width="169dp"
+                    android:layout_height="23dp"
+                    android:layout_below="@+id/ValMitjana"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/recipePic"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    style="@style/TextViewStyle"/>
+            <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
             <RatingBar
                     android:id="@+id/ratingReceptes"
                     android:layout_width="wrap_content"

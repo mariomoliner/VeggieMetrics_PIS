@@ -221,6 +221,8 @@
     <string name="cancelar">Abbrechen</string>
 
     <!--Strings d'errors-->
-    <string name="errorLoading">Error loading data</string>
+    <string name="errorLoading">Fehler beim Daten Laden</string>
+    <string name="valoracioMitjana">Auswertung:</string>
+    <string name="numVots">Stimmen: </string>
 
 </resources>

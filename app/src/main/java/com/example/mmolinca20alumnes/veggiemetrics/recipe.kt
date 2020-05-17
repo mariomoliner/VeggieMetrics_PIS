@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_recipe.ingredientsList
 import kotlinx.android.synthetic.main.activity_recipe.recipePic
 import models.Rating
 import java.util.*
+import kotlin.collections.HashMap
 
 class recipe : AppCompatActivity() {
     lateinit var ratingBar: RatingBar
@@ -74,6 +75,9 @@ class recipe : AppCompatActivity() {
                         if(i.key.equals(id_recept)){
                             autor.text = autor.text.toString() + " " + i.child("autor").getValue().toString()
                             diet.text = diet.text.toString() + " " + tradueixDieta(i.child("tipus").getValue().toString())
+                            val valoracio=-i.child("valoracio_mitjana").getValue().toString().toFloat()
+                            ValMitjana.text = ValMitjana.text.toString() + valoracio.toString()
+                            vots.text = vots.text.toString() + i.child("num_vots").getValue().toString()
                             stepsText.text = i.child("recepta_detall").child("description").value.toString()
                             Glide.with(applicationContext).load(i.child("foto").value.toString()).centerCrop().into(recipePic)
 
@@ -84,7 +88,6 @@ class recipe : AppCompatActivity() {
                                 ingredients = ingredients + j.child("aliment").child("nom").value.toString() + "  " + j.child("qty").value.toString() + " "+ j.child("unitat").value.toString() + "\n"
                             }
                             ingredientsList.text = ingredients
-                            valoraciomitjana()
                             break
                         }
                     }
@@ -120,15 +123,15 @@ class recipe : AppCompatActivity() {
                             var d = i.ref
                             Log.e("df", "si")
                             /*Guardo el rating actual*/
-                            /*val rating_vell = i.child("valoracio_recepta").value.toString().toFloat()*/
+                            val rating_vell = i.child("valoracio_recepta").value.toString().toFloat()
                             //fa falta fer que s'actualitzi el child
                             val updatesRating = HashMap<String, Any>()
                             updatesRating.put("/valoracio_recepta", ratingBar.rating)
-                            /*/*Guardo el rating nou*/
+                            /*Guardo el rating nou*/
                             val rating_nou = ratingBar.rating
                             /*Creo una referencia per receptes*/
                             refval = FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
-                            refval.addValueEventListener(object : ValueEventListener {
+                            refval.addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onCancelled(p0: DatabaseError) {
                                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                                 }
@@ -136,25 +139,24 @@ class recipe : AppCompatActivity() {
                                 override fun onDataChange(p1: DataSnapshot) {
                                     if (p1.exists()) {
                                         /*Llegeixo la nota mitjana i nombre de vots actual*/
-                                        val notaMitjana =
-                                            p1.child("valoracio_mitjana").value.toString().toFloat()
-                                        val numVots =
-                                            p1.child("num_vots").value.toString().toFloat()
-                                        /*if(numVots>0){
-                                             val notaMitjanaNova = ((notaMitjana * numVots) - rating_vell + rating_nou) / numVots
+                                        val notaMitjana = p1.child("valoracio_mitjana").value.toString().toFloat()
+                                        val numVots = p1.child("num_vots").value.toString().toFloat()
+                                        if(numVots>0){
+                                             val notaMitjanaNova = ((notaMitjana * numVots) + rating_vell - rating_nou) / numVots
                                              /*Actualitzo la nota mitjana de la recepta*/
                                              val updatesRatingMig = HashMap<String, Any>()
                                              updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
-                                         }else{*/
-                                        val notaMitjanaNova =
-                                            ((notaMitjana * numVots) - rating_vell + rating_nou) / numVots
-                                        /*Actualitzo la nota mitjana de la recepta*/
-                                        val updatesRatingMig = HashMap<String, Any>()
-                                        updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
-
+                                             refval.updateChildren(updatesRatingMig)
+                                         }else {
+                                            val notaMitjanaNova = ((notaMitjana * numVots) + rating_vell - rating_nou)
+                                            /*Actualitzo la nota mitjana de la recepta*/
+                                            val updatesRatingMig = HashMap<String, Any>()
+                                            updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
+                                            refval.updateChildren(updatesRatingMig)
+                                        }
                                     }
                                 }
-                            })*/
+                            })
                             d.updateChildren(updatesRating, object : DatabaseReference.CompletionListener {
                                 override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
                                         Toast.makeText(applicationContext, getString(R.string.rating_actualitzat), Toast.LENGTH_LONG).show()
@@ -162,7 +164,7 @@ class recipe : AppCompatActivity() {
                                     }
                                 })
 
-                            valoraciomitjana()
+                            /*valoraciomitjana()*/
 
                         }
 
@@ -178,39 +180,32 @@ class recipe : AppCompatActivity() {
                                 getString(R.string.rating_guardat),
                                 Toast.LENGTH_LONG
                             ).show()
+                            /*valoraciomitjana()*/
                         }
-                        /*/*Guardo el rating nou*/
+                        /*Guardo el rating nou*/
                         val rating_nou = ratingBar.rating
                         /*Creo una referencia per receptes*/
                         refval = FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
-                        refval.addValueEventListener(object : ValueEventListener {
+                        refval.addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onCancelled(p0: DatabaseError) {
                                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                             }
 
-                            override fun onDataChange(p0: DataSnapshot) {
-                                if (p0.exists()) {
-                                    for (j in p0.children) {
-                                        /*Llegeixo la nota mitjana i nombre de vots actual*/
-                                        val notaMitjana =
-                                            j.child("valoracio_mitjana").getValue().toString()
-                                                .toFloat()
-                                        val numVots =
-                                            j.child("num_vots").getValue().toString().toInt()
-                                        val notaMitjanaNova =
-                                            ((notaMitjana * numVots) + rating_nou) / (numVots + 1)
-                                        /*Actualitzo la nota mitjana i el nombre de vots*/
-                                        val updatesRatingMig = HashMap<String, Any>()
-                                        updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
-                                        updatesRatingMig.put("num_vots", numVots + 1)
-                                    }
+                            override fun onDataChange(p1: DataSnapshot) {
+                                if (p1.exists()) {
+                                    /*Llegeixo la nota mitjana i nombre de vots actual*/
+                                    val notaMitjana = p1.child("valoracio_mitjana").value.toString().toFloat()
+                                    val numVots = p1.child("num_vots").value.toString().toFloat()
+                                    val notaMitjanaNova = ((notaMitjana * numVots) - rating_nou)/(numVots + 1)
+                                    /*Actualitzo la nota mitjana de la recepta*/
+                                    val updatesRatingMig = HashMap<String, Any>()
+                                    updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
+                                    updatesRatingMig.put("num_vots", numVots + 1)
+                                    refval.updateChildren(updatesRatingMig)
                                 }
-
                             }
-                        })*/
+                        })
                     }
-
-
                 }
             }
         })
@@ -229,7 +224,7 @@ class recipe : AppCompatActivity() {
         }
     }
 
-    private fun valoraciomitjana(){
+    /*private fun valoraciomitjana(){
         ref = FirebaseDatabase.getInstance().getReference("rating")
         var mitjana=0.0
         var numval=0.0
@@ -255,5 +250,5 @@ class recipe : AppCompatActivity() {
                 }
             }
         })
-    }
+    }*/
 }
