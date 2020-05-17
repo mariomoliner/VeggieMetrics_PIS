@@ -17,6 +17,8 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_recipes.*
 import models.recepta_model
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -78,7 +80,7 @@ class homeFragment : Fragment() {
         progress_barFav.visibility = View.VISIBLE
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         topDatabaseReference = FirebaseDatabase.getInstance().getReference("receptes")
-        val top10 = topDatabaseReference.orderByChild("valoracio_mitjana").limitToLast(10)
+        val top10 = topDatabaseReference.orderByChild("valoracio_mitjana").limitToFirst(10).startAt(-5.0)
         llistaTop = arrayListOf()
         top10.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -230,7 +232,7 @@ class homeFragment : Fragment() {
                                     )
                             }
                             if (omega.equals("Not good") || omega.equals("Bad")) {
-                                if ("Omega" in nutrients)
+                                if ("EPA" in nutrients || "DHA" in nutrients)
                                     llistaRecomanacions.add(
                                         recepta_model(
                                             nomRecepta,
@@ -297,8 +299,6 @@ class homeFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.actionbar_home, menu)
     }*/
-
-
 
 
 }
