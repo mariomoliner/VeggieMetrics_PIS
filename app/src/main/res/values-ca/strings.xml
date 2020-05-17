@@ -50,7 +50,7 @@
     <string name="valoracio_recepta">Valoració: *****</string>
     <string name="llista_ingredients">- Ingredient 1\n- Ingredient 2\n- Ingredient 3\n</string>
     <string name="valora">Valora</string>
-    <string name="top">Top receptes de la setmana</string>
+    <string name="top">Top receptes</string>
     <string name="recomanades">Recomanades per a tu</string>
     <string name="preferits">Preferits</string>
     <string name="grams">grams</string>
@@ -222,5 +222,20 @@
 
     <!--Strings d'errors-->
     <string name="errorLoading">Error al carregar dades</string>
+
+    <!--Nous Strings-->
+    <string name="aliment_eliminat">Aliment eliminat</string>
+    <string name="recepta_afegida">Recepta afegida correctament</string>
+    <string name="recomanades_no_text">Fes el test setmanal al Perfil per obtenir recomanacions nutricionals personalitzades</string>
+    <string name="guia_ingredients">Fes click sobre cada ingredient per afegir quantitats</string>
+    <string name="guia_afegir_recepta">Afegeix receptes fent click a +</string>
+    <string name="guarda">Guarda</string>
+    <string name="aliment">Aliment</string>
+    <string name="filtra">Filtra per: </string>
+    <string name="nom">Nom</string>
+    <string name="micronutrient">Micronutrient</string>
+    <string name="mostra_receptes">Mostra receptes: </string>
+    <string name="totes">Totes</string>
+    <string name="filtra_cerca">Filtra</string>
 
 </resources>
