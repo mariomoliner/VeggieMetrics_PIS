@@ -156,13 +156,13 @@ class recipe : AppCompatActivity() {
                                         }
                                     }
                                 }
-                            })
+                            })*/
                             d.updateChildren(updatesRating, object : DatabaseReference.CompletionListener {
                                 override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
                                         Toast.makeText(applicationContext, getString(R.string.rating_actualitzat), Toast.LENGTH_LONG).show()
 
                                     }
-                                })*/
+                                })
 
                             valoraciomitjana()
 
