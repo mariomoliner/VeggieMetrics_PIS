@@ -224,6 +224,15 @@ class homeFragment : Fragment() {
                         val foto = recipe.child("foto").getValue().toString()
                         val dieta = recipe.child("tipus").getValue().toString().toInt()
                         val nutrients = ArrayList<String>()
+                        //Afegit:
+                        val tipus = recipe.child("tipus").getValue().toString()
+                        var carac = ""
+                        for(p in recipe.child("puntsforts").children){
+                            carac += "#"+p.child("nom").value.toString() + " "
+                            Log.e("puntsforts",p.child("nom").value.toString())
+                        }
+                        val uuid = recipe.key.toString()
+                        //end
                         for (p in recipe.child("puntsforts").children) {
                             nutrients.add(p.child("nom").value.toString())
                         }
@@ -236,7 +245,10 @@ class homeFragment : Fragment() {
                                         recepta_model(
                                             nomRecepta,
                                             nomAutor,
-                                            foto
+                                            foto,
+                                            uuid,
+                                            carac,
+                                            tipus
                                         )
                                     )
                             }
@@ -246,7 +258,10 @@ class homeFragment : Fragment() {
                                         recepta_model(
                                             nomRecepta,
                                             nomAutor,
-                                            foto
+                                            foto,
+                                            uuid,
+                                            carac,
+                                            tipus
                                         )
                                     )
                             }
@@ -256,7 +271,10 @@ class homeFragment : Fragment() {
                                         recepta_model(
                                             nomRecepta,
                                             nomAutor,
-                                            foto
+                                            foto,
+                                            uuid,
+                                            carac,
+                                            tipus
                                         )
                                     )
                             }
@@ -270,12 +288,24 @@ class homeFragment : Fragment() {
                             val nomAutor = recipe.child("autor").getValue().toString()
                             val foto = recipe.child("foto").getValue().toString()
                             val dieta = recipe.child("tipus").getValue().toString().toInt()
+                            //Afegit:
+                            val tipus = recipe.child("tipus").getValue().toString()
+                            var carac = ""
+                            for(p in recipe.child("puntsforts").children){
+                                carac += "#"+p.child("nom").value.toString() + " "
+                                Log.e("puntsforts",p.child("nom").value.toString())
+                            }
+                            val uuid = recipe.key.toString()
+                            //end
                             if (diet >= dieta) {
                                 llistaRecomanacions.add(
                                     recepta_model(
                                         nomRecepta,
                                         nomAutor,
-                                        foto
+                                        foto,
+                                        uuid,
+                                        carac,
+                                        tipus
                                     )
                                 )
                             }
