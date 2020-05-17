@@ -33,7 +33,8 @@ class homeFragment : Fragment() {
     private var iron = ""
     private var omega = ""
     private var calcium = ""
-    private var diet = ""
+    private var diet = 4
+    private var test = false
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -112,6 +113,19 @@ class homeFragment : Fragment() {
         })
     }
 
+    private fun tradueixDieta(d: String): Int {
+        var codi = 4
+        if (d.equals(getActivity()?.getString(R.string.vegana)))
+            codi = 0
+        else if (d.equals(getActivity()?.getString(R.string.vegetariana)))
+            codi = 1
+        else if (d.equals(getActivity()?.getString(R.string.piscivegetariana)))
+            codi = 2
+        else if (d.equals(getActivity()?.getString(R.string.flexitariana)))
+            codi = 3
+        return codi
+    }
+
     private fun recoverData() {
         userDatabaseReference = FirebaseDatabase.getInstance().reference.child("users-data").child(auth.currentUser!!.uid)
 
@@ -122,12 +136,14 @@ class homeFragment : Fragment() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
-                    diet = p0.child("Diet").getValue().toString()
-                    iron = p0.child("iron").getValue().toString()
-                    omega = p0.child("omega").getValue().toString()
-                    calcium = p0.child("calcium").getValue().toString()
-
-                    //Toast.makeText(activity, diet, Toast.LENGTH_LONG).show()
+                    if (p0.child("iron").exists()) {
+                        diet = tradueixDieta(p0.child("Diet").getValue().toString())
+                        iron = p0.child("iron").getValue().toString()
+                        omega = p0.child("omega").getValue().toString()
+                        calcium = p0.child("calcium").getValue().toString()
+                        test = true
+                        //Toast.makeText(activity, "", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         })
@@ -142,7 +158,7 @@ class homeFragment : Fragment() {
 
         recoverData()
 
-        /* val childUpdates = HashMap<String, Any>()
+         /* val childUpdates = HashMap<String, Any>()
         childUpdates["recomanades"] = llistaRecomanacions
 
         //actualitzem la info de l'usuari actual:
@@ -154,61 +170,87 @@ class homeFragment : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().getReference("receptes")
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
-            override fun onDataChange(p0: DataSnapshot) {
-                if (p0.exists()) {
+             override fun onCancelled(p0: DatabaseError) {
+             }
+
+             override fun onDataChange(p0: DataSnapshot) {
+                 if (p0.exists() && test) {
                      for (recipe in p0.children) {
                          val nomRecepta = recipe.child("recepta").getValue().toString()
                          val nomAutor = recipe.child("autor").getValue().toString()
                          val foto = recipe.child("foto").getValue().toString()
-                         val dieta = recipe.child("tipus").getValue().toString()
+                         val dieta = recipe.child("tipus").getValue().toString().toInt()
                          val nutrients = ArrayList<String>()
                          for (p in recipe.child("puntsforts").children) {
                              nutrients.add(p.child("nom").value.toString())
                          }
 
                          // Recomanació principal
-                         if (/*dieta.equals(diet)*/true) {                                     // Modificar creació de receptes primer
+                         if (diet >= dieta) {
                              if (iron.equals("Not good") || iron.equals("Bad")) {
                                  if ("Iron" in nutrients)
-                                     llistaRecomanacions.add(recepta_model(nomRecepta, nomAutor, foto))
+                                     llistaRecomanacions.add(
+                                         recepta_model(
+                                             nomRecepta,
+                                             nomAutor,
+                                             foto
+                                         )
+                                     )
                              }
                              if (omega.equals("Not good") || omega.equals("Bad")) {
                                  if ("Omega" in nutrients)
-                                     llistaRecomanacions.add(recepta_model(nomRecepta, nomAutor, foto))
+                                     llistaRecomanacions.add(
+                                         recepta_model(
+                                             nomRecepta,
+                                             nomAutor,
+                                             foto
+                                         )
+                                     )
                              }
                              if (calcium.equals("Not good") || calcium.equals("Bad")) {
                                  if ("Calcium" in nutrients)
-                                     llistaRecomanacions.add(recepta_model(nomRecepta, nomAutor, foto))
+                                     llistaRecomanacions.add(
+                                         recepta_model(
+                                             nomRecepta,
+                                             nomAutor,
+                                             foto
+                                         )
+                                     )
                              }
                          }
-                    }
+                     }
 
-                    // Recomanació secundària
-                    if (llistaRecomanacions.size == 0) {
-                        for (recipe in p0.children) {
-                            val nomRecepta = recipe.child("recepta").getValue().toString()
-                            val nomAutor = recipe.child("autor").getValue().toString()
-                            val foto = recipe.child("foto").getValue().toString()
-                            val dieta = recipe.child("tipus").getValue().toString()
-                            if (/*dieta.equals(diet)*/true) {                                  // Modificar creació de receptes primer
-                                llistaRecomanacions.add(recepta_model(nomRecepta, nomAutor, foto))
-                            }
-                        }
-                    }
+                     // Recomanació secundària
+                     if (llistaRecomanacions.size == 0) {
+                         for (recipe in p0.children) {
+                             val nomRecepta = recipe.child("recepta").getValue().toString()
+                             val nomAutor = recipe.child("autor").getValue().toString()
+                             val foto = recipe.child("foto").getValue().toString()
+                             val dieta = recipe.child("tipus").getValue().toString().toInt()
+                             if (diet >= dieta) {
+                                 llistaRecomanacions.add(
+                                     recepta_model(
+                                         nomRecepta,
+                                         nomAutor,
+                                         foto
+                                     )
+                                 )
+                             }
+                         }
+                     }
 
-                    //Visualitzar les receptes recomanades:
-                    progress_barRec.visibility = View.INVISIBLE
-                    ListRecomended.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-                    ListRecomended.adapter = llista_fav_receptes_Adapter(llistaRecomanacions)
-                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                }else{
-                    progress_barRec.visibility = View.INVISIBLE
-                    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                    //TODO: Afegir missatge de "Encara no has fet el test setmanal"
-                }
-            }
+                     //Visualitzar les receptes recomanades:
+                     progress_barRec.visibility = View.INVISIBLE
+                     ListRecomended.layoutManager =
+                         LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+                     ListRecomended.adapter = llista_fav_receptes_Adapter(llistaRecomanacions)
+                     activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                 } else {
+                     progress_barRec.visibility = View.INVISIBLE
+                     activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                     RecomendedText.visibility = View.VISIBLE
+                 }
+             }
         })
     }
     /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

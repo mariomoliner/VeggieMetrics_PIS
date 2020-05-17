@@ -125,7 +125,7 @@ class recipe : AppCompatActivity() {
                         val datarating=data.get(Calendar.YEAR)*10000+data.get(Calendar.MONTH)*100+data.get(Calendar.DAY_OF_MONTH)
                         val rat = Rating(ratingBar.rating, uid, id_recept, key.toString(),datarating)
                         ref.child(key.toString()).setValue(rat).addOnCompleteListener{
-                            Toast.makeText(applicationContext,getString(R.string.rating_guardat), Toast.LENGTH_LONG).show()
+                            //Toast.makeText(applicationContext,getString(R.string.rating_guardat), Toast.LENGTH_LONG).show()
                         }
                     }
 

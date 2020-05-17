@@ -39,9 +39,10 @@
                     android:id="@+id/recipePic"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_below="@+id/title"
+                    android:layout_below="@+id/recipeTitle"
                     android:clickable="true"
                     android:focusable="true"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/recipe_pic" />
 
             <EditText
@@ -49,8 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:tooltipText="@string/nom_recepta"
-                    android:layout_toRightOf="@id/recipePic"
+                    android:hint="@string/nom_recepta"
                     android:layout_below="@+id/title"
                     android:textSize="15dp"
                     android:layout_marginLeft="15dp"
@@ -62,27 +62,33 @@
                     android:layout_below="@+id/recipeTitle"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_toRightOf="@+id/recipePic"
                     android:layout_width="match_parent">
-
-                <RadioButton
-                        android:id="@+id/rb1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Vegetarian"/>
 
                 <RadioButton
                         android:id="@+id/rb2"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="Vegan"/>
+                        android:text="@string/vegana"/>
+
+                <RadioButton
+                        android:id="@+id/rb1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/vegetariana"/>
 
                 <RadioButton
                         android:id="@+id/rb3"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:text="Flexi"/>
+                        android:text="@string/piscivegetariana"/>
 
+                <RadioButton
+                        android:id="@+id/rb4"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="@string/flexitariana"/>
 
             </RadioGroup>
 
@@ -153,12 +159,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="@string/preparacio"
+                    android:hint="@string/preparacio"
                     android:layout_below="@+id/steps"
                     android:textSize="15dp"
                     android:gravity="top"
-                    style="@style/TextViewStyle"
-                    android:tooltipText="Explica com es prepara la recepta"/>
+                    style="@style/TextViewStyle" />
 
             <Button
                     android:id="@+id/post"

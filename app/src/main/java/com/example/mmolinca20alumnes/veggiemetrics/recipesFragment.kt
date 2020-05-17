@@ -43,6 +43,19 @@ class recipesFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_recipes, container, false)
     }
 
+    private fun tradueixDieta(dieta: String): String {
+        var paraula = ""
+        if (dieta.equals("0"))
+            paraula = getString(R.string.vegana)
+        else if (dieta.equals("1"))
+            paraula = getString(R.string.vegetariana)
+        else if (dieta.equals("2"))
+            paraula = getString(R.string.piscivegetariana)
+        else if (dieta.equals("3"))
+            paraula = getString(R.string.flexitariana)
+        return paraula
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Codi per pujar a firebase receptes de proba:
@@ -71,7 +84,7 @@ class recipesFragment : Fragment() {
                         val nom = recipe.child("recepta").getValue().toString()
                         val autor = recipe.child("autor").getValue().toString()
                         val foto = recipe.child("foto").getValue().toString()
-                        var tipus = recipe.child("tipus").getValue().toString()
+                        var tipus = tradueixDieta(recipe.child("tipus").getValue().toString())
                         var carac = ""
                         for(p in recipe.child("puntsforts").children){
                             carac += "#"+p.child("nom").value.toString() + " "

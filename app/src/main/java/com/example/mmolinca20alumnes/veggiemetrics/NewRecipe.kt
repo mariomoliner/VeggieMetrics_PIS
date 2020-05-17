@@ -357,17 +357,17 @@ class NewRecipe : AppCompatActivity() {
             })
             a.print_rdis()*/
 
-                val crida_engine = Engine(nova_Recepta, this, object: Engine.OnFinishListener{
-                    override fun ONfinish(a: ArrayList<Engine.report>) {
-                        for(i in a ){
-                            Log.e("printllista", i.nom +" percentatge " + i.qty_percent + "%")
-                        }
-                        report = a
-
-                        uploadImageToFirebaseStorage()
+            val crida_engine = Engine(nova_Recepta, this, object: Engine.OnFinishListener{
+                override fun ONfinish(a: ArrayList<Engine.report>) {
+                    for(i in a ){
+                        Log.e("printllista", i.nom +" percentatge " + i.qty_percent + "%")
                     }
+                    report = a
 
-                })
+                    uploadImageToFirebaseStorage()
+                }
+
+            })
 
             if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty() || nova_Recepta.llista_ingredients.size == 0 || !isCheckedRadiobutton()){
                 Toast.makeText(this,getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
@@ -419,7 +419,8 @@ class NewRecipe : AppCompatActivity() {
         //updates.put(receptaUUID, nova_Recepta)
         var u = recepta_model(nomRecepta, nomAutor, uri_image)
 
-        var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).text.toString()
+        //var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).id
+        var tipus_recept = gruptipus.checkedRadioButtonId%10
 
         updates.put("/$receptaUUID/recepta_detall", nova_Recepta)
         updates.put("/$receptaUUID/recepta", u.getRecepta())
@@ -433,8 +434,8 @@ class NewRecipe : AppCompatActivity() {
             override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
                 progress_bar.visibility = View.INVISIBLE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                Toast.makeText(c, getString(R.string.foto_ok), LENGTH_LONG).show()
-
+                Toast.makeText(c, getString(R.string.recepta_afegida), LENGTH_LONG).show()
+                finish()
             }
 
         })
