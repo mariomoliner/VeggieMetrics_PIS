@@ -223,4 +223,19 @@
     <!--Strings d'errors-->
     <string name="errorLoading">Error loading data</string>
 
+    <!--Nous Strings-->
+    <string name="aliment_eliminat">Alimento removido</string>
+    <string name="recepta_afegida">Receita adicionada corretamente</string>
+    <string name="recomanades_no_text">Faça o teste semanal do perfil para receber recomendações nutricionais personalizadas</string>
+    <string name="guia_ingredients">Clique em cada ingrediente para adicionar quantidades</string>
+    <string name="guia_afegir_recepta">Adicione receitas clicando em +</string>
+    <string name="guarda">Guarda</string>
+    <string name="aliment">Alimento</string>
+    <string name="filtra">Filtrar por: </string>
+    <string name="nom">Nome</string>
+    <string name="micronutrient">Micronutriente</string>
+    <string name="mostra_receptes">Mostra receitas: </string>
+    <string name="totes">Tudas</string>
+    <string name="filtra_cerca">Filtrar</string>
+
 </resources>
