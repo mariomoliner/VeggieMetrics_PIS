@@ -63,15 +63,12 @@ class llista_ingredients_adapter(llista: ArrayList<Ingredient>, c : Context, lis
             /*var dialog = BottomSheetDialog(context)
             var view_layout = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_dialog, holder.view as ViewGroup ,false)
             view_layout.texte.text = "Aliment seleccionat: " + llista_interna[position].nom
-
-            val unitats = arrayOf("g", "Kg", "peçes")
+            val unitats = arrayOf("g", "Kg", "peces")
             view_layout.picker_unitats.displayedValues = unitats
             view_layout.picker_unitats.minValue = 0
             view_layout.picker_unitats.maxValue = unitats.size -1
-
             view_layout.picker_qty.minValue = 0
             view_layout.picker_qty.maxValue = 1000
-
             dialog.setContentView(view_layout)
             dialog.show()*/
 

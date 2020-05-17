@@ -222,4 +222,7 @@
     <string name="sortir">Salir</string>
     <string name="cancelar">Cancelar</string>
 
+    <!--Strings d'errors-->
+    <string name="errorLoading">Error al cargar los datos</string>
+
 </resources>

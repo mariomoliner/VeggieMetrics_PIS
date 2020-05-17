@@ -24,12 +24,12 @@
     <string name="repetir_contrasenya">Repeat the password</string>
     <string name="registre">Sign in</string>
     <string name="camp_buit">Some fields are empty</string>
-    <string name="sessio_iniciada">Succesfully logged in</string>
+    <string name="sessio_iniciada">Successfully logged in</string>
     <string name="error_inici">Log in failed</string>
     <string name="link_ok">Recovery link sent to email</string>
     <string name="link_fail">Password recovery unsuccessful</string>
     <string name="coincidir_contrasenyes">Passwords must match</string>
-    <string name="registrat">Succesfully signed in</string>
+    <string name="registrat">Successfully signed in</string>
     <string name="no_registrat">Sign in failed</string>
     <string name="email">Your email is required</string>
 
@@ -219,5 +219,8 @@
     <string name="logOut">Are you sure you want to log out?</string>
     <string name="sortir">Log out</string>
     <string name="cancelar">Cancel</string>
+
+    <!--Strings d'errors-->
+    <string name="errorLoading">Error loading data</string>
 
 </resources>

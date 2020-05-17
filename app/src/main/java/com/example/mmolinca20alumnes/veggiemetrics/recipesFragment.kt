@@ -36,11 +36,24 @@ class recipesFragment : Fragment() {
     private var show_per = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
 
         return inflater.inflate(R.layout.fragment_recipes, container, false)
+    }
+
+    private fun tradueixDieta(dieta: String): String {
+        var paraula = ""
+        if (dieta.equals("0"))
+            paraula = getString(R.string.vegana)
+        else if (dieta.equals("1"))
+            paraula = getString(R.string.vegetariana)
+        else if (dieta.equals("2"))
+            paraula = getString(R.string.piscivegetariana)
+        else if (dieta.equals("3"))
+            paraula = getString(R.string.flexitariana)
+        return paraula
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,7 +84,7 @@ class recipesFragment : Fragment() {
                         val nom = recipe.child("recepta").getValue().toString()
                         val autor = recipe.child("autor").getValue().toString()
                         val foto = recipe.child("foto").getValue().toString()
-                        var tipus = recipe.child("tipus").getValue().toString()
+                        var tipus = tradueixDieta(recipe.child("tipus").getValue().toString())
                         var carac = ""
                         for(p in recipe.child("puntsforts").children){
                             carac += "#"+p.child("nom").value.toString() + " "

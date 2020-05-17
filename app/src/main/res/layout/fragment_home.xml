@@ -52,17 +52,17 @@
                     tools:context=".homeFragment"
                     android:layout_marginStart="0dp"
                     >
-                    <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/ListTopReceptes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"/>
-                    <ProgressBar
-                            android:id="@+id/progress_barTop"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_gravity="center"
-                            android:visibility="invisible" />
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ListTopReceptes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"/>
+                <ProgressBar
+                        android:id="@+id/progress_barTop"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center"
+                        android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -89,18 +89,31 @@
                     tools:context=".homeFragment"
                     android:layout_marginStart="0dp"
                     >
-                    <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/ListRecomended"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"/>
-                    <ProgressBar
-                            android:id="@+id/progress_barRec"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_gravity="center"
-                            android:visibility="invisible" />
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ListRecomended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"/>
+                <ProgressBar
+                        android:id="@+id/progress_barRec"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center"
+                        android:visibility="invisible" />
             </LinearLayout>
+
+            <TextView
+                    android:id="@+id/RecomendedText"
+                    style="@style/edit_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recomanades_no_text"
+                    android:textStyle="bold"
+                    android:layout_marginTop="45dp"
+                    android:layout_below="@+id/RecomendedTitle"
+                    android:visibility="invisible"
+
+                    android:textSize="15sp"/>
 
             <TextView
                     android:id="@+id/FavoriteTitle"
@@ -113,29 +126,28 @@
                     android:layout_centerHorizontal="true"
                     android:textSize="15dp"/>
 
-                <LinearLayout
-                        android:layout_width="350dp"
-                        android:layout_height="150dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/FavoriteTitle"
-                        android:orientation="horizontal"
-                        tools:context=".homeFragment"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginStart="0dp"
-                        android:background="@drawable/spinner_background">
-                    <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/ListFavorites"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent" />
-                    <ProgressBar
-                            android:id="@+id/progress_barFav"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_gravity="center"
-                            android:visibility="invisible" />
-                </LinearLayout>
-
+            <LinearLayout
+                    android:layout_width="350dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/FavoriteTitle"
+                    android:orientation="horizontal"
+                    tools:context=".homeFragment"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="0dp"
+                    android:background="@drawable/spinner_background">
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ListFavorites"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                <ProgressBar
+                        android:id="@+id/progress_barFav"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center"
+                        android:visibility="invisible" />
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </FrameLayout>

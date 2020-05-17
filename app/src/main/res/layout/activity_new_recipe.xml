@@ -3,7 +3,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".profileFragment"
+        android:id="@+id/layoutframe"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@drawable/background">
 
     <ScrollView
@@ -17,168 +19,172 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:context=".perfil_activity"
-                android:layout_margin="30dp">
-
-            <TextView
-                    android:id="@+id/title"
+            <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Nova_recepta"
-                    android:textSize="30dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="10dp"/>
+                    tools:context=".perfil_activity"
+                    android:layout_margin="30dp">
 
-            <ImageView
-                    android:id="@+id/recipePic"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_below="@+id/title"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:src="@drawable/recipe_pic" />
-
-            <EditText
-                    android:id="@+id/recipeTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:tooltipText="@string/nom_recepta"
-                    android:layout_toRightOf="@id/recipePic"
-                    android:layout_below="@+id/title"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:gravity="center"
-                    style="@style/TextViewStyle" />
-
-            <RadioGroup
-                    android:id="@+id/gruptipus"
-                    android:layout_below="@+id/recipeTitle"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/recipePic"
-                    android:layout_width="match_parent">
-
-                <RadioButton
-                        android:id="@+id/rb1"
-                        android:layout_height="wrap_content"
+                <TextView
+                        android:id="@+id/title"
                         android:layout_width="wrap_content"
-                        android:text="Vegetarian"/>
-
-                <RadioButton
-                        android:id="@+id/rb2"
                         android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Vegan"/>
+                        android:text="@string/Nova_recepta"
+                        android:textSize="30dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"/>
 
-                <RadioButton
-                        android:id="@+id/rb3"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="Flexi"/>
-
-
-            </RadioGroup>
-
-
-
-
-
-            <TextView
-                    android:id="@+id/ingredients"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/ingredients"
-                    android:layout_below="@+id/recipePic"
-                    android:textSize="20dp"
-                    android:gravity="center"
-                    style="@style/TextViewStyle"/>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/ingredients"
-                    android:id="@+id/layout_search"
-                    android:layout_height="wrap_content">
+                <ImageView
+                        android:id="@+id/recipePic"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_below="@+id/recipeTitle"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/recipe_pic" />
 
                 <EditText
-                        android:id="@+id/searchEdit"
+                        android:id="@+id/recipeTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        />
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/nom_recepta"
+                        android:layout_below="@+id/title"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:gravity="center"
+                        style="@style/TextViewStyle" />
+
+                <RadioGroup
+                        android:id="@+id/gruptipus"
+                        android:layout_below="@+id/recipeTitle"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/recipePic"
+                        android:layout_width="match_parent">
+
+                    <RadioButton
+                            android:id="@+id/rb2"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/vegana"/>
+
+                    <RadioButton
+                            android:id="@+id/rb1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/vegetariana"/>
+
+                    <RadioButton
+                            android:id="@+id/rb3"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/piscivegetariana"/>
+
+                    <RadioButton
+                            android:id="@+id/rb4"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/flexitariana"/>
+
+                </RadioGroup>
+
+
+
+
+
+                <TextView
+                        android:id="@+id/ingredients"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/ingredients"
+                        android:layout_below="@+id/recipePic"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        style="@style/TextViewStyle"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/ingredients"
+                        android:id="@+id/layout_search"
+                        android:layout_height="wrap_content">
+
+                    <EditText
+                            android:id="@+id/searchEdit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            />
+
+                    <Button
+                            android:id="@+id/searchButton"
+                            android:layout_width="wrap_content"
+                            android:text="@string/cerca"
+                            style="@style/button_style"
+                            android:layout_centerHorizontal="true"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/searchEdit"/>
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ingredientsList"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_below="@+id/layout_search"
+                        android:textSize="15dp"
+                        android:gravity="top"
+                        style="@style/TextViewStyle" />
+
+                <TextView
+                        android:id="@+id/steps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/preparacio"
+                        android:layout_below="@+id/ingredientsList"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        style="@style/TextViewStyle"/>
+
+                <EditText
+                        android:id="@+id/stepsEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:hint="@string/preparacio"
+                        android:layout_below="@+id/steps"
+                        android:textSize="15dp"
+                        android:gravity="top"
+                        style="@style/TextViewStyle" />
 
                 <Button
-                        android:id="@+id/searchButton"
-                        android:layout_width="wrap_content"
-                        android:text="@string/cerca"
+                        android:id="@+id/post"
                         style="@style/button_style"
-                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/searchEdit"/>
+                        android:layout_below="@+id/stepsEditText"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:padding="10dp"
+                        android:text="@string/publica" />
 
-            </LinearLayout>
+                <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="350dp"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="invisible"/>
 
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ingredientsList"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_below="@+id/layout_search"
-                    android:textSize="15dp"
-                    android:gravity="top"
-                    style="@style/TextViewStyle" />
-
-            <TextView
-                    android:id="@+id/steps"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/preparacio"
-                    android:layout_below="@+id/ingredientsList"
-                    android:textSize="20dp"
-                    android:gravity="center"
-                    style="@style/TextViewStyle"/>
-
-            <EditText
-                    android:id="@+id/stepsEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/preparacio"
-                    android:layout_below="@+id/steps"
-                    android:textSize="15dp"
-                    android:gravity="top"
-                    style="@style/TextViewStyle"
-                    android:tooltipText="Explica com es prepara la recepta"/>
-
-            <Button
-                    android:id="@+id/post"
-                    style="@style/button_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/stepsEditText"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:padding="10dp"
-                    android:text="@string/publica" />
-
-            <ProgressBar
-                    android:id="@+id/progress_bar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="350dp"
-                    android:layout_centerHorizontal="true"
-                    android:visibility="invisible"/>
-
-        </RelativeLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 

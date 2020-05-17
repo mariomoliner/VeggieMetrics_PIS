@@ -60,14 +60,14 @@ class profileFragment : Fragment() {
     private lateinit var database: DatabaseReference// ...
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
     //Funció que escriu els comentaris nutricionals
     fun escriuAvisos(codi: String): String {
-            val avisos = listOf(getString(R.string.avis1), getString(R.string.avis2), getString(R.string.avis3), getString(R.string.avis4), getString(R.string.avis5), getString(R.string.avis6), getString(R.string.avis7), getString(R.string.avis8), getString(R.string.avis9))
+        val avisos = listOf(getString(R.string.avis1), getString(R.string.avis2), getString(R.string.avis3), getString(R.string.avis4), getString(R.string.avis5), getString(R.string.avis6), getString(R.string.avis7), getString(R.string.avis8), getString(R.string.avis9))
         var missatge = ""
         for (i in 1..9) {
             if (codi.contains(i.toString()))
@@ -112,6 +112,7 @@ class profileFragment : Fragment() {
                 childUpdates["omega"] = results[2]
                 childUpdates["calcium"] = results[3]
                 childUpdates["comments"] = results[4]
+
                 //actualitzem la info de l'usuari actual:
                 database.child("users-data").child(auth.currentUser!!.uid).updateChildren(childUpdates)
             }
@@ -377,8 +378,8 @@ class profileFragment : Fragment() {
         update.setOnClickListener {
 
             if(!profileName.text.toString().equals("") || ::imagepicked.isInitialized){
-                    val profileUpdates = UserProfileChangeRequest.Builder()
-                        .setDisplayName(profileName.text.toString())
+                val profileUpdates = UserProfileChangeRequest.Builder()
+                    .setDisplayName(profileName.text.toString())
 
                 //Podem fer update de la foto:
                 if(::imagepicked.isInitialized) {
@@ -416,10 +417,10 @@ class profileFragment : Fragment() {
                     auth.currentUser?.updateProfile(profileUpdates.build())
                         ?.addOnCompleteListener { task ->
 
-                         if (task.isSuccessful) {
-                             Toast.makeText(activity, getString(R.string.actualitzacio), Toast.LENGTH_LONG).show()
-                         }
-                    }
+                            if (task.isSuccessful) {
+                                Toast.makeText(activity, getString(R.string.actualitzacio), Toast.LENGTH_LONG).show()
+                            }
+                        }
                 }
             }else{
                 Toast.makeText(activity, getString(R.string.nom_necessari), Toast.LENGTH_LONG).show()

@@ -12,6 +12,7 @@ import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_fav_receptes_
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.recepta_concreta.*
 import models.recepta_model
 
 

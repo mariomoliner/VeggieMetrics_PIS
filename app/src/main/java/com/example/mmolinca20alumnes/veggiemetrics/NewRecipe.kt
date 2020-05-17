@@ -3,15 +3,18 @@ package com.example.mmolinca20alumnes.veggiemetrics
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -26,6 +29,14 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.bumptech.glide.Glide
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter
 import com.example.mmolinca20alumnes.veggiemetrics.adapters.llista_ingredients_adapter.OnItemClickListener
+import com.example.mmolinca20alumnes.veggiemetrics.adapters.sharedprefs
+import com.getkeepsafe.taptargetview.TapTarget
+import com.getkeepsafe.taptargetview.TapTargetSequence
+import com.getkeepsafe.taptargetview.TapTargetView
+import com.github.amlcurran.showcaseview.ShowcaseView
+import com.github.amlcurran.showcaseview.ShowcaseView.*
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget
+import com.github.amlcurran.showcaseview.targets.ViewTarget
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseError
@@ -40,6 +51,9 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import logic_deficiencies.Engine
 import models.*
 import org.json.JSONObject
+/*import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig*/
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -56,6 +70,9 @@ class NewRecipe : AppCompatActivity() {
 
 
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_recipe)
@@ -67,13 +84,55 @@ class NewRecipe : AppCompatActivity() {
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
 
-        nova_Recepta = recepta_detall("sense nom","mario","")
+        nova_Recepta = recepta_detall("sense nom", "mario", "")
 
 
         init_recycler()
         search_listener()
         recipePic_listener() //per canviar la foto de la recepta
         post_listener() // per publicar la recepta sencera
+
+
+
+        /*MaterialShowcaseView.resetAll(this)
+        	MaterialShowcaseView.Builder(this)
+		.setTarget(searchButton).setDismissOnTargetTouch(true)
+		.setContentText("This is some amazing feature you should know about")
+		.setDelay(2) // optional but starting animations immediately in onCreate can make them choppy
+		//.singleUse(SHOWCASE_ID) // provide a unique ID used to ensure it is only shown once
+		.show();*/
+
+        /*TapTargetView.showFor(this, TapTarget.forView(v, "holaa", "dfd").outerCircleColor(R.color.colorPrimary)      // Specify a color for the outer circle
+            .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+            .targetCircleColor(R.color.white)
+            .transparentTarget(true)// Specify a color for the target circle
+            .titleTextSize(20)                  // Specify the size (in sp) of the title text
+            .titleTextColor(R.color.white))*/
+
+        if(sharedprefs().getTutorialStatus2(this) != true){
+
+            TapTargetSequence(this).targets(TapTarget.forView(searchButton,"Cerca aqui aliments en anglès!").outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+                .targetCircleColor(R.color.white)
+                .transparentTarget(true)// Specify a color for the target circle
+                .titleTextSize(20) // Specify the size (in sp) of the title text
+                .titleTextColor(R.color.white)).listener(object: TapTargetSequence.Listener{
+                override fun onSequenceCanceled(lastTarget: TapTarget?) {
+                    nova()
+                }
+
+                override fun onSequenceFinish() {
+                    nova()
+                }
+
+                override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+            }).start()
+
+        }
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -89,7 +148,6 @@ class NewRecipe : AppCompatActivity() {
 
     fun init_recycler(){
         /*val llista = ingredientsList
-
         llista.hasFixedSize()
         llista.layoutManager = LinearLayoutManager(this);*/
         ingredientsList.layoutManager = LinearLayoutManager(this)
@@ -99,45 +157,45 @@ class NewRecipe : AppCompatActivity() {
         llista_incial.add(Ingredient(Aliment("-1",getString(R.string.sense_ingredients), null),0, getString(R.string.grams)))
 
         ingredientList_adapter = llista_ingredients_adapter(llista_incial, this, object : OnItemClickListener {
-                override fun onItemCLick(o: Ingredient) {
-                    var dialog = BottomSheetDialog(this@NewRecipe)
-                    var view_layout = layoutInflater.inflate(R.layout.bottom_sheet_dialog,null)
-                    view_layout.texte.text = getString(R.string.aliment_seleccionat) + o.aliment.nom
+            override fun onItemCLick(o: Ingredient) {
+                var dialog = BottomSheetDialog(this@NewRecipe)
+                var view_layout = layoutInflater.inflate(R.layout.bottom_sheet_dialog,null)
+                view_layout.texte.text = getString(R.string.aliment_seleccionat) + o.aliment.nom
 
-                    val unitats: Array<String>
+                val unitats: Array<String>
 
-                    if(o.aliment.codi.equals("-1")){
-                        unitats = arrayOf("g", "Kg", getString(R.string.peces))
-                    }
-                    else{
-                        val list = o.aliment.units?.map { it.name}
-                        unitats = list?.toTypedArray()!!
-                    }
-
-                    //val unitats = arrayOf("g", "Kg", "peces")
-                    view_layout.picker_unitats.displayedValues = unitats
-                    view_layout.picker_unitats.minValue = 0
-                    view_layout.picker_unitats.maxValue = unitats.size -1
-
-                    view_layout.picker_qty.minValue = 0
-                    view_layout.picker_qty.maxValue = 1000
-
-                    dialog.setContentView(view_layout)
-
-
-                    dialog.show()
-
-                    view_layout.boton_guarda.setOnClickListener {
-                        nova_Recepta.getIngredient_ID(o.aliment.codi)?.qty = view_layout.picker_qty.value
-                        nova_Recepta.getIngredient_ID(o.aliment.codi)?.unitat = unitats[view_layout.picker_unitats.value]
-
-                        ingredientList_adapter.update_ingredient(o.aliment.codi,view_layout.picker_qty.value, unitats[view_layout.picker_unitats.value])
-                        dialog.dismiss()
-                    }
+                if(o.aliment.codi.equals("-1")){
+                    unitats = arrayOf("g", "Kg", getString(R.string.peces))
+                }
+                else{
+                    val list = o.aliment.units?.map { it.name}
+                    unitats = list?.toTypedArray()!!
                 }
 
+                //val unitats = arrayOf("g", "Kg", "peces")
+                view_layout.picker_unitats.displayedValues = unitats
+                view_layout.picker_unitats.minValue = 0
+                view_layout.picker_unitats.maxValue = unitats.size -1
+
+                view_layout.picker_qty.minValue = 0
+                view_layout.picker_qty.maxValue = 1000
+
+                dialog.setContentView(view_layout)
+
+
+                dialog.show()
+
+                view_layout.boton_guarda.setOnClickListener {
+                    nova_Recepta.getIngredient_ID(o.aliment.codi)?.qty = view_layout.picker_qty.value
+                    nova_Recepta.getIngredient_ID(o.aliment.codi)?.unitat = unitats[view_layout.picker_unitats.value]
+
+                    ingredientList_adapter.update_ingredient(o.aliment.codi,view_layout.picker_qty.value, unitats[view_layout.picker_unitats.value])
+                    dialog.dismiss()
+                }
+            }
+
             override fun onclearClick(p: Int) {
-                Toast.makeText(applicationContext, "ingredient eliminat", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.aliment_eliminat), Toast.LENGTH_LONG).show()
 
                 if(nova_Recepta.llista_ingredients.size > p){
                     nova_Recepta.llista_ingredients.removeAt(p)
@@ -173,7 +231,6 @@ class NewRecipe : AppCompatActivity() {
         /*val url2 = "https://api.nal.usda.gov/fdc/v1/food/470794?api_key=WegyBxbDgsKNbAlSnCerYOogsyuwetZtuNolIz28"
         val url3 =  "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=WegyBxbDgsKNbAlSnCerYOogsyuwetZtuNolIz28"
         var jsonBody =  JSONObject();
-
         jsonBody.put("query", "apple")
         jsonBody.put("dataType", "Foundation")
         jsonBody.put("pageSize", 15)
@@ -224,7 +281,7 @@ class NewRecipe : AppCompatActivity() {
         val l = list.toTypedArray()
 
         builder.setTitle("Results").setItems(l){dialog, which ->
-            Toast.makeText(this, list[which],Toast.LENGTH_LONG).show()
+            Toast.makeText(this, list[which], LENGTH_LONG).show()
 
 
             val nou_ingredient = Ingredient(Aliment(llista.get(which).codi,list[which],pedir_data_unitats(llista.get(which).codi)),0, "grams")
@@ -279,9 +336,7 @@ class NewRecipe : AppCompatActivity() {
                     report = a
                     //uploadImageToFirebaseStorage()
                 }
-
             })
-
             crida_engine.print_rdis()
         }*/
 
@@ -293,21 +348,20 @@ class NewRecipe : AppCompatActivity() {
                         Log.e("printllista", i.nom +" percentatge " + i.qty_percent + "%")
                     }
                 }
-
             })
             a.print_rdis()*/
 
-                val crida_engine = Engine(nova_Recepta, this, object: Engine.OnFinishListener{
-                    override fun ONfinish(a: ArrayList<Engine.report>) {
-                        for(i in a ){
-                            Log.e("printllista", i.nom +" percentatge " + i.qty_percent + "%")
-                        }
-                        report = a
-
-                        uploadImageToFirebaseStorage()
+            val crida_engine = Engine(nova_Recepta, this, object: Engine.OnFinishListener{
+                override fun ONfinish(a: ArrayList<Engine.report>) {
+                    for(i in a ){
+                        Log.e("printllista", i.nom +" percentatge " + i.qty_percent + "%")
                     }
+                    report = a
 
-                })
+                    uploadImageToFirebaseStorage()
+                }
+
+            })
 
             if(recipeTitle.text.isEmpty() || stepsEditText.text.isEmpty() || nova_Recepta.llista_ingredients.size == 0 || !isCheckedRadiobutton()){
                 Toast.makeText(this,getString(R.string.omplir_dades), Toast.LENGTH_LONG).show()
@@ -329,7 +383,7 @@ class NewRecipe : AppCompatActivity() {
     }
     private fun uploadImageToFirebaseStorage(){
         if(selectedPhotoUri == null){
-            Toast.makeText(this,getString(R.string.falta_foto), Toast.LENGTH_LONG).show()
+            Toast.makeText(this,getString(R.string.falta_foto), LENGTH_LONG).show()
             return
         }
         receptaUUID = UUID.randomUUID().toString()
@@ -339,7 +393,7 @@ class NewRecipe : AppCompatActivity() {
             ref.downloadUrl.addOnSuccessListener {
                 saveRecipeToFirebaseDatabase(it.toString(), this)
             }.addOnFailureListener {
-                    Toast.makeText(this, getString(R.string.error_imatge), Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.error_imatge), LENGTH_LONG).show()
                 progress_bar.visibility = View.INVISIBLE
                 this.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             }
@@ -359,7 +413,8 @@ class NewRecipe : AppCompatActivity() {
         //updates.put(receptaUUID, nova_Recepta)
         var u = recepta_model(nomRecepta, nomAutor, uri_image)
 
-        var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).text.toString()
+        //var tipus_recept = findViewById<RadioButton>(gruptipus.checkedRadioButtonId).id
+        var tipus_recept = gruptipus.checkedRadioButtonId%10
 
         updates.put("/$receptaUUID/recepta_detall", nova_Recepta)
         updates.put("/$receptaUUID/recepta", u.getRecepta())
@@ -367,8 +422,8 @@ class NewRecipe : AppCompatActivity() {
         updates.put("/$receptaUUID/foto", u.getFoto())
         updates.put("/$receptaUUID/puntsforts", report)
         updates.put("/$receptaUUID/tipus", tipus_recept)
-        /*Afageixo valoració mitjana i num_vots*/
-        updates.put("/$receptaUUID/valoracio_mitjana",0)
+        /*Afegeixo valoracio mitjana i numero de vots*/
+        updates.put("/$receptaUUID/valoracio_mitjana", 0)
         updates.put("/$receptaUUID/num_vots",0)
 
 
@@ -376,8 +431,8 @@ class NewRecipe : AppCompatActivity() {
             override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
                 progress_bar.visibility = View.INVISIBLE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                Toast.makeText(c, getString(R.string.foto_ok), Toast.LENGTH_LONG).show()
-
+                Toast.makeText(c, getString(R.string.recepta_afegida), LENGTH_LONG).show()
+                finish()
             }
 
         })
@@ -424,6 +479,17 @@ class NewRecipe : AppCompatActivity() {
     private fun isCheckedRadiobutton(): Boolean{
         return gruptipus.checkedRadioButtonId != -1
     }
+
+
+  private fun nova(){
+        TapTargetSequence(this).targets(TapTarget.forView(ingredientsList,getString(R.string.guia_ingredients)).outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+            .targetCircleColor(R.color.white)
+            .transparentTarget(true)// Specify a color for the target circle
+            .titleTextSize(20) // Specify the size (in sp) of the title text
+            .titleTextColor(R.color.white)).start()
+        sharedprefs().storeTutorialStatus2(this, true)
+    }
+
 
 
 }

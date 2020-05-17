@@ -11,6 +11,10 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
         android:gravity="top|center"
+        android:onClick="fuct"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/cliablee"
         android:background="@drawable/background">
 
         <ImageView
@@ -69,4 +73,4 @@
                 style="@style/TextViewStyle"/>
 
 
-    </LinearLayout>
+</LinearLayout>

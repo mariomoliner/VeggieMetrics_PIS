@@ -122,17 +122,17 @@ class recipe : AppCompatActivity() {
                                         /*Llegeixo la nota mitjana i nombre de vots actual*/
                                         val notaMitjana = p1.child("valoracio_mitjana").value.toString().toFloat()
                                         val numVots = p1.child("num_vots").value.toString().toFloat()
-                                        if(numVots>0){
+                                        /*if(numVots>0){
                                              val notaMitjanaNova = ((notaMitjana * numVots) - rating_vell + rating_nou) / numVots
                                              /*Actualitzo la nota mitjana de la recepta*/
                                              val updatesRatingMig = HashMap<String, Any>()
                                              updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
-                                         }else{
-                                             val notaMitjanaNova = ((notaMitjana * numVots) - rating_vell + rating_nou)
+                                         }else{*/
+                                             val notaMitjanaNova = ((notaMitjana * numVots) - rating_vell + rating_nou)/numVots
                                              /*Actualitzo la nota mitjana de la recepta*/
                                              val updatesRatingMig = HashMap<String, Any>()
                                              updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
-                                         }
+
                                     }
                                 }
                             })
@@ -155,9 +155,9 @@ class recipe : AppCompatActivity() {
                             Toast.makeText(applicationContext,getString(R.string.rating_guardat), Toast.LENGTH_LONG).show()
                         }
                         /*Guardo el rating nou*/
-                        /*val rating_nou=ratingBar.rating*/
+                        val rating_nou=ratingBar.rating
                         /*Creo una referencia per receptes*/
-                        /*reference=FirebaseDatabase.getInstance().getReference("receptes")
+                        reference=FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
                         reference.addValueEventListener(object:ValueEventListener{
                             override fun onCancelled(p0: DatabaseError) {
                                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -178,7 +178,7 @@ class recipe : AppCompatActivity() {
                                 }
 
                             }
-                        })*/
+                        })
                     }
 
 
