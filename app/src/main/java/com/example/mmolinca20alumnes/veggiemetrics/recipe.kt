@@ -125,10 +125,10 @@ class recipe : AppCompatActivity() {
                             /*Guardo el rating actual*/
                             /*val rating_vell = i.child("valoracio_recepta").value.toString().toFloat()*/
                             //fa falta fer que s'actualitzi el child
-                            /*val updatesRating = HashMap<String, Any>()
+                            val updatesRating = HashMap<String, Any>()
                             updatesRating.put("/valoracio_recepta", ratingBar.rating)
                             /*Guardo el rating nou*/
-                            val rating_nou = ratingBar.rating*/
+                            val rating_nou = ratingBar.rating
                             /*Creo una referencia per receptes*/
                             /*refval = FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
                             refval.addListenerForSingleValueEvent(object : ValueEventListener {
