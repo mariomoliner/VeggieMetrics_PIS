@@ -34,6 +34,7 @@ class recipesFragment : Fragment() {
 
     private var filter_per = "nom"
     private var show_per = ""
+    private var written = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -117,6 +118,7 @@ class recipesFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                written = newText?.toLowerCase().toString()
                 (llista.adapter as llista_receptes_Adapter).filter.filter(newText?.toLowerCase())
                 return false
             }
@@ -145,6 +147,7 @@ class recipesFragment : Fragment() {
                 llista.alpha = 1F
                 set_param_filtre(filter_per)
                 set_show_options(show_per)
+                (llista.adapter as llista_receptes_Adapter).filter.filter(written)
             }
         }
     }

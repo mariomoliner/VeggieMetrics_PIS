@@ -47,7 +47,7 @@
     <string name="autor_recepta">Author: </string>
     <string name="data_recepta">Date: 01/01/2020</string>
     <string name="dieta_recepta">Diet: </string>
-    <string name="valoracio_recepta">Rating: *****</string>
+    <string name="valoracio_recepta">Rating:</string>
     <string name="llista_ingredients">- Ingredient 1\n- Ingredient 2\n- Ingredient 3\n</string>
     <string name="valora">Rate</string>
     <string name="top">Top recipes</string>
