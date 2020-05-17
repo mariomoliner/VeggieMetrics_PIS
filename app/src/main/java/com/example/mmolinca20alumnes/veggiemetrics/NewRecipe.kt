@@ -485,7 +485,7 @@ class NewRecipe : AppCompatActivity() {
 
 
     private fun nova(){
-        TapTargetSequence(this).targets(TapTarget.forView(ingredientsList,"clica sobre cada ingredient per afegir quantitats").outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+        TapTargetSequence(this).targets(TapTarget.forView(ingredientsList,getString(R.string.guia_ingredients)).outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
             .targetCircleColor(R.color.white)
             .transparentTarget(true)// Specify a color for the target circle
             .titleTextSize(20) // Specify the size (in sp) of the title text

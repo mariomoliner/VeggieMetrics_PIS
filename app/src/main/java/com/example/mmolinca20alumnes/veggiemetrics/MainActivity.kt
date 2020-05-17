@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
 
         if(sharedprefs().getTutorialStatus1(this) != true){
 
-            TapTargetSequence(this).targets(TapTarget.forBounds(Rect(m.widthPixels-200,0,m.widthPixels-100,200),"Afegeix receptes clicant al +").outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+            TapTargetSequence(this).targets(TapTarget.forBounds(Rect(m.widthPixels-200,0,m.widthPixels-100,200), getString(R.string.guia_afegir_recepta)).outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
                 .targetCircleColor(R.color.white)
                 .transparentTarget(true)// Specify a color for the target circle
                 .titleTextSize(20) // Specify the size (in sp) of the title text
