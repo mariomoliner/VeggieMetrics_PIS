@@ -44,13 +44,13 @@
     <string name="correu">E-mail</string>
     <string name="recupera">Recover</string>
     <string name="titol_recepta">Recipe title</string>
-    <string name="autor_recepta">Author: Sample User</string>
+    <string name="autor_recepta">Author: </string>
     <string name="data_recepta">Date: 01/01/2020</string>
-    <string name="dieta_recepta">Diet: Vegana</string>
+    <string name="dieta_recepta">Diet: </string>
     <string name="valoracio_recepta">Rating: *****</string>
     <string name="llista_ingredients">- Ingredient 1\n- Ingredient 2\n- Ingredient 3\n</string>
     <string name="valora">Rate</string>
-    <string name="top">Top recipes of the week</string>
+    <string name="top">Top recipes</string>
     <string name="recomanades">Recommended for you</string>
     <string name="preferits">Favourites</string>
     <string name="grams">grams</string>
@@ -222,5 +222,20 @@
 
     <!--Strings d'errors-->
     <string name="errorLoading">Error loading data</string>
+
+    <!--Nous Strings-->
+    <string name="aliment_eliminat">Ingredient removed</string>
+    <string name="recepta_afegida">Recipe added successfully</string>
+    <string name="recomanades_no_text">Go to Profile and take the weekly test to get personalized nutritional recommendations.</string>
+    <string name="guia_ingredients">Click on each ingredient to add quantities</string>
+    <string name="guia_afegir_recepta">Add recipes clicking on +</string>
+    <string name="guarda">Save</string>
+    <string name="aliment">Ingredient</string>
+    <string name="filtra">Filter by: </string>
+    <string name="nom">Name</string>
+    <string name="micronutrient">Micronutrient</string>
+    <string name="mostra_receptes">Show recipes: </string>
+    <string name="totes">All</string>
+    <string name="filtra_cerca">Filter</string>
 
 </resources>

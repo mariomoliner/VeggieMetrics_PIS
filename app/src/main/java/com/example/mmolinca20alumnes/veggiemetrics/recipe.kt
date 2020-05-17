@@ -47,6 +47,19 @@ class recipe : AppCompatActivity() {
     }
 
 
+    private fun tradueixDieta(dieta: String): String {
+        var paraula = ""
+        if (dieta.equals("0"))
+            paraula = getString(R.string.vegana)
+        else if (dieta.equals("1"))
+            paraula = getString(R.string.vegetariana)
+        else if (dieta.equals("2"))
+            paraula = getString(R.string.piscivegetariana)
+        else if (dieta.equals("3"))
+            paraula = getString(R.string.flexitariana)
+        return paraula
+    }
+
     private fun carrega_GUI(){
         reference = FirebaseDatabase.getInstance().getReference("receptes")
         reference.addListenerForSingleValueEvent(object: ValueEventListener{
@@ -58,7 +71,8 @@ class recipe : AppCompatActivity() {
                 if(p0.exists()){
                     for(i in p0.children){
                         if(i.key.equals(id_recept)){
-                            autor.text = autor.text.toString() + i.child("autor").getValue().toString()
+                            autor.text = autor.text.toString() + " " + i.child("autor").getValue().toString()
+                            diet.text = diet.text.toString() + " " + tradueixDieta(i.child("tipus").getValue().toString())
                             stepsText.text = i.child("recepta_detall").child("description").value.toString()
                             Glide.with(applicationContext).load(i.child("foto").value.toString()).centerCrop().into(recipePic)
 
@@ -93,87 +107,113 @@ class recipe : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                if(p0!!.exists()){
+                if (p0!!.exists()) {
                     b = 0
-                    for(i in p0.children){
-                        Log.e("df",i.child("idUsuari_rating").value.toString())
-                        Log.e("df",i.child("idRecepta_rating").value.toString())
-                        if(i.child("idUsuari_rating").value.toString().equals(user!!.uid) && i.child("idRecepta_rating").value.toString().equals(id_recept)){
-                            Log.e("df","si")
+                    for (i in p0.children) {
+                        Log.e("df", i.child("idUsuari_rating").value.toString())
+                        Log.e("df", i.child("idRecepta_rating").value.toString())
+                        if (i.child("idUsuari_rating").value.toString()
+                                .equals(user!!.uid) && i.child("idRecepta_rating").value.toString()
+                                .equals(id_recept)
+                        ) {
+                            Log.e("df", "si")
                             b = 1
                             var d = i.ref
-                            Log.e("df","si")
+                            Log.e("df", "si")
                             /*Guardo el rating actual*/
-                            val rating_vell=i.child("valoracio_recepta").value.toString().toFloat()
+                            val rating_vell =
+                                i.child("valoracio_recepta").value.toString().toFloat()
                             //fa falta fer que s'actualitzi el child
-                            val updatesRating = HashMap<String,Any>()
+                            val updatesRating = HashMap<String, Any>()
                             updatesRating.put("/valoracio_recepta", ratingBar.rating)
                             /*Guardo el rating nou*/
-                            val rating_nou=ratingBar.rating
+                            val rating_nou = ratingBar.rating
                             /*Creo una referencia per receptes*/
-                            reference=FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
-                            reference.addValueEventListener(object:ValueEventListener{
+                            reference = FirebaseDatabase.getInstance().getReference("receptes")
+                                .child(id_recept)
+                            reference.addValueEventListener(object : ValueEventListener {
                                 override fun onCancelled(p0: DatabaseError) {
                                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                                 }
 
                                 override fun onDataChange(p1: DataSnapshot) {
-                                    if(p1.exists()){
+                                    if (p1.exists()) {
                                         /*Llegeixo la nota mitjana i nombre de vots actual*/
-                                        val notaMitjana = p1.child("valoracio_mitjana").value.toString().toFloat()
-                                        val numVots = p1.child("num_vots").value.toString().toFloat()
+                                        val notaMitjana =
+                                            p1.child("valoracio_mitjana").value.toString().toFloat()
+                                        val numVots =
+                                            p1.child("num_vots").value.toString().toFloat()
                                         /*if(numVots>0){
                                              val notaMitjanaNova = ((notaMitjana * numVots) - rating_vell + rating_nou) / numVots
                                              /*Actualitzo la nota mitjana de la recepta*/
                                              val updatesRatingMig = HashMap<String, Any>()
                                              updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
                                          }else{*/
-                                             val notaMitjanaNova = ((notaMitjana * numVots) - rating_vell + rating_nou)/numVots
-                                             /*Actualitzo la nota mitjana de la recepta*/
-                                             val updatesRatingMig = HashMap<String, Any>()
-                                             updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
+                                        val notaMitjanaNova =
+                                            ((notaMitjana * numVots) - rating_vell + rating_nou) / numVots
+                                        /*Actualitzo la nota mitjana de la recepta*/
+                                        val updatesRatingMig = HashMap<String, Any>()
+                                        updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
 
                                     }
                                 }
                             })
-                            d.updateChildren(updatesRating, object: DatabaseReference.CompletionListener{
-                                override fun onComplete(p0: DatabaseError?, p1: DatabaseReference) {
-                                    Toast.makeText(applicationContext, getString(R.string.rating_actualitzat), Toast.LENGTH_LONG).show()
+                            d.updateChildren(
+                                updatesRating,
+                                object : DatabaseReference.CompletionListener {
+                                    override fun onComplete(
+                                        p0: DatabaseError?,
+                                        p1: DatabaseReference
+                                    ) {
+                                        Toast.makeText(
+                                            applicationContext,
+                                            getString(R.string.rating_actualitzat),
+                                            Toast.LENGTH_LONG
+                                        ).show()
 
-                                }
-                            })
+                                    }
+                                })
 
                         }
 
                     }
-                    if(b == 0){
-                        val uid=user!!.uid
-                        val ref=FirebaseDatabase.getInstance().getReference("rating")
+                    if (b == 0) {
+                        val uid = user!!.uid
+                        val ref = FirebaseDatabase.getInstance().getReference("rating")
                         var key = ref.push().key
                         val rat = Rating(ratingBar.rating, uid, id_recept, key.toString())
-                        ref.child(key.toString()).setValue(rat).addOnCompleteListener{
-                            Toast.makeText(applicationContext,getString(R.string.rating_guardat), Toast.LENGTH_LONG).show()
+                        ref.child(key.toString()).setValue(rat).addOnCompleteListener {
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.rating_guardat),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                         /*Guardo el rating nou*/
-                        val rating_nou=ratingBar.rating
+                        val rating_nou = ratingBar.rating
                         /*Creo una referencia per receptes*/
-                        reference=FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
-                        reference.addValueEventListener(object:ValueEventListener{
+                        reference =
+                            FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
+                        reference.addValueEventListener(object : ValueEventListener {
                             override fun onCancelled(p0: DatabaseError) {
                                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                             }
 
                             override fun onDataChange(p0: DataSnapshot) {
-                                if(p0.exists()){
-                                    for(j in p0.children){
+                                if (p0.exists()) {
+                                    for (j in p0.children) {
                                         /*Llegeixo la nota mitjana i nombre de vots actual*/
-                                        val notaMitjana=j.child("valoracio_mitjana").getValue().toString().toFloat()
-                                        val numVots=j.child("num_vots").getValue().toString().toInt()
-                                        val notaMitjanaNova=((notaMitjana*numVots)+rating_nou)/(numVots+1)
+                                        val notaMitjana =
+                                            j.child("valoracio_mitjana").getValue().toString()
+                                                .toFloat()
+                                        val numVots =
+                                            j.child("num_vots").getValue().toString().toInt()
+                                        val notaMitjanaNova =
+                                            ((notaMitjana * numVots) + rating_nou) / (numVots + 1)
                                         /*Actualitzo la nota mitjana i el nombre de vots*/
-                                        val updatesRatingMig = HashMap<String,Any>()
-                                        updatesRatingMig.put("valoracio_mitjana",notaMitjanaNova)
-                                        updatesRatingMig.put("num_vots",numVots+1)
+                                        val updatesRatingMig = HashMap<String, Any>()
+                                        updatesRatingMig.put("valoracio_mitjana", notaMitjanaNova)
+                                        updatesRatingMig.put("num_vots", numVots + 1)
                                     }
                                 }
 
@@ -184,7 +224,6 @@ class recipe : AppCompatActivity() {
 
                 }
             }
-
         })
 
         /*val uid=user!!.uid

@@ -46,11 +46,11 @@
     <string name="titol_recepta">Rezept Titel</string>
     <string name="autor_recepta">Autor(in): </string>
     <string name="data_recepta">Datum: 01/01/2020</string>
-    <string name="dieta_recepta">Diet: Vegan</string>
+    <string name="dieta_recepta">Diet: </string>
     <string name="valoracio_recepta">Bewertung</string>
     <string name="llista_ingredients">- Zutate 1\n- Zutate 2\n- Zutate 3\n</string>
     <string name="valora">Bewerte</string>
-    <string name="top">Top Rezepten der Woche</string>
+    <string name="top">Top Rezepte</string>
     <string name="recomanades">Empfehlungen</string>
     <string name="preferits">Lieblings Rezepte</string>
     <string name="grams">Gramm</string>

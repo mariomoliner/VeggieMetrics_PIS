@@ -43,9 +43,9 @@
     <string name="correu">Correu electrònic</string>
     <string name="recupera">Recupera</string>
     <string name="titol_recepta">Títol de recepta</string>
-    <string name="autor_recepta">Autor: Sample User</string>
+    <string name="autor_recepta">Autor: </string>
     <string name="data_recepta">Data: 01/01/2020</string>
-    <string name="dieta_recepta">Dieta: Vegana</string>
+    <string name="dieta_recepta">Dieta: </string>
     <string name="valoracio_recepta">Valoració:</string>
     <string name="llista_ingredients">- Ingredient 1\n- Ingredient 2\n- Ingredient 3\n</string>
     <string name="valora">Valora</string>
@@ -230,7 +230,7 @@
     <string name="guia_afegir_recepta">Afegeix receptes fent click a +</string>
     <string name="guarda">Guarda</string>
     <string name="aliment">Aliment</string>
-    <string name="filtra">Flitra per: </string>
+    <string name="filtra">Filtra per: </string>
     <string name="nom">Nom</string>
     <string name="micronutrient">Micronutrient</string>
     <string name="mostra_receptes">Mostra receptes: </string>
