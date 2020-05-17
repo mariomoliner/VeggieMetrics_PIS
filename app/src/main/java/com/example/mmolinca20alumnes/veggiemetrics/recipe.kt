@@ -77,7 +77,7 @@ class recipe : AppCompatActivity() {
                             diet.text = diet.text.toString() + " " + tradueixDieta(i.child("tipus").getValue().toString())
                             val valoracio=-i.child("valoracio_mitjana").getValue().toString().toFloat()
                             ValMitjana.text = ValMitjana.text.toString() + " " + valoracio.toString()
-                            vots.text = vots.text.toString() + " " + i.child("num_vots").getValue().toString()
+                            /*vots.text = vots.text.toString() + " " + i.child("num_vots").getValue().toString()*/
                             stepsText.text = i.child("recepta_detall").child("description").value.toString()
                             Glide.with(applicationContext).load(i.child("foto").value.toString()).centerCrop().into(recipePic)
 
@@ -123,14 +123,14 @@ class recipe : AppCompatActivity() {
                             var d = i.ref
                             Log.e("df", "si")
                             /*Guardo el rating actual*/
-                            val rating_vell = i.child("valoracio_recepta").value.toString().toFloat()
+                            /*val rating_vell = i.child("valoracio_recepta").value.toString().toFloat()*/
                             //fa falta fer que s'actualitzi el child
-                            val updatesRating = HashMap<String, Any>()
+                            /*val updatesRating = HashMap<String, Any>()
                             updatesRating.put("/valoracio_recepta", ratingBar.rating)
                             /*Guardo el rating nou*/
-                            val rating_nou = ratingBar.rating
+                            val rating_nou = ratingBar.rating*/
                             /*Creo una referencia per receptes*/
-                            refval = FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
+                            /*refval = FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
                             refval.addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onCancelled(p0: DatabaseError) {
                                     TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -162,9 +162,9 @@ class recipe : AppCompatActivity() {
                                         Toast.makeText(applicationContext, getString(R.string.rating_actualitzat), Toast.LENGTH_LONG).show()
 
                                     }
-                                })
+                                })*/
 
-                            /*valoraciomitjana()*/
+                            valoraciomitjana()
 
                         }
 
@@ -180,10 +180,10 @@ class recipe : AppCompatActivity() {
                                 getString(R.string.rating_guardat),
                                 Toast.LENGTH_LONG
                             ).show()
-                            /*valoraciomitjana()*/
+                            valoraciomitjana()
                         }
                         /*Guardo el rating nou*/
-                        val rating_nou = ratingBar.rating
+                        /*val rating_nou = ratingBar.rating
                         /*Creo una referencia per receptes*/
                         refval = FirebaseDatabase.getInstance().getReference("receptes").child(id_recept)
                         refval.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -204,7 +204,7 @@ class recipe : AppCompatActivity() {
                                     refval.updateChildren(updatesRatingMig)
                                 }
                             }
-                        })
+                        })*/
                     }
                 }
             }
@@ -224,7 +224,7 @@ class recipe : AppCompatActivity() {
         }
     }
 
-    /*private fun valoraciomitjana(){
+    private fun valoraciomitjana(){
         ref = FirebaseDatabase.getInstance().getReference("rating")
         var mitjana=0.0
         var numval=0.0
@@ -250,5 +250,5 @@ class recipe : AppCompatActivity() {
                 }
             }
         })
-    }*/
+    }
 }

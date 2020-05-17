@@ -85,17 +85,7 @@
                     android:textSize="15dp"
                     android:gravity="center"
                     style="@style/TextViewStyle"/>
-            <TextView
-                    android:id="@+id/vots"
-                    android:text="@string/numVots"
-                    android:layout_width="169dp"
-                    android:layout_height="23dp"
-                    android:layout_below="@+id/ValMitjana"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/recipePic"
-                    android:textSize="15dp"
-                    android:gravity="center"
-                    style="@style/TextViewStyle"/>
+            
             <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
