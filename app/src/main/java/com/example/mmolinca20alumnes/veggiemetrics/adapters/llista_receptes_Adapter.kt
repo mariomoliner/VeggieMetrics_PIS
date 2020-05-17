@@ -167,7 +167,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val filterPattern = constraint.toString().toLowerCase()
-                if (constraint?.isEmpty()!!) {
+                if (constraint?.isEmpty()!! && quines_mostro.equals(default_all)) {
                     llista_receptes_filtrada = recipesList
                 } else {
                     //System.out.println("valores filtrados")
