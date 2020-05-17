@@ -81,6 +81,7 @@ class recipesFragment : Fragment() {
             }
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
+                    llistaReceptes.clear()
                     for (recipe in p0.children) {
                         val nom = recipe.child("recepta").getValue().toString()
                         val autor = recipe.child("autor").getValue().toString()
