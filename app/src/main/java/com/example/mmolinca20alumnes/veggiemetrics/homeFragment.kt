@@ -91,7 +91,16 @@ class homeFragment : Fragment() {
                         val nomRecepta = recipe.child("recepta").getValue().toString()
                         val nomAutor = recipe.child("autor").getValue().toString()
                         val foto = recipe.child("foto").getValue().toString()
-                        llistaTop.add(recepta_model(nomRecepta, nomAutor, foto))
+                        val tipus = recipe.child("tipus").getValue().toString()
+                        var carac = ""
+                        for(p in recipe.child("puntsforts").children){
+                            carac += "#"+p.child("nom").value.toString() + " "
+                            Log.e("puntsforts",p.child("nom").value.toString())
+                        }
+                        val uuid = recipe.key.toString()
+
+                        llistaTop.add(recepta_model(nomRecepta, nomAutor, foto, uuid, carac, tipus ))
+                        //Toast.makeText(activity,nomRecepta, Toast.LENGTH_LONG).show()
                     }
                     //Visualitzar les receptes top//
                     progress_barTop.visibility = View.INVISIBLE

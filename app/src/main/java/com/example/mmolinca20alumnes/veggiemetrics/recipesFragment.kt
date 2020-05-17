@@ -95,6 +95,7 @@ class recipesFragment : Fragment() {
                         var r =recepta_model(nom, autor, foto, uuid, carac, tipus)
 
                         llistaReceptes.add(r)
+
                     }
                 }
 
@@ -102,6 +103,10 @@ class recipesFragment : Fragment() {
                 llista.layoutManager = LinearLayoutManager(activity)
                 llista.adapter = llista_receptes_Adapter(llistaReceptes, activity!!)
                 activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                (llista.adapter as llista_receptes_Adapter).set_default(rd02.text.toString())
+                Log.e("DEFAULT--------", rd02.text.toString())
+                set_show_options(rd02.text.toString())
 
             }
         })
@@ -146,12 +151,12 @@ class recipesFragment : Fragment() {
 
 
     private fun set_param_filtre(s: String){
-        if(s.equals("Nom")){
-            Log.e("f","filtrem per nom")
+        if(s.equals(getString(R.string.nom))){
+            Log.e("f","filtrem per nom" + s)
             (llista.adapter as llista_receptes_Adapter).set_param_filtre(0)
         }
-        else if(s.equals("Micronutrient")){
-            Log.e("f","filtrem per micro")
+        else if(s.equals(getString(R.string.micronutrient))){
+            Log.e("f","filtrem per micro" +s )
             (llista.adapter as llista_receptes_Adapter).set_param_filtre(1)
         }
     }

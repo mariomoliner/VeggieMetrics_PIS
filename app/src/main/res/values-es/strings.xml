@@ -46,7 +46,7 @@
     <string name="titol_recepta">Título de la receta</string>
     <string name="autor_recepta">Autor: </string>
     <string name="data_recepta">Fecha: 01/01/2020</string>
-    <string name="dieta_recepta">Dieta: Vegana</string>
+    <string name="dieta_recepta">Dieta: </string>
     <string name="valoracio_recepta">Valoración:</string>
     <string name="llista_ingredients">- Ingrediente 1\n- Ingrediente 2\n- Ingrediente 3\n</string>
     <string name="valora">Valora</string>
@@ -226,18 +226,18 @@
     <string name="errorLoading">Error al cargar los datos</string>
 
     <!--Nous Strings-->
-    <string name="aliment_eliminat">Aliment eliminat</string>
-    <string name="recepta_afegida">Recepta afegida correctament</string>
-    <string name="recomanades_no_text">Fes el test setmanal al Perfil per obtenir recomanacions nutricionals personalitzades</string>
-    <string name="guia_ingredients">Fes click sobre cada ingredient per afegir quantitats</string>
-    <string name="guia_afegir_recepta">Afegeix receptes fent click a +</string>
+    <string name="aliment_eliminat">Alimento eliminado</string>
+    <string name="recepta_afegida">Receta añadida correctamente</string>
+    <string name="recomanades_no_text">Haz el test semanal del Perfil para recibir recomendaciones nutricionales personalizadas</string>
+    <string name="guia_ingredients">Haz click en cada ingrediente para añadir cantidades</string>
+    <string name="guia_afegir_recepta">Añade recetas haciendo click en +</string>
     <string name="guarda">Guarda</string>
-    <string name="aliment">Aliment</string>
-    <string name="filtra">Filtra per: </string>
-    <string name="nom">Nom</string>
-    <string name="micronutrient">Micronutrient</string>
-    <string name="mostra_receptes">Mostra receptes: </string>
-    <string name="totes">Totes</string>
+    <string name="aliment">Alimento</string>
+    <string name="filtra">Filtra por: </string>
+    <string name="nom">Nombre</string>
+    <string name="micronutrient">Micronutriente</string>
+    <string name="mostra_receptes">Muestra recetas: </string>
+    <string name="totes">Todas</string>
     <string name="filtra_cerca">Filtra</string>
 
 </resources>

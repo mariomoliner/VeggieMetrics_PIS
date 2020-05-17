@@ -42,6 +42,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
     private var c: Context
     private var param_filtre = 0
     private var quines_mostro = "Totes"
+    private  var default_all = ""
 
     var llista_receptes_filtrada = ArrayList<recepta_model>()
 
@@ -175,8 +176,8 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
                         if(param_filtre == 0){
                             Log.e("df","cosntraint " + constraint.toString().toLowerCase() + "nomrecept " + row.getRecepta().toLowerCase())
                             if (constraint in row.getRecepta().toLowerCase(Locale.ROOT))  {
-                                Log.e("TIPUS DE RECEPTA",row.getRecepta() + "  " +row.getTipus())
-                                if(quines_mostro.equals("Totes")){
+                                Log.e("TIPUS DE RECEPTA",quines_mostro + "  " + default_all)
+                                if(quines_mostro.equals(default_all)){
                                     resultList.add(row)
                                     Log.e("fdf","entro 1")
                                 }
@@ -190,7 +191,7 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
                         }
                         if(param_filtre == 1){
                             if (constraint in row.getCaracteristiques().toLowerCase(Locale.ROOT))  {
-                                if(quines_mostro.equals("Totes") ){
+                                if(quines_mostro.equals(default_all) ){
                                     resultList.add(row)
                                 }
                                 else{
@@ -225,6 +226,10 @@ class llista_receptes_Adapter  ( val recipesList: ArrayList<recepta_model>, c: C
 
     fun set_quines_mostro (d:String) {
         quines_mostro = d
+    }
+
+    fun set_default(s: String){
+        default_all = s
     }
 
 }

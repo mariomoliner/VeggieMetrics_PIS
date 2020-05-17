@@ -49,6 +49,19 @@ class recipe : AppCompatActivity() {
     }
 
 
+    private fun tradueixDieta(dieta: String): String {
+        var paraula = ""
+        if (dieta.equals("0"))
+            paraula = getString(R.string.vegana)
+        else if (dieta.equals("1"))
+            paraula = getString(R.string.vegetariana)
+        else if (dieta.equals("2"))
+            paraula = getString(R.string.piscivegetariana)
+        else if (dieta.equals("3"))
+            paraula = getString(R.string.flexitariana)
+        return paraula
+    }
+
     private fun carrega_GUI(){
         reference = FirebaseDatabase.getInstance().getReference("receptes")
         reference.addListenerForSingleValueEvent(object: ValueEventListener{
@@ -60,7 +73,8 @@ class recipe : AppCompatActivity() {
                 if(p0.exists()){
                     for(i in p0.children){
                         if(i.key.equals(id_recept)){
-                            autor.text = autor.text.toString() + i.child("autor").getValue().toString()
+                            autor.text = autor.text.toString() + " " + i.child("autor").getValue().toString()
+                            diet.text = diet.text.toString() + " " + tradueixDieta(i.child("tipus").getValue().toString())
                             stepsText.text = i.child("recepta_detall").child("description").value.toString()
                             Glide.with(applicationContext).load(i.child("foto").value.toString()).centerCrop().into(recipePic)
 

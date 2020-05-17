@@ -46,7 +46,7 @@
     <string name="titol_recepta">Errezetaren izenburua</string>
     <string name="autor_recepta">Egilea: </string>
     <string name="data_recepta">Data: 01/01/2020</string>
-    <string name="dieta_recepta">Dieta: Vegana</string>
+    <string name="dieta_recepta">Dieta: </string>
     <string name="valoracio_recepta">Ebaluazio: </string>
     <string name="llista_ingredients">- Osagaia 1\n- Osagaia 2\n- Osagaia 3\n</string>
     <string name="valora">Ebaluatu</string>
