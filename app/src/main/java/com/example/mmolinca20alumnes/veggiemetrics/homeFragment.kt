@@ -77,7 +77,7 @@ class homeFragment : Fragment() {
     }
 
     private fun setTop(){
-        progress_barFav.visibility = View.VISIBLE
+        progress_barTop.visibility = View.VISIBLE
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         topDatabaseReference = FirebaseDatabase.getInstance().getReference("receptes")
         val top10 = topDatabaseReference.orderByChild("valoracio_mitjana").limitToFirst(10).startAt(-5.0)
@@ -108,7 +108,7 @@ class homeFragment : Fragment() {
                     ListTopReceptes.adapter = llista_fav_receptes_Adapter(llistaTop)
                     activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 }else{
-                    progress_barFav.visibility = View.INVISIBLE
+                    progress_barTop.visibility = View.INVISIBLE
                     activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     //TODO: Afegir missatge de "Encara no tens receptes preferides"
                 }
@@ -152,7 +152,7 @@ class homeFragment : Fragment() {
                 }else{
                     progress_barFav.visibility = View.INVISIBLE
                     activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                    //TODO: Afegir missatge de "Encara no tens receptes preferides"
+                    FavoriteText.visibility = View.VISIBLE
                 }
             }
         })
@@ -224,7 +224,6 @@ class homeFragment : Fragment() {
                         val foto = recipe.child("foto").getValue().toString()
                         val dieta = recipe.child("tipus").getValue().toString().toInt()
                         val nutrients = ArrayList<String>()
-                        //Afegit:
                         val tipus = recipe.child("tipus").getValue().toString()
                         var carac = ""
                         for(p in recipe.child("puntsforts").children){
@@ -232,7 +231,6 @@ class homeFragment : Fragment() {
                             Log.e("puntsforts",p.child("nom").value.toString())
                         }
                         val uuid = recipe.key.toString()
-                        //end
                         for (p in recipe.child("puntsforts").children) {
                             nutrients.add(p.child("nom").value.toString())
                         }
@@ -288,7 +286,6 @@ class homeFragment : Fragment() {
                             val nomAutor = recipe.child("autor").getValue().toString()
                             val foto = recipe.child("foto").getValue().toString()
                             val dieta = recipe.child("tipus").getValue().toString().toInt()
-                            //Afegit:
                             val tipus = recipe.child("tipus").getValue().toString()
                             var carac = ""
                             for(p in recipe.child("puntsforts").children){
@@ -296,7 +293,6 @@ class homeFragment : Fragment() {
                                 Log.e("puntsforts",p.child("nom").value.toString())
                             }
                             val uuid = recipe.key.toString()
-                            //end
                             if (diet >= dieta) {
                                 llistaRecomanacions.add(
                                     recepta_model(

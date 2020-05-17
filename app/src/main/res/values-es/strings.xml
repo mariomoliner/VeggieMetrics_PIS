@@ -229,6 +229,7 @@
     <string name="aliment_eliminat">Alimento eliminado</string>
     <string name="recepta_afegida">Receta añadida correctamente</string>
     <string name="recomanades_no_text">Haz el test semanal del Perfil para recibir recomendaciones nutricionales personalizadas</string>
+    <string name="preferits_no_text">Añade aquí tus recetas favoritas seleccionándolas desde la sección "Recetas"</string>
     <string name="guia_ingredients">Haz click en cada ingrediente para añadir cantidades</string>
     <string name="guia_afegir_recepta">Añade recetas haciendo click en +</string>
     <string name="guarda">Guarda</string>
