@@ -220,6 +220,8 @@
     <string name="sortir">Irten</string>
     <string name="cancelar">Ezeztatu</string>
 
-    <string name="errorLoading">Error loading data</string>
+    <string name="errorLoading">Datuak kargatzean errua</string>
+    <string name="valoracioMitjana">Balorazioa:</string>
+    <string name="numVots">Botoak: </string>
 
 </resources>

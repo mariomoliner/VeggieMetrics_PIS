@@ -237,5 +237,7 @@
     <string name="mostra_receptes">Mostra receitas: </string>
     <string name="totes">Tudas</string>
     <string name="filtra_cerca">Filtrar</string>
+    <string name="valoracioMitjana">Valoració:</string>
+    <string name="numVots">Vots: </string>
 
 </resources>

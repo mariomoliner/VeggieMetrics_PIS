@@ -240,5 +240,7 @@
     <string name="mostra_receptes">Muestra recetas: </string>
     <string name="totes">Todas</string>
     <string name="filtra_cerca">Filtra</string>
+    <string name="valoracioMitjana">Puntuación:</string>
+    <string name="numVots">Votos: </string>
 
 </resources>
