@@ -230,7 +230,7 @@ class homeFragment : Fragment() {
                                     )
                             }
                             if (omega.equals("Not good") || omega.equals("Bad")) {
-                                if ("Omega" in nutrients)
+                                if ("EPA" in nutrients || "DHA" in nutrients)
                                     llistaRecomanacions.add(
                                         recepta_model(
                                             nomRecepta,
