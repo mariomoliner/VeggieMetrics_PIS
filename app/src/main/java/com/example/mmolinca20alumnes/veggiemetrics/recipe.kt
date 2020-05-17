@@ -232,16 +232,16 @@ class recipe : AppCompatActivity() {
         ref = FirebaseDatabase.getInstance().getReference("rating")
         var mitjana=0.0
         var numval=0.0
-        ref.addValueEventListener(object : ValueEventListener {
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
                     for (i in p0.children) {
-                        if (i.key.equals(id_recept) && i.child("valoracio_recepta").exists()) {
+                        if (i.child("idRecepta_rating").getValue().toString().equals(id_recept)) {
                             numval = numval + 1
-                            mitjana += i.child("valoracio_recepta").toString().toFloat()
+                            mitjana += i.child("valoracio_recepta").getValue().toString().toFloat()
                         }
                     }
                     mitjana = mitjana / numval
