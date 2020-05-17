@@ -77,8 +77,8 @@ class homeFragment : Fragment() {
     private fun setTop(){
         progress_barFav.visibility = View.VISIBLE
         activity!!.window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-        topDatabaseReference = FirebaseDatabase.getInstance().getReference("receptes")/*.orderByChild("valoracio_mitjana") as DatabaseReference*/
-
+        topDatabaseReference = FirebaseDatabase.getInstance().getReference("receptes")/*.orderByChild("valoracio_mitjana").limitToFirst(10) as DatabaseReference*/
+        val topordenat=topDatabaseReference.orderByChild("valoracio_mitjana").limitToFirst(10)
         llistaTop = arrayListOf()
         topDatabaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
