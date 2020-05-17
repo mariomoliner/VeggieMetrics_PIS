@@ -46,7 +46,7 @@
     <string name="titol_recepta">Nome da receita</string>
     <string name="autor_recepta">Autor: </string>
     <string name="data_recepta">Data: 01/01/2020</string>
-    <string name="dieta_recepta">Dieta: Vegana</string>
+    <string name="dieta_recepta">Dieta: </string>
     <string name="valoracio_recepta">Avaliação: </string>
     <string name="llista_ingredients">- Ingrediente 1\n- Ingrediente 2\n- Ingrediente 3\n</string>
     <string name="valora">Avalie</string>

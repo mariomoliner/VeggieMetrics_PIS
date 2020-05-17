@@ -74,31 +74,28 @@
                     android:gravity="center"
                     style="@style/TextViewStyle"/>
 
-            <TextView
-                    android:id="@+id/ratingTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/valoracio_recepta"
-                    android:layout_toRightOf="@id/recipePic"
-                    android:layout_below="@+id/diet"
-                    android:textSize="15dp"
-                    android:gravity="left"
-                    android:layout_marginLeft="25dp"
-                    style="@style/TextViewStyle"/>
-
             <RatingBar
                     android:id="@+id/ratingReceptes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/recipePic"
-                    android:layout_alignParentRight="true"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
                     android:numStars="5"
                     android:scaleX="0.5"
                     android:scaleY="0.5"
                     android:stepSize="0.5" />
+
+            <Button
+                    android:id="@+id/rate"
+                    style="@style/button_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ratingReceptes"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:text="@string/valora" />
 
             <TextView
                     android:id="@+id/ingredients"
@@ -106,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:text="@string/ingredients"
-                    android:layout_below="@+id/ratingReceptes"
+                    android:layout_below="@+id/rate"
 
                     android:textSize="20dp"
                     android:gravity="center"
@@ -144,17 +141,6 @@
                     android:textSize="15dp"
                     android:gravity="top"
                     style="@style/TextViewStyle" />
-
-            <Button
-                    android:id="@+id/rate"
-                    style="@style/button_style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/stepsText"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:padding="10dp"
-                    android:text="@string/valora" />
 
         </RelativeLayout>
         </LinearLayout>
