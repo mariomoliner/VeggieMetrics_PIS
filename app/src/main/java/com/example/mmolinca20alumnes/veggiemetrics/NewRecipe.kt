@@ -125,7 +125,7 @@ class NewRecipe : AppCompatActivity() {
                 }
 
                 override fun onSequenceStep(lastTarget: TapTarget?, targetClicked: Boolean) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    nova();
                 }
 
             }).start()
@@ -142,7 +142,9 @@ class NewRecipe : AppCompatActivity() {
 
     fun search_listener(){
         searchButton.setOnClickListener {
-            pedir_data(searchEdit.text.toString())
+            if(!searchEdit.text.isEmpty()){
+                pedir_data(searchEdit.text.toString())
+            }
         }
     }
 
