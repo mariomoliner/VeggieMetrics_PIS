@@ -139,6 +139,18 @@ class recipesFragment : Fragment() {
             overlay.visibility = View.VISIBLE
             llista.alpha = 0.3F
 
+            overlay.setOnClickListener {
+                filter_per = view?.findViewById<RadioButton>(radiogroup.checkedRadioButtonId)?.text.toString()
+                show_per = view?.findViewById<RadioButton>(radiogroup2.checkedRadioButtonId)?.text.toString()
+                
+                hidden.visibility =  View.GONE
+                overlay.visibility = View.GONE
+                llista.alpha = 1F
+                set_param_filtre(filter_per)
+                set_show_options(show_per)
+                (llista.adapter as llista_receptes_Adapter).filter.filter(written)
+            }
+
 
             conf_filtr.setOnClickListener {
                 filter_per = view?.findViewById<RadioButton>(radiogroup.checkedRadioButtonId)?.text.toString()
