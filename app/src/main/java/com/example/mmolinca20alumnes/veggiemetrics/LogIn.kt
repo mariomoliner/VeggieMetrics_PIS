@@ -30,6 +30,16 @@ class LogIn : AppCompatActivity() {
         register_user_listener()
     }
 
+    public override fun onStart() {
+        super.onStart()
+        //Mirem si l'usuari ha fet sign in (non-null) i el portem a la pàgina principal si cal
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            //entrem
+            goToMainPage()
+        } //Si currentUser == null, l'usuari es manté a la pantalla de login
+    }
+
     fun fuct(v: View){
         //Toast.makeText(this, "fdfd", Toast.LENGTH_LONG).show()
     }
@@ -47,9 +57,7 @@ class LogIn : AppCompatActivity() {
                     .addOnCompleteListener(this, OnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this, getString(R.string.sessio_iniciada), Toast.LENGTH_LONG).show()
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            goToMainPage()
                         } else {
                             Toast.makeText(this, getString(R.string.error_inici), Toast.LENGTH_LONG).show()
                         }
@@ -70,5 +78,11 @@ class LogIn : AppCompatActivity() {
             var intent = Intent(this,Register::class.java)
             startActivity(intent)
         }
+    }
+
+    fun goToMainPage(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
