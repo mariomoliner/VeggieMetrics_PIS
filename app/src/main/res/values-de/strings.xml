@@ -225,4 +225,20 @@
     <string name="valoracioMitjana">Auswertung:</string>
     <string name="numVots">Stimmen: </string>
 
+    <!-- Nous-->
+    <string name="aliment_eliminat">Zutat gelöscht</string>
+    <string name="recepta_afegida">Rezept erfolgreich hinzugefügt</string>
+    <string name="recomanades_no_text">Machen Sie den wöchentlichen Profiltest, um personalisierte Ernährungsempfehlungen zu erhalten</string>
+    <string name="preferits_no_text">Wählen Sie vom Rezept Sektion Ihre Lieblingsrezepte un Fügen Sie hier hinzu</string>
+    <string name="guia_ingredients">Klicken Sie auf jede Zutat, um Mengen hinzuzufügen</string>
+    <string name="guia_afegir_recepta">Clicke auf + um Rezepte hinzufügen</string>
+    <string name="guarda">Speichern</string>
+    <string name="aliment">Zutat</string>
+    <string name="filtra">Filtern nach: </string>
+    <string name="nom">Name</string>
+    <string name="micronutrient">Mikronährstoff</string>
+    <string name="mostra_receptes">Rezepte anzeigen: </string>
+    <string name="totes">Alle</string>
+    <string name="filtra_cerca">Filtern</string>
+
 </resources>

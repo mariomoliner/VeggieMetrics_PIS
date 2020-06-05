@@ -220,8 +220,25 @@
     <string name="sortir">Irten</string>
     <string name="cancelar">Ezeztatu</string>
 
+    <!--Strings d'errors-->
     <string name="errorLoading">Datuak kargatzean errua</string>
     <string name="valoracioMitjana">Balorazioa:</string>
     <string name="numVots">Botoak: </string>
+
+    <!-- Nous-->
+    <string name="aliment_eliminat">Osagaia kenduta</string>
+    <string name="recepta_afegida">Errezeta ondo gehitu da</string>
+    <string name="recomanades_no_text">Egin ezazu asteko profilaren proba, elikadura gomendio pertsonalizatuak lortzeko</string>
+    <string name="preferits_no_text">Gehitu zure errezeta gogokoenak Errezetak atalean hautatuta</string>
+    <string name="guia_ingredients">Egin klik osagai bakoitzean kantitateak gehitzeko</string>
+    <string name="guia_afegir_recepta">Gehitu errezetak + klik eginez</string>
+    <string name="guarda">Godetu</string>
+    <string name="aliment">Osagaia</string>
+    <string name="filtra">Iragazi: </string>
+    <string name="nom">Izena</string>
+    <string name="micronutrient">Micronutrientea</string>
+    <string name="mostra_receptes">Erakutsi errezetak: </string>
+    <string name="totes">Guztiak</string>
+    <string name="filtra_cerca">Iragazi</string>
 
 </resources>
