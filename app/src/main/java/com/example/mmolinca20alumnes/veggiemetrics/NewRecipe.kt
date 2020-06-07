@@ -1,9 +1,11 @@
 package com.example.mmolinca20alumnes.veggiemetrics
 
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.graphics.Rect
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -11,6 +13,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
+import android.widget.NumberPicker
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -165,6 +168,7 @@ class NewRecipe : AppCompatActivity() {
                 view_layout.texte.text = getString(R.string.aliment_seleccionat) + o.aliment.nom
 
                 val unitats: Array<String>
+                var grams_step : Array<String>
 
                 if(o.aliment.codi.equals("-1")){
                     unitats = arrayOf("g", "Kg", getString(R.string.peces))
@@ -174,13 +178,37 @@ class NewRecipe : AppCompatActivity() {
                     unitats = list?.toTypedArray()!!
                 }
 
+
                 //val unitats = arrayOf("g", "Kg", "peces")
                 view_layout.picker_unitats.displayedValues = unitats
                 view_layout.picker_unitats.minValue = 0
                 view_layout.picker_unitats.maxValue = unitats.size -1
 
                 view_layout.picker_qty.minValue = 0
-                view_layout.picker_qty.maxValue = 1000
+                view_layout.picker_qty.maxValue = 200
+
+                var formater = NumberPicker.Formatter(){
+                    u ->
+                    (u*5).toString()
+                }
+                view_layout.picker_qty.setFormatter(formater)
+                
+                view_layout.picker_unitats.setOnValueChangedListener { numberPicker, i, i2 ->
+                    if(i2 == 0){formater = NumberPicker.Formatter(){
+                            u ->
+                        (u*5).toString()
+
+                    }
+                        view_layout.picker_qty.setFormatter(formater)}
+                    else{
+                        formater = NumberPicker.Formatter(){
+                                u ->
+                            (u*1).toString()
+                        }
+                        view_layout.picker_qty.setFormatter(formater)
+                    }
+                }
+
 
                 dialog.setContentView(view_layout)
 
@@ -188,10 +216,15 @@ class NewRecipe : AppCompatActivity() {
                 dialog.show()
 
                 view_layout.boton_guarda.setOnClickListener {
-                    nova_Recepta.getIngredient_ID(o.aliment.codi)?.qty = view_layout.picker_qty.value
-                    nova_Recepta.getIngredient_ID(o.aliment.codi)?.unitat = unitats[view_layout.picker_unitats.value]
 
-                    ingredientList_adapter.update_ingredient(o.aliment.codi,view_layout.picker_qty.value, unitats[view_layout.picker_unitats.value])
+                    nova_Recepta.getIngredient_ID(o.aliment.codi)?.unitat = unitats[view_layout.picker_unitats.value]
+                    if(view_layout.picker_unitats.value == 0){
+                        nova_Recepta.getIngredient_ID(o.aliment.codi)?.qty = view_layout.picker_qty.value*5
+                        ingredientList_adapter.update_ingredient(o.aliment.codi,view_layout.picker_qty.value*5, unitats[view_layout.picker_unitats.value])
+                    }else{
+                        nova_Recepta.getIngredient_ID(o.aliment.codi)?.qty = view_layout.picker_qty.value
+                        ingredientList_adapter.update_ingredient(o.aliment.codi,view_layout.picker_qty.value, unitats[view_layout.picker_unitats.value])
+                    }
                     dialog.dismiss()
                 }
             }
