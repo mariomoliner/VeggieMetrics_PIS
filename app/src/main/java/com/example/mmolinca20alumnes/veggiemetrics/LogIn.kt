@@ -4,6 +4,7 @@ package com.example.mmolinca20alumnes.veggiemetrics
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.getkeepsafe.taptargetview.TapTarget
@@ -48,9 +49,12 @@ class LogIn : AppCompatActivity() {
         logInButton.setOnClickListener(){
             var userText = userText.text.toString()
             var passwordText = passwordText.text.toString()
-
+            getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             if(userText.isEmpty() or passwordText.isEmpty()){
                 Toast.makeText(this, getString(R.string.camp_buit), Toast.LENGTH_LONG).show()
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
             else {
                 auth.signInWithEmailAndPassword(userText, passwordText)
@@ -60,6 +64,7 @@ class LogIn : AppCompatActivity() {
                             goToMainPage()
                         } else {
                             Toast.makeText(this, getString(R.string.error_inici), Toast.LENGTH_LONG).show()
+                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                         }
                     })
             }
