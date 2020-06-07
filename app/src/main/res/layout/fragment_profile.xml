@@ -125,11 +125,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/dataText"
                         android:layout_marginTop="20dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_toRightOf="@+id/age"
                         android:text="@string/alçada"
                         android:textSize="15sp"
-                        android:layout_marginStart="15dp"
                         android:layout_toEndOf="@+id/age" />
 
                 <EditText
@@ -138,11 +137,10 @@
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/heightText"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_toRightOf="@+id/age"
                         android:inputType="numberDecimal"
                         android:textSize="15sp"
-                        android:layout_marginStart="15dp"
                         android:layout_toEndOf="@+id/age" />
 
                 <TextView
@@ -151,12 +149,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/dataText"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
                         android:layout_toRightOf="@+id/height"
                         android:text="@string/pes"
                         android:textSize="15sp"
-                        android:layout_marginStart="15dp"
                         android:layout_toEndOf="@+id/height" />
 
                 <EditText
@@ -166,11 +163,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/weightText"
                         android:layout_toRightOf="@id/height"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="25dp"
                         android:inputType="numberDecimal"
                         android:textSize="15sp"
-                        android:layout_toEndOf="@id/height"
-                        android:layout_marginStart="15dp" />
+                        android:layout_toEndOf="@id/height" />
 
                 <TextView
                         android:id="@+id/sexText"

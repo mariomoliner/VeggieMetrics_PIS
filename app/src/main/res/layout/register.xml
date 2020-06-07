@@ -20,15 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/correu"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
+            android:textSize="15dp"
             style="@style/edit_text_style"/>
 
     <EditText
             android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="20dp"
+            android:textSize="15dp"
             android:hint="@string/contrasenya_minima"
             android:inputType="textPassword"
             style="@style/edit_text_style"/>
@@ -37,6 +38,8 @@
             android:id="@+id/passrepetida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="15dp"
             android:hint="@string/repetir_contrasenya"
             android:inputType="textPassword"
             style="@style/edit_text_style"/>
